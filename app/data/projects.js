@@ -1,25 +1,29 @@
-import hoursTracker from '../assets/projects/hours-tracker.webp';
-import hoursLight from '../assets/projects/hours-light.webp';
-import payrollSplitter from '../assets/projects/payroll-splitter.webp';
-import payrollFilled from '../assets/projects/payroll-filled.webp';
-import rcmiAttendance from '../assets/projects/rcmi-attendance.webp';
-import rcmiViewer from '../assets/projects/rcmi-viewer.webp';
-import rcmiLeadership from '../assets/projects/rcmi-leadership.webp';
-import rcmiDirectory from '../assets/projects/rcmi-directory.webp';
-import sunsetSpeaks from '../assets/projects/sunset-speaks.webp';
-import ssLogin from '../assets/projects/ss-login.webp';
-import ssSchedule from '../assets/projects/ss-schedule.webp';
-import ssStudents from '../assets/projects/ss-students.webp';
-import ssAccounts from '../assets/projects/ss-accounts.webp';
-import ssAdminReports from '../assets/projects/ss-admin-reports.webp';
-import ssAdminReportView from '../assets/projects/ss-admin-report-view.webp';
-import ssAdminTracker from '../assets/projects/ss-admin-tracker.webp';
-import ssAdminRemaining from '../assets/projects/ss-admin-remaining.webp';
-import ssAdminReceipt from '../assets/projects/ss-admin-receipt.webp';
-import ssAdminAnnual from '../assets/projects/ss-admin-annual.webp';
-import ssTeacherSchedule from '../assets/projects/ss-teacher-schedule.webp';
-import ssTeacherReport from '../assets/projects/ss-teacher-report.webp';
-import ssTeacherTracker from '../assets/projects/ss-teacher-tracker.webp';
+// Screenshots live in /public/assets/projects and are referenced by URL so the
+// static export serves them straight from the CDN (no bundler import needed).
+const img = (file) => `/assets/projects/${file}.webp`;
+
+const hoursTracker = img('hours-tracker');
+const hoursLight = img('hours-light');
+const payrollSplitter = img('payroll-splitter');
+const payrollFilled = img('payroll-filled');
+const rcmiAttendance = img('rcmi-attendance');
+const rcmiViewer = img('rcmi-viewer');
+const rcmiLeadership = img('rcmi-leadership');
+const rcmiDirectory = img('rcmi-directory');
+const sunsetSpeaks = img('sunset-speaks');
+const ssLogin = img('ss-login');
+const ssSchedule = img('ss-schedule');
+const ssStudents = img('ss-students');
+const ssAccounts = img('ss-accounts');
+const ssAdminReports = img('ss-admin-reports');
+const ssAdminReportView = img('ss-admin-report-view');
+const ssAdminTracker = img('ss-admin-tracker');
+const ssAdminRemaining = img('ss-admin-remaining');
+const ssAdminReceipt = img('ss-admin-receipt');
+const ssAdminAnnual = img('ss-admin-annual');
+const ssTeacherSchedule = img('ss-teacher-schedule');
+const ssTeacherReport = img('ss-teacher-report');
+const ssTeacherTracker = img('ss-teacher-tracker');
 
 // Screenshots use fictional demo data. Add a `live` URL to any project to
 // render a "Visit site" button.

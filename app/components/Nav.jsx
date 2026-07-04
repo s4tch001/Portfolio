@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import useTheme from '../hooks/useTheme.js';
 import ThemeToggle from './ThemeToggle.jsx';

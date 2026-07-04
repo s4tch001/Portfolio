@@ -56,7 +56,7 @@ export default function Footer() {
 
         <p className='footer__copy'>
           © {new Date().getFullYear()} P-Devs <br />
-          Built with React + Vite
+          Built with React + Next.js
         </p>
       </div>
     </footer>

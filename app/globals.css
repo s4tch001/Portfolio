@@ -1171,15 +1171,19 @@ body,
 
 .gallery__view img {
   width: 100%;
-  animation: gallery-fade 0.35s ease;
+  animation: gallery-slide 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@keyframes gallery-fade {
+@keyframes gallery-slide {
   from {
-    opacity: 0.35;
+    opacity: 0.25;
+    transform: translateX(var(--slide-from, 26px));
+    filter: blur(12px);
   }
   to {
     opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
   }
 }
 
@@ -1580,11 +1584,16 @@ body,
 }
 
 .footer__copy {
+  flex: 1 0 0;
+  text-align: right;
   font-family: var(--font-mono);
   font-size: 0.76rem;
 }
+
+/* Left brand + right copy grow equally (basis 0), so the socials in between
+   land dead-centre regardless of the two sides' differing widths. */
 .footer__left {
-  margin-right: 3.1rem;
+  flex: 1 0 0;
 }
 
 /* ───────────────────────── Responsive ───────────────────────── */
@@ -1715,8 +1724,10 @@ body,
     justify-content: center;
   }
 
-  .footer__left {
-    margin-right: 0;
+  .footer__left,
+  .footer__copy {
+    flex: 0 1 auto;
+    text-align: center;
   }
 }
 

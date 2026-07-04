@@ -1,4 +1,6 @@
-import { useState } from 'react';
+'use client';
+
+import { useEffect, useRef, useState } from 'react';
 import useReveal from '../hooks/useReveal.js';
 import useSlideshow from '../hooks/useSlideshow.js';
 import projects from '../data/projects.js';
@@ -12,8 +14,43 @@ function DeployBadge({ name }) {
 // manual interaction. Click the image (or zoom) to open the lightbox.
 function Gallery({ project, onOpen }) {
   const images = project.images;
-  const { index, setIndex, next, prev, pause } = useSlideshow(images.length);
+  const rootRef = useRef(null);
+  const [inView, setInView] = useState(false);
+
+  // Hold autoplay until the card has scrolled into view, then let it pause
+  // again whenever it leaves — the slideshow "starts" on first sight.
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el || typeof IntersectionObserver === 'undefined') {
+      setInView(true);
+      return undefined;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold: 0.35 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const { index, setIndex, next, prev, pause } = useSlideshow(images.length, {
+    enabled: inView,
+    interval: 3000,
+  });
   const current = images[index];
+
+  // Direction of the latest index change so the incoming image slides in from
+  // the correct edge (forward → in from the right, back → in from the left).
+  const prevIndex = useRef(index);
+  let dir = 1;
+  if (index !== prevIndex.current) {
+    const steppedBack =
+      (prevIndex.current - 1 + images.length) % images.length === index;
+    dir = steppedBack ? -1 : 1;
+  }
+  useEffect(() => {
+    prevIndex.current = index;
+  }, [index]);
 
   const withPause = (fn) => () => {
     pause();
@@ -21,7 +58,7 @@ function Gallery({ project, onOpen }) {
   };
 
   return (
-    <div className="browser">
+    <div className="browser" ref={rootRef}>
       <div className="browser__bar">
         <span className="dot dot--r" />
         <span className="dot dot--y" />
@@ -44,6 +81,7 @@ function Gallery({ project, onOpen }) {
             loading="lazy"
             width="1600"
             height="1000"
+            style={{ '--slide-from': `${dir * 26}px` }}
           />
           <span className="gallery__caption">{current.caption}</span>
           <span className="gallery__zoom" aria-hidden="true">⤢</span>
