@@ -1,9 +1,19 @@
 import hoursTracker from '../assets/projects/hours-tracker.webp';
+import hoursLight from '../assets/projects/hours-light.webp';
 import payrollSplitter from '../assets/projects/payroll-splitter.webp';
+import payrollFilled from '../assets/projects/payroll-filled.webp';
 import rcmiAttendance from '../assets/projects/rcmi-attendance.webp';
+import rcmiViewer from '../assets/projects/rcmi-viewer.webp';
+import rcmiLeadership from '../assets/projects/rcmi-leadership.webp';
+import rcmiDirectory from '../assets/projects/rcmi-directory.webp';
 import sunsetSpeaks from '../assets/projects/sunset-speaks.webp';
+import ssLogin from '../assets/projects/ss-login.webp';
+import ssSchedule from '../assets/projects/ss-schedule.webp';
+import ssStudents from '../assets/projects/ss-students.webp';
+import ssAccounts from '../assets/projects/ss-accounts.webp';
 
-// Add a `live` URL to any project to render a "Visit site" button.
+// Screenshots use fictional demo data. Add a `live` URL to any project to
+// render a "Visit site" button.
 const projects = [
   {
     id: 'sunset-speaks',
@@ -20,8 +30,13 @@ const projects = [
     ],
     stack: ['React', 'Vite', 'JavaScript', 'Cloudflare Workers', 'D1 (SQLite)', 'R2', 'Durable Objects', 'Kotlin'],
     deploy: ['Cloudflare Workers', 'Cloudflare Pages'],
-    image: sunsetSpeaks,
-    alt: 'Sunset-Speaks landing page with a sunset illustration background',
+    images: [
+      { src: sunsetSpeaks, alt: 'Sunset-Speaks public landing page with a sunset illustration', caption: 'Public landing page' },
+      { src: ssLogin, alt: 'Login screen over an animated sunset backdrop', caption: 'Login — animated sunset backdrop' },
+      { src: ssSchedule, alt: 'Per-teacher class schedule grid for July 2026', caption: 'Per-teacher schedule grid (admin)' },
+      { src: ssStudents, alt: 'Student management table with notes and statuses', caption: 'Student management' },
+      { src: ssAccounts, alt: 'Teacher and admin accounts management page', caption: 'Teacher & admin accounts' },
+    ],
     accent: 'amber',
   },
   {
@@ -39,8 +54,12 @@ const projects = [
     ],
     stack: ['React 19', 'Vite', 'JavaScript', 'Netlify Functions', 'Supabase', 'ExcelJS'],
     deploy: ['Netlify', 'Supabase'],
-    image: rcmiAttendance,
-    alt: 'RCMI Attendance Checker calendar view in light theme',
+    images: [
+      { src: rcmiAttendance, alt: 'RCMI attendance calendar view in light theme', caption: 'Attendance calendar' },
+      { src: rcmiViewer, alt: 'Day roster grouped by leader with role badges', caption: 'Day roster — grouped by leader' },
+      { src: rcmiLeadership, alt: 'Leadership overview grouped by district leader', caption: 'Leadership overview by district' },
+      { src: rcmiDirectory, alt: 'Member directory management view', caption: 'Member directory' },
+    ],
     accent: 'blue',
   },
   {
@@ -58,8 +77,10 @@ const projects = [
     ],
     stack: ['HTML5', 'CSS3', 'JavaScript', 'Supabase'],
     deploy: ['Netlify'],
-    image: hoursTracker,
-    alt: 'Hours Tracker dark calendar interface showing weekly totals',
+    images: [
+      { src: hoursTracker, alt: 'Hours Tracker calendar in dark theme', caption: 'Dark theme' },
+      { src: hoursLight, alt: 'Hours Tracker calendar in light theme', caption: 'Light theme' },
+    ],
     accent: 'violet',
   },
   {
@@ -77,8 +98,10 @@ const projects = [
     ],
     stack: ['HTML5', 'CSS3', 'JavaScript'],
     deploy: ['Netlify'],
-    image: payrollSplitter,
-    alt: 'Payroll Splitter dark interface with USD setup and hours fields',
+    images: [
+      { src: payrollSplitter, alt: 'Payroll Splitter USD setup and hours inputs', caption: 'USD setup & hours' },
+      { src: payrollFilled, alt: 'Computed pay split with per-person cards and formula trace', caption: 'Pay split + formula trace' },
+    ],
     accent: 'green',
   },
 ];
