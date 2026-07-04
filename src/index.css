@@ -228,7 +228,9 @@ body,
   padding: 1.1rem 2.2rem;
 }
 
-#root > header > div > nav > a.btn.btn--small.btn--gradient {
+#root > header > div > nav > a.btn.btn--small.btn--gradient,
+#home > div > div.hero__copy > div > a.btn.btn--gradient,
+#contact > div > div > a {
   border: none;
 }
 
