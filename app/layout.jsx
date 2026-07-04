@@ -81,6 +81,16 @@ const themeScript = `(function () {
   } catch (e) {
     document.documentElement.dataset.theme = 'dark';
   }
+  // Tag real Safari (iOS + macOS) so CSS can scope the fixed-nav overflow fix
+  // to it. Chrome/Edge/Firefox/Opera all include extra tokens we exclude here.
+  try {
+    var ua = navigator.userAgent;
+    if (/Safari/.test(ua) && !/Chrome|Chromium|CriOS|FxiOS|EdgiOS|Edg|OPR|Android/.test(ua)) {
+      document.documentElement.dataset.browser = 'safari';
+    }
+  } catch (e) {
+    /* UA unavailable — keep default styles */
+  }
 })();`;
 
 // Structured data — helps search engines understand who this site is about.

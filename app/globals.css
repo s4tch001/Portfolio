@@ -27,14 +27,10 @@
   box-sizing: border-box;
 }
 
-/* No overflow-x on <html>: iOS Safari treats a root element with clipped
-   overflow as a "body scroller", which detaches position: fixed elements
-   (the nav) from the visual viewport while the address bar collapses.
-   Clipping on <body> gives the same horizontal-bleed protection without
-   creating a scroll container or breaking fixed positioning. */
 html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--nav-h);
+  overflow-x: clip;
 }
 
 body {
@@ -43,6 +39,18 @@ body {
   font-family: var(--font-body);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Safari only (tagged by the inline script in layout.jsx): a root element
+   with clipped overflow makes Safari detach the fixed nav from the visual
+   viewport while the address bar collapses. Move the horizontal clip to
+   <body> there; every other browser keeps the rules above. */
+html[data-browser='safari'] {
+  overflow-x: visible;
+}
+
+html[data-browser='safari'] body {
   overflow-x: clip;
 }
 
@@ -1873,11 +1881,6 @@ body > header > div > nav > a.btn.btn--small.btn--gradient,
   border-radius: 16px;
   box-shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.7);
   animation: style-menu-in 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-  /* Never taller than the space above the FAB — scroll only as a last resort */
-  max-height: calc(100vh - 96px);
-  max-height: calc(100dvh - 96px);
-  overflow-y: auto;
-  overscroll-behavior: contain;
 }
 
 @keyframes style-menu-in {
@@ -1978,32 +1981,4 @@ body > header > div > nav > a.btn.btn--small.btn--gradient,
   margin-left: auto;
   color: var(--cyan);
   font-weight: 700;
-}
-
-/* Short screens (e.g. phones in landscape): compact rows so the whole
-   style list stays visible without scrolling. Must come after the base
-   .style-switch__* rules so it wins the cascade. */
-@media (max-height: 540px) {
-  .style-switch__menu {
-    min-width: 180px;
-    padding: 0.3rem;
-  }
-
-  .style-switch__label {
-    padding: 0.25rem 0.55rem 0.15rem;
-  }
-
-  .style-switch__option {
-    padding: 0.32rem 0.55rem;
-    gap: 0.5rem;
-  }
-
-  .style-switch__text small {
-    display: none;
-  }
-
-  .style-switch__swatch {
-    width: 16px;
-    height: 16px;
-  }
 }
