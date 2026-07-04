@@ -6,6 +6,7 @@ import Projects from './components/Projects.jsx';
 import Skills from './components/Skills.jsx';
 import Contact from './components/Contact.jsx';
 import Footer from './components/Footer.jsx';
+import StyleSwitcher from './components/StyleSwitcher.jsx';
 
 export default function Page() {
   return (
@@ -21,6 +22,7 @@ export default function Page() {
         <Contact />
       </main>
       <Footer />
+      <StyleSwitcher />
     </>
   );
 }

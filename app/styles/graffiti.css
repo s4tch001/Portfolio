@@ -1,0 +1,647 @@
+/* ═════════════════════════════════════════════════════════════════════════
+   GRAFFITI — street-art page style.
+   Everything is scoped under [data-style='graffiti'] so it fully overrides
+   the Default look without touching it. Fonts: Bangers (poster caps) +
+   Permanent Marker (hand-scrawled accents), loaded in layout.jsx.
+   ═════════════════════════════════════════════════════════════════════════ */
+
+/* ───────────────────────── Tokens ───────────────────────── */
+[data-style='graffiti'] {
+  --bg: #131015; /* night asphalt */
+  --bg-alt: #191420;
+  --surface: rgba(255, 255, 255, 0.05);
+  --surface-2: rgba(255, 255, 255, 0.09);
+  --border: rgba(255, 255, 255, 0.16);
+  --text: #f7f2e9; /* chalk */
+  --muted: #b9b0a4;
+  --violet: #b14aff; /* hot pink takes the primary accent slot */
+  --cyan: #ffd60a; /* spray-can yellow */
+  --pink: #00e5ff; /* electric cyan */
+  --amber: #ff8a00;
+  --green: #a3e635; /* slime lime */
+  --blue: #00e5ff;
+  --grad: linear-gradient(120deg, #b14aff, #ffd60a);
+  --font-display: 'Bangers', 'Space Grotesk', system-ui, cursive;
+  --font-marker: 'Permanent Marker', 'Space Grotesk', cursive;
+  --radius: 4px; /* streets have hard edges */
+  --paper: #fbf6ea; /* wheatpaste poster paper */
+  --ink: #17131a;
+}
+
+/* Sunlit-concrete variant when the theme toggle is on light */
+[data-style='graffiti'][data-theme='light'] {
+  --bg: #e8e2d4;
+  --bg-alt: #ded6c4;
+  --surface: rgba(23, 19, 26, 0.05);
+  --surface-2: rgba(23, 19, 26, 0.1);
+  --border: rgba(23, 19, 26, 0.35);
+  --text: #1a161f;
+  --muted: #57504a;
+  --violet: #8a1fd1;
+  --cyan: #c47600; /* yellow is unreadable on light concrete — spray orange */
+  --pink: #0092b8;
+  --green: #4d9e00;
+  --grad: linear-gradient(120deg, #8a1fd1, #ff8a00);
+}
+
+/* Cinder-block grid scratched into the wall */
+[data-style='graffiti'] body {
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 42px,
+      rgba(255, 255, 255, 0.02) 42px 43px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 42px,
+      rgba(255, 255, 255, 0.02) 42px 43px
+    ),
+    var(--bg);
+}
+
+[data-style='graffiti'][data-theme='light'] body {
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 42px,
+      rgba(23, 19, 26, 0.035) 42px 43px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 42px,
+      rgba(23, 19, 26, 0.035) 42px 43px
+    ),
+    var(--bg);
+}
+
+/* Neon spray splats bleeding through from behind */
+[data-style='graffiti'] .bg-glow {
+  background:
+    radial-gradient(30rem 22rem at 8% 2%, rgba(177, 74, 255, 0.18), transparent 60%),
+    radial-gradient(26rem 20rem at 96% 14%, rgba(0, 229, 255, 0.13), transparent 60%),
+    radial-gradient(22rem 16rem at 70% 55%, rgba(163, 230, 53, 0.07), transparent 60%),
+    radial-gradient(30rem 24rem at 40% 112%, rgba(255, 214, 10, 0.12), transparent 60%);
+}
+
+[data-style='graffiti'] ::selection {
+  background: #ffd60a;
+  color: #17131a;
+}
+
+/* ───────────────────────── Type & headings ───────────────────────── */
+[data-style='graffiti'] .hero__name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  background: none;
+  color: #ffd60a;
+  animation: none;
+  text-shadow:
+    3px 3px 0 #b14aff,
+    7px 7px 0 rgba(0, 0, 0, 0.55);
+  transform: rotate(-2deg);
+}
+
+[data-style='graffiti'][data-theme='light'] .hero__name {
+  color: #8a1fd1;
+  text-shadow:
+    3px 3px 0 #ffd60a,
+    7px 7px 0 rgba(23, 19, 26, 0.3);
+}
+
+[data-style='graffiti'] .grad-text {
+  background: none;
+  color: var(--violet);
+  animation: none;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.6);
+}
+
+[data-style='graffiti'] .section__title {
+  font-weight: 400;
+  letter-spacing: 0.035em;
+  transform: rotate(-1.2deg);
+  text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5);
+}
+
+[data-style='graffiti'] .section__eyebrow {
+  font-family: var(--font-marker);
+  letter-spacing: 0.28em;
+}
+
+/* Spray-dash divider instead of the gradient hairline */
+[data-style='graffiti'] .section__eyebrow::after {
+  height: 4px;
+  border-radius: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--violet) 0 10px,
+    transparent 10px 17px
+  );
+}
+
+[data-style='graffiti'] .section--alt {
+  border-top: 2px dashed var(--border);
+  border-bottom: 2px dashed var(--border);
+}
+
+/* ───────────────────────── Buttons & chips ───────────────────────── */
+[data-style='graffiti'] .btn {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  border-radius: 3px;
+  border: 2px solid #000;
+}
+
+[data-style='graffiti'] .btn--gradient {
+  background: #b14aff;
+  color: #fff;
+  box-shadow: 4px 4px 0 #ffd60a;
+  transform: rotate(-1deg);
+}
+
+[data-style='graffiti'] .btn--gradient:hover {
+  transform: rotate(-1deg) translate(-2px, -2px);
+  box-shadow: 6px 6px 0 #ffd60a;
+}
+
+[data-style='graffiti'] .btn--ghost {
+  background: transparent;
+  border: 2px dashed var(--text);
+  color: var(--text);
+  box-shadow: 4px 4px 0 rgba(0, 229, 255, 0.55);
+  transform: rotate(0.8deg);
+}
+
+[data-style='graffiti'] .btn--ghost:hover {
+  border-color: var(--text);
+  background: var(--surface-2);
+  transform: rotate(0.8deg) translate(-2px, -2px);
+  box-shadow: 6px 6px 0 rgba(0, 229, 255, 0.75);
+}
+
+/* Sticker-bomb chips: tilted, hard-edged, loud */
+[data-style='graffiti'] .chip {
+  font-family: var(--font-marker);
+  font-size: 0.72rem;
+  border-radius: 3px;
+  border: 1.5px solid #000;
+  background: #ffd60a;
+  color: #17131a;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.65);
+  transform: rotate(-1.6deg);
+}
+
+[data-style='graffiti'] .chip:nth-child(even) {
+  background: #7ee8ff;
+  transform: rotate(1.4deg);
+}
+
+[data-style='graffiti'] .chip:nth-child(3n) {
+  background: #d9a8ff;
+}
+
+[data-style='graffiti'] .chip:nth-child(5n) {
+  background: #c8f78a;
+}
+
+[data-style='graffiti'] .chip:hover {
+  color: #17131a;
+  border-color: #000;
+  transform: rotate(0deg) translateY(-3px);
+}
+
+/* ───────────────────────── Cards → wheatpaste posters ───────────────────────── */
+[data-style='graffiti'] .card {
+  position: relative;
+  background: var(--paper);
+  color: var(--ink);
+  border: 2px solid #000;
+  border-radius: 3px;
+  backdrop-filter: none;
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.45);
+}
+
+/* Masking-tape strip on top of each poster */
+[data-style='graffiti'] .card::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  width: 92px;
+  height: 26px;
+  transform: translateX(-50%) rotate(-3deg);
+  background: rgba(255, 224, 130, 0.6);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
+
+[data-style='graffiti'] .card:hover {
+  border-color: #000;
+  box-shadow: 9px 9px 0 rgba(0, 0, 0, 0.5);
+}
+
+[data-style='graffiti'] .about__card h3,
+[data-style='graffiti'] .skills__card h3 {
+  font-family: var(--font-marker);
+  color: var(--ink);
+}
+
+[data-style='graffiti'] .about__card p {
+  color: #4c453f;
+}
+
+/* Alternate tilts down the grid — straighten on hover */
+[data-style='graffiti'] .about__card:nth-child(odd),
+[data-style='graffiti'] .skills__card:nth-child(odd) {
+  transform: rotate(-1.2deg);
+}
+
+[data-style='graffiti'] .about__card:nth-child(even),
+[data-style='graffiti'] .skills__card:nth-child(even) {
+  transform: rotate(1.2deg);
+}
+
+[data-style='graffiti'] .about__card:nth-child(odd):hover,
+[data-style='graffiti'] .about__card:nth-child(even):hover,
+[data-style='graffiti'] .skills__card:nth-child(odd):hover,
+[data-style='graffiti'] .skills__card:nth-child(even):hover {
+  transform: rotate(0deg) translateY(-6px);
+}
+
+/* ───────────────────────── Nav ───────────────────────── */
+[data-style='graffiti'] .nav--scrolled {
+  background: rgba(19, 16, 21, 0.9);
+  border-bottom: 2px solid #000;
+}
+
+[data-style='graffiti'][data-theme='light'] .nav--scrolled {
+  background: rgba(232, 226, 212, 0.92);
+}
+
+[data-style='graffiti'] .nav__logo-mark {
+  background: #ffd60a;
+  color: #17131a;
+  border: 2px solid #000;
+  border-radius: 4px;
+  font-family: var(--font-marker);
+  box-shadow: 3px 3px 0 #b14aff;
+  transform: rotate(-6deg);
+}
+
+[data-style='graffiti'] .nav__logo-text,
+[data-style='graffiti'] .footer__brand {
+  font-family: var(--font-marker);
+}
+
+[data-style='graffiti'] .nav__links a:not(.btn) {
+  font-family: var(--font-marker);
+  font-size: 0.9rem;
+}
+
+/* Marker-scribble underline */
+[data-style='graffiti'] .nav__links a:not(.btn)::after {
+  height: 3px;
+  border-radius: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--violet) 0 7px,
+    transparent 7px 11px
+  );
+}
+
+/* ───────────────────────── Hero ───────────────────────── */
+[data-style='graffiti'] .hero__eyebrow {
+  font-family: var(--font-marker);
+  color: var(--pink);
+}
+
+[data-style='graffiti'] .hero__role {
+  font-family: var(--font-marker);
+}
+
+[data-style='graffiti'] .hero__typed {
+  background: none;
+  color: var(--cyan);
+}
+
+[data-style='graffiti'] .hero__caret {
+  background: var(--violet);
+}
+
+[data-style='graffiti'] .hero__stat dt {
+  font-family: var(--font-display);
+  font-weight: 400;
+  background: none;
+  color: var(--cyan);
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.55);
+}
+
+/* Code card → chalkboard sign bolted to the wall */
+[data-style='graffiti'] .hero__card {
+  background: #17131a;
+  border: 2px solid #000;
+  border-radius: 4px;
+  backdrop-filter: none;
+  animation: none;
+  transform: rotate(1.6deg);
+  box-shadow:
+    8px 8px 0 rgba(177, 74, 255, 0.75),
+    22px 26px 50px -18px rgba(0, 0, 0, 0.7);
+}
+
+[data-style='graffiti'] .hero__card-bar {
+  border-bottom: 2px dashed rgba(255, 255, 255, 0.18);
+}
+
+/* Sticker chips floating around the card */
+[data-style='graffiti'] .hero__chip {
+  font-family: var(--font-marker);
+  background: var(--paper);
+  color: var(--ink);
+  border: 2px solid #000;
+  border-radius: 3px;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.55);
+}
+
+/* ───────────────────────── Marquee → caution tape ───────────────────────── */
+[data-style='graffiti'] .marquee {
+  background: #ffd60a;
+  border-top: 3px solid #000;
+  border-bottom: 3px solid #000;
+  mask-image: none;
+  -webkit-mask-image: none;
+  transform: rotate(-1.2deg) scale(1.02);
+}
+
+[data-style='graffiti'] .marquee__item {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.1rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #17131a;
+}
+
+[data-style='graffiti'] .marquee__star {
+  color: #b14aff;
+}
+
+/* ───────────────────────── Projects & gallery → paste-up posters ───────────────────────── */
+[data-style='graffiti'] .project__media {
+  position: relative;
+}
+
+/* Tape strip slapped over the top edge of the frame */
+[data-style='graffiti'] .project__media::after {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  width: 120px;
+  height: 30px;
+  transform: translateX(-50%) rotate(-4deg);
+  background: rgba(255, 255, 255, 0.28);
+  border: 1px dashed rgba(0, 0, 0, 0.18);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Browser frame becomes a postered print: paper mat + black line + hard drop */
+[data-style='graffiti'] .browser {
+  border: 10px solid var(--paper);
+  border-radius: 2px;
+  background: var(--paper);
+  box-shadow:
+    0 0 0 3px #000,
+    12px 14px 0 rgba(0, 0, 0, 0.5);
+  transform: rotate(-1.4deg);
+}
+
+[data-style='graffiti'] .project--flip .browser {
+  transform: rotate(1.4deg);
+}
+
+[data-style='graffiti'] .project__media:hover .browser {
+  transform: rotate(-0.3deg) translateY(-6px) scale(1.01);
+  box-shadow:
+    0 0 0 3px #000,
+    16px 20px 0 rgba(0, 0, 0, 0.55),
+    0 0 70px -14px rgba(177, 74, 255, 0.55);
+}
+
+[data-style='graffiti'] .project--flip:hover .browser,
+[data-style='graffiti'] .project--flip .project__media:hover .browser {
+  transform: rotate(0.3deg) translateY(-6px) scale(1.01);
+}
+
+[data-style='graffiti'] .browser__bar {
+  background: #17131a;
+  border-bottom: 3px solid #000;
+}
+
+/* Spray-cap dots with a neon halo */
+[data-style='graffiti'] .dot--r {
+  background: #b14aff;
+  box-shadow: 0 0 8px rgba(177, 74, 255, 0.9);
+}
+[data-style='graffiti'] .dot--y {
+  background: #ffd60a;
+  box-shadow: 0 0 8px rgba(255, 214, 10, 0.9);
+}
+[data-style='graffiti'] .dot--g {
+  background: #00e5ff;
+  box-shadow: 0 0 8px rgba(0, 229, 255, 0.9);
+}
+
+[data-style='graffiti'] .browser__count {
+  font-family: var(--font-marker);
+  color: #ffd60a;
+}
+
+[data-style='graffiti'] .browser__pov {
+  font-family: var(--font-marker);
+  color: #fff;
+  background: #b14aff;
+  border: 1.5px solid #000;
+  border-radius: 2px;
+}
+
+[data-style='graffiti'] .gallery__arrow {
+  background: #ffd60a;
+  color: #17131a;
+  border: 2px solid #000;
+  border-radius: 2px;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.55);
+}
+
+[data-style='graffiti'] .gallery__caption {
+  font-family: var(--font-marker);
+  background: #ffd60a;
+  color: #17131a;
+  border: 1.5px solid #000;
+  border-radius: 2px;
+}
+
+[data-style='graffiti'] .gallery__zoom {
+  background: #b14aff;
+  color: #fff;
+  border: 1.5px solid #000;
+  border-radius: 2px;
+}
+
+[data-style='graffiti'] .gallery__dots button {
+  border-radius: 1px;
+  transform: rotate(45deg);
+  border: 1px solid #000;
+}
+
+[data-style='graffiti'] .gallery__dots button.active {
+  background: #b14aff;
+}
+
+[data-style='graffiti'] .project__tagline {
+  font-family: var(--font-marker);
+}
+
+[data-style='graffiti'] .project__num {
+  font-family: var(--font-marker);
+  color: var(--violet);
+}
+
+[data-style='graffiti'] .project__features li::before {
+  content: '✖';
+  color: var(--violet);
+  font-size: 0.8em;
+}
+
+[data-style='graffiti'] .project__deploy {
+  font-family: var(--font-marker);
+  font-size: 0.7rem;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1.5px solid #000;
+  border-radius: 2px;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* ───────────────────────── Lightbox ───────────────────────── */
+[data-style='graffiti'] .lightbox__stage img {
+  border: 10px solid var(--paper);
+  box-shadow: 0 0 0 3px #000;
+}
+
+[data-style='graffiti'] .lightbox__stage figcaption {
+  font-family: var(--font-marker);
+}
+
+[data-style='graffiti'] .lightbox__arrow,
+[data-style='graffiti'] .lightbox__close {
+  background: #ffd60a;
+  color: #17131a;
+  border: 2px solid #000;
+  border-radius: 2px;
+}
+
+/* ───────────────────────── Footer ───────────────────────── */
+[data-style='graffiti'] .footer {
+  border-top: 3px solid #000;
+}
+
+[data-style='graffiti'] .footer__mark {
+  background: #ffd60a;
+  color: #17131a;
+  border: 2px solid #000;
+  border-radius: 4px;
+  font-family: var(--font-marker);
+  box-shadow: 2px 2px 0 #b14aff;
+  transform: rotate(-6deg);
+}
+
+[data-style='graffiti'] .footer__meta,
+[data-style='graffiti'] .footer__copy {
+  font-family: var(--font-marker);
+}
+
+[data-style='graffiti'] .footer__social {
+  background: var(--paper);
+  border: 2px solid #000;
+  border-radius: 3px;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5);
+}
+
+[data-style='graffiti'] .footer__social svg {
+  fill: #17131a;
+}
+
+[data-style='graffiti'] .footer__socials li:nth-child(odd) .footer__social {
+  transform: rotate(-2.5deg);
+}
+
+[data-style='graffiti'] .footer__socials li:nth-child(even) .footer__social {
+  transform: rotate(2deg);
+}
+
+[data-style='graffiti'] .footer__social:hover {
+  background: #ffd60a;
+  border-color: #000;
+  transform: rotate(0deg) translateY(-4px);
+}
+
+[data-style='graffiti'] .footer__social:hover svg {
+  fill: #17131a;
+}
+
+/* ───────────────────────── Style switcher, graffiti-fied ───────────────────────── */
+[data-style='graffiti'] .style-switch__fab {
+  background: #b14aff;
+  border: 2px solid #000;
+  border-radius: 5px;
+  box-shadow: 3px 3px 0 #ffd60a;
+  transform: rotate(-4deg);
+}
+
+[data-style='graffiti'] .style-switch__fab:hover {
+  transform: rotate(0deg) translateY(-3px);
+  border-color: #000;
+  box-shadow: 4px 4px 0 #ffd60a;
+}
+
+[data-style='graffiti'] .style-switch__menu {
+  background: var(--paper);
+  border: 2px solid #000;
+  border-radius: 4px;
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.5);
+}
+
+[data-style='graffiti'] .style-switch__option {
+  color: var(--ink);
+  border-radius: 3px;
+}
+
+[data-style='graffiti'] .style-switch__option:hover {
+  background: rgba(23, 19, 26, 0.07);
+}
+
+[data-style='graffiti'] .style-switch__option.is-active {
+  background: rgba(23, 19, 26, 0.1);
+}
+
+[data-style='graffiti'] .style-switch__label {
+  color: #6b6258;
+}
+
+[data-style='graffiti'] .style-switch__text small {
+  color: #6b6258;
+}
+
+[data-style='graffiti'] .style-switch__text strong {
+  font-family: var(--font-marker);
+  font-weight: 400;
+}
+
+[data-style='graffiti'] .style-switch__check {
+  color: #b14aff;
+}

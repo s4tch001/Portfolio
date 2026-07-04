@@ -1,0 +1,655 @@
+/* ═════════════════════════════════════════════════════════════════════════
+   OLD SCHOOL — 90's web page style.
+   Windows-95 / Geocities era: teal desktop, silver beveled panels, navy
+   title bars, Comic Sans headings, pixel-terminal type, blinking bits.
+   Scoped under [data-style='oldschool'] so it fully overrides the Default
+   look without touching it. Fonts: Comic Neue + VT323, loaded in layout.jsx.
+
+   Theming: the --os-* tokens carry the "system scheme". Light = classic
+   teal + silver; dark = night-shift scheme (dark teal desktop, charcoal
+   panels) — title bars, terminal green, and tooltip yellow stay authentic.
+   ═════════════════════════════════════════════════════════════════════════ */
+
+/* ───────────────────────── Tokens ───────────────────────── */
+[data-style='oldschool'] {
+  --bg: #008080; /* the desktop */
+  --bg-alt: #006e6e;
+  --surface: #c0c0c0; /* classic silver */
+  --surface-2: #d4d0c8;
+  --border: #808080;
+  --text: #ffffff;
+  --muted: #d2ecec;
+  --violet: #000080; /* navy takes the primary accent slot */
+  --cyan: #ffff00;
+  --pink: #00ffff;
+  --amber: #ffa500;
+  --green: #00ff00;
+  --blue: #1084d0;
+  --grad: linear-gradient(90deg, #000080, #1084d0); /* title-bar gradient */
+  --font-display: 'Comic Sans MS', 'Comic Neue', 'Chalkboard SE', cursive;
+  --font-body: Verdana, Geneva, Tahoma, sans-serif;
+  --font-mono: 'VT323', 'Courier New', monospace;
+  --radius: 0; /* the 90's had no border-radius */
+
+  /* System scheme (light = classic Win95) */
+  --os-face: #c0c0c0; /* panel & button face */
+  --os-face-2: #d4d0c8; /* hovered face */
+  --os-hi: #ffffff; /* bevel highlight */
+  --os-lo: #404040; /* bevel shadow */
+  --os-ink: #000000; /* text on faces */
+  --os-ink-soft: #1a1a1a;
+  --os-accent-ink: #000080; /* navy text on faces */
+  --os-link: #0000ee;
+  --os-link-hover: #551a8b; /* visited-link purple */
+  --os-groove: #66cccc;
+}
+
+/* Night-shift scheme: dark teal desktop, charcoal panels, brighter links */
+[data-style='oldschool'][data-theme='dark'] {
+  --bg: #0e2a2a;
+  --bg-alt: #0a2020;
+  --surface: #4a4a4a;
+  --surface-2: #5a5a5a;
+  --border: #6e6e6e;
+  --muted: #b8d4d4;
+  --os-face: #4a4a4a;
+  --os-face-2: #5a5a5a;
+  --os-hi: #9a9a9a;
+  --os-lo: #141414;
+  --os-ink: #f2f2f2;
+  --os-ink-soft: #d8d8d8;
+  --os-accent-ink: #9db8ff;
+  --os-link: #66ccff;
+  --os-link-hover: #cc99ff;
+  --os-groove: #1d4d4d;
+}
+
+[data-style='oldschool'] body {
+  background: var(--bg);
+}
+
+[data-style='oldschool'] .bg-glow {
+  background: none;
+}
+
+[data-style='oldschool'] ::selection {
+  background: #000080;
+  color: #fff;
+}
+
+/* ───────────────────────── Type & headings ───────────────────────── */
+/* WordArt hero name: rainbow fill + black outline */
+[data-style='oldschool'] .hero__name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0;
+  background: linear-gradient(
+    90deg,
+    #ff0000,
+    #ff9900,
+    #ffff00,
+    #00cc00,
+    #0066ff,
+    #9900cc
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 2px #000;
+  animation: none;
+  text-shadow: none;
+}
+
+[data-style='oldschool'] .grad-text {
+  background: linear-gradient(90deg, #ff0000, #ff9900, #ffff00, #00cc00, #0066ff, #9900cc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 1px #000;
+  animation: none;
+  text-shadow: none;
+}
+
+[data-style='oldschool'] .section__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0;
+  text-shadow: 3px 3px 0 #000080;
+}
+
+[data-style='oldschool'] .section__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  letter-spacing: 0.1em;
+  color: #ffff00;
+}
+
+[data-style='oldschool'] .section__eyebrow::after {
+  height: 2px;
+  background: #ffff00;
+}
+
+[data-style='oldschool'] .section--alt {
+  background: var(--bg-alt);
+  border-top: 3px groove var(--os-groove);
+  border-bottom: 3px groove var(--os-groove);
+}
+
+/* ───────────────────────── Beveled buttons & chips ───────────────────────── */
+[data-style='oldschool'] .btn {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.92rem;
+  border-radius: 0;
+  background: var(--os-face);
+  color: var(--os-ink);
+  border: 2px solid;
+  border-color: var(--os-hi) var(--os-lo) var(--os-lo) var(--os-hi);
+  box-shadow: 0 0 0 1px #000;
+}
+
+[data-style='oldschool'] .btn--gradient,
+[data-style='oldschool'] .btn--ghost {
+  background: var(--os-face);
+  color: var(--os-ink);
+  border: 2px solid;
+  border-color: var(--os-hi) var(--os-lo) var(--os-lo) var(--os-hi);
+  box-shadow: 0 0 0 1px #000;
+  transform: none;
+}
+
+[data-style='oldschool'] .btn:hover,
+[data-style='oldschool'] .btn--gradient:hover,
+[data-style='oldschool'] .btn--ghost:hover {
+  background: var(--os-face-2);
+  transform: none;
+  box-shadow: 0 0 0 1px #000;
+}
+
+/* Press it like it's 1996 */
+[data-style='oldschool'] .btn:active {
+  border-color: var(--os-lo) var(--os-hi) var(--os-hi) var(--os-lo);
+  transform: translate(1px, 1px);
+}
+
+[data-style='oldschool'] .chip {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  padding: 0.1rem 0.6rem;
+  border-radius: 0;
+  background: var(--os-face);
+  color: var(--os-ink);
+  border: 2px solid;
+  border-color: var(--os-hi) var(--os-lo) var(--os-lo) var(--os-hi);
+  box-shadow: none;
+  transform: none;
+}
+
+[data-style='oldschool'] .chip:hover {
+  color: var(--os-ink);
+  background: var(--os-face-2);
+  border-color: var(--os-hi) var(--os-lo) var(--os-lo) var(--os-hi);
+  transform: none;
+}
+
+/* ───────────────────────── Cards → silver panels ───────────────────────── */
+[data-style='oldschool'] .card {
+  background: var(--os-face);
+  color: var(--os-ink);
+  border: 2px solid;
+  border-color: var(--os-hi) var(--os-lo) var(--os-lo) var(--os-hi);
+  border-radius: 0;
+  backdrop-filter: none;
+  box-shadow: none;
+}
+
+[data-style='oldschool'] .card:hover {
+  transform: none;
+  border-color: var(--os-hi) var(--os-lo) var(--os-lo) var(--os-hi);
+  box-shadow: none;
+}
+
+[data-style='oldschool'] .about__card h3,
+[data-style='oldschool'] .skills__card h3 {
+  font-family: var(--font-display);
+  color: var(--os-accent-ink);
+}
+
+[data-style='oldschool'] .about__card p {
+  color: var(--os-ink-soft);
+}
+
+/* ───────────────────────── Nav → the taskbar ───────────────────────── */
+[data-style='oldschool'] .nav {
+  background: var(--os-face);
+  border-bottom: 2px solid var(--os-lo);
+}
+
+[data-style='oldschool'] .nav--scrolled {
+  background: var(--os-face);
+  backdrop-filter: none;
+  border-bottom-color: var(--os-lo);
+}
+
+[data-style='oldschool'] .nav__logo-mark {
+  background: var(--grad);
+  color: #fff;
+  border-radius: 0;
+  border: 2px solid;
+  border-color: var(--os-hi) var(--os-lo) var(--os-lo) var(--os-hi);
+  box-shadow: none;
+  font-family: var(--font-display);
+}
+
+[data-style='oldschool'] .nav__logo-text {
+  color: var(--os-ink);
+  font-family: var(--font-display);
+}
+
+/* Honest-to-goodness 90's hyperlinks */
+[data-style='oldschool'] .nav__links a:not(.btn) {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--os-link);
+  text-decoration: underline;
+}
+
+[data-style='oldschool'] .nav__links a:not(.btn):hover {
+  color: var(--os-link-hover);
+}
+
+[data-style='oldschool'] .nav__links a:not(.btn)::after {
+  display: none;
+}
+
+[data-style='oldschool'] .nav__burger {
+  background: var(--os-face);
+  border: 2px solid;
+  border-color: var(--os-hi) var(--os-lo) var(--os-lo) var(--os-hi);
+  border-radius: 0;
+}
+
+[data-style='oldschool'] .nav__burger span {
+  background: var(--os-ink);
+}
+
+/* ───────────────────────── Hero ───────────────────────── */
+[data-style='oldschool'] .hero__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  color: #00ffff;
+}
+
+[data-style='oldschool'] .hero__role {
+  font-family: var(--font-display);
+}
+
+[data-style='oldschool'] .hero__typed {
+  background: none;
+  color: #ffff00;
+}
+
+[data-style='oldschool'] .hero__caret {
+  background: #ffff00;
+  border-radius: 0;
+}
+
+[data-style='oldschool'] .hero__stat dt {
+  font-family: var(--font-display);
+  background: none;
+  color: #ffff00;
+  text-shadow: 2px 2px 0 #000080;
+}
+
+/* Code card → a DOS window on the desktop */
+[data-style='oldschool'] .hero__card {
+  background: var(--os-face);
+  border: 2px solid;
+  border-color: var(--os-hi) var(--os-lo) var(--os-lo) var(--os-hi);
+  border-radius: 0;
+  backdrop-filter: none;
+  animation: none;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.35);
+}
+
+[data-style='oldschool'] .hero__card-bar {
+  background: var(--grad);
+  border-bottom: none;
+  padding: 0.4rem 0.6rem;
+}
+
+[data-style='oldschool'] .hero__card-title {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: #fff;
+}
+
+/* Window-control squares instead of traffic lights */
+[data-style='oldschool'] .dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 0;
+  background: var(--os-face);
+  border: 1px solid;
+  border-color: var(--os-hi) var(--os-lo) var(--os-lo) var(--os-hi);
+  box-shadow: none;
+}
+
+[data-style='oldschool'] .hero__code {
+  background: #000;
+  color: #33ff33;
+  font-family: var(--font-mono);
+  font-size: clamp(0.9rem, 1.9vw, 1.05rem);
+  margin: 3px;
+}
+
+[data-style='oldschool'] .hero__code .tk-kw {
+  color: #00ffff;
+}
+
+[data-style='oldschool'] .hero__code .tk-var {
+  color: #ffffff;
+}
+
+[data-style='oldschool'] .hero__code .tk-str {
+  color: #33ff33;
+}
+
+[data-style='oldschool'] .hero__chip {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  background: #ffffe1; /* Windows tooltip yellow */
+  color: #000;
+  border: 1px solid #000;
+  border-radius: 0;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* ───────────────────────── Marquee → terminal ticker ───────────────────────── */
+[data-style='oldschool'] .marquee {
+  background: #000;
+  border-top: 2px solid var(--os-face);
+  border-bottom: 2px solid var(--os-face);
+  mask-image: none;
+  -webkit-mask-image: none;
+}
+
+[data-style='oldschool'] .marquee__item {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 1.25rem;
+  color: #00ff00;
+}
+
+[data-style='oldschool'] .marquee__star {
+  color: #ffff00;
+}
+
+/* ───────────────────────── Projects & gallery → Win95 windows ───────────────────────── */
+[data-style='oldschool'] .browser {
+  background: var(--os-face);
+  border: 2px solid;
+  border-color: var(--os-hi) var(--os-lo) var(--os-lo) var(--os-hi);
+  border-radius: 0;
+  padding: 3px;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.35);
+  transform: none;
+}
+
+[data-style='oldschool'] .project__media:hover .browser {
+  transform: none;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.35);
+}
+
+/* Navy title bar */
+[data-style='oldschool'] .browser__bar {
+  background: var(--grad);
+  border-bottom: none;
+  padding: 0.4rem 0.6rem;
+}
+
+[data-style='oldschool'] .browser__count {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: #fff;
+}
+
+[data-style='oldschool'] .browser__pov {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  background: var(--os-face);
+  color: var(--os-ink);
+  border: 1px solid var(--border);
+  border-radius: 0;
+}
+
+[data-style='oldschool'] .gallery__arrow {
+  background: var(--os-face);
+  color: var(--os-ink);
+  border: 2px solid;
+  border-color: var(--os-hi) var(--os-lo) var(--os-lo) var(--os-hi);
+  border-radius: 0;
+  box-shadow: 0 0 0 1px #000;
+}
+
+/* Classic Windows tooltip caption */
+[data-style='oldschool'] .gallery__caption {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  background: #ffffe1;
+  color: #000;
+  border: 1px solid #000;
+  border-radius: 0;
+  backdrop-filter: none;
+}
+
+[data-style='oldschool'] .gallery__zoom {
+  background: var(--os-face);
+  color: var(--os-ink);
+  border: 1px solid;
+  border-color: var(--os-hi) var(--os-lo) var(--os-lo) var(--os-hi);
+  border-radius: 0;
+}
+
+[data-style='oldschool'] .gallery__dots button {
+  border-radius: 0;
+  background: var(--os-face);
+  border: 1px solid var(--border);
+  transform: none;
+}
+
+[data-style='oldschool'] .gallery__dots button.active {
+  background: #000080;
+}
+
+[data-style='oldschool'][data-theme='dark'] .gallery__dots button.active {
+  background: #66ccff;
+}
+
+[data-style='oldschool'] .project__tagline {
+  font-family: var(--font-display);
+  color: #00ffff;
+}
+
+[data-style='oldschool'] .project__num {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  color: #ffff00;
+}
+
+[data-style='oldschool'] .project__features li::before {
+  content: '»';
+  color: #ffff00;
+}
+
+[data-style='oldschool'] .project__live {
+  color: #00ff00;
+}
+
+/* Blink like it's <blink> */
+[data-style='oldschool'] .project__pulse {
+  border-radius: 0;
+  background: #00ff00;
+  box-shadow: none;
+  animation: os-blink 1s steps(2) infinite;
+}
+
+@keyframes os-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+[data-style='oldschool'] .project__deploy {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  background: var(--os-face);
+  color: var(--os-ink);
+  border: 2px solid;
+  border-color: var(--os-hi) var(--os-lo) var(--os-lo) var(--os-hi);
+  border-radius: 0;
+}
+
+/* ───────────────────────── Lightbox ───────────────────────── */
+[data-style='oldschool'] .lightbox__stage img {
+  border: 3px solid;
+  border-color: var(--os-hi) var(--os-lo) var(--os-lo) var(--os-hi);
+  outline: 2px solid var(--os-face);
+}
+
+[data-style='oldschool'] .lightbox__stage figcaption {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+}
+
+[data-style='oldschool'] .lightbox__arrow,
+[data-style='oldschool'] .lightbox__close {
+  background: var(--os-face);
+  color: var(--os-ink);
+  border: 2px solid;
+  border-color: var(--os-hi) var(--os-lo) var(--os-lo) var(--os-hi);
+  border-radius: 0;
+}
+
+/* ───────────────────────── Footer ───────────────────────── */
+[data-style='oldschool'] .footer {
+  border-top: 3px groove var(--os-groove);
+}
+
+[data-style='oldschool'] .footer__mark {
+  background: var(--grad);
+  color: #fff;
+  border-radius: 0;
+  border: 2px solid;
+  border-color: var(--os-hi) var(--os-lo) var(--os-lo) var(--os-hi);
+  box-shadow: none;
+  font-family: var(--font-display);
+}
+
+[data-style='oldschool'] .footer__brand {
+  font-family: var(--font-display);
+}
+
+[data-style='oldschool'] .footer__meta,
+[data-style='oldschool'] .footer__copy {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+}
+
+[data-style='oldschool'] .footer__social {
+  background: var(--os-face);
+  border: 2px solid;
+  border-color: var(--os-hi) var(--os-lo) var(--os-lo) var(--os-hi);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+[data-style='oldschool'] .footer__social svg {
+  fill: var(--os-ink);
+}
+
+[data-style='oldschool'] .footer__social:hover {
+  background: var(--os-face-2);
+  border-color: var(--os-hi) var(--os-lo) var(--os-lo) var(--os-hi);
+  transform: none;
+}
+
+[data-style='oldschool'] .footer__social:hover svg {
+  fill: var(--os-accent-ink);
+}
+
+/* ───────────────────────── Style switcher, 95-ified ───────────────────────── */
+[data-style='oldschool'] .style-switch__fab {
+  background: var(--os-face);
+  border: 2px solid;
+  border-color: var(--os-hi) var(--os-lo) var(--os-lo) var(--os-hi);
+  border-radius: 0;
+  box-shadow: 0 0 0 1px #000;
+  transform: none;
+}
+
+[data-style='oldschool'] .style-switch__fab:hover {
+  background: var(--os-face-2);
+  border-color: var(--os-hi) var(--os-lo) var(--os-lo) var(--os-hi);
+  transform: none;
+  box-shadow: 0 0 0 1px #000;
+}
+
+[data-style='oldschool'] .style-switch__fab:active {
+  border-color: var(--os-lo) var(--os-hi) var(--os-hi) var(--os-lo);
+}
+
+[data-style='oldschool'] .style-switch__menu {
+  background: var(--os-face);
+  border: 2px solid;
+  border-color: var(--os-hi) var(--os-lo) var(--os-lo) var(--os-hi);
+  border-radius: 0;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.4);
+}
+
+[data-style='oldschool'] .style-switch__label {
+  color: var(--os-ink-soft);
+}
+
+[data-style='oldschool'] .style-switch__option {
+  color: var(--os-ink);
+  border-radius: 0;
+}
+
+/* Classic navy menu highlight */
+[data-style='oldschool'] .style-switch__option:hover {
+  background: #000080;
+  color: #fff;
+}
+
+[data-style='oldschool'] .style-switch__option:hover .style-switch__text small {
+  color: #cfd8ff;
+}
+
+[data-style='oldschool'] .style-switch__option.is-active {
+  background: var(--os-face-2);
+}
+
+[data-style='oldschool'] .style-switch__option.is-active:hover {
+  background: #000080;
+}
+
+[data-style='oldschool'] .style-switch__text strong {
+  font-family: var(--font-display);
+}
+
+[data-style='oldschool'] .style-switch__text small {
+  color: var(--os-ink-soft);
+}
+
+[data-style='oldschool'] .style-switch__option:hover .style-switch__text small {
+  color: #cfd8ff;
+}
+
+[data-style='oldschool'] .style-switch__check {
+  color: var(--os-accent-ink);
+}
+
+[data-style='oldschool'] .style-switch__option:hover .style-switch__check {
+  color: #fff;
+}

@@ -37,20 +37,48 @@ function Gallery({ project, onOpen }) {
     enabled: inView,
     interval: 3000,
   });
-  const current = images[index];
 
-  // Direction of the latest index change so the incoming image slides in from
-  // the correct edge (forward → in from the right, back → in from the left).
-  const prevIndex = useRef(index);
-  let dir = 1;
-  if (index !== prevIndex.current) {
-    const steppedBack =
-      (prevIndex.current - 1 + images.length) % images.length === index;
-    dir = steppedBack ? -1 : 1;
-  }
+  // Decode-gate: the visible slide only swaps once the incoming image is fully
+  // decoded, so the slide/blur animation never plays over a blank or
+  // half-loaded picture (which used to read as a plain fade). `dir: 0` marks
+  // the initial slide — it renders without any animation.
+  const [shown, setShown] = useState({ i: 0, dir: 0 });
   useEffect(() => {
-    prevIndex.current = index;
-  }, [index]);
+    if (index === shown.i) return undefined;
+    let done = false;
+    let timer;
+    const commit = () => {
+      if (done) return;
+      done = true;
+      clearTimeout(timer);
+      setShown((s) => {
+        const steppedBack =
+          (s.i - 1 + images.length) % images.length === index;
+        return { i: index, dir: steppedBack ? -1 : 1 };
+      });
+    };
+    const im = new Image();
+    im.onload = commit;
+    im.onerror = commit;
+    im.src = images[index].src;
+    if (im.complete) commit(); // already cached — swap immediately
+    // Safety net: a slow or stalled load must never freeze the slideshow.
+    timer = setTimeout(commit, 1500);
+    return () => {
+      done = true;
+      clearTimeout(timer);
+    };
+  }, [index, images, shown.i]);
+
+  // Warm the next slide's cache ahead of the autoplay tick so each 3s advance
+  // is already decoded by the time it commits.
+  useEffect(() => {
+    if (!inView || images.length < 2) return;
+    const im = new Image();
+    im.src = images[(shown.i + 1) % images.length].src;
+  }, [inView, shown.i, images]);
+
+  const current = images[shown.i];
 
   const withPause = (fn) => () => {
     pause();
@@ -64,7 +92,7 @@ function Gallery({ project, onOpen }) {
         <span className="dot dot--y" />
         <span className="dot dot--g" />
         {current.pov && <span className="browser__pov">{current.pov}</span>}
-        <span className="browser__count">{index + 1}/{images.length}</span>
+        <span className="browser__count">{shown.i + 1}/{images.length}</span>
       </div>
 
       <div className="gallery">
@@ -72,7 +100,7 @@ function Gallery({ project, onOpen }) {
           type="button"
           className="gallery__view"
           aria-label={`Open ${project.name} screenshots in fullscreen`}
-          onClick={() => { pause(); onOpen(project, index); }}
+          onClick={() => { pause(); onOpen(project, shown.i); }}
         >
           <img
             key={current.src}
@@ -81,8 +109,19 @@ function Gallery({ project, onOpen }) {
             loading="lazy"
             width="1600"
             height="1000"
-            style={{ '--slide-from': `${dir * 26}px` }}
+            className={shown.dir !== 0 ? 'gallery__animate' : undefined}
+            style={{ '--slide-from': `${(shown.dir || 1) * 30}px` }}
           />
+          {shown.dir !== 0 && (
+            <img
+              key={`smear-${current.src}`}
+              src={current.src}
+              alt=""
+              aria-hidden="true"
+              className="gallery__smear"
+              style={{ '--slide-from': `${shown.dir * 30}px` }}
+            />
+          )}
           <span className="gallery__caption">{current.caption}</span>
           <span className="gallery__zoom" aria-hidden="true">⤢</span>
         </button>

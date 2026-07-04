@@ -1171,19 +1171,51 @@ body,
 
 .gallery__view img {
   width: 100%;
+}
+
+/* Slide + blur runs only on decode-gated swaps (never the initial slide). */
+.gallery__view img.gallery__animate {
   animation: gallery-slide 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes gallery-slide {
   from {
     opacity: 0.25;
-    transform: translateX(var(--slide-from, 26px));
+    transform: translateX(var(--slide-from, 30px)) scaleX(1.04);
     filter: blur(12px);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0) scaleX(1);
     filter: blur(0);
+  }
+}
+
+/* Motion blur: a blurred, horizontally-stretched copy of the incoming slide
+   trails slightly behind it and fades out mid-flight. The heavy scaleX stretch
+   smears the pixels along the direction of travel (GPU-friendly — no SVG
+   filters, which fall back to slow software rendering on large images). */
+.gallery__smear {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  animation: gallery-smear 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes gallery-smear {
+  from {
+    opacity: 0.65;
+    transform: translateX(calc(var(--slide-from, 30px) * 1.8)) scaleX(1.25);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(0) scaleX(1);
+    filter: blur(2px);
   }
 }
 
@@ -1793,4 +1825,134 @@ body,
     opacity: 1;
     transform: none;
   }
+}
+
+/* ───────────────────────── Style switcher (floating) ───────────────────────── */
+.style-switch {
+  position: fixed;
+  right: 1.15rem;
+  bottom: 1.15rem;
+  z-index: 70;
+}
+
+.style-switch__fab {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  font-size: 1.3rem;
+  cursor: pointer;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 30px -12px rgba(0, 0, 0, 0.6);
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.style-switch__fab:hover {
+  transform: translateY(-3px) rotate(-12deg);
+  border-color: var(--violet);
+  box-shadow: 0 16px 36px -12px rgba(139, 92, 246, 0.5);
+}
+
+.style-switch__menu {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 0.7rem);
+  min-width: 210px;
+  padding: 0.45rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.7);
+  animation: style-menu-in 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes style-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.style-switch__label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  padding: 0.4rem 0.65rem 0.3rem;
+}
+
+.style-switch__option {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+  padding: 0.55rem 0.65rem;
+  border: 0;
+  border-radius: 11px;
+  background: none;
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s ease;
+}
+
+.style-switch__option:hover {
+  background: var(--surface-2);
+}
+
+.style-switch__option.is-active {
+  background: var(--surface);
+}
+
+.style-switch__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.style-switch__text strong {
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.style-switch__text small {
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+.style-switch__swatch {
+  width: 22px;
+  height: 22px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  flex: none;
+}
+
+.style-switch__swatch--default {
+  background: linear-gradient(135deg, #8b5cf6, #22d3ee);
+}
+
+.style-switch__swatch--graffiti {
+  background: conic-gradient(from 210deg, #b14aff, #ffd60a, #00e5ff, #a3e635, #b14aff);
+}
+
+.style-switch__swatch--oldschool {
+  background: conic-gradient(#008080 0 25%, #c0c0c0 25% 50%, #000080 50% 75%, #ffff00 75%);
+}
+
+.style-switch__check {
+  margin-left: auto;
+  color: var(--cyan);
+  font-weight: 700;
 }

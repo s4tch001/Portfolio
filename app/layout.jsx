@@ -1,4 +1,6 @@
 import './globals.css';
+import './styles/graffiti.css';
+import './styles/oldschool.css';
 import Script from 'next/script';
 
 export const metadata = {
@@ -61,8 +63,9 @@ export const viewport = {
   ],
 };
 
-// Applies the saved (or system) theme to <html> before first paint, so there's
-// no flash of the wrong theme. Mirrors the inline script from the old index.html.
+// Applies the saved (or system) theme + saved page style to <html> before
+// first paint, so there's no flash of the wrong look. Mirrors the inline
+// script from the old index.html.
 const themeScript = `(function () {
   try {
     var saved = localStorage.getItem('theme');
@@ -70,6 +73,8 @@ const themeScript = `(function () {
       saved ||
       (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
     document.documentElement.dataset.theme = theme;
+    var style = localStorage.getItem('site-style');
+    if (style && style !== 'default') document.documentElement.dataset.style = style;
   } catch (e) {
     document.documentElement.dataset.theme = 'dark';
   }
@@ -112,7 +117,7 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&family=Permanent+Marker&family=Space+Grotesk:wght@500;600;700&family=VT323&display=swap"
           rel="stylesheet"
         />
         <Script
