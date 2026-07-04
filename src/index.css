@@ -1577,6 +1577,9 @@ body,
   font-family: var(--font-mono);
   font-size: 0.76rem;
 }
+.footer__left {
+  margin-right: 3.1rem;
+}
 
 /* ───────────────────────── Responsive ───────────────────────── */
 @media (max-width: 1024px) {
@@ -1704,6 +1707,10 @@ body,
 
   .footer__brand {
     justify-content: center;
+  }
+
+  .footer__left {
+    margin-right: 0;
   }
 }
 

@@ -23,28 +23,30 @@ const SOCIALS = [
 
 export default function Footer() {
   return (
-    <footer className="footer">
-      <div className="footer__inner">
-        <div className="footer__left">
-          <p className="footer__brand">
-            <span className="nav__logo-mark footer__mark">P</span>
-            <span>pauuu<span className="accent">.dev</span></span>
+    <footer className='footer'>
+      <div className='footer__inner'>
+        <div className='footer__left'>
+          <p className='footer__brand'>
+            <span className='nav__logo-mark footer__mark'>P</span>
+            <span>
+              pauuu<span className='accent'>.dev</span>
+            </span>
           </p>
-          <p className="footer__meta">Web Developer</p>
+          <p className='footer__meta'>Web Developer</p>
         </div>
 
-        <ul className="footer__socials" aria-label="Social links">
+        <ul className='footer__socials' aria-label='Social links'>
           {SOCIALS.map((s) => (
             <li key={s.label}>
               <a
                 href={s.href}
-                target="_blank"
-                rel="noreferrer"
-                className="footer__social"
+                target='_blank'
+                rel='noreferrer'
+                className='footer__social'
                 aria-label={s.label}
                 title={s.label}
               >
-                <svg viewBox="0 0 24 24" aria-hidden="true">
+                <svg viewBox='0 0 24 24' aria-hidden='true'>
                   <path d={s.path} />
                 </svg>
               </a>
@@ -52,8 +54,9 @@ export default function Footer() {
           ))}
         </ul>
 
-        <p className="footer__copy">
-          © {new Date().getFullYear()} P-Devs · Built with React + Vite
+        <p className='footer__copy'>
+          © {new Date().getFullYear()} P-Devs <br />
+          Built with React + Vite
         </p>
       </div>
     </footer>
