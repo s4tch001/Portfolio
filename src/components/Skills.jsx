@@ -23,6 +23,9 @@ const GROUPS = [
     skills: [
       'Node.js',
       'Python',
+      'Django',
+      'Flask',
+      'Lua',
       'Cloudflare Workers',
       'Netlify Functions',
       'Supabase (PostgreSQL)',
@@ -40,6 +43,7 @@ const GROUPS = [
       'Vercel',
       'Cloudflare',
       'Shopify',
+      'FiveM Development',
       'Git & GitHub',
       'Google Cloud Console',
       'Google Sites / Sheets / Forms',

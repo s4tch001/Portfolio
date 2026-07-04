@@ -28,9 +28,9 @@ export default function Footer() {
         <div className="footer__left">
           <p className="footer__brand">
             <span className="nav__logo-mark footer__mark">P</span>
-            pauuu<span className="accent">.dev</span>
+            <span>pauuu<span className="accent">.dev</span></span>
           </p>
-          <p className="footer__meta">Web Developer · Musician · Gamer</p>
+          <p className="footer__meta">Web Developer</p>
         </div>
 
         <ul className="footer__socials" aria-label="Social links">
