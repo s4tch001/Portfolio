@@ -1,6 +1,9 @@
 import './globals.css';
 import './styles/graffiti.css';
 import './styles/oldschool.css';
+import './styles/pixels.css';
+import './styles/luxe.css';
+import './styles/hacker.css';
 import Script from 'next/script';
 
 export const metadata = {
@@ -117,7 +120,7 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&family=Permanent+Marker&family=Space+Grotesk:wght@500;600;700&family=VT323&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&family=Permanent+Marker&family=Pixelify+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&family=VT323&display=swap"
           rel="stylesheet"
         />
         <Script

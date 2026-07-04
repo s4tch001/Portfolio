@@ -24,7 +24,7 @@ export default function Contact() {
           </a>
         </div>
         <p className="contact__note reveal">
-          Usually replies within a day — faster if you mention a good riff or a ranked queue.
+          I usually reply within a day — faster if you mention a good riff or a ranked queue.
         </p>
       </div>
     </section>

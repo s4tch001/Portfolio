@@ -5,6 +5,17 @@
    Permanent Marker (hand-scrawled accents), loaded in layout.jsx.
    ═════════════════════════════════════════════════════════════════════════ */
 
+/* Next Ups — self-hosted graffiti tag font (woff primary, ttf fallback) */
+@font-face {
+  font-family: 'Next Ups';
+  src:
+    url('/fonts/next-ups.woff') format('woff'),
+    url('/fonts/next-ups.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ───────────────────────── Tokens ───────────────────────── */
 [data-style='graffiti'] {
   --bg: #131015; /* night asphalt */
@@ -23,6 +34,7 @@
   --grad: linear-gradient(120deg, #b14aff, #ffd60a);
   --font-display: 'Bangers', 'Space Grotesk', system-ui, cursive;
   --font-marker: 'Permanent Marker', 'Space Grotesk', cursive;
+  --font-tag: 'Next Ups', 'Bangers', 'Space Grotesk', cursive;
   --radius: 4px; /* streets have hard edges */
   --paper: #fbf6ea; /* wheatpaste poster paper */
   --ink: #17131a;
@@ -78,10 +90,26 @@
 /* Neon spray splats bleeding through from behind */
 [data-style='graffiti'] .bg-glow {
   background:
-    radial-gradient(30rem 22rem at 8% 2%, rgba(177, 74, 255, 0.18), transparent 60%),
-    radial-gradient(26rem 20rem at 96% 14%, rgba(0, 229, 255, 0.13), transparent 60%),
-    radial-gradient(22rem 16rem at 70% 55%, rgba(163, 230, 53, 0.07), transparent 60%),
-    radial-gradient(30rem 24rem at 40% 112%, rgba(255, 214, 10, 0.12), transparent 60%);
+    radial-gradient(
+      30rem 22rem at 8% 2%,
+      rgba(177, 74, 255, 0.18),
+      transparent 60%
+    ),
+    radial-gradient(
+      26rem 20rem at 96% 14%,
+      rgba(0, 229, 255, 0.13),
+      transparent 60%
+    ),
+    radial-gradient(
+      22rem 16rem at 70% 55%,
+      rgba(163, 230, 53, 0.07),
+      transparent 60%
+    ),
+    radial-gradient(
+      30rem 24rem at 40% 112%,
+      rgba(255, 214, 10, 0.12),
+      transparent 60%
+    );
 }
 
 [data-style='graffiti'] ::selection {
@@ -91,23 +119,29 @@
 
 /* ───────────────────────── Type & headings ───────────────────────── */
 [data-style='graffiti'] .hero__name {
-  font-family: var(--font-display);
+  font-family: var(--font-tag);
   font-weight: 400;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
+  text-transform: uppercase; /* PAU — tag it in caps */
   background: none;
   color: #ffd60a;
   animation: none;
   text-shadow:
-    3px 3px 0 #b14aff,
-    7px 7px 0 rgba(0, 0, 0, 0.55);
+    4px 4px 0 #b14aff,
+    8px 8px 0 rgba(0, 0, 0, 0.55),
+    0 0 34px rgba(255, 214, 10, 0.35);
   transform: rotate(-2deg);
+  margin-bottom: 2.5rem;
+  margin-top: 1.5rem;
+  font-size: 4rem;
 }
 
 [data-style='graffiti'][data-theme='light'] .hero__name {
   color: #8a1fd1;
   text-shadow:
-    3px 3px 0 #ffd60a,
-    7px 7px 0 rgba(23, 19, 26, 0.3);
+    4px 4px 0 #ffd60a,
+    8px 8px 0 rgba(23, 19, 26, 0.28),
+    0 0 34px rgba(138, 31, 209, 0.25);
 }
 
 [data-style='graffiti'] .grad-text {
@@ -286,12 +320,18 @@
   color: #17131a;
   border: 2px solid #000;
   border-radius: 4px;
-  font-family: var(--font-marker);
+  font-family: var(--font-tag);
   box-shadow: 3px 3px 0 #b14aff;
   transform: rotate(-6deg);
 }
 
-[data-style='graffiti'] .nav__logo-text,
+[data-style='graffiti'] .nav__logo-text {
+  font-family: var(--font-tag);
+  letter-spacing: 0.04em;
+  font-size: 0.7rem;
+  text-transform: uppercase; /* PAUUU.DEV */
+}
+
 [data-style='graffiti'] .footer__brand {
   font-family: var(--font-marker);
 }

@@ -1,0 +1,510 @@
+/* ═════════════════════════════════════════════════════════════════════════
+   LUXE — minimalist luxury page style.
+   Quiet and expensive: Cormorant Garamond serif display, champagne-gold
+   hairlines on charcoal (dark) or ivory (light), zero rounded corners,
+   zero loud shadows. The content does the talking.
+   Scoped under [data-style='luxe']; fonts loaded in layout.jsx.
+   ═════════════════════════════════════════════════════════════════════════ */
+
+/* ───────────────────────── Tokens ───────────────────────── */
+[data-style='luxe'] {
+  --bg: #0d0c0a; /* charcoal */
+  --bg-alt: #12100d;
+  --surface: rgba(255, 255, 255, 0.025);
+  --surface-2: rgba(255, 255, 255, 0.05);
+  --border: rgba(198, 161, 91, 0.28); /* gold hairline */
+  --text: #ece7dd;
+  --muted: #a39b8b;
+  --violet: #c6a15b; /* champagne gold takes the primary accent slot */
+  --cyan: #d7b878;
+  --pink: #c6a15b;
+  --amber: #c6a15b;
+  --green: #7d9a72; /* muted sage for "live" states */
+  --blue: #d7b878;
+  --grad: linear-gradient(120deg, #c6a15b, #e9d3a3);
+  --font-display: 'Cormorant Garamond', 'Times New Roman', serif;
+  --radius: 0;
+  --luxe-gold: #c6a15b;
+}
+
+/* Ivory daylight variant */
+[data-style='luxe'][data-theme='light'] {
+  --bg: #faf8f3;
+  --bg-alt: #f3efe6;
+  --surface: rgba(27, 24, 18, 0.02);
+  --surface-2: rgba(27, 24, 18, 0.045);
+  --border: rgba(138, 106, 47, 0.35);
+  --text: #1b1812;
+  --muted: #6b6353;
+  --violet: #a8823f;
+  --cyan: #8a6a2f;
+  --pink: #a8823f;
+  --amber: #a8823f;
+  --green: #5f7a55;
+  --blue: #8a6a2f;
+  --grad: linear-gradient(120deg, #a8823f, #caa25d);
+  --luxe-gold: #a8823f;
+}
+
+[data-style='luxe'] body {
+  background: var(--bg);
+}
+
+/* One faint golden light source — nothing else */
+[data-style='luxe'] .bg-glow {
+  background: radial-gradient(
+    70rem 45rem at 50% -12%,
+    rgba(198, 161, 91, 0.07),
+    transparent 65%
+  );
+}
+
+[data-style='luxe'][data-theme='light'] .bg-glow {
+  background: radial-gradient(
+    70rem 45rem at 50% -12%,
+    rgba(168, 130, 63, 0.06),
+    transparent 65%
+  );
+}
+
+[data-style='luxe'] ::selection {
+  background: var(--luxe-gold);
+  color: #14120e;
+}
+
+/* ───────────────────────── Type & headings ───────────────────────── */
+[data-style='luxe'] .hero__name {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  background: none;
+  color: var(--text);
+  animation: none;
+}
+
+[data-style='luxe'] .grad-text {
+  font-style: italic;
+  background: none;
+  color: var(--luxe-gold);
+  animation: none;
+}
+
+[data-style='luxe'] .section__title {
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+[data-style='luxe'] .section__eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.34em;
+  color: var(--luxe-gold);
+}
+
+[data-style='luxe'] .section__eyebrow::after {
+  height: 1px;
+  width: 90px;
+  background: var(--border);
+}
+
+[data-style='luxe'] .section--alt {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ───────────────────────── Buttons & chips → hairline pieces ───────────────────────── */
+[data-style='luxe'] .btn {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.74rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  border-radius: 0;
+  padding: 0.95rem 1.9rem;
+}
+
+[data-style='luxe'] .btn--gradient {
+  background: transparent;
+  color: var(--luxe-gold);
+  border: 1px solid var(--luxe-gold);
+  box-shadow: none;
+}
+
+[data-style='luxe'] .btn--gradient:hover {
+  background: var(--luxe-gold);
+  color: var(--bg);
+  transform: none;
+  box-shadow: none;
+}
+
+[data-style='luxe'] .btn--ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+[data-style='luxe'] .btn--ghost:hover {
+  border-color: var(--luxe-gold);
+  color: var(--text);
+  transform: none;
+}
+
+[data-style='luxe'] .chip {
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: 0;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+[data-style='luxe'] .chip:hover {
+  color: var(--text);
+  border-color: var(--luxe-gold);
+  transform: none;
+}
+
+/* ───────────────────────── Cards → framed panels ───────────────────────── */
+[data-style='luxe'] .card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0;
+  backdrop-filter: none;
+}
+
+[data-style='luxe'] .card:hover {
+  transform: translateY(-4px);
+  border-color: var(--luxe-gold);
+  box-shadow: none;
+}
+
+[data-style='luxe'] .about__card h3,
+[data-style='luxe'] .skills__card h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.35rem;
+}
+
+/* ───────────────────────── Nav ───────────────────────── */
+[data-style='luxe'] .nav--scrolled {
+  background: color-mix(in srgb, var(--bg) 86%, transparent);
+  border-bottom: 1px solid var(--border);
+}
+
+[data-style='luxe'] .nav__logo-mark {
+  background: transparent;
+  color: var(--luxe-gold);
+  border: 1px solid var(--luxe-gold);
+  border-radius: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  box-shadow: none;
+}
+
+[data-style='luxe'] .nav__logo-text {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+[data-style='luxe'] .nav__links a:not(.btn) {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+[data-style='luxe'] .nav__links a:not(.btn)::after {
+  height: 1px;
+  border-radius: 0;
+  background: var(--luxe-gold);
+}
+
+/* ───────────────────────── Hero ───────────────────────── */
+[data-style='luxe'] .hero__eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+[data-style='luxe'] .hero__role {
+  font-family: var(--font-display);
+  font-weight: 500;
+}
+
+[data-style='luxe'] .hero__typed {
+  background: none;
+  color: var(--luxe-gold);
+  font-style: italic;
+}
+
+[data-style='luxe'] .hero__caret {
+  width: 1px;
+  background: var(--luxe-gold);
+}
+
+[data-style='luxe'] .hero__stat dt {
+  font-family: var(--font-display);
+  font-weight: 600;
+  background: none;
+  color: var(--luxe-gold);
+}
+
+[data-style='luxe'] .hero__card {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 0;
+  backdrop-filter: none;
+  animation: none;
+  box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.6);
+}
+
+[data-style='luxe'] .hero__card-bar {
+  border-bottom: 1px solid var(--border);
+}
+
+/* Understated brass dots */
+[data-style='luxe'] .dot {
+  width: 7px;
+  height: 7px;
+  background: var(--border);
+}
+
+[data-style='luxe'] .dot--y {
+  background: var(--luxe-gold);
+}
+
+[data-style='luxe'] .hero__code .tk-kw {
+  color: var(--luxe-gold);
+}
+
+[data-style='luxe'] .hero__code .tk-str {
+  color: var(--green);
+}
+
+[data-style='luxe'] .hero__chip {
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* ───────────────────────── Marquee → engraved band ───────────────────────── */
+[data-style='luxe'] .marquee {
+  background: transparent;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+[data-style='luxe'] .marquee__item {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-style: italic;
+  font-size: 1.02rem;
+  color: var(--muted);
+}
+
+[data-style='luxe'] .marquee__star {
+  color: var(--luxe-gold);
+}
+
+/* ───────────────────────── Projects & gallery → framed prints ───────────────────────── */
+[data-style='luxe'] .browser {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 0;
+  box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.65);
+}
+
+[data-style='luxe'] .project__media:hover .browser {
+  transform: translateY(-6px);
+  border-color: var(--luxe-gold);
+  box-shadow: 0 50px 90px -40px rgba(0, 0, 0, 0.7);
+}
+
+[data-style='luxe'] .browser__bar {
+  background: transparent;
+  border-bottom: 1px solid var(--border);
+}
+
+[data-style='luxe'] .browser__count {
+  color: var(--muted);
+  letter-spacing: 0.1em;
+}
+
+[data-style='luxe'] .browser__pov {
+  font-family: var(--font-body);
+  letter-spacing: 0.16em;
+  color: var(--luxe-gold);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 0;
+}
+
+[data-style='luxe'] .gallery__arrow {
+  background: color-mix(in srgb, var(--bg) 75%, transparent);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 0;
+}
+
+[data-style='luxe'] .gallery__caption {
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 0;
+}
+
+[data-style='luxe'] .gallery__zoom {
+  border-radius: 0;
+}
+
+[data-style='luxe'] .gallery__dots button {
+  border-radius: 0;
+  width: 14px;
+  height: 3px;
+}
+
+[data-style='luxe'] .gallery__dots button.active {
+  background: var(--luxe-gold);
+}
+
+[data-style='luxe'] .project__tagline {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--luxe-gold);
+}
+
+[data-style='luxe'] .project__num {
+  color: var(--luxe-gold);
+  letter-spacing: 0.18em;
+}
+
+[data-style='luxe'] .project__features li::before {
+  content: '—';
+  color: var(--luxe-gold);
+}
+
+[data-style='luxe'] .project__deploy {
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 0;
+}
+
+/* ───────────────────────── Lightbox ───────────────────────── */
+[data-style='luxe'] .lightbox__stage img {
+  border: 1px solid var(--border);
+}
+
+[data-style='luxe'] .lightbox__stage figcaption {
+  font-family: var(--font-body);
+  letter-spacing: 0.08em;
+}
+
+[data-style='luxe'] .lightbox__arrow,
+[data-style='luxe'] .lightbox__close {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 0;
+}
+
+/* ───────────────────────── Footer ───────────────────────── */
+[data-style='luxe'] .footer {
+  border-top: 1px solid var(--border);
+}
+
+[data-style='luxe'] .footer__mark {
+  background: transparent;
+  color: var(--luxe-gold);
+  border: 1px solid var(--luxe-gold);
+  border-radius: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  box-shadow: none;
+}
+
+[data-style='luxe'] .footer__brand {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+[data-style='luxe'] .footer__meta,
+[data-style='luxe'] .footer__copy {
+  font-family: var(--font-body);
+  font-size: 0.64rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+[data-style='luxe'] .footer__social {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 0;
+}
+
+[data-style='luxe'] .footer__social:hover {
+  border-color: var(--luxe-gold);
+  background: var(--surface-2);
+  transform: translateY(-3px);
+}
+
+[data-style='luxe'] .footer__social:hover svg {
+  fill: var(--luxe-gold);
+}
+
+/* ───────────────────────── Style switcher, gilded ───────────────────────── */
+[data-style='luxe'] .style-switch__fab {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 0;
+  box-shadow: 0 16px 40px -18px rgba(0, 0, 0, 0.6);
+}
+
+[data-style='luxe'] .style-switch__fab:hover {
+  border-color: var(--luxe-gold);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 44px -18px rgba(0, 0, 0, 0.65);
+}
+
+[data-style='luxe'] .style-switch__menu {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 0;
+}
+
+[data-style='luxe'] .style-switch__label {
+  letter-spacing: 0.24em;
+}
+
+[data-style='luxe'] .style-switch__option {
+  border-radius: 0;
+}
+
+[data-style='luxe'] .style-switch__text strong {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+[data-style='luxe'] .style-switch__swatch {
+  border-radius: 0;
+}
+
+[data-style='luxe'] .style-switch__check {
+  color: var(--luxe-gold);
+}

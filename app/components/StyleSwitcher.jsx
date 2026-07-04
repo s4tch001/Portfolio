@@ -8,7 +8,10 @@ import useStyle from '../hooks/useStyle.js';
 const STYLES = [
   { id: 'default', label: 'Default', desc: 'Clean & modern' },
   { id: 'graffiti', label: 'Graffiti', desc: 'Street art vibes' },
-  { id: 'oldschool', label: 'Old School', desc: "90's web vibes" },
+  { id: 'oldschool', label: 'Old School', desc: "'90s web vibes" },
+  { id: 'pixels', label: 'Pixels', desc: '8-bit retro' },
+  { id: 'luxe', label: 'Luxe', desc: 'Minimalist luxury' },
+  { id: 'hacker', label: 'Hacker', desc: 'Code & terminal' },
 ];
 
 // Small floating button (bottom-right) that opens a page-style picker.

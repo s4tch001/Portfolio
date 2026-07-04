@@ -25,11 +25,11 @@ export default function Nav() {
 
   return (
     <header className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
-      <div className="nav__inner">
-        <a className="nav__logo" href="#home" onClick={() => setOpen(false)}>
-          <span className="nav__logo-mark">P</span>
-          <span className="nav__logo-text">
-            pauuu<span className="accent">.dev</span>
+      <div className='nav__inner'>
+        <a className='nav__logo' href='#home' onClick={() => setOpen(false)}>
+          <span className='nav__logo-mark'>P</span>
+          <span className='nav__logo-text'>
+            pauuu<span className='accent'>.dev</span>
           </span>
         </a>
 
@@ -40,18 +40,18 @@ export default function Nav() {
             </a>
           ))}
           <a
-            className="btn btn--small btn--gradient"
-            href="mailto:admin@pauuu.dev"
+            className='btn btn--small btn--gradient'
+            href='mailto:admin@pauuu.dev'
             onClick={() => setOpen(false)}
           >
             Hire me
           </a>
         </nav>
 
-        <div className="nav__actions">
+        <div className='nav__actions'>
           <ThemeToggle theme={theme} onToggle={toggle} />
           <button
-            type="button"
+            type='button'
             className={`nav__burger ${open ? 'is-open' : ''}`}
             aria-label={open ? 'Close menu' : 'Open menu'}
             aria-expanded={open}

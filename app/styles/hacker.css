@@ -1,0 +1,638 @@
+/* ═════════════════════════════════════════════════════════════════════════
+   HACKER — code & terminal page style.
+   Everything is a shell session: JetBrains Mono everywhere, matrix green
+   phosphor on black, scanlines, $ prompts, cursor blocks, and terminal
+   windows for the galleries. Light mode = a pale "paper terminal" theme.
+   Scoped under [data-style='hacker']; JetBrains Mono is already loaded.
+   ═════════════════════════════════════════════════════════════════════════ */
+
+/* ───────────────────────── Tokens ───────────────────────── */
+[data-style='hacker'] {
+  --bg: #050805; /* powered-off CRT */
+  --bg-alt: #070d07;
+  --surface: rgba(0, 255, 102, 0.04);
+  --surface-2: rgba(0, 255, 102, 0.08);
+  --border: rgba(0, 255, 102, 0.28);
+  --text: #00e766; /* phosphor green */
+  --muted: #12a04e;
+  --violet: #00e766; /* green takes every accent slot */
+  --cyan: #39ffa0;
+  --pink: #baffd6;
+  --amber: #eaff00;
+  --green: #00e766;
+  --blue: #39ffa0;
+  --grad: linear-gradient(90deg, #00e766, #39ffa0);
+  --font-display: 'JetBrains Mono', ui-monospace, monospace;
+  --font-body: 'JetBrains Mono', ui-monospace, monospace;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --radius: 0;
+  --hx-glow: 0 0 10px rgba(0, 231, 102, 0.45);
+}
+
+/* Paper terminal: pale mint screen, deep-green ink */
+[data-style='hacker'][data-theme='light'] {
+  --bg: #eef4ee;
+  --bg-alt: #e4ece4;
+  --surface: rgba(9, 84, 45, 0.04);
+  --surface-2: rgba(9, 84, 45, 0.08);
+  --border: rgba(9, 84, 45, 0.35);
+  --text: #09542d;
+  --muted: #3e7a58;
+  --violet: #09542d;
+  --cyan: #0b6e3a;
+  --pink: #0b6e3a;
+  --amber: #8a6d00;
+  --green: #0b6e3a;
+  --blue: #0b6e3a;
+  --grad: linear-gradient(90deg, #09542d, #0b6e3a);
+  --hx-glow: none;
+}
+
+[data-style='hacker'] body {
+  background: var(--bg);
+  font-family: var(--font-mono);
+}
+
+/* Scanlines + a faint phosphor wash */
+[data-style='hacker'] .bg-glow {
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.22) 0 1px,
+      transparent 1px 3px
+    ),
+    radial-gradient(70rem 50rem at 50% 0%, rgba(0, 231, 102, 0.06), transparent 60%);
+}
+
+[data-style='hacker'][data-theme='light'] .bg-glow {
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(9, 84, 45, 0.045) 0 1px,
+      transparent 1px 3px
+    ),
+    radial-gradient(70rem 50rem at 50% 0%, rgba(9, 84, 45, 0.04), transparent 60%);
+}
+
+[data-style='hacker'] ::selection {
+  background: #00e766;
+  color: #050805;
+}
+
+/* ───────────────────────── Type & headings ───────────────────────── */
+[data-style='hacker'] .hero__name {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  background: none;
+  color: var(--text);
+  animation: none;
+  text-shadow: var(--hx-glow);
+}
+
+/* whoami */
+[data-style='hacker'] .hero__name::before {
+  content: '> ';
+  color: var(--muted);
+}
+
+[data-style='hacker'] .hero__name::after {
+  content: '_';
+  color: var(--text);
+  animation: hx-blink 1.1s steps(2) infinite;
+}
+
+@keyframes hx-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+[data-style='hacker'] .grad-text {
+  background: none;
+  color: var(--cyan);
+  animation: none;
+  text-shadow: var(--hx-glow);
+}
+
+[data-style='hacker'] .section__title {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-shadow: var(--hx-glow);
+}
+
+[data-style='hacker'] .section__eyebrow {
+  font-family: var(--font-mono);
+  color: var(--muted);
+  letter-spacing: 0.14em;
+}
+
+/* $ prompt before every section label */
+[data-style='hacker'] .section__eyebrow::before {
+  content: '$';
+  color: var(--cyan);
+}
+
+[data-style='hacker'] .section__eyebrow::after {
+  height: 1px;
+  background: var(--border);
+}
+
+[data-style='hacker'] .section--alt {
+  border-top: 1px dashed var(--border);
+  border-bottom: 1px dashed var(--border);
+}
+
+[data-style='hacker'] .section__lead,
+[data-style='hacker'] .hero__sub {
+  color: var(--muted);
+}
+
+/* ───────────────────────── Buttons & chips → CLI controls ───────────────────────── */
+[data-style='hacker'] .btn {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  border-radius: 0;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  box-shadow: none;
+}
+
+[data-style='hacker'] .btn::before {
+  content: '[';
+  color: var(--muted);
+}
+
+[data-style='hacker'] .btn::after {
+  content: ']';
+  color: var(--muted);
+}
+
+[data-style='hacker'] .btn--gradient {
+  background: var(--surface-2);
+  color: var(--text);
+  border-color: var(--text);
+}
+
+[data-style='hacker'] .btn--gradient:hover,
+[data-style='hacker'] .btn--ghost:hover {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+  transform: none;
+  box-shadow: var(--hx-glow);
+}
+
+[data-style='hacker'] .btn--gradient:hover::before,
+[data-style='hacker'] .btn--gradient:hover::after,
+[data-style='hacker'] .btn--ghost:hover::before,
+[data-style='hacker'] .btn--ghost:hover::after {
+  color: var(--bg);
+}
+
+/* Chips read like CLI flags */
+[data-style='hacker'] .chip {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  border-radius: 0;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+[data-style='hacker'] .chip::before {
+  content: '--';
+  color: var(--cyan);
+}
+
+[data-style='hacker'] .chip:hover {
+  color: var(--text);
+  border-color: var(--text);
+  transform: none;
+}
+
+/* ───────────────────────── Cards → tmux panes ───────────────────────── */
+[data-style='hacker'] .card {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 0;
+  backdrop-filter: none;
+  box-shadow: none;
+}
+
+[data-style='hacker'] .card:hover {
+  transform: none;
+  border-color: var(--text);
+  box-shadow: inset 0 0 24px rgba(0, 231, 102, 0.06), var(--hx-glow);
+}
+
+[data-style='hacker'][data-theme='light'] .card:hover {
+  box-shadow: none;
+}
+
+[data-style='hacker'] .about__card h3,
+[data-style='hacker'] .skills__card h3 {
+  font-family: var(--font-mono);
+  color: var(--text);
+}
+
+[data-style='hacker'] .about__card h3::before,
+[data-style='hacker'] .skills__card h3::before {
+  content: '~/';
+  color: var(--muted);
+}
+
+[data-style='hacker'] .about__card p {
+  color: var(--muted);
+}
+
+/* ───────────────────────── Nav → status bar ───────────────────────── */
+[data-style='hacker'] .nav--scrolled {
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
+  border-bottom: 1px solid var(--border);
+}
+
+[data-style='hacker'] .nav__logo-mark {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--text);
+  border-radius: 0;
+  font-family: var(--font-mono);
+  box-shadow: var(--hx-glow);
+}
+
+[data-style='hacker'] .nav__logo-text {
+  font-family: var(--font-mono);
+}
+
+[data-style='hacker'] .nav__links a:not(.btn) {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+[data-style='hacker'] .nav__links a:not(.btn)::before {
+  content: './';
+  color: var(--muted);
+}
+
+[data-style='hacker'] .nav__links a:not(.btn)::after {
+  height: 1px;
+  border-radius: 0;
+  background: var(--text);
+}
+
+[data-style='hacker'] .nav__burger {
+  border-radius: 0;
+  border: 1px solid var(--border);
+  background: transparent;
+}
+
+/* ───────────────────────── Hero ───────────────────────── */
+[data-style='hacker'] .hero__eyebrow {
+  font-family: var(--font-mono);
+  color: var(--muted);
+}
+
+[data-style='hacker'] .hero__role {
+  font-family: var(--font-mono);
+}
+
+[data-style='hacker'] .hero__typed {
+  background: none;
+  color: var(--cyan);
+  text-shadow: var(--hx-glow);
+}
+
+/* Solid block cursor */
+[data-style='hacker'] .hero__caret {
+  width: 0.55em;
+  height: 1.05em;
+  border-radius: 0;
+  background: var(--text);
+}
+
+[data-style='hacker'] .hero__stat dt {
+  font-family: var(--font-mono);
+  background: none;
+  color: var(--text);
+  text-shadow: var(--hx-glow);
+}
+
+[data-style='hacker'] .hero__stat dd {
+  color: var(--muted);
+}
+
+/* The code card is finally in its natural habitat */
+[data-style='hacker'] .hero__card {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 0;
+  backdrop-filter: none;
+  animation: none;
+  box-shadow: inset 0 0 40px rgba(0, 231, 102, 0.04);
+}
+
+[data-style='hacker'] .hero__card-bar {
+  border-bottom: 1px solid var(--border);
+}
+
+[data-style='hacker'] .hero__card-title {
+  font-family: var(--font-mono);
+  color: var(--muted);
+}
+
+[data-style='hacker'] .hero__card-title::before {
+  content: 'pau@pauuu.dev: ';
+  color: var(--cyan);
+}
+
+/* Terminal dots: hollow green squares */
+[data-style='hacker'] .dot {
+  border-radius: 0;
+  background: transparent;
+  border: 1px solid var(--border);
+}
+
+[data-style='hacker'] .dot--g {
+  background: var(--text);
+  border-color: var(--text);
+}
+
+[data-style='hacker'] .hero__code {
+  color: var(--muted);
+}
+
+[data-style='hacker'] .hero__code .tk-kw {
+  color: var(--cyan);
+}
+
+[data-style='hacker'] .hero__code .tk-var {
+  color: var(--text);
+}
+
+[data-style='hacker'] .hero__code .tk-str {
+  color: var(--pink);
+}
+
+[data-style='hacker'] .hero__chip {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  background: var(--bg-alt);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* ───────────────────────── Marquee → stdout stream ───────────────────────── */
+[data-style='hacker'] .marquee {
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+[data-style='hacker'] .marquee__item {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+[data-style='hacker'] .marquee__star {
+  color: var(--text);
+}
+
+/* ───────────────────────── Projects & gallery → terminal windows ───────────────────────── */
+[data-style='hacker'] .browser {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 0;
+  box-shadow: 0 0 0 1px rgba(0, 231, 102, 0.08), 0 24px 60px -30px rgba(0, 0, 0, 0.8);
+}
+
+[data-style='hacker'] .project__media:hover .browser {
+  transform: translateY(-4px);
+  border-color: var(--text);
+  box-shadow: var(--hx-glow), 0 30px 70px -30px rgba(0, 0, 0, 0.85);
+}
+
+[data-style='hacker'] .browser__bar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+[data-style='hacker'] .browser__count {
+  font-family: var(--font-mono);
+  color: var(--text);
+}
+
+[data-style='hacker'] .browser__pov {
+  font-family: var(--font-mono);
+  color: var(--bg);
+  background: var(--text);
+  border: none;
+  border-radius: 0;
+}
+
+[data-style='hacker'] .gallery__arrow {
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 0;
+}
+
+/* Captions print like command output */
+[data-style='hacker'] .gallery__caption {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  background: rgba(5, 8, 5, 0.9);
+  color: var(--cyan);
+  border: 1px solid var(--border);
+  border-radius: 0;
+  backdrop-filter: none;
+}
+
+[data-style='hacker'] .gallery__caption::before {
+  content: '> ';
+  color: var(--muted);
+}
+
+[data-style='hacker'][data-theme='light'] .gallery__caption {
+  background: rgba(238, 244, 238, 0.94);
+  color: var(--text);
+}
+
+[data-style='hacker'] .gallery__zoom {
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 0;
+}
+
+[data-style='hacker'] .gallery__dots button {
+  width: 10px;
+  height: 10px;
+  border-radius: 0;
+  border: 1px solid var(--border);
+  background: transparent;
+  transform: none;
+}
+
+[data-style='hacker'] .gallery__dots button.active {
+  background: var(--text);
+}
+
+[data-style='hacker'] .project__tagline {
+  font-family: var(--font-mono);
+  color: var(--cyan);
+}
+
+[data-style='hacker'] .project__num::before {
+  content: '#';
+  color: var(--muted);
+}
+
+[data-style='hacker'] .project__num {
+  color: var(--text);
+}
+
+[data-style='hacker'] .project__features li::before {
+  content: '>';
+  color: var(--cyan);
+}
+
+[data-style='hacker'] .project__desc,
+[data-style='hacker'] .project__features li {
+  color: var(--muted);
+}
+
+[data-style='hacker'] .project__live {
+  color: var(--text);
+}
+
+[data-style='hacker'] .project__pulse {
+  border-radius: 0;
+  background: var(--text);
+  box-shadow: none;
+  animation: hx-blink 1.1s steps(2) infinite;
+}
+
+[data-style='hacker'] .project__deploy {
+  font-family: var(--font-mono);
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 0;
+}
+
+/* ───────────────────────── Lightbox ───────────────────────── */
+[data-style='hacker'] .lightbox__stage img {
+  border: 1px solid var(--border);
+  outline: 1px solid rgba(0, 231, 102, 0.15);
+}
+
+[data-style='hacker'] .lightbox__stage figcaption {
+  font-family: var(--font-mono);
+}
+
+[data-style='hacker'] .lightbox__arrow,
+[data-style='hacker'] .lightbox__close {
+  background: transparent;
+  color: #00e766;
+  border: 1px solid rgba(0, 231, 102, 0.4);
+  border-radius: 0;
+}
+
+/* ───────────────────────── Footer ───────────────────────── */
+[data-style='hacker'] .footer {
+  border-top: 1px dashed var(--border);
+}
+
+[data-style='hacker'] .footer__mark {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--text);
+  border-radius: 0;
+  font-family: var(--font-mono);
+  box-shadow: none;
+}
+
+[data-style='hacker'] .footer__brand {
+  font-family: var(--font-mono);
+}
+
+[data-style='hacker'] .footer__meta,
+[data-style='hacker'] .footer__copy {
+  font-family: var(--font-mono);
+  color: var(--muted);
+}
+
+[data-style='hacker'] .footer__social {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+[data-style='hacker'] .footer__social svg {
+  fill: var(--muted);
+}
+
+[data-style='hacker'] .footer__social:hover {
+  background: var(--surface-2);
+  border-color: var(--text);
+  transform: none;
+  box-shadow: var(--hx-glow);
+}
+
+[data-style='hacker'] .footer__social:hover svg {
+  fill: var(--text);
+}
+
+/* ───────────────────────── Style switcher, rooted ───────────────────────── */
+[data-style='hacker'] .style-switch__fab {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+[data-style='hacker'] .style-switch__fab:hover {
+  border-color: var(--text);
+  transform: none;
+  box-shadow: var(--hx-glow);
+}
+
+[data-style='hacker'] .style-switch__menu {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 0;
+  box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.8);
+}
+
+[data-style='hacker'] .style-switch__label,
+[data-style='hacker'] .style-switch__text strong,
+[data-style='hacker'] .style-switch__text small {
+  font-family: var(--font-mono);
+}
+
+[data-style='hacker'] .style-switch__option {
+  border-radius: 0;
+  color: var(--text);
+}
+
+[data-style='hacker'] .style-switch__option:hover {
+  background: var(--surface-2);
+}
+
+[data-style='hacker'] .style-switch__swatch {
+  border-radius: 0;
+}
+
+[data-style='hacker'] .style-switch__check {
+  color: var(--text);
+}

@@ -1,0 +1,564 @@
+/* ═════════════════════════════════════════════════════════════════════════
+   PIXELS — 8-bit retro page style.
+   Readable pixel type (Pixelify Sans + VT323), PICO-8-flavored palette,
+   chunky hard-shadow "sprites", notched pixel corners, and faint scanlines.
+   Photos are deliberately left crisp — only the chrome is pixelated.
+   Scoped under [data-style='pixels']; loaded fonts live in layout.jsx.
+   ═════════════════════════════════════════════════════════════════════════ */
+
+/* ───────────────────────── Tokens ───────────────────────── */
+[data-style='pixels'] {
+  --bg: #0d0d1f; /* deep indigo night */
+  --bg-alt: #12122b;
+  --surface: rgba(255, 255, 255, 0.06);
+  --surface-2: rgba(255, 255, 255, 0.1);
+  --border: rgba(255, 255, 255, 0.2);
+  --text: #eef2ff;
+  --muted: #9aa3c7;
+  --violet: #29adff; /* sprite blue takes the primary accent slot */
+  --cyan: #00e756; /* sprite green */
+  --pink: #ff77a8;
+  --amber: #ffec27;
+  --green: #00e756;
+  --blue: #29adff;
+  --grad: linear-gradient(90deg, #29adff, #00e756);
+  --font-display: 'Pixelify Sans', 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Pixelify Sans', Verdana, system-ui, sans-serif;
+  --font-mono: 'VT323', 'Courier New', monospace;
+  --radius: 0;
+  --px-ink: #000000; /* sprite outline */
+  --px-shadow: rgba(0, 0, 0, 0.55);
+}
+
+/* Daytime palette: paper-gray screen, PICO-8 navy ink, deeper accents */
+[data-style='pixels'][data-theme='light'] {
+  --bg: #eef0f4;
+  --bg-alt: #e3e6ee;
+  --surface: rgba(29, 43, 83, 0.05);
+  --surface-2: rgba(29, 43, 83, 0.09);
+  --border: rgba(29, 43, 83, 0.3);
+  --text: #1d2b53;
+  --muted: #55618c;
+  --violet: #1552b5;
+  --cyan: #00871f;
+  --pink: #c73e78;
+  --amber: #a87a00;
+  --green: #00871f;
+  --blue: #1552b5;
+  --grad: linear-gradient(90deg, #1552b5, #00871f);
+  --px-ink: #1d2b53;
+  --px-shadow: rgba(29, 43, 83, 0.25);
+}
+
+[data-style='pixels'] body {
+  background: var(--bg);
+}
+
+/* CRT scanlines over the whole screen */
+[data-style='pixels'] .bg-glow {
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.14) 0 1px,
+      transparent 1px 3px
+    ),
+    radial-gradient(60rem 40rem at 50% -10%, rgba(41, 173, 255, 0.08), transparent 60%);
+}
+
+[data-style='pixels'][data-theme='light'] .bg-glow {
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(29, 43, 83, 0.05) 0 1px,
+      transparent 1px 3px
+    ),
+    radial-gradient(60rem 40rem at 50% -10%, rgba(21, 82, 181, 0.06), transparent 60%);
+}
+
+[data-style='pixels'] ::selection {
+  background: var(--amber);
+  color: #1d2b53;
+}
+
+/* The photos stay sharp — only the chrome around them is pixel-styled */
+[data-style='pixels'] .gallery__view img,
+[data-style='pixels'] .lightbox__stage img {
+  image-rendering: auto;
+}
+
+/* ───────────────────────── Type & headings ───────────────────────── */
+[data-style='pixels'] .hero__name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  background: none;
+  color: var(--amber);
+  animation: none;
+  text-shadow: 5px 5px 0 var(--violet), 10px 10px 0 var(--px-shadow);
+}
+
+[data-style='pixels'] .grad-text {
+  background: none;
+  color: var(--pink);
+  animation: none;
+  text-shadow: 3px 3px 0 var(--px-shadow);
+}
+
+[data-style='pixels'] .section__title {
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-shadow: 4px 4px 0 var(--px-shadow);
+}
+
+[data-style='pixels'] .section__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  letter-spacing: 0.14em;
+  color: var(--cyan);
+}
+
+/* Dashed pixel divider */
+[data-style='pixels'] .section__eyebrow::after {
+  height: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--cyan) 0 6px,
+    transparent 6px 12px
+  );
+}
+
+[data-style='pixels'] .section--alt {
+  border-top: 3px solid var(--px-ink);
+  border-bottom: 3px solid var(--px-ink);
+}
+
+/* ───────────────────────── Buttons & chips → sprites ───────────────────────── */
+[data-style='pixels'] .btn {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  border-radius: 0;
+  border: 3px solid var(--px-ink);
+  box-shadow: 4px 4px 0 var(--px-shadow);
+}
+
+[data-style='pixels'] .btn--gradient {
+  background: var(--violet);
+  color: #fff;
+}
+
+[data-style='pixels'][data-theme='light'] .btn--gradient {
+  color: #fff;
+}
+
+[data-style='pixels'] .btn--gradient:hover,
+[data-style='pixels'] .btn--ghost:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--px-shadow);
+}
+
+[data-style='pixels'] .btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--px-shadow);
+}
+
+[data-style='pixels'] .btn--ghost {
+  background: var(--surface);
+  border-color: var(--px-ink);
+  color: var(--text);
+}
+
+[data-style='pixels'] .chip {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  padding: 0.12rem 0.6rem;
+  border-radius: 0;
+  border: 2px solid var(--px-ink);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 2px 2px 0 var(--px-shadow);
+  transform: none;
+}
+
+[data-style='pixels'] .chip:hover {
+  color: var(--text);
+  border-color: var(--px-ink);
+  background: var(--surface-2);
+  transform: translate(-1px, -1px);
+}
+
+/* ───────────────────────── Cards → dialogue boxes ───────────────────────── */
+[data-style='pixels'] .card {
+  background: var(--bg-alt);
+  border: 3px solid var(--px-ink);
+  border-radius: 0;
+  backdrop-filter: none;
+  box-shadow: 6px 6px 0 var(--px-shadow);
+}
+
+[data-style='pixels'][data-theme='light'] .card {
+  background: #f8f9fc;
+}
+
+[data-style='pixels'] .card:hover {
+  transform: translate(-2px, -2px);
+  border-color: var(--px-ink);
+  box-shadow: 8px 8px 0 var(--px-shadow);
+}
+
+[data-style='pixels'] .about__card h3,
+[data-style='pixels'] .skills__card h3 {
+  font-family: var(--font-display);
+  color: var(--violet);
+}
+
+/* ───────────────────────── Nav ───────────────────────── */
+[data-style='pixels'] .nav--scrolled {
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  border-bottom: 3px solid var(--px-ink);
+}
+
+[data-style='pixels'] .nav__logo-mark {
+  background: var(--violet);
+  color: #fff;
+  border: 3px solid var(--px-ink);
+  border-radius: 0;
+  font-family: var(--font-display);
+  box-shadow: 3px 3px 0 var(--px-shadow);
+}
+
+[data-style='pixels'] .nav__logo-text {
+  font-family: var(--font-display);
+}
+
+[data-style='pixels'] .nav__links a:not(.btn) {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+}
+
+[data-style='pixels'] .nav__links a:not(.btn)::after {
+  height: 3px;
+  border-radius: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--cyan) 0 6px,
+    transparent 6px 10px
+  );
+}
+
+[data-style='pixels'] .nav__burger {
+  border-radius: 0;
+  border: 2px solid var(--px-ink);
+}
+
+/* ───────────────────────── Hero ───────────────────────── */
+[data-style='pixels'] .hero__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  color: var(--pink);
+}
+
+[data-style='pixels'] .hero__typed {
+  background: none;
+  color: var(--cyan);
+}
+
+/* Chunky block caret, like a terminal cursor */
+[data-style='pixels'] .hero__caret {
+  width: 0.55em;
+  height: 1em;
+  border-radius: 0;
+  background: var(--cyan);
+}
+
+[data-style='pixels'] .hero__stat dt {
+  background: none;
+  color: var(--amber);
+  text-shadow: 3px 3px 0 var(--px-shadow);
+}
+
+[data-style='pixels'] .hero__card {
+  background: var(--bg-alt);
+  border: 3px solid var(--px-ink);
+  border-radius: 0;
+  backdrop-filter: none;
+  animation: none;
+  box-shadow: 8px 8px 0 var(--px-shadow);
+}
+
+[data-style='pixels'][data-theme='light'] .hero__card {
+  background: #f8f9fc;
+}
+
+[data-style='pixels'] .hero__card-bar {
+  border-bottom: 3px solid var(--px-ink);
+}
+
+[data-style='pixels'] .hero__card-title {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+}
+
+/* Square sprite dots */
+[data-style='pixels'] .dot {
+  border-radius: 0;
+  border: 2px solid var(--px-ink);
+}
+
+[data-style='pixels'] .dot--r {
+  background: var(--pink);
+}
+[data-style='pixels'] .dot--y {
+  background: var(--amber);
+}
+[data-style='pixels'] .dot--g {
+  background: var(--green);
+}
+
+[data-style='pixels'] .hero__code {
+  font-family: var(--font-mono);
+  font-size: clamp(0.85rem, 1.8vw, 1rem);
+}
+
+[data-style='pixels'] .hero__chip {
+  font-family: var(--font-display);
+  background: var(--bg-alt);
+  border: 2px solid var(--px-ink);
+  border-radius: 0;
+  box-shadow: 3px 3px 0 var(--px-shadow);
+}
+
+[data-style='pixels'][data-theme='light'] .hero__chip {
+  background: #f8f9fc;
+}
+
+/* ───────────────────────── Marquee → score ticker ───────────────────────── */
+[data-style='pixels'] .marquee {
+  background: var(--bg-alt);
+  border-top: 3px solid var(--px-ink);
+  border-bottom: 3px solid var(--px-ink);
+}
+
+[data-style='pixels'] .marquee__item {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 1.25rem;
+  color: var(--muted);
+}
+
+[data-style='pixels'] .marquee__star {
+  color: var(--amber);
+}
+
+/* ───────────────────────── Projects & gallery → game windows ───────────────────────── */
+[data-style='pixels'] .browser {
+  background: var(--bg-alt);
+  border: 4px solid var(--px-ink);
+  border-radius: 0;
+  box-shadow: 8px 8px 0 var(--px-shadow);
+}
+
+[data-style='pixels'][data-theme='light'] .browser {
+  background: #f8f9fc;
+}
+
+[data-style='pixels'] .project__media:hover .browser {
+  transform: translate(-3px, -3px);
+  box-shadow: 11px 11px 0 var(--px-shadow);
+}
+
+[data-style='pixels'] .browser__bar {
+  background: var(--surface);
+  border-bottom: 3px solid var(--px-ink);
+}
+
+[data-style='pixels'] .browser__count {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--amber);
+}
+
+[data-style='pixels'] .browser__pov {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--bg);
+  background: var(--cyan);
+  border: 2px solid var(--px-ink);
+  border-radius: 0;
+}
+
+[data-style='pixels'] .gallery__arrow {
+  background: var(--violet);
+  color: #fff;
+  border: 2px solid var(--px-ink);
+  border-radius: 0;
+  box-shadow: 2px 2px 0 var(--px-shadow);
+}
+
+[data-style='pixels'] .gallery__caption {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  background: var(--px-ink);
+  color: var(--green);
+  border: 2px solid var(--green);
+  border-radius: 0;
+  backdrop-filter: none;
+}
+
+[data-style='pixels'][data-theme='light'] .gallery__caption {
+  background: #1d2b53;
+  color: #7dffab;
+  border-color: #1d2b53;
+}
+
+[data-style='pixels'] .gallery__zoom {
+  background: var(--amber);
+  color: #1d2b53;
+  border: 2px solid var(--px-ink);
+  border-radius: 0;
+}
+
+[data-style='pixels'] .gallery__dots button {
+  border-radius: 0;
+  border: 2px solid var(--px-ink);
+  transform: none;
+}
+
+[data-style='pixels'] .gallery__dots button.active {
+  background: var(--amber);
+}
+
+[data-style='pixels'] .project__tagline {
+  font-family: var(--font-display);
+  color: var(--cyan);
+}
+
+[data-style='pixels'] .project__num {
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  color: var(--amber);
+}
+
+[data-style='pixels'] .project__features li::before {
+  content: '▶';
+  font-size: 0.7em;
+  top: 0.25em;
+  color: var(--cyan);
+}
+
+[data-style='pixels'] .project__pulse {
+  border-radius: 0;
+}
+
+[data-style='pixels'] .project__deploy {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  border: 2px solid var(--px-ink);
+  border-radius: 0;
+  background: var(--surface);
+  color: var(--text);
+}
+
+/* ───────────────────────── Lightbox ───────────────────────── */
+[data-style='pixels'] .lightbox__stage img {
+  border: 4px solid var(--px-ink);
+  outline: 3px solid #fff;
+}
+
+[data-style='pixels'] .lightbox__stage figcaption {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+}
+
+[data-style='pixels'] .lightbox__arrow,
+[data-style='pixels'] .lightbox__close {
+  background: var(--violet);
+  color: #fff;
+  border: 2px solid #000;
+  border-radius: 0;
+}
+
+/* ───────────────────────── Footer ───────────────────────── */
+[data-style='pixels'] .footer {
+  border-top: 3px solid var(--px-ink);
+}
+
+[data-style='pixels'] .footer__mark {
+  background: var(--violet);
+  color: #fff;
+  border: 2px solid var(--px-ink);
+  border-radius: 0;
+  font-family: var(--font-display);
+  box-shadow: 2px 2px 0 var(--px-shadow);
+}
+
+[data-style='pixels'] .footer__brand {
+  font-family: var(--font-display);
+}
+
+[data-style='pixels'] .footer__meta,
+[data-style='pixels'] .footer__copy {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+}
+
+[data-style='pixels'] .footer__social {
+  border: 2px solid var(--px-ink);
+  border-radius: 0;
+  background: var(--surface);
+  box-shadow: 2px 2px 0 var(--px-shadow);
+}
+
+[data-style='pixels'] .footer__social:hover {
+  border-color: var(--px-ink);
+  background: var(--surface-2);
+  transform: translate(-2px, -2px);
+}
+
+/* ───────────────────────── Style switcher, sprite-ified ───────────────────────── */
+[data-style='pixels'] .style-switch__fab {
+  background: var(--bg-alt);
+  border: 3px solid var(--px-ink);
+  border-radius: 0;
+  box-shadow: 3px 3px 0 var(--px-shadow);
+}
+
+[data-style='pixels'][data-theme='light'] .style-switch__fab {
+  background: #f8f9fc;
+}
+
+[data-style='pixels'] .style-switch__fab:hover {
+  transform: translate(-2px, -2px);
+  border-color: var(--px-ink);
+  box-shadow: 5px 5px 0 var(--px-shadow);
+}
+
+[data-style='pixels'] .style-switch__menu {
+  background: var(--bg-alt);
+  border: 3px solid var(--px-ink);
+  border-radius: 0;
+  box-shadow: 6px 6px 0 var(--px-shadow);
+}
+
+[data-style='pixels'][data-theme='light'] .style-switch__menu {
+  background: #f8f9fc;
+}
+
+[data-style='pixels'] .style-switch__label,
+[data-style='pixels'] .style-switch__text strong {
+  font-family: var(--font-display);
+}
+
+[data-style='pixels'] .style-switch__option {
+  border-radius: 0;
+}
+
+[data-style='pixels'] .style-switch__swatch {
+  border-radius: 0;
+  border: 2px solid var(--px-ink);
+}
+
+[data-style='pixels'] .style-switch__check {
+  color: var(--cyan);
+}

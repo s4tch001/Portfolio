@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 // `pauseMs`, after which it resumes on its own.
 export default function useSlideshow(
   length,
-  { interval = 4500, pauseMs = 30000, startIndex = 0, enabled = true } = {},
+  { interval = 4500, pauseMs = 20000, startIndex = 0, enabled = true } = {},
 ) {
   const [index, setIndex] = useState(startIndex);
   const [paused, setPaused] = useState(false);
