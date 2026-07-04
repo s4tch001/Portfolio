@@ -34,9 +34,10 @@ export default function Hero() {
             <span className="hero__caret" aria-hidden="true" />
           </p>
           <p className="hero__sub">
-            I design, build, and ship full-stack web apps — from vanilla JavaScript
-            tools to React platforms running on the Cloudflare edge. When I&apos;m not
-            coding, I&apos;m making music or chasing ranked wins.
+            I design, build, and ship full-stack web applications — from lightweight
+            vanilla-JavaScript tools to full React platforms on the Cloudflare edge,
+            with UI/UX, SEO, and security baked in. Off the clock, I&apos;m into music
+            and gaming.
           </p>
           <div className="hero__cta">
             <a className="btn btn--gradient" href="#projects">

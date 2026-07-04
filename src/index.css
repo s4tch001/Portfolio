@@ -70,6 +70,57 @@ a {
     radial-gradient(50rem 40rem at 50% 118%, rgba(244, 114, 182, 0.08), transparent 60%);
 }
 
+/* ───────────────────────── Light theme ───────────────────────── */
+[data-theme='light'] {
+  --bg: #f6f7fb;
+  --bg-alt: #eceef6;
+  --surface: rgba(20, 21, 43, 0.035);
+  --surface-2: rgba(20, 21, 43, 0.06);
+  --border: rgba(20, 21, 43, 0.12);
+  --text: #14152b;
+  --muted: #55596e;
+  --violet: #7c3aed;
+  --cyan: #0e97b5;
+  --pink: #db2777;
+  --grad: linear-gradient(120deg, #7c3aed, #0891b2);
+}
+
+[data-theme='light'] .bg-glow {
+  background:
+    radial-gradient(48rem 32rem at 12% -8%, rgba(124, 58, 237, 0.1), transparent 62%),
+    radial-gradient(40rem 30rem at 105% 12%, rgba(8, 145, 178, 0.08), transparent 60%),
+    radial-gradient(50rem 40rem at 50% 118%, rgba(219, 39, 119, 0.06), transparent 60%);
+}
+
+/* The hero name starts white in dark mode — swap to ink for light. */
+[data-theme='light'] .hero__name {
+  background: linear-gradient(120deg, #14152b 8%, var(--violet) 42%, var(--cyan) 74%, var(--pink));
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+[data-theme='light'] .nav--scrolled {
+  background: rgba(246, 247, 251, 0.82);
+}
+
+[data-theme='light'] .nav__links {
+  background: rgba(246, 247, 251, 0.97);
+}
+
+[data-theme='light'] .marquee {
+  background: rgba(20, 21, 43, 0.02);
+}
+
+/* Smooth cross-fade when the theme flips */
+body,
+.nav--scrolled,
+.card,
+.section--alt {
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+
 .accent {
   background: var(--grad);
   -webkit-background-clip: text;
@@ -207,7 +258,13 @@ a {
   padding: 0 1.5rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .nav__logo {
@@ -229,12 +286,18 @@ a {
   color: #fff;
   font-size: 1.1rem;
   box-shadow: 0 6px 20px -6px rgba(139, 92, 246, 0.8);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav__logo:hover .nav__logo-mark {
+  transform: rotate(-8deg) scale(1.08);
 }
 
 .nav__links {
   display: flex;
   align-items: center;
   gap: 2rem;
+  margin-left: auto;
   font-family: var(--font-display);
   font-weight: 500;
   font-size: 0.95rem;
@@ -293,6 +356,70 @@ a {
 .nav__burger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .nav__burger.is-open span:nth-child(2) { opacity: 0; }
 .nav__burger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Theme toggle — pill track with a sliding sun/moon thumb */
+.theme-toggle {
+  --tt-w: 62px;
+  --tt-h: 30px;
+  width: var(--tt-w);
+  height: var(--tt-h);
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--violet);
+}
+
+.theme-toggle__track {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.theme-toggle__thumb {
+  position: absolute;
+  top: 50%;
+  left: 3px;
+  width: calc(var(--tt-h) - 8px);
+  height: calc(var(--tt-h) - 8px);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--grad);
+  box-shadow: 0 2px 10px -2px rgba(139, 92, 246, 0.8);
+  transform: translateY(-50%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme='light'] .theme-toggle__thumb {
+  transform: translateY(-50%) translateX(calc(var(--tt-w) - var(--tt-h) - 2px));
+}
+
+.theme-toggle__icon {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2;
+  transition: opacity 0.3s ease, transform 0.4s ease;
+}
+
+.theme-toggle__sun { fill: #fff; stroke-width: 1.6; }
+
+/* Dark theme shows the moon; light theme shows the sun */
+.theme-toggle__sun { opacity: 0; transform: rotate(-90deg) scale(0.5); }
+.theme-toggle__moon { opacity: 1; transform: rotate(0) scale(1); }
+
+[data-theme='light'] .theme-toggle__sun { opacity: 1; transform: rotate(0) scale(1); }
+[data-theme='light'] .theme-toggle__moon { opacity: 0; transform: rotate(90deg) scale(0.5); }
 
 /* ───────────────────────── Hero ───────────────────────── */
 .hero {
@@ -640,7 +767,7 @@ a {
 /* ───────────────────────── About ───────────────────────── */
 .about__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 1.4rem;
   margin-top: 3.2rem;
 }
@@ -651,6 +778,12 @@ a {
 
 .about__icon {
   font-size: 2rem;
+  display: inline-block;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about__card:hover .about__icon {
+  transform: translateY(-5px) scale(1.1) rotate(-5deg);
 }
 
 .about__card h3 {
@@ -722,15 +855,17 @@ a {
   background: rgba(255, 255, 255, 0.03);
 }
 
-.browser__url {
+.browser__pov {
   margin-left: 0.8rem;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--muted);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border);
+  font-size: 0.66rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  background: rgba(34, 211, 238, 0.12);
+  border: 1px solid rgba(34, 211, 238, 0.35);
   border-radius: 999px;
-  padding: 0.18rem 0.9rem;
+  padding: 0.16rem 0.7rem;
 }
 
 .project__num {
@@ -1028,6 +1163,18 @@ a {
   font-size: 0.78rem;
 }
 
+.lightbox__pov {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  background: rgba(34, 211, 238, 0.12);
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  border-radius: 999px;
+  padding: 0.16rem 0.7rem;
+}
+
 .lightbox__dots {
   display: flex;
   justify-content: center;
@@ -1084,7 +1231,7 @@ a {
 /* ───────────────────────── Skills ───────────────────────── */
 .skills__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1.4rem;
   margin-top: 3.2rem;
 }
@@ -1147,23 +1294,80 @@ a {
 /* ───────────────────────── Footer ───────────────────────── */
 .footer {
   border-top: 1px solid var(--border);
-  padding: 2.2rem 1.5rem;
+  padding: 2.6rem 1.5rem;
 }
 
 .footer__inner {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 0.8rem;
+  gap: 1.5rem;
   color: var(--muted);
   font-size: 0.88rem;
 }
 
+.footer__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+.footer__mark {
+  width: 30px;
+  height: 30px;
+  font-size: 0.95rem;
+}
+
 .footer__meta {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
+  margin-top: 0.35rem;
+}
+
+.footer__socials {
+  display: flex;
+  gap: 0.7rem;
+  list-style: none;
+}
+
+.footer__social {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.footer__social svg {
+  width: 19px;
+  height: 19px;
+  fill: var(--muted);
+  transition: fill 0.25s ease;
+}
+
+.footer__social:hover {
+  transform: translateY(-4px);
+  border-color: var(--violet);
+  background: var(--surface-2);
+}
+
+.footer__social:hover svg {
+  fill: var(--text);
+}
+
+.footer__copy {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
 }
 
 /* ───────────────────────── Responsive ───────────────────────── */
@@ -1199,6 +1403,11 @@ a {
 @media (max-width: 720px) {
   .nav__burger {
     display: flex;
+  }
+
+  /* Links become a dropdown (out of flow) — keep toggle + burger pinned right */
+  .nav__actions {
+    margin-left: auto;
   }
 
   .nav__links {
@@ -1262,6 +1471,10 @@ a {
   .footer__inner {
     flex-direction: column;
     text-align: center;
+  }
+
+  .footer__brand {
+    justify-content: center;
   }
 }
 

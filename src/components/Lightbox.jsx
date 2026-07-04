@@ -1,21 +1,20 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
+import useSlideshow from '../hooks/useSlideshow.js';
 
-// Fullscreen photo viewer: arrows + keyboard + swipe, dots, caption.
+// Fullscreen photo viewer: auto-advances, loops, and pauses 30s on manual
+// navigation. Arrows + keyboard + swipe, dots, caption, and POV badge.
 export default function Lightbox({ project, startIndex, onClose }) {
-  const [index, setIndex] = useState(startIndex);
-  const touchX = useRef(null);
   const images = project.images;
-
-  const move = useCallback(
-    (dir) => setIndex((i) => (i + dir + images.length) % images.length),
-    [images.length],
-  );
+  const { index, setIndex, next, prev, pause } = useSlideshow(images.length, {
+    startIndex,
+  });
+  const touchX = useRef(null);
 
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === 'Escape') onClose();
-      else if (e.key === 'ArrowRight') move(1);
-      else if (e.key === 'ArrowLeft') move(-1);
+      else if (e.key === 'ArrowRight') { pause(); next(); }
+      else if (e.key === 'ArrowLeft') { pause(); prev(); }
     };
     window.addEventListener('keydown', onKey);
     document.body.style.overflow = 'hidden';
@@ -23,7 +22,7 @@ export default function Lightbox({ project, startIndex, onClose }) {
       window.removeEventListener('keydown', onKey);
       document.body.style.overflow = '';
     };
-  }, [move, onClose]);
+  }, [next, prev, pause, onClose]);
 
   const current = images[index];
 
@@ -38,7 +37,7 @@ export default function Lightbox({ project, startIndex, onClose }) {
       onTouchEnd={(e) => {
         if (touchX.current === null) return;
         const dx = e.changedTouches[0].clientX - touchX.current;
-        if (Math.abs(dx) > 48) move(dx < 0 ? 1 : -1);
+        if (Math.abs(dx) > 48) { pause(); if (dx < 0) next(); else prev(); }
         touchX.current = null;
       }}
     >
@@ -50,7 +49,7 @@ export default function Lightbox({ project, startIndex, onClose }) {
         type="button"
         className="lightbox__arrow lightbox__arrow--prev"
         aria-label="Previous screenshot"
-        onClick={(e) => { e.stopPropagation(); move(-1); }}
+        onClick={(e) => { e.stopPropagation(); pause(); prev(); }}
       >
         ‹
       </button>
@@ -59,6 +58,7 @@ export default function Lightbox({ project, startIndex, onClose }) {
         <img src={current.src} alt={current.alt} />
         <figcaption>
           <strong>{project.name}</strong>
+          {current.pov && <span className="lightbox__pov">{current.pov}</span>}
           <span>{current.caption}</span>
           <span className="lightbox__counter">{index + 1} / {images.length}</span>
         </figcaption>
@@ -69,7 +69,7 @@ export default function Lightbox({ project, startIndex, onClose }) {
               type="button"
               className={i === index ? 'active' : ''}
               aria-label={`Go to screenshot ${i + 1}`}
-              onClick={() => setIndex(i)}
+              onClick={() => { pause(); setIndex(i); }}
             />
           ))}
         </div>
@@ -79,7 +79,7 @@ export default function Lightbox({ project, startIndex, onClose }) {
         type="button"
         className="lightbox__arrow lightbox__arrow--next"
         aria-label="Next screenshot"
-        onClick={(e) => { e.stopPropagation(); move(1); }}
+        onClick={(e) => { e.stopPropagation(); pause(); next(); }}
       >
         ›
       </button>

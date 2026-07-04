@@ -11,6 +11,15 @@ import ssLogin from '../assets/projects/ss-login.webp';
 import ssSchedule from '../assets/projects/ss-schedule.webp';
 import ssStudents from '../assets/projects/ss-students.webp';
 import ssAccounts from '../assets/projects/ss-accounts.webp';
+import ssAdminReports from '../assets/projects/ss-admin-reports.webp';
+import ssAdminReportView from '../assets/projects/ss-admin-report-view.webp';
+import ssAdminTracker from '../assets/projects/ss-admin-tracker.webp';
+import ssAdminRemaining from '../assets/projects/ss-admin-remaining.webp';
+import ssAdminReceipt from '../assets/projects/ss-admin-receipt.webp';
+import ssAdminAnnual from '../assets/projects/ss-admin-annual.webp';
+import ssTeacherSchedule from '../assets/projects/ss-teacher-schedule.webp';
+import ssTeacherReport from '../assets/projects/ss-teacher-report.webp';
+import ssTeacherTracker from '../assets/projects/ss-teacher-tracker.webp';
 
 // Screenshots use fictional demo data. Add a `live` URL to any project to
 // render a "Visit site" button.
@@ -31,11 +40,20 @@ const projects = [
     stack: ['React', 'Vite', 'JavaScript', 'Cloudflare Workers', 'D1 (SQLite)', 'R2', 'Durable Objects', 'Kotlin'],
     deploy: ['Cloudflare Workers', 'Cloudflare Pages'],
     images: [
-      { src: sunsetSpeaks, alt: 'Sunset-Speaks public landing page with a sunset illustration', caption: 'Public landing page' },
-      { src: ssLogin, alt: 'Login screen over an animated sunset backdrop', caption: 'Login — animated sunset backdrop' },
-      { src: ssSchedule, alt: 'Per-teacher class schedule grid for July 2026', caption: 'Per-teacher schedule grid (admin)' },
-      { src: ssStudents, alt: 'Student management table with notes and statuses', caption: 'Student management' },
-      { src: ssAccounts, alt: 'Teacher and admin accounts management page', caption: 'Teacher & admin accounts' },
+      { src: sunsetSpeaks, alt: 'Sunset-Speaks public landing page with a sunset illustration', caption: 'Public landing page', pov: 'Public' },
+      { src: ssLogin, alt: 'Login screen over an animated sunset backdrop', caption: 'Login — animated sunset backdrop', pov: 'Public' },
+      { src: ssSchedule, alt: 'Per-teacher class schedule grid for July 2026', caption: 'Per-teacher schedule grid', pov: 'Admin POV' },
+      { src: ssAdminReports, alt: 'Class reports calendar with per-class status dots', caption: 'Class reports calendar', pov: 'Admin POV' },
+      { src: ssAdminReportView, alt: 'Detailed class report with material, status and lesson memo', caption: 'Class report detail', pov: 'Admin POV' },
+      { src: ssAdminTracker, alt: 'Lesson tracker table of every filed lesson per teacher', caption: 'Lesson tracker', pov: 'Admin POV' },
+      { src: ssAdminRemaining, alt: 'Remaining classes balances per student with status badges', caption: 'Remaining classes', pov: 'Admin POV' },
+      { src: ssAdminReceipt, alt: 'Receipt card modal showing a student’s receipts and balance', caption: 'Receipt card', pov: 'Admin POV' },
+      { src: ssAdminAnnual, alt: 'Annual report dashboard with stats, donut charts and trends', caption: 'Annual report dashboard', pov: 'Admin POV' },
+      { src: ssStudents, alt: 'Student management table with notes and statuses', caption: 'Student management', pov: 'Admin POV' },
+      { src: ssAccounts, alt: 'Teacher and admin accounts management page', caption: 'Teacher & admin accounts', pov: 'Admin POV' },
+      { src: ssTeacherSchedule, alt: 'Teacher calendar view of their own weekly classes', caption: 'My weekly schedule', pov: 'Teacher POV' },
+      { src: ssTeacherReport, alt: 'Teacher filing a class report in a modal form', caption: 'Filing a class report', pov: 'Teacher POV' },
+      { src: ssTeacherTracker, alt: 'Teacher lesson tracker log of their filed lessons', caption: 'My lesson tracker', pov: 'Teacher POV' },
     ],
     accent: 'amber',
   },

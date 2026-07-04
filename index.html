@@ -3,11 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pau — Web Developer · Musician · Gamer</title>
+
+    <title>P-Devs · Pau — Full-Stack Web Developer &amp; Designer</title>
     <meta
       name="description"
-      content="Portfolio of Pau — a web developer who ships full-stack apps on Netlify, Cloudflare and Supabase. Also a musician and a gamer."
+      content="P-Devs is Pau — a Philippine-based full-stack web developer building fast, modern sites and apps. React, Next.js, TypeScript, Node, Supabase & Cloudflare, plus UI/UX, SEO, and security. Available for freelance and full-time work."
     />
+    <meta
+      name="keywords"
+      content="web developer, full-stack developer, React developer, Next.js, TypeScript, UI/UX designer, SEO specialist, penetration testing, Philippines web developer, freelance web developer, P-Devs, Pau"
+    />
+    <meta name="author" content="Pau (P-Devs)" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#07070d" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f7f7fb" media="(prefers-color-scheme: light)" />
+    <link rel="canonical" href="https://pauuu.dev/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="P-Devs" />
+    <meta property="og:url" content="https://pauuu.dev/" />
+    <meta property="og:title" content="P-Devs · Pau — Full-Stack Web Developer &amp; Designer" />
+    <meta
+      property="og:description"
+      content="Philippine-based full-stack web developer. React, Next.js, TypeScript, Node, Supabase & Cloudflare, plus UI/UX, SEO, and security. Available for work."
+    />
+    <meta property="og:image" content="https://pauuu.dev/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_PH" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="P-Devs · Pau — Full-Stack Web Developer &amp; Designer" />
+    <meta
+      name="twitter:description"
+      content="Philippine-based full-stack web developer. React, Next.js, TypeScript, Node, Supabase & Cloudflare, plus UI/UX, SEO, and security."
+    />
+    <meta name="twitter:image" content="https://pauuu.dev/og-image.png" />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,6 +49,54 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Structured data: helps search engines understand who this site is about -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Pau",
+        "alternateName": "P-Devs",
+        "jobTitle": "Full-Stack Web Developer",
+        "url": "https://pauuu.dev/",
+        "email": "mailto:admin@pauuu.dev",
+        "nationality": "Filipino",
+        "knowsAbout": [
+          "Web Development",
+          "React",
+          "Next.js",
+          "TypeScript",
+          "Node.js",
+          "UI/UX Design",
+          "SEO",
+          "Cybersecurity",
+          "Penetration Testing"
+        ],
+        "sameAs": [
+          "https://github.com/s4tch001",
+          "https://www.facebook.com/jonbarentain",
+          "https://www.instagram.com/jonbarentain",
+          "https://www.tiktok.com/@jonbarentain"
+        ]
+      }
+    </script>
+
+    <!-- Apply saved theme before paint to avoid a flash of the wrong theme. -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('theme');
+          var theme =
+            saved ||
+            (window.matchMedia('(prefers-color-scheme: light)').matches
+              ? 'light'
+              : 'dark');
+          document.documentElement.dataset.theme = theme;
+        } catch (e) {
+          document.documentElement.dataset.theme = 'dark';
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

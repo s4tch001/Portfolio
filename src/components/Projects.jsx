@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import useReveal from '../hooks/useReveal.js';
+import useSlideshow from '../hooks/useSlideshow.js';
 import projects from '../data/projects.js';
 import Lightbox from './Lightbox.jsx';
 
@@ -7,12 +8,17 @@ function DeployBadge({ name }) {
   return <span className="project__deploy">▲ {name}</span>;
 }
 
-// Browser-framed slideshow: arrows + dots, click to open the lightbox.
+// Browser-framed slideshow: auto-advances, loops, and pauses 30s on any
+// manual interaction. Click the image (or zoom) to open the lightbox.
 function Gallery({ project, onOpen }) {
-  const [index, setIndex] = useState(0);
   const images = project.images;
-  const move = (dir) => setIndex((i) => (i + dir + images.length) % images.length);
+  const { index, setIndex, next, prev, pause } = useSlideshow(images.length);
   const current = images[index];
+
+  const withPause = (fn) => () => {
+    pause();
+    fn();
+  };
 
   return (
     <div className="browser">
@@ -20,7 +26,7 @@ function Gallery({ project, onOpen }) {
         <span className="dot dot--r" />
         <span className="dot dot--y" />
         <span className="dot dot--g" />
-        <span className="browser__url">{project.url}</span>
+        {current.pov && <span className="browser__pov">{current.pov}</span>}
         <span className="browser__count">{index + 1}/{images.length}</span>
       </div>
 
@@ -29,7 +35,7 @@ function Gallery({ project, onOpen }) {
           type="button"
           className="gallery__view"
           aria-label={`Open ${project.name} screenshots in fullscreen`}
-          onClick={() => onOpen(project, index)}
+          onClick={() => { pause(); onOpen(project, index); }}
         >
           <img
             key={current.src}
@@ -45,10 +51,10 @@ function Gallery({ project, onOpen }) {
 
         {images.length > 1 && (
           <>
-            <button type="button" className="gallery__arrow gallery__arrow--prev" aria-label="Previous screenshot" onClick={() => move(-1)}>
+            <button type="button" className="gallery__arrow gallery__arrow--prev" aria-label="Previous screenshot" onClick={withPause(prev)}>
               ‹
             </button>
-            <button type="button" className="gallery__arrow gallery__arrow--next" aria-label="Next screenshot" onClick={() => move(1)}>
+            <button type="button" className="gallery__arrow gallery__arrow--next" aria-label="Next screenshot" onClick={withPause(next)}>
               ›
             </button>
             <div className="gallery__dots">
@@ -58,7 +64,7 @@ function Gallery({ project, onOpen }) {
                   type="button"
                   className={i === index ? 'active' : ''}
                   aria-label={`Go to screenshot ${i + 1}`}
-                  onClick={() => setIndex(i)}
+                  onClick={withPause(() => setIndex(i))}
                 />
               ))}
             </div>

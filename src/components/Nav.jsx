@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import useTheme from '../hooks/useTheme.js';
+import ThemeToggle from './ThemeToggle.jsx';
 
 const LINKS = [
   { href: '#about', label: 'About' },
@@ -10,6 +12,7 @@ const LINKS = [
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { theme, toggle } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -24,21 +27,9 @@ export default function Nav() {
         <a className="nav__logo" href="#home" onClick={() => setOpen(false)}>
           <span className="nav__logo-mark">P</span>
           <span className="nav__logo-text">
-            pau<span className="accent">.dev</span>
+            pauuu<span className="accent">.dev</span>
           </span>
         </a>
-
-        <button
-          type="button"
-          className={`nav__burger ${open ? 'is-open' : ''}`}
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          aria-expanded={open}
-          onClick={() => setOpen((o) => !o)}
-        >
-          <span />
-          <span />
-          <span />
-        </button>
 
         <nav className={`nav__links ${open ? 'is-open' : ''}`}>
           {LINKS.map((link) => (
@@ -54,6 +45,21 @@ export default function Nav() {
             Hire me
           </a>
         </nav>
+
+        <div className="nav__actions">
+          <ThemeToggle theme={theme} onToggle={toggle} />
+          <button
+            type="button"
+            className={`nav__burger ${open ? 'is-open' : ''}`}
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+            onClick={() => setOpen((o) => !o)}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+        </div>
       </div>
     </header>
   );

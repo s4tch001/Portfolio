@@ -13,8 +13,8 @@ export default function Contact() {
           <span className="grad-text">worth shipping.</span>
         </h2>
         <p className="section__lead contact__lead reveal">
-          Got a project, a role, or just want to talk shop (or music, or games)?
-          My inbox is open.
+          Have a project, a role, or an idea worth building? Let&apos;s make it
+          happen — my inbox is always open.
         </p>
         <div className="contact__actions reveal">
           <a className="btn btn--gradient btn--big" href="mailto:admin@pauuu.dev">

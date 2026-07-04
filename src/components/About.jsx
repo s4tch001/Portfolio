@@ -3,18 +3,23 @@ import useReveal from '../hooks/useReveal.js';
 const FACETS = [
   {
     icon: '💻',
-    title: 'Web Developer',
-    body: 'I build complete products — UI, API, database, and deployment. From dependency-free vanilla JS tools to React platforms with serverless backends on Netlify and Cloudflare.',
+    title: 'Full-Stack Development',
+    body: 'From database to deployment — React, Next.js, and vanilla JavaScript on the front, Node and serverless APIs on the back. I own the whole pipeline.',
   },
   {
-    icon: '🎵',
-    title: 'Musician',
-    body: 'Music trained my ear for rhythm and detail — the same instincts I bring to UI motion, spacing, and flow. A good interface, like a good song, should feel effortless.',
+    icon: '🎨',
+    title: 'Design & Media',
+    body: 'UI/UX design with a real eye for detail, plus years of video and photo editing — so products don’t just work, they look and feel right.',
   },
   {
-    icon: '🎮',
-    title: 'Gamer',
-    body: 'Gaming taught me systems thinking, fast iteration, and grinding a problem until it breaks. Patch notes energy: ship, observe, balance, repeat.',
+    icon: '🛡️',
+    title: 'SEO & Security',
+    body: 'Search-optimized builds that actually rank, hardened with a cybersecurity and penetration-testing mindset baked into how I build.',
+  },
+  {
+    icon: '🎸',
+    title: 'Beyond the Code',
+    body: 'A musician and gamer at heart — the same rhythm, focus, and problem-solving I bring to every project I ship.',
   },
 ];
 
@@ -26,14 +31,13 @@ export default function About() {
       <div className="section__inner">
         <p className="section__eyebrow reveal">01 · About</p>
         <h2 className="section__title reveal">
-          Builder by day,
-          <br />
-          <span className="grad-text">musician &amp; gamer by night.</span>
+          More than just <span className="grad-text">code.</span>
         </h2>
         <p className="section__lead reveal">
-          I&apos;m Pau — a web developer from the Philippines who likes owning the whole
-          stack. I take ideas from blank folder to deployed product: real apps, real
-          users, real uptime. Every project below is live in production.
+          I&apos;m Pau — a full-stack web developer from the Philippines, working under
+          the name <strong>P-Devs</strong>. I take products from an empty folder to a
+          live deployment: design, build, ship, and maintain. Everything below is
+          running in production with real users.
         </p>
 
         <div className="about__grid">
@@ -41,7 +45,7 @@ export default function About() {
             <article
               key={facet.title}
               className="card about__card reveal"
-              style={{ '--d': `${i * 0.12}s` }}
+              style={{ '--d': `${i * 0.1}s` }}
             >
               <span className="about__icon" aria-hidden="true">{facet.icon}</span>
               <h3>{facet.title}</h3>
