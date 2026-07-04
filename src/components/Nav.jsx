@@ -48,7 +48,7 @@ export default function Nav() {
           ))}
           <a
             className="btn btn--small btn--gradient"
-            href="mailto:jvalenton1990@gmail.com"
+            href="mailto:admin@pauuu.dev"
             onClick={() => setOpen(false)}
           >
             Hire me

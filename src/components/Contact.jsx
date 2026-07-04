@@ -17,8 +17,8 @@ export default function Contact() {
           My inbox is open.
         </p>
         <div className="contact__actions reveal">
-          <a className="btn btn--gradient btn--big" href="mailto:jvalenton1990@gmail.com">
-            ✉️ jvalenton1990@gmail.com
+          <a className="btn btn--gradient btn--big" href="mailto:admin@pauuu.dev">
+            ✉️ admin@pauuu.dev
           </a>
         </div>
         <p className="contact__note reveal">
