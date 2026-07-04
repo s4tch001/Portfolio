@@ -68,7 +68,7 @@ export default function Hero() {
               <code>
                 <span className="tk-kw">const</span> <span className="tk-var">pau</span> = {'{'}
                 {'\n'}  role: <span className="tk-str">'Full-Stack Web Developer'</span>,
-                {'\n'}  stack: [<span className="tk-str">'React'</span>, <span className="tk-str">'Vite'</span>, <span className="tk-str">'Supabase'</span>],
+                {'\n'}  stack: [<span className="tk-str">'JavaScript'</span>, <span className="tk-str">'React'</span>, <span className="tk-str">'Vite'</span>, <span className="tk-str">'Supabase'</span>],
                 {'\n'}  edge: [<span className="tk-str">'Workers'</span>, <span className="tk-str">'D1'</span>, <span className="tk-str">'R2'</span>],
                 {'\n'}  shipsTo: [<span className="tk-str">'Netlify'</span>, <span className="tk-str">'Cloudflare'</span>],
                 {'\n'}  afterHours: [<span className="tk-str">'🎸 music'</span>, <span className="tk-str">'🎮 games'</span>],
