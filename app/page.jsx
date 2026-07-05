@@ -11,23 +11,17 @@ import StyleSwitcher from './components/StyleSwitcher.jsx';
 export default function Page() {
   return (
     <>
-      {/* Fixed chrome stays OUTSIDE the scroller so it pins to the viewport */}
       <div className="bg-glow" aria-hidden="true" />
       <Nav />
-
-      {/* The single scroll container — see .app-scroll in globals.css */}
-      <div className="app-scroll" id="app-scroll">
-        <main>
-          <Hero />
-          <Marquee />
-          <About />
-          <Projects />
-          <Skills />
-          <Contact />
-        </main>
-        <Footer />
-      </div>
-
+      <main>
+        <Hero />
+        <Marquee />
+        <About />
+        <Projects />
+        <Skills />
+        <Contact />
+      </main>
+      <Footer />
       <StyleSwitcher />
     </>
   );

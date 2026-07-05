@@ -17,15 +17,10 @@ export default function Nav() {
   const { theme, toggle } = useTheme();
 
   useEffect(() => {
-    // Scrolling now happens inside #app-scroll (not the window), so track that.
-    // Fall back to window if the container isn't present for any reason.
-    const scroller = document.getElementById('app-scroll');
-    const target = scroller || window;
-    const readY = () => (scroller ? scroller.scrollTop : window.scrollY);
-    const onScroll = () => setScrolled(readY() > 24);
+    const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
-    target.addEventListener('scroll', onScroll, { passive: true });
-    return () => target.removeEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   return (
