@@ -27,27 +27,36 @@
   box-sizing: border-box;
 }
 
-/* IMPORTANT: no overflow-x on <html> or <body>. Any clipped overflow on the
-   root or body makes iOS Safari detach position: fixed elements (the nav)
-   from the visual viewport while the address bar collapses — that's the
-   "hole above the navbar" bug. Horizontal bleed from page content (e.g. the
-   tilted graffiti marquee) is clipped on <main> below instead; the nav lives
-   outside <main>, so it stays pinned. */
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: var(--nav-h);
+html,
+body {
+  height: 100%;
 }
 
+/* No scrolling on <html>/<body>: iOS Safari only collapses its address bar
+   when the document itself scrolls, and that collapse detaches the fixed nav
+   from the visual viewport, leaving a "hole" above it. Instead, ALL scrolling
+   happens inside .app-scroll — the body never scrolls, so the address bar
+   stays put and the fixed nav is always pinned. Applies to every browser. */
 body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow: hidden;
 }
 
-main {
-  overflow-x: clip;
+/* The one and only scroll container. Everything except the fixed chrome
+   (nav, bg-glow, style switcher) lives inside it. Horizontal bleed from page
+   content (e.g. the tilted graffiti marquee) is clipped here too. */
+.app-scroll {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-h);
 }
 
 img {
@@ -1833,7 +1842,8 @@ body > header > div > nav > a.btn.btn--small.btn--gradient,
 
 /* ───────────────────────── Reduced motion ───────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  html {
+  html,
+  .app-scroll {
     scroll-behavior: auto;
   }
 
