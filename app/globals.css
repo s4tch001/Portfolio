@@ -27,15 +27,10 @@
   box-sizing: border-box;
 }
 
-/* IMPORTANT: no overflow-x on <html> or <body>. Any clipped overflow on the
-   root or body makes iOS Safari detach position: fixed elements (the nav)
-   from the visual viewport while the address bar collapses — that's the
-   "hole above the navbar" bug. Horizontal bleed from page content (e.g. the
-   tilted graffiti marquee) is clipped on <main> below instead; the nav lives
-   outside <main>, so it stays pinned. */
 html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--nav-h);
+  overflow-x: clip;
 }
 
 body {
@@ -44,10 +39,7 @@ body {
   font-family: var(--font-body);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-}
-
-main {
-  overflow-x: clip;
+  overflow-x: hidden;
 }
 
 img {
