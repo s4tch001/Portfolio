@@ -6,8 +6,8 @@ import useTypewriter from '../hooks/useTypewriter.js';
 const ROLES = ['Web Developer', 'Musician', 'Gamer'];
 
 const STATS = [
-  { value: '4+', label: 'Apps shipped to production' },
-  { value: '3', label: 'Cloud platforms deployed on' },
+  { value: '5+', label: 'Apps shipped to production' },
+  { value: '4', label: 'Cloud platforms deployed on' },
   { value: '100%', label: 'Built end to end, solo' },
 ];
 

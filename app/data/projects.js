@@ -24,6 +24,10 @@ const ssAdminAnnual = img('ss-admin-annual');
 const ssTeacherSchedule = img('ss-teacher-schedule');
 const ssTeacherReport = img('ss-teacher-report');
 const ssTeacherTracker = img('ss-teacher-tracker');
+const ptravelsHero = img('ptravels-hero');
+const ptravelsAbout = img('ptravels-about');
+const ptravelsServices = img('ptravels-services');
+const ptravelsTours = img('ptravels-tours');
 
 // Screenshots use fictional demo data. Add a `live` URL to any project to
 // render a "Visit site" button.
@@ -125,6 +129,29 @@ const projects = [
       { src: payrollFilled, alt: 'Computed pay split with per-person cards and formula trace', caption: 'Pay split + formula trace' },
     ],
     accent: 'green',
+  },
+  {
+    id: 'p-travel-tours',
+    num: '05',
+    name: 'P Travel Tours Landing Page',
+    tagline: 'Responsive travel-agency landing page for Philippine tours',
+    url: 'p-travel-tours.app',
+    description:
+      'A polished marketing landing page for a fictional Philippine travel agency. Visitors land on a full-bleed hero, learn about the company, browse the services on offer, and scroll a grid of featured tour packages across the islands — from Boracay and Palawan to Batanes and Vigan.',
+    features: [
+      'Component-driven React build with distinct hero, about, services, and featured-tours sections',
+      'Data-driven tour cards (destination, date, duration, price) rendered from a single data source',
+      'Smooth in-page navigation, Font Awesome iconography, and a fully responsive layout',
+    ],
+    stack: ['React 19', 'Create React App', 'JavaScript', 'CSS3', 'Font Awesome'],
+    deploy: ['Netlify'],
+    images: [
+      { src: ptravelsHero, alt: 'P Travel Tours hero with an El Nido lagoon backdrop and Explore Tours call to action', caption: 'Full-bleed hero' },
+      { src: ptravelsAbout, alt: 'About Us section with a lagoon photo and Explore The Difference copy', caption: 'About the agency' },
+      { src: ptravelsServices, alt: 'Our Services section with affordable packages, island adventures, and comfortable stays', caption: 'Services offered' },
+      { src: ptravelsTours, alt: 'Featured Tours grid of eight Philippine destinations with dates and prices', caption: 'Featured tour packages' },
+    ],
+    accent: 'blue',
   },
 ];
 
