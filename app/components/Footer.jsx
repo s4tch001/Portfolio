@@ -27,7 +27,10 @@ export default function Footer() {
       <div className='footer__inner'>
         <div className='footer__left'>
           <p className='footer__brand'>
-            <span className='nav__logo-mark footer__mark'>P</span>
+            <span className='nav__logo-mark footer__mark'>
+              P
+              <img className='nav__logo-img' src='/android-chrome-512x512.png' alt='P-Devs logo' />
+            </span>
             <span>
               pauuu<span className='accent'>.dev</span>
             </span>

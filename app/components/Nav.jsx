@@ -27,7 +27,10 @@ export default function Nav() {
     <header className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
       <div className='nav__inner'>
         <a className='nav__logo' href='#home' onClick={() => setOpen(false)}>
-          <span className='nav__logo-mark'>P</span>
+          <span className='nav__logo-mark'>
+            P
+            <img className='nav__logo-img' src='/android-chrome-512x512.png' alt='P-Devs logo' />
+          </span>
           <span className='nav__logo-text'>
             pauuu<span className='accent'>.dev</span>
           </span>
