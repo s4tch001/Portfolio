@@ -42,18 +42,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Safari only (tagged by the inline script in layout.jsx): a root element
-   with clipped overflow makes Safari detach the fixed nav from the visual
-   viewport while the address bar collapses. Move the horizontal clip to
-   <body> there; every other browser keeps the rules above. */
-html[data-browser='safari'] {
-  overflow-x: visible;
-}
-
-html[data-browser='safari'] body {
-  overflow-x: clip;
-}
-
 img {
   max-width: 100%;
   display: block;
@@ -310,6 +298,22 @@ body > header > div > nav > a.btn.btn--small.btn--gradient,
     background 0.3s ease,
     border-color 0.3s ease;
   border-bottom: 1px solid transparent;
+}
+
+/* Solid extension above the navbar: covers the transparent strip Safari
+   reveals while its address bar collapses. It sits above top: 0, so in
+   every other situation it's hidden behind the browser chrome.
+   background: inherit follows whatever background the current page style
+   and scroll state give the nav. */
+.nav::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: 120px;
+  background: inherit;
+  pointer-events: none;
 }
 
 .nav--scrolled {
@@ -1291,7 +1295,7 @@ body > header > div > nav > a.btn.btn--small.btn--gradient,
   border: 1px solid var(--border);
   background: rgba(7, 7, 13, 0.72);
   color: #fff;
-  font-size: 1.4rem;
+  font-size: 1rem;
   line-height: 1;
   cursor: pointer;
   backdrop-filter: blur(8px);

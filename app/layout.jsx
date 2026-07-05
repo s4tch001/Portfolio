@@ -81,16 +81,6 @@ const themeScript = `(function () {
   } catch (e) {
     document.documentElement.dataset.theme = 'dark';
   }
-  // Tag real Safari (iOS + macOS) so CSS can scope the fixed-nav overflow fix
-  // to it. Chrome/Edge/Firefox/Opera all include extra tokens we exclude here.
-  try {
-    var ua = navigator.userAgent;
-    if (/Safari/.test(ua) && !/Chrome|Chromium|CriOS|FxiOS|EdgiOS|Edg|OPR|Android/.test(ua)) {
-      document.documentElement.dataset.browser = 'safari';
-    }
-  } catch (e) {
-    /* UA unavailable — keep default styles */
-  }
 })();`;
 
 // Structured data — helps search engines understand who this site is about.
@@ -132,6 +122,12 @@ export default function RootLayout({ children }) {
         <link
           href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&family=Permanent+Marker&family=Pixelify+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&family=VT323&display=swap"
           rel="stylesheet"
+        />
+        <link
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          rel="stylesheet"
+          crossOrigin="anonymous"
+          referrerPolicy="no-referrer"
         />
         <Script
           id="theme-init"
