@@ -309,11 +309,11 @@ body > header > div > nav > a.btn.btn--small.btn--gradient,
   border-bottom: 1px solid transparent;
 }
 
-/* Solid extension above the navbar: covers the transparent strip Safari
-   reveals while its address bar collapses. It sits above top: 0, so in
-   every other situation it's hidden behind the browser chrome.
-   background: inherit follows whatever background the current page style
-   and scroll state give the nav. */
+/* Solid extension above the navbar: covers the strip Safari reveals behind
+   its translucent chrome (status bar + collapsed address pill). It sits
+   above top: 0, so it's only ever seen through the browser chrome or during
+   rubber-band overscroll. Opaque var(--bg) (theme/style aware) — inherit
+   would carry the nav's alpha and let content shimmer through the corners. */
 .nav::before {
   content: '';
   position: absolute;
@@ -321,7 +321,7 @@ body > header > div > nav > a.btn.btn--small.btn--gradient,
   right: 0;
   bottom: 100%;
   height: 120px;
-  background: inherit;
+  background: var(--bg);
   pointer-events: none;
 }
 
