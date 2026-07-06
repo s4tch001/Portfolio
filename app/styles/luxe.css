@@ -279,6 +279,10 @@
   background: var(--luxe-gold);
 }
 
+[data-style='luxe'] .hero__code {
+  color: #787878;
+}
+
 [data-style='luxe'] .hero__code .tk-kw {
   color: var(--luxe-gold);
 }
@@ -288,7 +292,7 @@
 }
 
 [data-style='luxe'] .hero__chip {
-  font-family: var(--font-body);
+  font-family: var(--green);
   font-size: 0.62rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
