@@ -1732,6 +1732,26 @@ html:not([data-style]) .nav__logo-img {
     order: 1;
   }
 
+  .project:nth-child(1) {
+    grid-template-columns: 1fr;
+  }
+
+  .project:nth-child(2) {
+    grid-template-columns: 1fr;
+  }
+
+  .project:nth-child(3) {
+    grid-template-columns: 1fr;
+  }
+
+  .project:nth-child(4) {
+    grid-template-columns: 1fr;
+  }
+
+  .project:nth-child(5) {
+    grid-template-columns: 1fr;
+  }
+
   .about__grid,
   .skills__grid {
     grid-template-columns: 1fr 1fr;
