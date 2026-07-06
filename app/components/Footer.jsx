@@ -29,7 +29,11 @@ export default function Footer() {
           <p className='footer__brand'>
             <span className='nav__logo-mark footer__mark'>
               P
-              <img className='nav__logo-img' src='/android-chrome-512x512.png' alt='P-Devs logo' />
+              <img
+                className='nav__logo-img'
+                src='/android-chrome-512x512.png'
+                alt='P-Devs logo'
+              />
             </span>
             <span>
               pauuu<span className='accent'>.dev</span>
@@ -58,8 +62,9 @@ export default function Footer() {
         </ul>
 
         <p className='footer__copy'>
-          © {new Date().getFullYear()} P-Devs <br />
-          Built with React + Next.js
+          <i className='fa-regular fa-copyright'></i> {new Date().getFullYear()}{' '}
+          P-Devs <br />
+          Built with Next.js
         </p>
       </div>
     </footer>
