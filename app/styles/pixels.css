@@ -62,7 +62,11 @@
       rgba(0, 0, 0, 0.14) 0 1px,
       transparent 1px 3px
     ),
-    radial-gradient(60rem 40rem at 50% -10%, rgba(41, 173, 255, 0.08), transparent 60%);
+    radial-gradient(
+      60rem 40rem at 50% -10%,
+      rgba(41, 173, 255, 0.08),
+      transparent 60%
+    );
 }
 
 [data-style='pixels'][data-theme='light'] .bg-glow {
@@ -72,7 +76,11 @@
       rgba(29, 43, 83, 0.05) 0 1px,
       transparent 1px 3px
     ),
-    radial-gradient(60rem 40rem at 50% -10%, rgba(21, 82, 181, 0.06), transparent 60%);
+    radial-gradient(
+      60rem 40rem at 50% -10%,
+      rgba(21, 82, 181, 0.06),
+      transparent 60%
+    );
 }
 
 [data-style='pixels'] ::selection {
@@ -94,7 +102,9 @@
   background: none;
   color: var(--amber);
   animation: none;
-  text-shadow: 5px 5px 0 var(--violet), 10px 10px 0 var(--px-shadow);
+  text-shadow:
+    5px 5px 0 var(--violet),
+    10px 10px 0 var(--px-shadow);
 }
 
 [data-style='pixels'] .grad-text {
@@ -319,6 +329,18 @@
 [data-style='pixels'] .hero__code {
   font-family: var(--font-mono);
   font-size: clamp(0.85rem, 1.8vw, 1rem);
+}
+
+[data-style='pixels'][data-theme='light'] .hero__code {
+  color: #008755;
+}
+
+[data-style='pixels'][data-theme='light'] .tk-str {
+  color: var(--violet);
+}
+
+[data-style='pixels'][data-theme='light'] .hero__chip {
+  color: var(--violet);
 }
 
 [data-style='pixels'] .hero__chip {

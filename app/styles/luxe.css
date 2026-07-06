@@ -279,7 +279,11 @@
   background: var(--luxe-gold);
 }
 
-[data-style='luxe'] .hero__code {
+[data-style='luxe'][data-theme='light'] .hero__code {
+  color: #787878;
+}
+
+[data-style='luxe'][data-theme='light'] .hero__chip {
   color: #787878;
 }
 

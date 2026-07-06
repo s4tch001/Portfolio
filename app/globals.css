@@ -302,7 +302,9 @@ body > header > div > nav > a.btn.btn--small.btn--gradient,
   /* Sticky puts the nav in flow — pull following content back up by the
      nav's outer height (inner + safe-area padding + 1px border) so the
      layout matches the old fixed positioning. */
-  margin-bottom: calc(-1 * (var(--nav-h) + env(safe-area-inset-top, 0px) + 1px));
+  margin-bottom: calc(
+    -1 * (var(--nav-h) + env(safe-area-inset-top, 0px) + 1px)
+  );
   transition:
     background 0.3s ease,
     border-color 0.3s ease;
@@ -2033,24 +2035,50 @@ html:not([data-style]) .nav__logo-img {
 }
 
 .style-switch__swatch--graffiti {
-  background: conic-gradient(from 210deg, #b14aff, #ffd60a, #00e5ff, #a3e635, #b14aff);
+  background: conic-gradient(
+    from 210deg,
+    #b14aff,
+    #ffd60a,
+    #00e5ff,
+    #a3e635,
+    #b14aff
+  );
 }
 
 .style-switch__swatch--oldschool {
-  background: conic-gradient(#008080 0 25%, #c0c0c0 25% 50%, #000080 50% 75%, #ffff00 75%);
+  background: conic-gradient(
+    #008080 0 25%,
+    #c0c0c0 25% 50%,
+    #000080 50% 75%,
+    #ffff00 75%
+  );
 }
 
 .style-switch__swatch--pixels {
-  background: conic-gradient(#29adff 0 25%, #00e756 25% 50%, #ff77a8 50% 75%, #ffec27 75%);
+  background: conic-gradient(
+    #29adff 0 25%,
+    #00e756 25% 50%,
+    #ff77a8 50% 75%,
+    #ffec27 75%
+  );
 }
 
 .style-switch__swatch--luxe {
-  background: linear-gradient(135deg, #0d0c0a 45%, #c6a15b 45% 55%, #0d0c0a 55%);
+  background: linear-gradient(
+    135deg,
+    #0d0c0a 45%,
+    #c6a15b 45% 55%,
+    #0d0c0a 55%
+  );
 }
 
 .style-switch__swatch--hacker {
   background:
-    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0 2px, transparent 2px 4px),
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.5) 0 2px,
+      transparent 2px 4px
+    ),
     linear-gradient(180deg, #00e766, #050805 85%);
 }
 
