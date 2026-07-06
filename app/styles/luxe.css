@@ -483,6 +483,10 @@
   box-shadow: 0 16px 40px -18px rgba(0, 0, 0, 0.6);
 }
 
+[data-style='luxe'][data-theme='light'] .style-switch__fab {
+  color: var(--luxe-gold);
+}
+
 [data-style='luxe'] .style-switch__fab:hover {
   border-color: var(--luxe-gold);
   transform: translateY(-3px);

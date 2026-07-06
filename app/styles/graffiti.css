@@ -132,7 +132,7 @@
     0 0 34px rgba(255, 214, 10, 0.35);
   transform: rotate(-2deg);
   margin-bottom: 2.5rem;
-  margin-top: 1.5rem;
+  margin-top: 1.9rem;
   font-size: 4rem;
 }
 
@@ -639,14 +639,18 @@
   background: #b14aff;
   border: 2px solid #000;
   border-radius: 5px;
-  box-shadow: 3px 3px 0 #ffd60a;
+  /* box-shadow: 3px 3px 0 #ffd60a; */
   transform: rotate(-4deg);
+}
+
+[data-style='graffiti'][data-theme='light'] .style-switch__fab {
+  background: #ffd60a;
 }
 
 [data-style='graffiti'] .style-switch__fab:hover {
   transform: rotate(0deg) translateY(-3px);
   border-color: #000;
-  box-shadow: 4px 4px 0 #ffd60a;
+  /* box-shadow: 4px 4px 0 #ffd60a; */
 }
 
 [data-style='graffiti'] .style-switch__menu {

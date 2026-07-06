@@ -548,6 +548,7 @@
 
 [data-style='pixels'][data-theme='light'] .style-switch__fab {
   background: #f8f9fc;
+  color: var(--violet);
 }
 
 [data-style='pixels'] .style-switch__fab:hover {

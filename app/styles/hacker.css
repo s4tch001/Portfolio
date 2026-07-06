@@ -61,7 +61,11 @@
       rgba(0, 0, 0, 0.22) 0 1px,
       transparent 1px 3px
     ),
-    radial-gradient(70rem 50rem at 50% 0%, rgba(0, 231, 102, 0.06), transparent 60%);
+    radial-gradient(
+      70rem 50rem at 50% 0%,
+      rgba(0, 231, 102, 0.06),
+      transparent 60%
+    );
 }
 
 [data-style='hacker'][data-theme='light'] .bg-glow {
@@ -71,7 +75,11 @@
       rgba(9, 84, 45, 0.045) 0 1px,
       transparent 1px 3px
     ),
-    radial-gradient(70rem 50rem at 50% 0%, rgba(9, 84, 45, 0.04), transparent 60%);
+    radial-gradient(
+      70rem 50rem at 50% 0%,
+      rgba(9, 84, 45, 0.04),
+      transparent 60%
+    );
 }
 
 [data-style='hacker'] ::selection {
@@ -227,7 +235,9 @@
 [data-style='hacker'] .card:hover {
   transform: none;
   border-color: var(--text);
-  box-shadow: inset 0 0 24px rgba(0, 231, 102, 0.06), var(--hx-glow);
+  box-shadow:
+    inset 0 0 24px rgba(0, 231, 102, 0.06),
+    var(--hx-glow);
 }
 
 [data-style='hacker'][data-theme='light'] .card:hover {
@@ -411,13 +421,17 @@
   background: var(--bg-alt);
   border: 1px solid var(--border);
   border-radius: 0;
-  box-shadow: 0 0 0 1px rgba(0, 231, 102, 0.08), 0 24px 60px -30px rgba(0, 0, 0, 0.8);
+  box-shadow:
+    0 0 0 1px rgba(0, 231, 102, 0.08),
+    0 24px 60px -30px rgba(0, 0, 0, 0.8);
 }
 
 [data-style='hacker'] .project__media:hover .browser {
   transform: translateY(-4px);
   border-color: var(--text);
-  box-shadow: var(--hx-glow), 0 30px 70px -30px rgba(0, 0, 0, 0.85);
+  box-shadow:
+    var(--hx-glow),
+    0 30px 70px -30px rgba(0, 0, 0, 0.85);
 }
 
 [data-style='hacker'] .browser__bar {
@@ -599,6 +613,10 @@
   border: 1px solid var(--border);
   border-radius: 0;
   box-shadow: none;
+}
+
+[data-style='hacker'][data-theme='light'] .style-switch__fab {
+  color: var(--muted);
 }
 
 [data-style='hacker'] .style-switch__fab:hover {

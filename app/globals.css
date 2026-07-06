@@ -1896,6 +1896,7 @@ html:not([data-style]) .nav__logo-img {
   border-radius: 50%;
   font-size: 1.3rem;
   cursor: pointer;
+  color: rgb(91, 12, 202);
   background: var(--bg);
   border: 1px solid var(--border);
   box-shadow: 0 12px 30px -12px rgba(0, 0, 0, 0.6);
@@ -1909,12 +1910,22 @@ html:not([data-style]) .nav__logo-img {
     fab-blink 2.2s ease-in-out infinite;
 }
 
+[data-theme='dark'] .style-switch__fab {
+  color: var(--text);
+}
+
 /* Pause the attention animation on hover so the hover transform wins. */
 .style-switch__fab:hover {
   animation: none;
   transform: translateY(-3px) rotate(-12deg);
   border-color: var(--violet);
   box-shadow: 0 16px 36px -12px rgba(139, 92, 246, 0.5);
+}
+
+/* Optical centering: the FA palette glyph's ink sits slightly up-left of its em box. */
+.style-switch__fab i {
+  line-height: 1;
+  transform: translate(0.5px, 0.75px);
 }
 
 @keyframes fab-bob {

@@ -101,7 +101,15 @@
 }
 
 [data-style='oldschool'] .grad-text {
-  background: linear-gradient(90deg, #ff0000, #ff9900, #ffff00, #00cc00, #0066ff, #9900cc);
+  background: linear-gradient(
+    90deg,
+    #ff0000,
+    #ff9900,
+    #ffff00,
+    #00cc00,
+    #0066ff,
+    #9900cc
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -652,4 +660,8 @@
 
 [data-style='oldschool'] .style-switch__option:hover .style-switch__check {
   color: #fff;
+}
+
+[data-style='oldschool'][data-theme='light'] .style-switch__fab {
+  color: #383838;
 }
