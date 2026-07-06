@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import useTheme from '../hooks/useTheme.js';
 import ThemeToggle from './ThemeToggle.jsx';
+import EmailLink from './EmailLink.jsx';
 
 const LINKS = [
   { href: '#about', label: 'About' },
@@ -42,13 +43,13 @@ export default function Nav() {
               {link.label}
             </a>
           ))}
-          <a
+          <EmailLink
             className='btn btn--small btn--gradient'
-            href='mailto:admin@pauuu.dev'
+            email='admin@pauuu.dev'
             onClick={() => setOpen(false)}
           >
             Hire me
-          </a>
+          </EmailLink>
         </nav>
 
         <div className='nav__actions'>

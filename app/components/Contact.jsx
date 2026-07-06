@@ -1,6 +1,7 @@
 'use client';
 
 import useReveal from '../hooks/useReveal.js';
+import EmailLink from './EmailLink.jsx';
 
 export default function Contact() {
   const ref = useReveal();
@@ -19,9 +20,9 @@ export default function Contact() {
           happen — my inbox is always open.
         </p>
         <div className="contact__actions reveal">
-          <a className="btn btn--gradient btn--big" href="mailto:admin@pauuu.dev">
+          <EmailLink className="btn btn--gradient btn--big" email="admin@pauuu.dev">
             ✉️ admin@pauuu.dev
-          </a>
+          </EmailLink>
         </div>
         <p className="contact__note reveal">
           I usually reply within a day — faster if you mention a good riff or a ranked queue.
