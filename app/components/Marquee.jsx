@@ -12,7 +12,6 @@ const ITEMS = [
   'Django',
   'Flask',
   'Lua',
-  'FiveM',
   'Supabase',
   'PostgreSQL',
   'Cloudflare Workers',

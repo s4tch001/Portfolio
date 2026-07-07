@@ -1,7 +1,14 @@
+# Deployed via Netlify's Next.js runtime (no static export): pages are still
+# pre-rendered at build time, and /api/contact runs as a Netlify Function.
 [build]
   command = "npm run build"
-  publish = "out"
+  publish = ".next"
 
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Headers for CDN-served static assets; function-served responses get the
+# same headers from next.config.mjs.
 [[headers]]
   for = "/*"
   [headers.values]
@@ -9,4 +16,4 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self'; frame-src https://challenges.cloudflare.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'"

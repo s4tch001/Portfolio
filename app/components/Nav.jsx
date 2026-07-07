@@ -1,15 +1,18 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import useTheme from '../hooks/useTheme.js';
 import ThemeToggle from './ThemeToggle.jsx';
-import EmailLink from './EmailLink.jsx';
 
+// Root-anchored hrefs so the links work from any page (e.g. /contact):
+// on the home page they smooth-scroll, elsewhere they navigate home first.
 const LINKS = [
-  { href: '#about', label: 'About' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#contact', label: 'Contact' },
+  { href: '/#about', label: 'About' },
+  { href: '/#services', label: 'Services' },
+  { href: '/#portfolio', label: 'Portfolio' },
+  { href: '/#skills', label: 'Skills' },
+  { href: '/#contact', label: 'Contact' },
 ];
 
 export default function Nav() {
@@ -27,7 +30,7 @@ export default function Nav() {
   return (
     <header className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
       <div className='nav__inner'>
-        <a className='nav__logo' href='#home' onClick={() => setOpen(false)}>
+        <a className='nav__logo' href='/#home' onClick={() => setOpen(false)}>
           <span className='nav__logo-mark'>
             P
             <img className='nav__logo-img' src='/android-chrome-512x512.png' alt='P-Devs logo' />
@@ -43,13 +46,13 @@ export default function Nav() {
               {link.label}
             </a>
           ))}
-          <EmailLink
+          <Link
             className='btn btn--small btn--gradient'
-            email='admin@pauuu.dev'
+            href='/contact'
             onClick={() => setOpen(false)}
           >
             Hire me
-          </EmailLink>
+          </Link>
         </nav>
 
         <div className='nav__actions'>

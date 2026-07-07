@@ -2,6 +2,7 @@ import Nav from './components/Nav.jsx';
 import Hero from './components/Hero.jsx';
 import Marquee from './components/Marquee.jsx';
 import About from './components/About.jsx';
+import Services from './components/Services.jsx';
 import Projects from './components/Projects.jsx';
 import Skills from './components/Skills.jsx';
 import Contact from './components/Contact.jsx';
@@ -17,6 +18,7 @@ export default function Page() {
         <Hero />
         <Marquee />
         <About />
+        <Services />
         <Projects />
         <Skills />
         <Contact />

@@ -50,7 +50,7 @@ export default function Hero() {
             clock, I&apos;m into music and gaming.
           </p>
           <div className='hero__cta'>
-            <a className='btn btn--gradient' href='#projects'>
+            <a className='btn btn--gradient' href='#portfolio'>
               View my work <span aria-hidden='true'>→</span>
             </a>
             <a className='btn btn--ghost' href='#contact'>

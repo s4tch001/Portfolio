@@ -232,7 +232,7 @@ body,
 
 body > header > div > nav > a.btn.btn--small.btn--gradient,
 #home > div > div.hero__copy > div > a.btn.btn--gradient,
-#contact > div > div > a {
+#contact .contact-form__submit {
   border: none;
 }
 
@@ -1009,6 +1009,39 @@ html:not([data-style]) .nav__logo-img {
   font-size: 0.95rem;
 }
 
+/* ───────────────────────── Services ───────────────────────── */
+.services__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.4rem;
+  margin-top: 3.2rem;
+}
+
+.services__card {
+  padding: 1.9rem 1.7rem;
+}
+
+.services__icon {
+  font-size: 2rem;
+  display: inline-block;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.services__card:hover .services__icon {
+  transform: translateY(-5px) scale(1.1) rotate(-5deg);
+}
+
+.services__card h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  margin: 0.9rem 0 0.5rem;
+}
+
+.services__card p {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
 /* ───────────────────────── Projects ───────────────────────── */
 .projects {
   display: flex;
@@ -1342,8 +1375,12 @@ html:not([data-style]) .nav__logo-img {
 
 .gallery__arrow {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  /* top/bottom + margin auto centers vertically without a transform, so the
+     `transform: none` reset in the (hover: none) media query can't knock the
+     arrows off-center on touch devices. */
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
   width: 38px;
   height: 38px;
   border-radius: 50%;
@@ -1607,6 +1644,165 @@ html:not([data-style]) .nav__logo-img {
   font-family: var(--font-mono);
   font-size: 0.82rem;
   color: var(--muted);
+}
+
+/* Standalone pages (e.g. /contact): clear the fixed nav. */
+.page-offset {
+  padding-top: var(--nav-h);
+}
+
+/* ───────────────────────── Contact form ───────────────────────── */
+.contact-form {
+  max-width: 720px;
+  margin: 3rem auto 0;
+  text-align: left;
+  display: grid;
+  gap: 1.15rem;
+}
+
+.contact-form__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.15rem;
+}
+
+@media (max-width: 640px) {
+  .contact-form__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-form__field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.contact-form__label {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.contact-form__req {
+  color: var(--pink);
+}
+
+.contact-form__opt {
+  text-transform: none;
+  letter-spacing: normal;
+  opacity: 0.7;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: var(--muted);
+  opacity: 0.65;
+}
+
+.contact-form input:focus-visible,
+.contact-form textarea:focus-visible {
+  outline: none;
+  border-color: var(--violet);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+}
+
+.contact-form input[aria-invalid='true'],
+.contact-form textarea[aria-invalid='true'] {
+  border-color: var(--pink);
+}
+
+.contact-form input:disabled,
+.contact-form textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.contact-form textarea {
+  min-height: 160px;
+  resize: vertical;
+  margin-bottom: 0.9rem;
+}
+
+.contact-form__error {
+  font-size: 0.8rem;
+  color: var(--pink);
+}
+
+/* Honeypot: parked far off-screen, invisible to real visitors. */
+.contact-form__trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.contact-form__turnstile {
+  min-height: 65px;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-form__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  margin-top: 0.4rem;
+  text-align: center;
+}
+
+.contact-form__submit:disabled {
+  opacity: 0.65;
+  cursor: progress;
+  transform: none;
+}
+
+.contact-form__spinner {
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  animation: contact-spin 0.7s linear infinite;
+}
+
+@keyframes contact-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.contact-form__status {
+  font-size: 0.92rem;
+  min-height: 1.4em;
+  margin: 0;
+}
+
+.contact-form__status--success {
+  color: var(--green);
+}
+
+.contact-form__status--error {
+  color: var(--pink);
 }
 
 /* ───────────────────────── Footer ───────────────────────── */

@@ -159,9 +159,9 @@ export default function Projects() {
   const [viewer, setViewer] = useState(null); // { project, index }
 
   return (
-    <section id="projects" className="section section--alt" ref={ref}>
+    <section id="portfolio" className="section section--alt" ref={ref}>
       <div className="section__inner">
-        <p className="section__eyebrow reveal">02 · Projects</p>
+        <p className="section__eyebrow reveal">03 · Portfolio</p>
         <h2 className="section__title reveal">
           Things I&apos;ve <span className="grad-text">shipped.</span>
         </h2>

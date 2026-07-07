@@ -45,12 +45,15 @@ const GROUPS = [
       'Vercel',
       'Cloudflare',
       'Shopify',
-      'FiveM Development',
       'Git & GitHub',
       'Google Cloud Console',
       'Google Sites / Sheets / Forms',
       'Wrangler CLI',
-      'Android WebView apps',
+      'Electron',
+      'Kotlin',
+      'Capacitor',
+      'Windows Web Apps',
+      'Android Web Apps',
     ],
   },
   {
@@ -60,6 +63,7 @@ const GROUPS = [
       'UI/UX Design',
       'Video Editing',
       'Photo Editing',
+      'Audio Editing',
       'SEO',
       'Cybersecurity',
       'Penetration Testing',
@@ -73,7 +77,7 @@ export default function Skills() {
   return (
     <section id="skills" className="section" ref={ref}>
       <div className="section__inner">
-        <p className="section__eyebrow reveal">03 · Skills</p>
+        <p className="section__eyebrow reveal">04 · Skills</p>
         <h2 className="section__title reveal">
           My <span className="grad-text">toolbox.</span>
         </h2>

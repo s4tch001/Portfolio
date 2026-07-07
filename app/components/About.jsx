@@ -21,7 +21,7 @@ const FACETS = [
   {
     icon: '🎸',
     title: 'Beyond the Code',
-    body: 'A musician and gamer at heart — the same rhythm, focus, and problem-solving I bring to every project I ship.',
+    body: 'A musician and gamer at heart — off the clock I write and produce my own music. The same rhythm, focus, and problem-solving goes into every project I ship.',
   },
 ];
 

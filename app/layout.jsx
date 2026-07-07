@@ -186,7 +186,6 @@ const jsonLd = {
   alternateName: 'P-Devs',
   jobTitle: 'Full-Stack Web Developer',
   url: 'https://pauuu.dev/',
-  email: 'mailto:admin@pauuu.dev',
   nationality: 'Filipino',
   image: 'https://pauuu.dev/android-chrome-512x512.png',
   knowsAbout: [
