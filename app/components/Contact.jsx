@@ -18,8 +18,7 @@ export default function Contact({ eyebrow = '05 · Contact' }) {
           <span className='grad-text'>worth shipping.</span>
         </h2>
         <p className='section__lead contact__lead reveal'>
-          Have a project, a role, or an idea worth building? Tell me about it
-          below — it lands straight in my inbox.
+          Have a project or idea? Let's talk.
         </p>
         <ContactForm />
       </div>

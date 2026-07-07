@@ -1736,9 +1736,13 @@ html:not([data-style]) .nav__logo-img {
 }
 
 .contact-form textarea {
-  min-height: 160px;
+  min-height: 100px;
+  height: 120px;
   resize: vertical;
-  margin-bottom: 0.9rem;
+}
+
+.contact-form input {
+  height: 2.9rem;
 }
 
 .contact-form__error {
