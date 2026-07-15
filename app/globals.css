@@ -1017,6 +1017,36 @@ html:not([data-style]) .nav__logo-img {
   margin-top: 3.2rem;
 }
 
+/* With 9 cards the last row is left holding a single orphan, which otherwise
+   sits hard against the left edge. Let it span the whole row, then centre it
+   at exactly one column's width so it stays card-sized.
+   Only the 4-up and 2-up layouts strand a card: at 3-up the 9 divide evenly,
+   and at 1-up the card already fills the row. The breakpoints fall out of the
+   auto-fit maths above — n columns need n*230px + (n-1)*1.4rem inside the
+   1200px .section__inner, plus 1.5rem of .section padding either side.
+   :nth-child(9) scopes this to the current card count: add or remove one and
+   the rule switches itself off rather than centring the wrong card.
+   The bounds sit a few px inside the true column-flip points (which are
+   ~1035/783/530) on purpose: the gap is in rem, so a visitor with a larger
+   default font size shifts the flip. Erring inward means such a visitor just
+   sees the orphan uncentred for a few px of width, rather than the rule
+   firing against a 3-up row and shunting the card onto a row of its own. */
+@media (min-width: 1040px) {
+  .services__grid > .services__card:last-child:nth-child(9) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc((100% - 3 * 1.4rem) / 4);
+  }
+}
+
+@media (min-width: 535px) and (max-width: 780px) {
+  .services__grid > .services__card:last-child:nth-child(9) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc((100% - 1.4rem) / 2);
+  }
+}
+
 .services__card {
   padding: 1.9rem 1.7rem;
 }
