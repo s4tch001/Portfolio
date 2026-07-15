@@ -45,7 +45,7 @@ export async function POST(request) {
       );
     }
 
-    if (isRateLimited(ip)) {
+    if (await isRateLimited(ip)) {
       return json(
         {
           message:
@@ -73,7 +73,7 @@ export async function POST(request) {
       submittedAt: new Date().toISOString(),
     });
 
-    recordSubmission(ip);
+    await recordSubmission(ip);
     return json({ ok: true, message: 'Message sent.' });
   } catch (err) {
     // Full detail stays in the function logs; the client gets a generic note.

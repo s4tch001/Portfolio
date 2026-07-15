@@ -30,7 +30,11 @@ export default function Nav() {
   return (
     <header className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
       <div className='nav__inner'>
-        <a className='nav__logo' href='/#home' onClick={() => setOpen(false)}>
+        <a
+          className='nav__logo'
+          href='https://pauuu.dev'
+          onClick={() => setOpen(false)}
+        >
           <span className='nav__logo-mark'>
             P
             <img className='nav__logo-img' src='/android-chrome-512x512.png' alt='P-Devs logo' />

@@ -6,22 +6,22 @@ const FACETS = [
   {
     icon: '💻',
     title: 'Full-Stack Development',
-    body: 'From database to deployment — React, Next.js, and vanilla JavaScript on the front, Node and serverless APIs on the back. I own the whole pipeline.',
+    body: 'One person across every layer, so nothing gets lost in the handoff between them — and when something breaks, I already know where to look.',
   },
   {
     icon: '🎨',
     title: 'Design & Media',
-    body: 'UI/UX design with a real eye for detail, plus years of video and photo editing — so products don’t just work, they look and feel right.',
+    body: 'Years of UI/UX work alongside video, photo, and audio editing. I care about the detail most devs skip: how a thing feels to use, not just whether it runs.',
   },
   {
     icon: '🛡️',
     title: 'SEO & Security',
-    body: 'Search-optimized builds that actually rank, hardened with a cybersecurity and penetration-testing mindset baked into how I build.',
+    body: 'I build to be found and to hold up — search structure planned from day one, and a pen-tester’s habit of asking how each feature could be abused.',
   },
   {
     icon: '🎸',
     title: 'Beyond the Code',
-    body: 'A musician and gamer at heart — off the clock I write and produce my own music. The same rhythm, focus, and problem-solving goes into every project I ship.',
+    body: 'I write and produce my own music. Same instincts either way: find the pattern, get the timing right, keep reworking it until it lands.',
   },
 ];
 
@@ -37,9 +37,9 @@ export default function About() {
         </h2>
         <p className="section__lead reveal">
           I&apos;m Pau — a full-stack web developer from the Philippines, working under
-          the name <strong>P-Devs</strong>. I take products from an empty folder to a
-          live deployment: design, build, ship, and maintain. Everything below is
-          running in production with real users.
+          the name <strong>P-Devs</strong>. No team behind me and no agency in
+          between: everything below was built solo, is live in production, and has
+          real people using it today.
         </p>
 
         <div className="about__grid">

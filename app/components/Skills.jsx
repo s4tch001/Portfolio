@@ -82,8 +82,8 @@ export default function Skills() {
           My <span className="grad-text">toolbox.</span>
         </h2>
         <p className="section__lead reveal">
-          The full stack behind everything above — frontend to database, design to
-          deployment, plus the security mindset to keep it safe.
+          Everything I actually reach for, grouped by where it lives in a build.
+          No padding — if it&apos;s listed here, I&apos;ve shipped with it.
         </p>
 
         <div className="skills__grid">

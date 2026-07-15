@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@netlify/blobs": "^10.7.9",
     "next": "^16.2.10",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
@@ -15,6 +16,10 @@
   "overrides": {
     "next": {
       "postcss": "8.5.16"
-    }
+    },
+    "@opentelemetry/core": "^2.9.0",
+    "@opentelemetry/resources": "^2.9.0",
+    "@opentelemetry/sdk-trace-base": "^2.9.0",
+    "@opentelemetry/sdk-trace-node": "^2.9.0"
   }
 }
