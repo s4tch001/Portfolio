@@ -8,4 +8,7 @@ dist
 .vscode/
 .idea/
 
-# Environment files are intentionally tracked in this private backup repo.
+# Local environment variables may contain production credentials.
+.env
+.env.*
+!.env.example
