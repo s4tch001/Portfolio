@@ -1,8 +1,11 @@
 node_modules
-dist
 .next
 out
-.env
+dist
 .DS_Store
-*.local
-.claude
+.netlify/
+.claude/settings.local.json
+.vscode/
+.idea/
+
+# Environment files are intentionally tracked in this private backup repo.

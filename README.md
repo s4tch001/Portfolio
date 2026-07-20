@@ -1,54 +1,70 @@
-# Pau — Portfolio
+# Pau - Portfolio
 
-Personal portfolio of **Pau** — web developer, musician, and gamer. Showcases four
-production apps deployed across Netlify, Cloudflare, and Supabase.
+Personal portfolio of Pau: web developer, musician, and gamer. Built with Next.js
+16 App Router and React 19, then deployed through the Netlify Next.js runtime.
 
-Built with **Next.js 16 (App Router, static export) + React 19**, deployed on
-**Netlify**. Fully pre-rendered HTML with SEO metadata, Open Graph tags, and
-JSON-LD structured data.
+> **Private backup repository:** `.env.local` is intentionally included for
+> disaster recovery. Never make this repository public.
 
 ## Features
 
-- **Static export** (`output: 'export'`) — every section ships in the initial
-  HTML, great for SEO.
-- **Style switcher** — a floating 🎨 button lets visitors pick a page style:
-  Default, Graffiti, Old School ('90s), Pixels (8-bit), Luxe (minimalist
-  luxury), or Hacker (code & terminal). The choice persists in `localStorage`.
-- **Dark / light theme** — every style has both modes; applied before first
-  paint (no flash).
-- **Project galleries** — auto-advancing slideshows in a browser frame with
-  load-gated slide + blur transitions, motion-blur trails, and a fullscreen
-  lightbox.
+- Pre-rendered pages with SEO metadata, Open Graph, and JSON-LD
+- Six visual styles with a persistent style switcher
+- Dark and light themes without a first-paint flash
+- Project slideshows and fullscreen image lightbox
+- Contact API backed by Brevo and protected by Cloudflare Turnstile
 
-## Local development
+## Requirements
 
-```bash
+- Git
+- Node.js 20 or newer
+
+## Restore and install
+
+```powershell
+git clone https://github.com/s4tch001/Portfolio.git
+cd Portfolio
 npm install
+```
+
+The contact form uses these values from the backed-up `.env.local`:
+
+```text
+BREVO_API_KEY
+NEXT_PUBLIC_TURNSTILE_SITE_KEY
+TURNSTILE_SECRET_KEY
+```
+
+## Run locally
+
+```powershell
 npm run dev
 ```
 
-Open http://localhost:3000.
+Open `http://localhost:3000`.
 
-## Production build
+## Build and run production locally
 
-```bash
-npm run build    # static export → out/
-npx serve out    # serve the build locally
+```powershell
+npm run build
+npm start
 ```
 
-## Deploying to Netlify
+## Deploy to Netlify
 
-`netlify.toml` is already configured (build command + `out` publish dir).
-Connect this repo to Netlify and every push to `main` deploys automatically.
+`netlify.toml` configures `npm run build`, the `.next` publish output, and the
+Netlify Next.js plugin. Connect the repository to Netlify and copy the three
+environment variables above into the site's environment settings.
 
 ## Editing content
 
-- **Projects** — `app/data/projects.js`. Add a `live: 'https://…'` field to any
-  project to show a "Visit site" button.
-- **Screenshots** — `public/assets/projects/*.webp` (1600px-wide WebP).
-- **Skills / About / Contact copy** — the matching component in `app/components/`.
-- **Page styles** — add an entry to `STYLES` in
-  `app/components/StyleSwitcher.jsx`, create a `[data-style='<id>']` stylesheet
-  in `app/styles/`, import it in `app/layout.jsx`, and add a swatch class in
-  `app/globals.css`.
-- **SEO metadata** — `app/layout.jsx` (Metadata API + JSON-LD).
+- Projects: `app/data/projects.js`
+- Screenshots: `public/assets/projects/`
+- About, skills, and contact content: `app/components/`
+- Styles: `app/styles/`, `app/globals.css`, and `StyleSwitcher.jsx`
+- SEO metadata and JSON-LD: `app/layout.jsx`
+
+## Backup notes
+
+Commit application files, `package-lock.json`, public assets, and `.env.local`.
+`node_modules/`, `.next/`, `out/`, and `.netlify/` are generated and ignored.
