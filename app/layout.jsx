@@ -8,9 +8,12 @@ import Script from 'next/script';
 
 export const metadata = {
   metadataBase: new URL('https://pauuu.dev'),
-  title: 'P-Devs · Pau — Full-Stack Web Developer & Software Engineer',
+  title: {
+    default: 'Filipino Web Developer in the Philippines | Pau',
+    template: '%s | P-Devs',
+  },
   description:
-    'P-Devs is Pau — a Philippine-based full-stack web developer and software engineer building fast, modern sites and apps. React, Next.js, TypeScript, Node, Supabase & Cloudflare, plus UI/UX, SEO, and security. Available for freelance and full-time work.',
+    'Hire Pau, a Filipino web developer in the Philippines building fast, secure Next.js websites and full-stack web apps for businesses and teams.',
   keywords: [
     'web developer',
     'web dev',
@@ -47,8 +50,6 @@ export const metadata = {
     'Filipino Web Developer',
     'Philippine Web Developer',
     'Philippines Web Developer',
-    'Manila Developer',
-    'Metro Manila Web Developer',
     'Web Developer Philippines',
     'Website Builder',
     'Website Creator',
@@ -106,7 +107,6 @@ export const metadata = {
     'Modern Web Solutions',
     'Professional Web Design',
     'Affordable Website Developer',
-    'Best Web Developer Philippines',
     'Local Website Developer',
     'Web Development Services',
     'Website Design Services',
@@ -138,17 +138,17 @@ export const metadata = {
     type: 'website',
     siteName: 'P-Devs',
     url: 'https://pauuu.dev/',
-    title: 'P-Devs · Pau — Full-Stack Web Developer & Software Engineer',
+    title: 'Pau — Filipino Web Developer in the Philippines',
     description:
-      'Philippine-based full-stack web developer and software engineer. React, Next.js, TypeScript, Node, Supabase & Cloudflare, plus UI/UX, SEO, and security. Available for work.',
+      'Filipino full-stack web developer building fast, secure Next.js websites and web apps for businesses and teams.',
     locale: 'en_PH',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'P-Devs · Pau — Full-Stack Web Developer & Software Engineer',
+    title: 'Pau — Filipino Web Developer in the Philippines',
     description:
-      'Philippine-based full-stack web developer and software engineer. React, Next.js, TypeScript, Node, Supabase & Cloudflare, plus UI/UX, SEO, and security.',
+      'Filipino full-stack web developer building fast, secure Next.js websites and web apps for businesses and teams.',
     images: ['/og-image.png'],
   },
 };
@@ -181,30 +181,42 @@ const themeScript = `(function () {
 // Structured data — helps search engines understand who this site is about.
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'Pau',
-  alternateName: 'P-Devs',
-  jobTitle: 'Full-Stack Web Developer',
-  url: 'https://pauuu.dev/',
-  nationality: 'Filipino',
-  image: 'https://pauuu.dev/android-chrome-512x512.png',
-  knowsAbout: [
-    'Web Development',
-    'Software Engineering',
-    'React',
-    'Next.js',
-    'TypeScript',
-    'Node.js',
-    'UI/UX Design',
-    'SEO',
-    'Cybersecurity',
-    'Penetration Testing',
-  ],
-  sameAs: [
-    'https://github.com/s4tch001',
-    'https://www.facebook.com/jonbarentain',
-    'https://www.instagram.com/jonbarentain',
-    'https://www.tiktok.com/@jonbarentain',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': 'https://pauuu.dev/#pau',
+      name: 'Pau',
+      alternateName: 'P-Devs',
+      jobTitle: 'Full-Stack Web Developer',
+      description: 'Filipino full-stack and Next.js web developer based in the Philippines.',
+      url: 'https://pauuu.dev/',
+      nationality: { '@type': 'Country', name: 'Philippines' },
+      image: 'https://pauuu.dev/android-chrome-512x512.png',
+      knowsAbout: [
+        'Web Development',
+        'Next.js',
+        'React',
+        'TypeScript',
+        'Node.js',
+        'UI/UX Design',
+        'Technical SEO',
+        'Web Security',
+      ],
+      sameAs: [
+        'https://github.com/s4tch001',
+        'https://www.facebook.com/jonbarentain',
+        'https://www.instagram.com/jonbarentain',
+        'https://www.tiktok.com/@jonbarentain',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://pauuu.dev/#website',
+      url: 'https://pauuu.dev/',
+      name: 'P-Devs',
+      inLanguage: 'en-PH',
+      publisher: { '@id': 'https://pauuu.dev/#pau' },
+    },
   ],
 };
 

@@ -38,13 +38,17 @@ export default function Hero() {
             </span>{' '}
             Hi, I&apos;m
           </p>
-          <h1 className='hero__name'>Pau</h1>
+          <h1 className='hero__name'>
+            Pau
+            <span className='hero__name-detail'>Filipino Web Developer in the Philippines</span>
+          </h1>
           <p className='hero__role' aria-label='Web Developer, Musician, Gamer'>
             <span className='hero__typed'>{typed}</span>
             <span className='hero__caret' aria-hidden='true' />
           </p>
           <p className='hero__sub'>
-            I design, build, and ship full-stack web applications — from
+            I&apos;m a Filipino web developer based in the Philippines. I design,
+            build, and ship full-stack web applications — from
             lightweight vanilla-JavaScript tools to full React platforms on the
             Cloudflare edge, with UI/UX, SEO, and security baked in. Off the
             clock, I&apos;m into music and gaming.
