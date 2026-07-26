@@ -3,6 +3,8 @@
 Personal portfolio of Pau: web developer, musician, and gamer. Built with Next.js
 16 App Router and React 19, then deployed through the Netlify Next.js runtime.
 
+Live site: [https://pauuu.dev](https://pauuu.dev)
+
 This repository is safe to publish publicly. Secrets are not committed; local
 and production credentials must live in ignored `.env.local` files or in Netlify
 environment variables.
