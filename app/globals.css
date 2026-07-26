@@ -1957,11 +1957,19 @@ html:not([data-style]) .nav__logo-img {
 }
 
 [data-style='luxe'] .not-found__card {
+  background: var(--bg-alt);
   border-color: rgba(198, 161, 91, 0.45);
-  border-radius: 999px 999px 48px 48px;
+  border-radius: 0;
+  backdrop-filter: none;
+  transform: none;
+  animation: none;
   box-shadow:
-    0 32px 80px -42px rgba(0, 0, 0, 0.9),
+    0 40px 80px -40px rgba(0, 0, 0, 0.6),
     inset 0 0 0 1px rgba(198, 161, 91, 0.18);
+}
+
+[data-style='luxe'][data-theme='light'] .not-found__code-card {
+  color: #787878;
 }
 
 [data-style='hacker'] .not-found__code {
