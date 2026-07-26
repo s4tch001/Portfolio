@@ -234,7 +234,13 @@ export default function Projects() {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      Open demo preview ↗
+                      <span>Open demo preview</span>
+                      <span className="project__demo-arrow" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" focusable="false">
+                          <path d="M7 17 17 7" />
+                          <path d="M9 7h8v8" />
+                        </svg>
+                      </span>
                     </a>
                   </div>
                 )}

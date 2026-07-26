@@ -1296,15 +1296,90 @@ html:not([data-style]) .nav__logo-img {
 
 
 .project__demo {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 1rem;
   margin-top: 1rem;
   padding: 1rem;
-  border: 1px solid rgba(34, 211, 238, 0.25);
+  border: 1px solid rgba(34, 211, 238, 0.62);
   border-radius: 18px;
-  background: linear-gradient(135deg, rgba(34, 211, 238, 0.08), rgba(139, 92, 246, 0.08));
+  background:
+    radial-gradient(circle at 88% 18%, rgba(34, 211, 238, 0.22), transparent 34%),
+    linear-gradient(135deg, rgba(34, 211, 238, 0.11), rgba(139, 92, 246, 0.1));
+  box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.08), 0 16px 46px rgba(34, 211, 238, 0.12);
+  animation: project-demo-glow 2.8s ease-in-out infinite;
+}
+
+.project__demo::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(120deg, transparent 0%, rgba(34, 211, 238, 0.18) 32%, rgba(139, 92, 246, 0.26) 50%, transparent 68%);
+  transform: translateX(-70%);
+  animation: project-demo-sweep 3.6s ease-in-out infinite;
+}
+
+.project__demo .btn--primary {
+  position: relative;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14), 0 0 24px rgba(34, 211, 238, 0.28);
+  animation: project-demo-cta 1.9s ease-in-out infinite;
+}
+
+.project__demo-arrow {
+  display: inline-grid;
+  place-items: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.project__demo-arrow svg {
+  width: 0.82rem;
+  height: 0.82rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.project__demo .btn--primary:hover .project__demo-arrow,
+.project__demo .btn--primary:focus-visible .project__demo-arrow {
+  transform: translate(2px, -2px);
+  background: rgba(255, 255, 255, 0.28);
+}
+
+@keyframes project-demo-glow {
+  0%, 100% {
+    border-color: rgba(34, 211, 238, 0.45);
+    box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.08), 0 16px 46px rgba(34, 211, 238, 0.1);
+  }
+  50% {
+    border-color: rgba(139, 92, 246, 0.9);
+    box-shadow: 0 0 0 1px rgba(139, 92, 246, 0.28), 0 18px 58px rgba(139, 92, 246, 0.24);
+  }
+}
+
+@keyframes project-demo-sweep {
+  0%, 44% { transform: translateX(-72%); opacity: 0; }
+  55% { opacity: 1; }
+  100% { transform: translateX(72%); opacity: 0; }
+}
+
+@keyframes project-demo-cta {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
 }
 
 .project__demo-kicker {
@@ -2201,6 +2276,12 @@ html:not([data-style]) .nav__logo-img {
   .reveal {
     opacity: 1;
     transform: none;
+  }
+
+  .project__demo,
+  .project__demo::before,
+  .project__demo .btn--primary {
+    animation: none !important;
   }
 }
 
