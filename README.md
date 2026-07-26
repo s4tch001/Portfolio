@@ -3,8 +3,9 @@
 Personal portfolio of Pau: web developer, musician, and gamer. Built with Next.js
 16 App Router and React 19, then deployed through the Netlify Next.js runtime.
 
-> **Private backup repository:** `.env.local` is intentionally included for
-> disaster recovery. Never make this repository public.
+This repository is safe to publish publicly. Secrets are not committed; local
+and production credentials must live in ignored `.env.local` files or in Netlify
+environment variables.
 
 ## Features
 
@@ -27,12 +28,13 @@ cd Portfolio
 npm install
 ```
 
-The contact form uses these values from the backed-up `.env.local`:
+The contact form and IndexNow endpoint use these environment variables:
 
 ```text
 BREVO_API_KEY
 NEXT_PUBLIC_TURNSTILE_SITE_KEY
 TURNSTILE_SECRET_KEY
+INDEXNOW_SUBMIT_TOKEN
 ```
 
 ## Run locally
@@ -53,8 +55,8 @@ npm start
 ## Deploy to Netlify
 
 `netlify.toml` configures `npm run build`, the `.next` publish output, and the
-Netlify Next.js plugin. Connect the repository to Netlify and copy the three
-environment variables above into the site's environment settings.
+Netlify Next.js plugin. Connect the repository to Netlify and copy the
+server-side environment variables above into the site's environment settings.
 
 ## Editing content
 
@@ -64,7 +66,9 @@ environment variables above into the site's environment settings.
 - Styles: `app/styles/`, `app/globals.css`, and `StyleSwitcher.jsx`
 - SEO metadata and JSON-LD: `app/layout.jsx`
 
-## Backup notes
+## Public repository safety
 
-Commit application files, `package-lock.json`, public assets, and `.env.local`.
-`node_modules/`, `.next/`, `out/`, and `.netlify/` are generated and ignored.
+Commit application files, `package-lock.json`, public assets, and
+`.env.example`. Do not commit `.env.local`, API keys, tokens, service keys, or
+database passwords. `node_modules/`, `.next/`, `out/`, and `.netlify/` are
+generated and ignored.
