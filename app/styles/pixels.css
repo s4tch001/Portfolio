@@ -107,6 +107,12 @@
     10px 10px 0 var(--px-shadow);
 }
 
+[data-style='pixels'][data-theme='light'] .hero__name-detail {
+  color: #1d2b53;
+  -webkit-text-fill-color: #1d2b53;
+  text-shadow: none;
+}
+
 [data-style='pixels'] .grad-text {
   background: none;
   color: var(--pink);

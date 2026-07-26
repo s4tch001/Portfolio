@@ -89,6 +89,9 @@
 
 /* ───────────────────────── Type & headings ───────────────────────── */
 [data-style='hacker'] .hero__name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
   font-family: var(--font-mono);
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -100,14 +103,23 @@
 
 /* whoami */
 [data-style='hacker'] .hero__name::before {
-  content: '> ';
+  content: '>';
+  flex: 0 0 auto;
+  margin-right: 0.18ch;
   color: var(--muted);
 }
 
 [data-style='hacker'] .hero__name::after {
   content: '_';
+  order: 1;
+  margin-left: 0.08ch;
   color: var(--text);
   animation: hx-blink 1.1s steps(2) infinite;
+}
+
+[data-style='hacker'] .hero__name-detail {
+  order: 2;
+  flex: 0 0 100%;
 }
 
 @keyframes hx-blink {
