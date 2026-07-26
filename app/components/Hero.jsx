@@ -35,7 +35,7 @@ export default function Hero() {
           </p>
           <h1 className='hero__name'>
             Pau
-            <span className='hero__name-detail'>Filipino Web Developer in the Philippines</span>
+            <span className='hero__name-detail'>Full-stack Web Developer in the Philippines</span>
           </h1>
           <p className='hero__role' aria-label='Web Developer, Musician, Gamer'>
             <span className='hero__typed'>{typed}</span>
