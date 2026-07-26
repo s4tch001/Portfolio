@@ -89,10 +89,12 @@ export default function Hero() {
                 <span className='tk-str'>'TypeScript'</span>,{' '}
                 <span className='tk-str'>'React'</span>,{' '}
                 <span className='tk-str'>'Prisma'</span>,{' '}
-                <span className='tk-str'>'Supabase'</span>],
+                <span className='tk-str'>'PostgreSQL'</span>],
                 {'\n'} cloud: [<span className='tk-str'>'Alibaba Cloud'</span>,{' '}
                 <span className='tk-str'>'Netlify'</span>,{' '}
-                <span className='tk-str'>'Cloudflare'</span>],
+                <span className='tk-str'>'Cloudflare'</span>,{' '}
+                <span className='tk-str'>'Vercel'</span>,{' '}
+                <span className='tk-str'>'Supabase'</span>],
                 {'\n'} afterHours: [<span className='tk-str'>'🎸 music'</span>,{' '}
                 <span className='tk-str'>'🎮 games'</span>],
                 {'\n'} status:{' '}
