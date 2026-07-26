@@ -5,11 +5,6 @@ import useTypewriter from '../hooks/useTypewriter.js';
 
 const ROLES = ['Web Developer', 'Musician', 'Gamer'];
 
-const STATS = [
-  { value: '5+', label: 'Apps shipped to production' },
-  { value: '4', label: 'Cloud platforms deployed on' },
-  { value: '100%', label: 'Built end to end, solo' },
-];
 
 export default function Hero() {
   const typed = useTypewriter(ROLES);
@@ -48,10 +43,10 @@ export default function Hero() {
           </p>
           <p className='hero__sub'>
             I&apos;m a Filipino web developer based in the Philippines. I design,
-            build, and ship full-stack web applications — from
-            lightweight vanilla-JavaScript tools to full React platforms on the
-            Cloudflare edge, with UI/UX, SEO, and security baked in. Off the
-            clock, I&apos;m into music and gaming.
+            build, and ship full-stack web applications with a Next.js and
+            TypeScript-first workflow, plus React interfaces, database-backed
+            features, cloud deployments, UI/UX, SEO, and security baked in. Off
+            the clock, I&apos;m into music and gaming.
           </p>
           <div className='hero__cta'>
             <a className='btn btn--gradient' href='#portfolio'>
@@ -61,14 +56,6 @@ export default function Hero() {
               Get in touch
             </a>
           </div>
-          <dl className='hero__stats'>
-            {STATS.map((stat) => (
-              <div key={stat.label} className='hero__stat'>
-                <dt>{stat.value}</dt>
-                <dd>{stat.label}</dd>
-              </div>
-            ))}
-          </dl>
         </div>
 
         <div className='hero__visual' aria-hidden='true'>

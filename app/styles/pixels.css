@@ -282,12 +282,6 @@
   background: var(--cyan);
 }
 
-[data-style='pixels'] .hero__stat dt {
-  background: none;
-  color: var(--amber);
-  text-shadow: 3px 3px 0 var(--px-shadow);
-}
-
 [data-style='pixels'] .hero__card {
   background: var(--bg-alt);
   border: 3px solid var(--px-ink);

@@ -43,7 +43,7 @@ const projects = [
     features: [
       'Cloudflare Worker API backed by D1 (SQLite), R2 file storage, and a Durable Object notification hub',
       'Cron triggers for automated monthly backups and hourly pending-report alerts',
-      'Role-based access (admin / teacher) plus an Android WebView companion app',
+      'Role-based access (admin / teacher / student) plus an Android WebView companion app',
     ],
     stack: ['React', 'Vite', 'JavaScript', 'Cloudflare Workers', 'D1 (SQLite)', 'R2', 'Durable Objects', 'Kotlin'],
     deploy: ['Cloudflare Workers', 'Cloudflare Pages'],

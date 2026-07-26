@@ -302,13 +302,6 @@
   border-radius: 0;
 }
 
-[data-style='oldschool'] .hero__stat dt {
-  font-family: var(--font-display);
-  background: none;
-  color: #ffff00;
-  text-shadow: 2px 2px 0 #000080;
-}
-
 /* Code card → a DOS window on the desktop */
 [data-style='oldschool'] .hero__card {
   background: var(--os-face);

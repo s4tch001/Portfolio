@@ -325,17 +325,6 @@
   background: var(--text);
 }
 
-[data-style='hacker'] .hero__stat dt {
-  font-family: var(--font-mono);
-  background: none;
-  color: var(--text);
-  text-shadow: var(--hx-glow);
-}
-
-[data-style='hacker'] .hero__stat dd {
-  color: var(--muted);
-}
-
 /* The code card is finally in its natural habitat */
 [data-style='hacker'] .hero__card {
   background: var(--bg-alt);

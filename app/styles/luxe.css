@@ -248,13 +248,6 @@
   background: var(--luxe-gold);
 }
 
-[data-style='luxe'] .hero__stat dt {
-  font-family: var(--font-display);
-  font-weight: 600;
-  background: none;
-  color: var(--luxe-gold);
-}
-
 [data-style='luxe'] .hero__card {
   background: var(--bg-alt);
   border: 1px solid var(--border);

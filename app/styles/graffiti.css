@@ -371,14 +371,6 @@
   background: var(--violet);
 }
 
-[data-style='graffiti'] .hero__stat dt {
-  font-family: var(--font-display);
-  font-weight: 400;
-  background: none;
-  color: var(--cyan);
-  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.55);
-}
-
 /* Code card → chalkboard sign bolted to the wall */
 [data-style='graffiti'] .hero__card {
   background: #17131a;

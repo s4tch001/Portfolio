@@ -189,6 +189,7 @@ export default function Projects() {
                 <h3 className="project__name reveal">{project.name}</h3>
                 <p className="project__tagline reveal">{project.tagline}</p>
                 <p className="project__desc reveal">{project.description}</p>
+                <p className="project__solo reveal">Solo developer: designed, built, and shipped by me.</p>
                 <ul className="project__features reveal">
                   {project.features.map((feature) => (
                     <li key={feature}>{feature}</li>
