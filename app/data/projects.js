@@ -29,8 +29,8 @@ const ptravelsAbout = img('ptravels-about');
 const ptravelsServices = img('ptravels-services');
 const ptravelsTours = img('ptravels-tours');
 
-// Screenshots use fictional demo data. Add a `live` URL to any project to
-// render a "Visit site" button.
+// Screenshots use fictional demo data. Each project also has a portfolio-only
+// demo preview URL; demo data is reset daily and is separate from production.
 const projects = [
   {
     id: 'sunset-speaks',
@@ -47,6 +47,11 @@ const projects = [
     ],
     stack: ['React', 'Vite', 'JavaScript', 'Cloudflare Workers', 'D1 (SQLite)', 'R2', 'Durable Objects', 'Kotlin'],
     deploy: ['Cloudflare Workers', 'Cloudflare Pages'],
+    demo: {
+      url: 'https://cn-demo.pauuu.dev',
+      deploy: ['Netlify', 'Supabase'],
+      note: 'Portfolio-only demo preview: frontend on Netlify, backend/database on Supabase. Visitor-created demo data resets every day at 12:00 AM Asia/Manila.',
+    },
     images: [
       { src: sunsetSpeaks, alt: 'Sunset-Speaks public landing page with a sunset illustration', caption: 'Public landing page', pov: 'Public' },
       { src: ssLogin, alt: 'Login screen over an animated sunset backdrop', caption: 'Login — animated sunset backdrop', pov: 'Public' },
@@ -80,6 +85,11 @@ const projects = [
     ],
     stack: ['React 19', 'Vite', 'JavaScript', 'Netlify Functions', 'Supabase', 'ExcelJS'],
     deploy: ['Netlify', 'Supabase'],
+    demo: {
+      url: 'https://rcmi-demo.pauuu.dev',
+      deploy: ['Netlify', 'Supabase'],
+      note: 'Portfolio-only demo preview: frontend on Netlify, backend/database on Supabase. Visitor-created demo data resets every day at 12:00 AM Asia/Manila.',
+    },
     images: [
       { src: rcmiAttendance, alt: 'RCMI attendance calendar view in light theme', caption: 'Attendance calendar' },
       { src: rcmiViewer, alt: 'Day roster grouped by leader with role badges', caption: 'Day roster — grouped by leader' },
@@ -103,6 +113,11 @@ const projects = [
     ],
     stack: ['HTML5', 'CSS3', 'JavaScript', 'Supabase'],
     deploy: ['Netlify'],
+    demo: {
+      url: 'https://hours-demo.pauuu.dev',
+      deploy: ['Netlify', 'Supabase'],
+      note: 'Portfolio-only demo preview: frontend on Netlify, backend/database on Supabase. Visitor-created demo data resets every day at 12:00 AM Asia/Manila.',
+    },
     images: [
       { src: hoursTracker, alt: 'Hours Tracker calendar in dark theme', caption: 'Dark theme' },
       { src: hoursLight, alt: 'Hours Tracker calendar in light theme', caption: 'Light theme' },
@@ -124,6 +139,11 @@ const projects = [
     ],
     stack: ['HTML5', 'CSS3', 'JavaScript'],
     deploy: ['Netlify'],
+    demo: {
+      url: 'https://payroll-demo.pauuu.dev',
+      deploy: ['Netlify', 'Supabase'],
+      note: 'Portfolio-only demo preview: frontend on Netlify, backend/database on Supabase. Visitor-created demo data resets every day at 12:00 AM Asia/Manila.',
+    },
     images: [
       { src: payrollSplitter, alt: 'Payroll Splitter USD setup and hours inputs', caption: 'USD setup & hours' },
       { src: payrollFilled, alt: 'Computed pay split with per-person cards and formula trace', caption: 'Pay split + formula trace' },
@@ -145,6 +165,11 @@ const projects = [
     ],
     stack: ['React 19', 'Create React App', 'JavaScript', 'CSS3', 'Font Awesome'],
     deploy: ['Netlify'],
+    demo: {
+      url: 'https://travels-demo.pauuu.dev',
+      deploy: ['Netlify', 'Supabase'],
+      note: 'Portfolio-only demo preview: frontend on Netlify, backend/database on Supabase. Visitor-created demo data resets every day at 12:00 AM Asia/Manila.',
+    },
     images: [
       { src: ptravelsHero, alt: 'P Travel Tours hero with an El Nido lagoon backdrop and Explore Tours call to action', caption: 'Full-bleed hero' },
       { src: ptravelsAbout, alt: 'About Us section with a lagoon photo and Explore The Difference copy', caption: 'About the agency' },

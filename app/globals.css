@@ -1294,6 +1294,48 @@ html:not([data-style]) .nav__logo-img {
   padding: 0.3rem 0.85rem;
 }
 
+
+.project__demo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid rgba(34, 211, 238, 0.25);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.08), rgba(139, 92, 246, 0.08));
+}
+
+.project__demo-kicker {
+  display: inline-flex;
+  margin-bottom: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+
+.project__demo p {
+  color: var(--muted);
+  font-size: 0.86rem;
+  margin: 0;
+}
+
+.project__demo-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+@media (max-width: 640px) {
+  .project__demo {
+    flex-direction: column;
+  }
+}
+
 /* ───────────────────────── Gallery (project slideshow) ───────────────────────── */
 .browser__count {
   margin-left: auto;

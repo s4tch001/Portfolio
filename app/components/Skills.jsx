@@ -4,12 +4,12 @@ import useReveal from '../hooks/useReveal.js';
 
 const GROUPS = [
   {
-    title: 'Frontend',
+    title: 'Frontend Development',
     icon: '🎨',
     skills: [
       'HTML5',
       'CSS3',
-      'JavaScript (ES6+)',
+      'JavaScript',
       'TypeScript',
       'React',
       'Next.js',
@@ -17,6 +17,9 @@ const GROUPS = [
       'Tailwind CSS',
       'Responsive Design',
       'UI Animation',
+      'Axios',
+      'TanStack',
+      'shadcn',
     ],
   },
   {
@@ -30,43 +33,62 @@ const GROUPS = [
       'Lua',
       'Cloudflare Workers',
       'Netlify Functions',
-      'Supabase (PostgreSQL)',
-      'Cloudflare D1 (SQLite)',
+      'Supabase',
+      'PostgreSQL',
+      'Cloudflare D1',
+      'SQLite',
       'R2 Object Storage',
       'Durable Objects',
       'REST APIs',
+      'Prisma ORM',
+      'Zod',
     ],
   },
   {
-    title: 'Platforms & Tools',
+    title: 'Platforms & Development Tools',
     icon: '🚀',
     skills: [
       'Netlify',
       'Vercel',
       'Cloudflare',
       'Shopify',
-      'Git & GitHub',
+      'Git',
+      'GitHub',
       'Google Cloud Console',
-      'Google Sites / Sheets / Forms',
       'Wrangler CLI',
       'Electron',
       'Kotlin',
       'Capacitor',
-      'Windows Web Apps',
-      'Android Web Apps',
     ],
   },
   {
-    title: 'Design & Security',
-    icon: '🛡️',
+    title: 'Design & Creative',
+    icon: '✨',
     skills: [
       'UI/UX Design',
       'Video Editing',
       'Photo Editing',
       'Audio Editing',
-      'SEO',
+    ],
+  },
+  {
+    title: 'SEO & Optimization',
+    icon: '🔍',
+    skills: [
+      'Technical SEO',
+      'On-Page SEO',
+      'Performance Optimization',
+      'Responsive Optimization',
+    ],
+  },
+  {
+    title: 'Security',
+    icon: '🛡️',
+    skills: [
+      'Web Security',
       'Cybersecurity',
       'Penetration Testing',
+      'Secure API Development',
     ],
   },
 ];
@@ -82,8 +104,8 @@ export default function Skills() {
           My <span className="grad-text">toolbox.</span>
         </h2>
         <p className="section__lead reveal">
-          Everything I actually reach for, grouped by where it lives in a build.
-          No padding — if it&apos;s listed here, I&apos;ve shipped with it.
+          The technologies, platforms, and disciplines I use across the full
+          development lifecycle.
         </p>
 
         <div className="skills__grid">

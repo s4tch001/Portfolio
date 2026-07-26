@@ -217,6 +217,27 @@ export default function Projects() {
                     </a>
                   )}
                 </div>
+                {project.demo && (
+                  <div className="project__demo reveal">
+                    <div>
+                      <span className="project__demo-kicker">Portfolio demo preview</span>
+                      <p>{project.demo.note}</p>
+                      <div className="project__demo-stack">
+                        {project.demo.deploy.map((platform) => (
+                          <DeployBadge key={`demo-${platform}`} name={platform} />
+                        ))}
+                      </div>
+                    </div>
+                    <a
+                      className="btn btn--small btn--primary"
+                      href={project.demo.url}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Open demo preview ↗
+                    </a>
+                  </div>
+                )}
               </div>
             </article>
           ))}
