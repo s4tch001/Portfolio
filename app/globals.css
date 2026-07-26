@@ -2012,6 +2012,31 @@ html:not([data-style]) .nav__logo-img {
   margin-top: 0.35rem;
 }
 
+.footer__repo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.55rem;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  text-decoration: none;
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.footer__repo::after {
+  content: '↗';
+  font-size: 0.8em;
+}
+
+.footer__repo:hover,
+.footer__repo:focus-visible {
+  color: var(--text);
+  transform: translateX(2px);
+}
+
 .footer__socials {
   display: flex;
   gap: 0.7rem;

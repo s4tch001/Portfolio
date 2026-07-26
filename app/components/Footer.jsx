@@ -40,6 +40,14 @@ export default function Footer() {
             </span>
           </p>
           <p className='footer__meta'>Web Developer</p>
+          <a
+            className='footer__repo'
+            href='https://github.com/s4tch001/Portfolio'
+            target='_blank'
+            rel='noreferrer'
+          >
+            Portfolio source code
+          </a>
         </div>
 
         <ul className='footer__socials' aria-label='Social links'>
