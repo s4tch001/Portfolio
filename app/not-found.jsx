@@ -31,14 +31,14 @@ export default function NotFound() {
             </div>
           </div>
 
-          <div className="not-found__card" aria-hidden="true">
+          <div className="hero__card not-found__card" aria-hidden="true">
             <div className="hero__card-bar">
               <span className="dot dot--r"></span>
               <span className="dot dot--y"></span>
               <span className="dot dot--g"></span>
               <span className="hero__card-title">missing-route.js</span>
             </div>
-            <pre className="not-found__code-card">
+            <pre className="hero__code not-found__code-card">
 {`const route = {
   status: 404,
   found: false,

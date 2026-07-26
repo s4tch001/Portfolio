@@ -144,6 +144,10 @@
     0 0 34px rgba(138, 31, 209, 0.25);
 }
 
+[data-style='graffiti'] .hero__name-detail {
+  margin-top: 2rem;
+}
+
 [data-style='graffiti'] .grad-text {
   background: none;
   color: var(--violet);
