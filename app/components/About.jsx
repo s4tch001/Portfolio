@@ -1,7 +1,3 @@
-'use client';
-
-import useReveal from '../hooks/useReveal.js';
-
 const FACETS = [
   {
     icon: '💻',
@@ -26,10 +22,8 @@ const FACETS = [
 ];
 
 export default function About() {
-  const ref = useReveal();
-
   return (
-    <section id="about" className="section" ref={ref}>
+    <section id="about" className="section">
       <div className="section__inner">
         <p className="section__eyebrow reveal">01 · About</p>
         <h2 className="section__title reveal">

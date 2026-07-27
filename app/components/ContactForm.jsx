@@ -22,6 +22,7 @@ export default function ContactForm() {
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState('idle'); // idle | sending | success | error
   const [feedback, setFeedback] = useState('');
+  const [shouldLoadTurnstile, setShouldLoadTurnstile] = useState(false);
 
   const formRef = useRef(null);
   const widgetRef = useRef(null);
@@ -29,10 +30,14 @@ export default function ContactForm() {
   const tokenRef = useRef('');
   const sendingRef = useRef(false);
 
-  // Load the Turnstile script once and render the widget, matching the
-  // site's current light/dark theme (and re-rendering when it flips).
+  const loadTurnstileOnIntent = () => {
+    if (SITE_KEY) setShouldLoadTurnstile(true);
+  };
+
+  // Load the Turnstile script once the visitor interacts with the form and
+  // render the widget, matching the site's current light/dark theme.
   useEffect(() => {
-    if (!SITE_KEY || !widgetRef.current) return undefined;
+    if (!SITE_KEY || !shouldLoadTurnstile || !widgetRef.current) return undefined;
     let cancelled = false;
 
     const render = () => {
@@ -86,7 +91,7 @@ export default function ContactForm() {
         widgetIdRef.current = null;
       }
     };
-  }, []);
+  }, [shouldLoadTurnstile]);
 
   const setField = (id) => (event) => {
     setValues((prev) => ({ ...prev, [id]: event.target.value }));
@@ -119,6 +124,7 @@ export default function ContactForm() {
     }
 
     if (SITE_KEY && !tokenRef.current) {
+      setShouldLoadTurnstile(true);
       setStatus('error');
       setFeedback('Please complete the verification check first.');
       return;
@@ -175,6 +181,8 @@ export default function ContactForm() {
       ref={formRef}
       className="contact-form reveal"
       onSubmit={handleSubmit}
+      onFocusCapture={loadTurnstileOnIntent}
+      onPointerDownCapture={loadTurnstileOnIntent}
       noValidate
     >
       <div className="contact-form__grid">

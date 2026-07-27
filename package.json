@@ -8,6 +8,14 @@
     "start": "next start",
     "indexnow": "node scripts/submit-indexnow.mjs"
   },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Edge versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    "not dead",
+    "not op_mini all"
+  ],
   "dependencies": {
     "@netlify/blobs": "^10.7.9",
     "next": "^16.2.12",

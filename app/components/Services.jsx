@@ -1,7 +1,3 @@
-'use client';
-
-import useReveal from '../hooks/useReveal.js';
-
 const SERVICES = [
   {
     icon: '💻',
@@ -51,10 +47,8 @@ const SERVICES = [
 ];
 
 export default function Services() {
-  const ref = useReveal();
-
   return (
-    <section id="services" className="section" ref={ref}>
+    <section id="services" className="section">
       <div className="section__inner">
         <p className="section__eyebrow reveal">02 · Services</p>
         <h2 className="section__title reveal">

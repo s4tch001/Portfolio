@@ -1,7 +1,3 @@
-'use client';
-
-import useReveal from '../hooks/useReveal.js';
-
 const GROUPS = [
   {
     title: 'Frontend Development',
@@ -98,10 +94,8 @@ const GROUPS = [
 ];
 
 export default function Skills() {
-  const ref = useReveal();
-
   return (
-    <section id="skills" className="section" ref={ref}>
+    <section id="skills" className="section">
       <div className="section__inner">
         <p className="section__eyebrow reveal">04 · Skills</p>
         <h2 className="section__title reveal">

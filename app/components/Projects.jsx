@@ -1,10 +1,11 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { useEffect, useRef, useState } from 'react';
-import useReveal from '../hooks/useReveal.js';
 import useSlideshow from '../hooks/useSlideshow.js';
 import projects from '../data/projects.js';
-import Lightbox from './Lightbox.jsx';
+
+const Lightbox = dynamic(() => import('./Lightbox.jsx'));
 
 function DeployBadge({ name }) {
   return <span className="project__deploy">▲ {name}</span>;
@@ -157,11 +158,10 @@ function Gallery({ project, onOpen }) {
 }
 
 export default function Projects() {
-  const ref = useReveal();
   const [viewer, setViewer] = useState(null); // { project, index }
 
   return (
-    <section id="portfolio" className="section section--alt" ref={ref}>
+    <section id="portfolio" className="section section--alt">
       <div className="section__inner">
         <p className="section__eyebrow reveal">03 · Portfolio</p>
         <h2 className="section__title reveal">

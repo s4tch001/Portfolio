@@ -16,6 +16,7 @@ import {
   VT323,
 } from 'next/font/google';
 import Script from 'next/script';
+import RevealController from './components/RevealController.jsx';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -332,6 +333,7 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         {children}
+        <RevealController />
       </body>
     </html>
   );

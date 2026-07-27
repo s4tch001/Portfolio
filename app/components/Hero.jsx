@@ -1,30 +1,11 @@
-'use client';
-
-import { useCallback, useRef } from 'react';
-import useTypewriter from '../hooks/useTypewriter.js';
+import HeroShell from './HeroShell.jsx';
+import TypewriterText from './TypewriterText.jsx';
 
 const ROLES = ['Web Developer', 'Musician', 'Gamer'];
 
-
 export default function Hero() {
-  const typed = useTypewriter(ROLES);
-  const sectionRef = useRef(null);
-
-  const onMouseMove = useCallback((e) => {
-    const el = sectionRef.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    el.style.setProperty('--mx', `${e.clientX - rect.left}px`);
-    el.style.setProperty('--my', `${e.clientY - rect.top}px`);
-  }, []);
-
   return (
-    <section
-      id='home'
-      className='hero'
-      ref={sectionRef}
-      onMouseMove={onMouseMove}
-    >
+    <HeroShell>
       <div className='hero__inner'>
         <div className='hero__copy'>
           <p className='hero__eyebrow'>
@@ -38,7 +19,9 @@ export default function Hero() {
             <span className='hero__name-detail'>Full-stack Web Developer in the Philippines</span>
           </h1>
           <p className='hero__role' aria-label='Web Developer, Musician, Gamer'>
-            <span className='hero__typed'>{typed}</span>
+            <span className='hero__typed'>
+              <TypewriterText words={ROLES} />
+            </span>
             <span className='hero__caret' aria-hidden='true' />
           </p>
           <p className='hero__sub'>
@@ -105,6 +88,6 @@ export default function Hero() {
       >
         <span className='hero__scroll-wheel' />
       </a>
-    </section>
+    </HeroShell>
   );
 }

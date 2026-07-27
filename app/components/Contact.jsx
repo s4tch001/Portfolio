@@ -1,15 +1,10 @@
-'use client';
-
-import useReveal from '../hooks/useReveal.js';
 import ContactForm from './ContactForm.jsx';
 
 // Used as section 05 on the home page and as the body of the standalone
 // /contact page (which passes its own eyebrow).
 export default function Contact({ eyebrow = '05 · Contact' }) {
-  const ref = useReveal();
-
   return (
-    <section id='contact' className='section section--alt' ref={ref}>
+    <section id='contact' className='section section--alt'>
       <div className='section__inner contact'>
         <p className='section__eyebrow reveal'>{eyebrow}</p>
         <h2 className='section__title contact__title reveal'>
