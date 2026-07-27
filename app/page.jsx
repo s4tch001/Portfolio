@@ -2,7 +2,6 @@ import Nav from './components/Nav.jsx';
 import Hero from './components/Hero.jsx';
 import Marquee from './components/Marquee.jsx';
 import About from './components/About.jsx';
-import SeoContent from './components/SeoContent.jsx';
 import Services from './components/Services.jsx';
 import Projects from './components/Projects.jsx';
 import Skills from './components/Skills.jsx';
@@ -19,7 +18,6 @@ export default function Page() {
         <Hero />
         <Marquee />
         <About />
-        <SeoContent />
         <Services />
         <Projects />
         <Skills />
