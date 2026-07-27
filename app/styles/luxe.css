@@ -22,7 +22,7 @@
   --green: #7d9a72; /* muted sage for "live" states */
   --blue: #d7b878;
   --grad: linear-gradient(120deg, #c6a15b, #e9d3a3);
-  --font-display: 'Cormorant Garamond', 'Times New Roman', serif;
+  --font-display: var(--font-cormorant-garamond), 'Times New Roman', serif;
   --radius: 0;
   --luxe-gold: #c6a15b;
 }

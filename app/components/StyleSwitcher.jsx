@@ -80,7 +80,7 @@ export default function StyleSwitcher() {
         title="Page style"
         onClick={() => setOpen((o) => !o)}
       >
-        <i className="fa-solid fa-palette" aria-hidden="true"></i>
+        <span aria-hidden="true">🎨</span>
       </button>
     </div>
   );

@@ -32,9 +32,9 @@
   --green: #a3e635; /* slime lime */
   --blue: #00e5ff;
   --grad: linear-gradient(120deg, #b14aff, #ffd60a);
-  --font-display: 'Bangers', 'Space Grotesk', system-ui, cursive;
-  --font-marker: 'Permanent Marker', 'Space Grotesk', cursive;
-  --font-tag: 'Next Ups', 'Bangers', 'Space Grotesk', cursive;
+  --font-display: var(--font-bangers), var(--font-space-grotesk), system-ui, cursive;
+  --font-marker: var(--font-permanent-marker), var(--font-space-grotesk), cursive;
+  --font-tag: 'Next Ups', var(--font-bangers), var(--font-space-grotesk), cursive;
   --radius: 4px; /* streets have hard edges */
   --paper: #fbf6ea; /* wheatpaste poster paper */
   --ink: #17131a;

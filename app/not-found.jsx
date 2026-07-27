@@ -23,7 +23,7 @@ export default function NotFound() {
             <div className="not-found__actions">
               <Link className="btn btn--gradient" href="/">
                 Back to home
-                <i className="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                <span aria-hidden="true">→</span>
               </Link>
               <Link className="btn btn--ghost" href="/contact">
                 Contact Pau

@@ -14,9 +14,9 @@
   --green: #34d399;
   --blue: #60a5fa;
   --grad: linear-gradient(120deg, var(--violet), var(--cyan));
-  --font-display: 'Space Grotesk', system-ui, sans-serif;
-  --font-body: 'Inter', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-display: var(--font-space-grotesk), system-ui, sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
   --nav-h: 72px;
   --radius: 18px;
 }
@@ -1884,7 +1884,7 @@ html:not([data-style]) .nav__logo-img {
 }
 
 [data-style='graffiti'] .not-found__code {
-  font-family: 'Bangers', var(--font-display);
+  font-family: var(--font-bangers), var(--font-display);
   letter-spacing: 0.01em;
   text-shadow:
     4px 4px 0 rgba(0, 0, 0, 0.28),
@@ -1897,20 +1897,20 @@ html:not([data-style]) .nav__logo-img {
 }
 
 [data-style='pixels'] .not-found__code {
-  font-family: 'Pixelify Sans', var(--font-display);
+  font-family: var(--font-pixelify-sans), var(--font-display);
   letter-spacing: 0;
   text-shadow: 6px 6px 0 rgba(0, 0, 0, 0.28);
 }
 
 [data-style='luxe'] .not-found__code {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-cormorant-garamond), serif;
   font-style: italic;
   font-weight: 600;
   letter-spacing: -0.03em;
 }
 
 [data-style='hacker'] .not-found__code {
-  font-family: 'JetBrains Mono', var(--font-mono);
+  font-family: var(--font-jetbrains-mono), var(--font-mono);
   letter-spacing: -0.1em;
   text-shadow: 0 0 22px rgba(0, 231, 102, 0.45);
 }
@@ -2468,7 +2468,7 @@ html:not([data-style]) .nav__logo-img {
 }
 
 /* Optical centering: the FA palette glyph's ink sits slightly up-left of its em box. */
-.style-switch__fab i {
+.style-switch__fab span {
   line-height: 1;
   transform: translate(0.5px, 0.75px);
 }

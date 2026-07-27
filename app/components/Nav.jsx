@@ -37,7 +37,13 @@ export default function Nav() {
         >
           <span className='nav__logo-mark'>
             P
-            <img className='nav__logo-img' src='/android-chrome-512x512.png' alt='P-Devs logo' />
+            <img
+              className='nav__logo-img'
+              src='/android-chrome-512x512.png'
+              alt='P-Devs logo'
+              width='512'
+              height='512'
+            />
           </span>
           <span className='nav__logo-text'>
             pauuu<span className='accent'>.dev</span>

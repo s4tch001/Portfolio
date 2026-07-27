@@ -118,23 +118,25 @@ function Gallery({ project, onOpen }) {
               src={current.src}
               alt=""
               aria-hidden="true"
+              width="1600"
+              height="1000"
               className="gallery__smear"
               style={{ '--slide-from': `${shown.dir * 30}px` }}
             />
           )}
           <span className="gallery__caption">{current.caption}</span>
           <span className="gallery__zoom" aria-hidden="true">
-            <i className="fa-solid fa-expand" aria-hidden="true" />
+            ↗
           </span>
         </button>
 
         {images.length > 1 && (
           <>
             <button type="button" className="gallery__arrow gallery__arrow--prev" aria-label="Previous screenshot" onClick={withPause(prev)}>
-              <i className="fa-solid fa-chevron-left" aria-hidden="true" />
+              ‹
             </button>
             <button type="button" className="gallery__arrow gallery__arrow--next" aria-label="Next screenshot" onClick={withPause(next)}>
-              <i className="fa-solid fa-chevron-right" aria-hidden="true" />
+              ›
             </button>
             <div className="gallery__dots">
               {images.map((img, i) => (

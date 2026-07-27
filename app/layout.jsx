@@ -4,7 +4,99 @@ import './styles/oldschool.css';
 import './styles/pixels.css';
 import './styles/luxe.css';
 import './styles/hacker.css';
+import {
+  Bangers,
+  Comic_Neue,
+  Cormorant_Garamond,
+  Inter,
+  JetBrains_Mono,
+  Permanent_Marker,
+  Pixelify_Sans,
+  Space_Grotesk,
+  VT323,
+} from 'next/font/google';
 import Script from 'next/script';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  weight: ['500', '600', '700'],
+  variable: '--font-space-grotesk',
+  display: 'swap',
+});
+
+const jetBrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '600'],
+  variable: '--font-jetbrains-mono',
+  display: 'swap',
+});
+
+const bangers = Bangers({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-bangers',
+  display: 'swap',
+  preload: false,
+});
+
+const comicNeue = Comic_Neue({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-comic-neue',
+  display: 'swap',
+  preload: false,
+});
+
+const cormorantGaramond = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['500', '600'],
+  style: ['normal', 'italic'],
+  variable: '--font-cormorant-garamond',
+  display: 'swap',
+  preload: false,
+});
+
+const permanentMarker = Permanent_Marker({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-permanent-marker',
+  display: 'swap',
+  preload: false,
+});
+
+const pixelifySans = Pixelify_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '700'],
+  variable: '--font-pixelify-sans',
+  display: 'swap',
+  preload: false,
+});
+
+const vt323 = VT323({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-vt323',
+  display: 'swap',
+  preload: false,
+});
+
+const fontVariables = [
+  inter.variable,
+  spaceGrotesk.variable,
+  jetBrainsMono.variable,
+  bangers.variable,
+  comicNeue.variable,
+  cormorantGaramond.variable,
+  permanentMarker.variable,
+  pixelifySans.variable,
+  vt323.variable,
+].join(' ');
 
 export const metadata = {
   metadataBase: new URL('https://pauuu.dev'),
@@ -223,21 +315,13 @@ const jsonLd = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="notranslate" translate="no" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`notranslate ${fontVariables}`}
+      translate="no"
+      suppressHydrationWarning
+    >
       <body>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&family=Permanent+Marker&family=Pixelify+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&family=VT323&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-          rel="stylesheet"
-          integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-          crossOrigin="anonymous"
-          referrerPolicy="no-referrer"
-        />
         <Script
           id="theme-init"
           strategy="beforeInteractive"

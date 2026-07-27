@@ -22,9 +22,9 @@
   --green: #00e756;
   --blue: #29adff;
   --grad: linear-gradient(90deg, #29adff, #00e756);
-  --font-display: 'Pixelify Sans', 'Space Grotesk', system-ui, sans-serif;
-  --font-body: 'Pixelify Sans', Verdana, system-ui, sans-serif;
-  --font-mono: 'VT323', 'Courier New', monospace;
+  --font-display: var(--font-pixelify-sans), var(--font-space-grotesk), system-ui, sans-serif;
+  --font-body: var(--font-pixelify-sans), Verdana, system-ui, sans-serif;
+  --font-mono: var(--font-vt323), 'Courier New', monospace;
   --radius: 0;
   --px-ink: #000000; /* sprite outline */
   --px-shadow: rgba(0, 0, 0, 0.55);

@@ -33,6 +33,8 @@ export default function Footer() {
                 className='nav__logo-img'
                 src='/android-chrome-512x512.png'
                 alt='P-Devs logo'
+                width='512'
+                height='512'
               />
             </span>
             <span>
@@ -70,7 +72,7 @@ export default function Footer() {
         </ul>
 
         <p className='footer__copy'>
-          <i className='fa-regular fa-copyright'></i> {new Date().getFullYear()}{' '}
+          © {new Date().getFullYear()}{' '}
           P-Devs <br />
           Built with Next.js
         </p>

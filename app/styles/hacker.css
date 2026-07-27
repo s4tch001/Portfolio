@@ -22,9 +22,9 @@
   --green: #00e766;
   --blue: #39ffa0;
   --grad: linear-gradient(90deg, #00e766, #39ffa0);
-  --font-display: 'JetBrains Mono', ui-monospace, monospace;
-  --font-body: 'JetBrains Mono', ui-monospace, monospace;
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-display: var(--font-jetbrains-mono), ui-monospace, monospace;
+  --font-body: var(--font-jetbrains-mono), ui-monospace, monospace;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
   --radius: 0;
   --hx-glow: 0 0 10px rgba(0, 231, 102, 0.45);
 }

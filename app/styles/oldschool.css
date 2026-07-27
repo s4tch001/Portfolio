@@ -26,9 +26,9 @@
   --green: #00ff00;
   --blue: #1084d0;
   --grad: linear-gradient(90deg, #000080, #1084d0); /* title-bar gradient */
-  --font-display: 'Comic Sans MS', 'Comic Neue', 'Chalkboard SE', cursive;
+  --font-display: 'Comic Sans MS', var(--font-comic-neue), 'Chalkboard SE', cursive;
   --font-body: Verdana, Geneva, Tahoma, sans-serif;
-  --font-mono: 'VT323', 'Courier New', monospace;
+  --font-mono: var(--font-vt323), 'Courier New', monospace;
   --radius: 0; /* the 90's had no border-radius */
 
   /* System scheme (light = classic Win95) */

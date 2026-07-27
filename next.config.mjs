@@ -14,8 +14,8 @@ const CSP = [
   // hydration entirely. The only strict alternative is a per-request nonce,
   // which forces dynamic rendering and gives up static export + CDN caching.
   `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''} https://challenges.cloudflare.com`,
-  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com",
-  "font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com",
+  "style-src 'self' 'unsafe-inline'",
+  "font-src 'self'",
   "img-src 'self' data:",
   "connect-src 'self'",
   "frame-src https://challenges.cloudflare.com",

@@ -55,7 +55,7 @@ export default function Lightbox({ project, startIndex, onClose }) {
       </button>
 
       <figure className="lightbox__stage" onClick={(e) => e.stopPropagation()}>
-        <img src={current.src} alt={current.alt} />
+        <img src={current.src} alt={current.alt} width="1600" height="1000" />
         <figcaption>
           <strong>{project.name}</strong>
           {current.pov && <span className="lightbox__pov">{current.pov}</span>}
