@@ -168,7 +168,7 @@ export default function Projects() {
           Things I&apos;ve <span className="grad-text">shipped.</span>
         </h2>
         <p className="section__lead reveal">
-          Four production apps, three cloud platforms, zero templates — designed,
+          Production apps, cloud platforms, zero templates — designed,
           coded, and deployed end to end. Browse the galleries (screenshots use
           demo data).
         </p>
