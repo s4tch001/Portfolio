@@ -31,10 +31,10 @@ export default function Footer() {
               P
               <img
                 className='nav__logo-img'
-                src='/android-chrome-512x512.png'
+                src='/p-devs-logo-64.png'
                 alt='P-Devs logo'
-                width='512'
-                height='512'
+                width='64'
+                height='64'
               />
             </span>
             <span>
