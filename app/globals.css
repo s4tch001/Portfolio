@@ -1261,7 +1261,7 @@ html:not([data-style]) .nav__logo-img {
   padding: 0.45rem 0.75rem;
   background: color-mix(in srgb, var(--cyan), transparent 92%);
   color: var(--text);
-  font-family: var(--font-mono);
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
   font-size: 0.78rem;
 }
 
@@ -1358,7 +1358,7 @@ html:not([data-style]) .nav__logo-img {
   isolation: isolate;
   overflow: hidden;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 1rem;
   margin-top: 1rem;
@@ -1369,6 +1369,8 @@ html:not([data-style]) .nav__logo-img {
     radial-gradient(circle at 88% 18%, rgba(34, 211, 238, 0.22), transparent 34%),
     linear-gradient(135deg, rgba(34, 211, 238, 0.11), rgba(139, 92, 246, 0.1));
   box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.08), 0 16px 46px rgba(34, 211, 238, 0.12);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 1rem;
 }
 
 .project__demo::before {
@@ -1398,11 +1400,15 @@ html:not([data-style]) .nav__logo-img {
 
 .project__demo .btn--primary {
   position: relative;
+  align-self: center;
+  margin-left: auto;
   align-items: center;
   gap: 0.5rem;
   white-space: nowrap;
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14), 0 0 24px rgba(34, 211, 238, 0.28);
   animation: project-demo-cta 1.9s ease-in-out infinite;
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  font-size: 0.85rem;
 }
 
 .project__demo-arrow {
@@ -1456,7 +1462,7 @@ html:not([data-style]) .nav__logo-img {
 .project__demo-kicker {
   display: inline-flex;
   margin-bottom: 0.35rem;
-  font-family: var(--font-mono);
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
   font-size: 0.68rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1464,9 +1470,15 @@ html:not([data-style]) .nav__logo-img {
 }
 
 .project__demo p {
+  font-family: var(--font-inter), system-ui, sans-serif;
   color: var(--muted);
   font-size: 0.86rem;
   margin: 0;
+}
+
+.project__demo .project__deploy {
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
 }
 
 .project__demo-stack {
@@ -1478,7 +1490,12 @@ html:not([data-style]) .nav__logo-img {
 
 @media (max-width: 640px) {
   .project__demo {
+    align-items: flex-start;
     flex-direction: column;
+  }
+
+  .project__demo .btn--primary {
+    margin-left: 0;
   }
 }
 
