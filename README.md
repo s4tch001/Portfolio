@@ -1,28 +1,45 @@
 # Pau - Portfolio
 
-Personal portfolio of Pau: web developer, musician, and gamer. Built with Next.js
-16 App Router and React 19, then deployed through the Netlify Next.js runtime.
+Personal portfolio for [pauuu.dev](https://pauuu.dev), built to showcase Pau's
+work as a full-stack web developer under P-Devs.
 
-Live site: [https://pauuu.dev](https://pauuu.dev)
+The site is a polished, style-switchable Next.js portfolio with production
+project case studies, demo links, skills, services, contact flow, SEO metadata,
+and public repository hygiene.
 
-This repository is safe to publish publicly. Secrets are not committed; local
-and production credentials must live in ignored `.env.local` files or in Netlify
-environment variables.
+## Live Site
+
+- Portfolio: [https://pauuu.dev](https://pauuu.dev)
+- GitHub repository: [https://github.com/s4tch001/Portfolio](https://github.com/s4tch001/Portfolio)
+
+## Stack
+
+- Next.js 16 App Router
+- React 19
+- TypeScript-ready project structure
+- Netlify Next.js runtime
+- Brevo for contact email delivery
+- Cloudflare Turnstile for contact form protection
+- IndexNow support for search update pings
 
 ## Features
 
-- Pre-rendered pages with SEO metadata, Open Graph, and JSON-LD
-- Six visual styles with a persistent style switcher
+- Pre-rendered portfolio pages with SEO metadata, Open Graph, and JSON-LD
+- `llms.txt` for AI crawler guidance
+- Six visual styles with persistent style switching
 - Dark and light themes without a first-paint flash
-- Project slideshows and fullscreen image lightbox
-- Contact API backed by Brevo and protected by Cloudflare Turnstile
+- Responsive project galleries and fullscreen image lightbox
+- Production project links plus isolated portfolio demo links
+- Contact API protected by Turnstile and backed by Brevo
+- Custom 404 page that follows the active portfolio style
 
 ## Requirements
 
 - Git
 - Node.js 20 or newer
+- npm
 
-## Restore and install
+## Local Setup
 
 ```powershell
 git clone https://github.com/s4tch001/Portfolio.git
@@ -30,7 +47,8 @@ cd Portfolio
 npm install
 ```
 
-The contact form and IndexNow endpoint use these environment variables:
+Create an ignored `.env.local` file when working with the contact form or
+IndexNow endpoint.
 
 ```text
 BREVO_API_KEY
@@ -39,7 +57,10 @@ TURNSTILE_SECRET_KEY
 INDEXNOW_SUBMIT_TOKEN
 ```
 
-## Run locally
+Never commit `.env.local`, API keys, tokens, service keys, database passwords,
+or provider credentials.
+
+## Run Locally
 
 ```powershell
 npm run dev
@@ -47,7 +68,7 @@ npm run dev
 
 Open `http://localhost:3000`.
 
-## Build and run production locally
+## Build and Run Production Locally
 
 ```powershell
 npm run build
@@ -56,21 +77,26 @@ npm start
 
 ## Deploy to Netlify
 
-`netlify.toml` configures `npm run build`, the `.next` publish output, and the
-Netlify Next.js plugin. Connect the repository to Netlify and copy the
-server-side environment variables above into the site's environment settings.
+`netlify.toml` configures the build command, `.next` output, and Netlify's
+Next.js runtime. Connect the repository to Netlify and set the server-side
+environment variables in the site's environment settings.
 
-## Editing content
+## Editing Guide
 
-- Projects: `app/data/projects.js`
-- Screenshots: `public/assets/projects/`
-- About, skills, and contact content: `app/components/`
-- Styles: `app/styles/`, `app/globals.css`, and `StyleSwitcher.jsx`
+- Projects and gallery data: `app/data/projects.js`
+- Project screenshots: `public/assets/projects/`
+- About, skills, services, contact, and project sections: `app/components/`
+- Global styles: `app/globals.css`
+- Alternate visual styles: `app/styles/`
+- Style switcher: `app/components/StyleSwitcher.jsx`
 - SEO metadata and JSON-LD: `app/layout.jsx`
+- AI crawler guidance: `public/llms.txt`
 
-## Public repository safety
+## Public Repository Safety
 
-Commit application files, `package-lock.json`, public assets, and
-`.env.example`. Do not commit `.env.local`, API keys, tokens, service keys, or
-database passwords. `node_modules/`, `.next/`, `out/`, and `.netlify/` are
-generated and ignored.
+This repository is intended to be safe for public viewing. Commit application
+code, public assets, documentation, `package.json`, and `package-lock.json`.
+Keep secrets in Netlify environment variables or ignored local files only.
+
+Generated folders such as `node_modules/`, `.next/`, `out/`, and `.netlify/`
+are ignored and should not be committed.
