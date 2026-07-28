@@ -27,11 +27,15 @@ const ITEMS = [
 ];
 
 function Row({ prefix }) {
-  return ITEMS.map((item) => (
-    <span key={`${prefix}-${item}`} className="marquee__item">
-      {item} <span className="marquee__star" aria-hidden="true">✦</span>
-    </span>
-  ));
+  return (
+    <div className="marquee__row">
+      {ITEMS.map((item) => (
+        <span key={`${prefix}-${item}`} className="marquee__item">
+          {item}
+        </span>
+      ))}
+    </div>
+  );
 }
 
 // Two identical rows inside a track animated -50% => seamless infinite loop.

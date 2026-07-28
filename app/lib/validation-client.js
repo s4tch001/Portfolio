@@ -1,34 +1,18 @@
-// Authoritative server-side contact validation and sanitization. The browser
-// provides lightweight feedback, but this module always rechecks the payload.
-
 import { FIELD_LIMITS } from './contact-fields.js';
 
-export { FIELD_LIMITS } from './contact-fields.js';
-
-// Pragmatic email shape check (full RFC 5322 is overkill and rejects real
-// addresses); length is enforced separately.
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
-// Strips control/format characters (keeps \n and \t for multiline fields)
-// and trims surrounding whitespace.
-export function cleanText(value, { multiline = false } = {}) {
-  if (typeof value !== 'string') return '';
-  const stripped = multiline
-    ? value.replace(/[^\P{C}\n\t]/gu, '')
-    : value.replace(/\p{C}/gu, '');
-  return stripped.trim();
-}
+const trimmed = (value) => (typeof value === 'string' ? value.trim() : '');
 
-// Validates and sanitizes raw form data. Returns `{ values, errors }` where
-// `errors` maps field name → friendly message; an empty `errors` means the
-// cleaned `values` are safe to use.
-export function validateContact(data = {}) {
+// Lightweight feedback for the browser. The API always sanitizes and
+// validates the payload again with validation.js before using any value.
+export function validateContactClient(data = {}) {
   const values = {
-    name: cleanText(data.name),
-    email: cleanText(data.email),
-    company: cleanText(data.company),
-    subject: cleanText(data.subject),
-    message: cleanText(data.message, { multiline: true }),
+    name: trimmed(data.name),
+    email: trimmed(data.email),
+    company: trimmed(data.company),
+    subject: trimmed(data.subject),
+    message: trimmed(data.message),
   };
 
   const errors = {};

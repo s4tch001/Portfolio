@@ -1,9 +1,4 @@
 import './globals.css';
-import './styles/graffiti.css';
-import './styles/oldschool.css';
-import './styles/pixels.css';
-import './styles/luxe.css';
-import './styles/hacker.css';
 import {
   Bangers,
   Comic_Neue,
@@ -15,7 +10,6 @@ import {
   Space_Grotesk,
   VT323,
 } from 'next/font/google';
-import Script from 'next/script';
 import RevealController from './components/RevealController.jsx';
 
 const inter = Inter({
@@ -255,20 +249,68 @@ export const viewport = {
   viewportFit: 'cover',
 };
 
-// Applies the saved (or system) theme + saved page style to <html> before
-// first paint, so there's no flash of the wrong look. Mirrors the inline
-// script from the old index.html.
+// Applies the saved (or system) theme + saved page style during HTML parsing,
+// before visible content is painted. Keep this as a raw parser-executed script:
+// next/script queues beforeInteractive code behind the Next runtime, which can
+// cause a late repaint on slow mobile connections.
 const themeScript = `(function () {
   try {
+    var root = document.documentElement;
     var saved = localStorage.getItem('theme');
     var theme =
       saved ||
       (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-    document.documentElement.dataset.theme = theme;
+    root.dataset.theme = theme;
     var style = localStorage.getItem('site-style');
-    if (style && style !== 'default') document.documentElement.dataset.style = style;
+    var styles = {
+      graffiti: true,
+      oldschool: true,
+      pixels: true,
+      luxe: true,
+      hacker: true
+    };
+
+    if (styles[style]) {
+      root.dataset.style = style;
+      root.dataset.styleLoading = 'true';
+      root.style.visibility = 'hidden';
+
+      var link = document.createElement('link');
+      var settled = false;
+      var timeout;
+      var finish = function (loaded) {
+        if (settled) return;
+        settled = true;
+        window.clearTimeout(timeout);
+        if (loaded) {
+          link.dataset.loaded = 'true';
+        } else {
+          link.dataset.failed = 'true';
+          link.dispatchEvent(new Event('page-style-failed'));
+          link.remove();
+          delete root.dataset.style;
+          try {
+            localStorage.setItem('site-style', 'default');
+          } catch (storageError) {}
+        }
+        delete root.dataset.styleLoading;
+        root.style.removeProperty('visibility');
+      };
+
+      link.id = 'page-style-css-' + style;
+      link.rel = 'stylesheet';
+      link.href = '/styles/' + style + '.css';
+      link.dataset.pageStyle = style;
+      link.setAttribute('blocking', 'render');
+      link.addEventListener('load', function () { finish(true); }, { once: true });
+      link.addEventListener('error', function () { finish(false); }, { once: true });
+      document.head.appendChild(link);
+      timeout = window.setTimeout(function () { finish(false); }, 3000);
+    }
   } catch (e) {
     document.documentElement.dataset.theme = 'dark';
+    delete document.documentElement.dataset.styleLoading;
+    document.documentElement.style.removeProperty('visibility');
   }
 })();`;
 
@@ -322,12 +364,13 @@ export default function RootLayout({ children }) {
       translate="no"
       suppressHydrationWarning
     >
-      <body>
-        <Script
+      <head>
+        <script
           id="theme-init"
-          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: themeScript }}
         />
+      </head>
+      <body>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

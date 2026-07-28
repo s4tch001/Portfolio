@@ -1,5 +1,6 @@
 /* ═════════════════════════════════════════════════════════════════════════
    LUXE — minimalist luxury page style.
+   Loaded on demand so this alternate look stays outside the default critical CSS.
    Quiet and expensive: Cormorant Garamond serif display, champagne-gold
    hairlines on charcoal (dark) or ivory (light), zero rounded corners,
    zero loud shadows. The content does the talking.
@@ -314,7 +315,7 @@
   color: var(--muted);
 }
 
-[data-style='luxe'] .marquee__star {
+[data-style='luxe'] .marquee__item::after {
   color: var(--luxe-gold);
 }
 

@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { FIELD_LIMITS, validateContact } from '../lib/validation.js';
+import { FIELD_LIMITS } from '../lib/contact-fields.js';
+import { validateContactClient } from '../lib/validation-client.js';
 
 const SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 const TURNSTILE_SRC =
@@ -16,13 +17,15 @@ const FIELDS = [
   { id: 'subject', label: 'Subject', type: 'text', required: false, autoComplete: 'off' },
 ];
 
-export default function ContactForm() {
+export default function ContactForm({ eagerTurnstile = false }) {
   const [values, setValues] = useState(EMPTY);
   const [trap, setTrap] = useState(''); // honeypot
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState('idle'); // idle | sending | success | error
   const [feedback, setFeedback] = useState('');
-  const [shouldLoadTurnstile, setShouldLoadTurnstile] = useState(Boolean(SITE_KEY));
+  const [shouldLoadTurnstile, setShouldLoadTurnstile] = useState(
+    Boolean(SITE_KEY && eagerTurnstile),
+  );
 
   const formRef = useRef(null);
   const widgetRef = useRef(null);
@@ -34,8 +37,37 @@ export default function ContactForm() {
     if (SITE_KEY) setShouldLoadTurnstile(true);
   };
 
-  // Load the Turnstile script once the visitor interacts with the form and
-  // render the widget, matching the site's current light/dark theme.
+  // On the homepage, warm Turnstile shortly before the form reaches the
+  // viewport. The standalone /contact page opts into eager loading so a
+  // client navigation never leaves the form waiting for its challenge.
+  useEffect(() => {
+    if (
+      !SITE_KEY ||
+      eagerTurnstile ||
+      shouldLoadTurnstile ||
+      !formRef.current
+    ) {
+      return undefined;
+    }
+    if (typeof IntersectionObserver === 'undefined') {
+      setShouldLoadTurnstile(true);
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldLoadTurnstile(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '700px 0px', threshold: 0.01 },
+    );
+    observer.observe(formRef.current);
+    return () => observer.disconnect();
+  }, [eagerTurnstile, shouldLoadTurnstile]);
+
+  // Load the Turnstile script once, then render a theme-matched widget.
   useEffect(() => {
     if (!SITE_KEY || !shouldLoadTurnstile || !widgetRef.current) return undefined;
     let cancelled = false;
@@ -43,11 +75,13 @@ export default function ContactForm() {
     const render = () => {
       if (cancelled || !window.turnstile || !widgetRef.current) return;
       if (widgetIdRef.current !== null) {
+        tokenRef.current = '';
         window.turnstile.remove(widgetIdRef.current);
         widgetIdRef.current = null;
       }
       widgetIdRef.current = window.turnstile.render(widgetRef.current, {
         sitekey: SITE_KEY,
+        action: 'contact',
         theme: document.documentElement.dataset.theme === 'light' ? 'light' : 'dark',
         callback: (token) => {
           tokenRef.current = token;
@@ -118,7 +152,7 @@ export default function ContactForm() {
     event.preventDefault();
     if (sendingRef.current) return; // no duplicate submissions
 
-    const { values: clean, errors: fieldErrors } = validateContact(values);
+    const { values: clean, errors: fieldErrors } = validateContactClient(values);
     if (Object.keys(fieldErrors).length > 0) {
       setErrors(fieldErrors);
       setStatus('error');

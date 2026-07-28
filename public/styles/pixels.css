@@ -1,5 +1,6 @@
 /* ═════════════════════════════════════════════════════════════════════════
    PIXELS — 8-bit retro page style.
+   Loaded on demand so this alternate look stays outside the default critical CSS.
    Readable pixel type (Pixelify Sans + VT323), PICO-8-flavored palette,
    chunky hard-shadow "sprites", notched pixel corners, and faint scanlines.
    Photos are deliberately left crisp — only the chrome is pixelated.
@@ -372,7 +373,7 @@
   color: var(--muted);
 }
 
-[data-style='pixels'] .marquee__star {
+[data-style='pixels'] .marquee__item::after {
   color: var(--amber);
 }
 

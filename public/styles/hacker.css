@@ -1,5 +1,6 @@
 /* ═════════════════════════════════════════════════════════════════════════
    HACKER — code & terminal page style.
+   Loaded on demand so this alternate look stays outside the default critical CSS.
    Everything is a shell session: JetBrains Mono everywhere, matrix green
    phosphor on black, scanlines, $ prompts, cursor blocks, and terminal
    windows for the galleries. Light mode = a pale "paper terminal" theme.
@@ -413,7 +414,7 @@
   color: var(--muted);
 }
 
-[data-style='hacker'] .marquee__star {
+[data-style='hacker'] .marquee__item::after {
   color: var(--text);
 }
 
@@ -534,6 +535,10 @@
   background: var(--text);
   box-shadow: none;
   animation: hx-blink 1.1s steps(2) infinite;
+}
+
+[data-style='hacker'] .project__pulse::after {
+  display: none;
 }
 
 [data-style='hacker'] .project__deploy {

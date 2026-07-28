@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
 import useTheme from '../hooks/useTheme.js';
 import ThemeToggle from './ThemeToggle.jsx';
 
@@ -56,13 +55,13 @@ export default function Nav() {
               {link.label}
             </a>
           ))}
-          <Link
+          <a
             className='btn btn--small btn--gradient'
             href='/contact'
             onClick={() => setOpen(false)}
           >
             Hire me
-          </Link>
+          </a>
         </nav>
 
         <div className='nav__actions'>

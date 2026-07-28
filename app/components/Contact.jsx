@@ -2,7 +2,10 @@ import ContactForm from './ContactForm.jsx';
 
 // Used as section 05 on the home page and as the body of the standalone
 // /contact page (which passes its own eyebrow).
-export default function Contact({ eyebrow = '05 · Contact' }) {
+export default function Contact({
+  eyebrow = '05 · Contact',
+  eagerTurnstile = false,
+}) {
   return (
     <section id='contact' className='section section--alt'>
       <div className='section__inner contact'>
@@ -15,7 +18,7 @@ export default function Contact({ eyebrow = '05 · Contact' }) {
         <p className='section__lead contact__lead reveal'>
           Have a project or idea? Let's talk.
         </p>
-        <ContactForm />
+        <ContactForm eagerTurnstile={eagerTurnstile} />
       </div>
     </section>
   );

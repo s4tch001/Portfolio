@@ -24,7 +24,7 @@ export default function ContactPage() {
       <div className="bg-glow" aria-hidden="true" />
       <Nav />
       <main className="page-offset">
-        <Contact eyebrow="Contact" />
+        <Contact eyebrow="Contact" eagerTurnstile />
       </main>
       <Footer />
       <StyleSwitcher />

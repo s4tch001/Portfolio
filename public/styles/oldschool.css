@@ -1,5 +1,6 @@
 /* ═════════════════════════════════════════════════════════════════════════
    OLD SCHOOL — 90's web page style.
+   Loaded on demand so this alternate look stays outside the default critical CSS.
    Windows-95 / Geocities era: teal desktop, silver beveled panels, navy
    title bars, Comic Sans headings, pixel-terminal type, blinking bits.
    Scoped under [data-style='oldschool'] so it fully overrides the Default
@@ -382,7 +383,7 @@
   color: #00ff00;
 }
 
-[data-style='oldschool'] .marquee__star {
+[data-style='oldschool'] .marquee__item::after {
   color: #ffff00;
 }
 
@@ -493,6 +494,10 @@
   background: #00ff00;
   box-shadow: none;
   animation: os-blink 1s steps(2) infinite;
+}
+
+[data-style='oldschool'] .project__pulse::after {
+  display: none;
 }
 
 @keyframes os-blink {

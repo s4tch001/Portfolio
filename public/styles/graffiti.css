@@ -1,5 +1,6 @@
 /* ═════════════════════════════════════════════════════════════════════════
    GRAFFITI — street-art page style.
+   Loaded on demand so this alternate look stays outside the default critical CSS.
    Everything is scoped under [data-style='graffiti'] so it fully overrides
    the Default look without touching it. Fonts: Bangers (poster caps) +
    Permanent Marker (hand-scrawled accents), loaded in layout.jsx.
@@ -421,7 +422,7 @@
   color: #17131a;
 }
 
-[data-style='graffiti'] .marquee__star {
+[data-style='graffiti'] .marquee__item::after {
   color: #b14aff;
 }
 

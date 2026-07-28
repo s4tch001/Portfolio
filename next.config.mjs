@@ -34,8 +34,11 @@ const nextConfig = {
   // No `output: 'export'` — the contact API route needs a server, so the site
   // now deploys through Netlify's Next.js runtime (pages stay pre-rendered;
   // /api/contact becomes a Netlify Function).
-  // <img> tags are used directly, so skip the Image Optimization pipeline.
-  images: { unoptimized: true },
+  // Netlify's current Next.js adapter serves next/image through its Image CDN.
+  images: {
+    qualities: [82],
+    minimumCacheTTL: 14400,
+  },
   async headers() {
     return [
       {

@@ -1,9 +1,11 @@
+import Image from 'next/image';
+import { createPortal } from 'react-dom';
 import { useEffect, useRef } from 'react';
 import useSlideshow from '../hooks/useSlideshow.js';
 
 // Fullscreen photo viewer: auto-advances, loops, and pauses 30s on manual
 // navigation. Arrows + keyboard + swipe, dots, caption, and POV badge.
-export default function Lightbox({ project, startIndex, onClose }) {
+function LightboxDialog({ project, startIndex, onClose }) {
   const images = project.images;
   const { index, setIndex, next, prev, pause } = useSlideshow(images.length, {
     startIndex,
@@ -17,10 +19,11 @@ export default function Lightbox({ project, startIndex, onClose }) {
       else if (e.key === 'ArrowLeft') { pause(); prev(); }
     };
     window.addEventListener('keydown', onKey);
+    const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     return () => {
       window.removeEventListener('keydown', onKey);
-      document.body.style.overflow = '';
+      document.body.style.overflow = previousOverflow;
     };
   }, [next, prev, pause, onClose]);
 
@@ -57,7 +60,14 @@ export default function Lightbox({ project, startIndex, onClose }) {
       </button>
 
       <figure className="lightbox__stage" onClick={(e) => e.stopPropagation()}>
-        <img src={current.src} alt={current.alt} width="1600" height="1000" />
+        <Image
+          src={current.src}
+          alt={current.alt}
+          width={1600}
+          height={1000}
+          quality={82}
+          sizes="(max-width: 720px) calc(100vw - 2rem), (max-width: 1304px) 92vw, 1200px"
+        />
         <figcaption>
           <strong>{project.name}</strong>
           {current.pov && <span className="lightbox__pov">{current.pov}</span>}
@@ -89,4 +99,8 @@ export default function Lightbox({ project, startIndex, onClose }) {
       </button>
     </div>
   );
+}
+
+export default function Lightbox(props) {
+  return createPortal(<LightboxDialog {...props} />, document.body);
 }
