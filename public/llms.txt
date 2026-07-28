@@ -1,0 +1,23 @@
+# pauuu.dev
+
+Personal portfolio of Pau, a full-stack web developer in the Philippines.
+
+## Site purpose
+
+This website showcases Pau's production work, technical skills, services, and contact information.
+
+## Crawling and usage
+
+Public search engines and AI assistants may crawl the public pages of `https://pauuu.dev` to understand and summarize the portfolio.
+
+Do not use contact form submissions, private environment values, authentication secrets, or non-public project data for crawling, indexing, model training, or generated summaries.
+
+## Important pages
+
+- Home and portfolio: https://pauuu.dev/
+- Contact: https://pauuu.dev/contact
+- Source code: https://github.com/s4tch001/Portfolio
+
+## Owner
+
+Pau / P-Devs

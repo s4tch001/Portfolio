@@ -134,10 +134,14 @@ function Gallery({ project, onOpen }) {
         {images.length > 1 && (
           <>
             <button type="button" className="gallery__arrow gallery__arrow--prev" aria-label="Previous screenshot" onClick={withPause(prev)}>
-              ‹
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="m14.5 5-7 7 7 7" />
+              </svg>
             </button>
             <button type="button" className="gallery__arrow gallery__arrow--next" aria-label="Next screenshot" onClick={withPause(next)}>
-              ›
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="m9.5 5 7 7-7 7" />
+              </svg>
             </button>
             <div className="gallery__dots">
               {images.map((img, i) => (
