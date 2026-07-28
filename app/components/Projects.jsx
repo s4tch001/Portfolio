@@ -93,6 +93,9 @@ function Gallery({ project, onOpen }) {
         <span className="dot dot--y" />
         <span className="dot dot--g" />
         {current.pov && <span className="browser__pov">{current.pov}</span>}
+        <span className="gallery__caption" title={current.caption}>
+          {current.caption}
+        </span>
         <span className="browser__count">{shown.i + 1}/{images.length}</span>
       </div>
 
@@ -125,7 +128,6 @@ function Gallery({ project, onOpen }) {
               style={{ '--slide-from': `${shown.dir * 30}px` }}
             />
           )}
-          <span className="gallery__caption">{current.caption}</span>
           <span className="gallery__zoom" aria-hidden="true">
             ↗
           </span>

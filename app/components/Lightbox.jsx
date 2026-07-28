@@ -47,11 +47,13 @@ export default function Lightbox({ project, startIndex, onClose }) {
 
       <button
         type="button"
-        className="lightbox__arrow lightbox__arrow--prev"
+        className="gallery__arrow gallery__arrow--prev lightbox__arrow lightbox__arrow--prev"
         aria-label="Previous screenshot"
         onClick={(e) => { e.stopPropagation(); pause(); prev(); }}
       >
-        ‹
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="m14.5 5-7 7 7 7" />
+        </svg>
       </button>
 
       <figure className="lightbox__stage" onClick={(e) => e.stopPropagation()}>
@@ -77,11 +79,13 @@ export default function Lightbox({ project, startIndex, onClose }) {
 
       <button
         type="button"
-        className="lightbox__arrow lightbox__arrow--next"
+        className="gallery__arrow gallery__arrow--next lightbox__arrow lightbox__arrow--next"
         aria-label="Next screenshot"
         onClick={(e) => { e.stopPropagation(); pause(); next(); }}
       >
-        ›
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="m9.5 5 7 7-7 7" />
+        </svg>
       </button>
     </div>
   );

@@ -523,7 +523,6 @@
   font-size: 1rem;
 }
 
-[data-style='oldschool'] .lightbox__arrow,
 [data-style='oldschool'] .lightbox__close {
   background: var(--os-face);
   color: var(--os-ink);

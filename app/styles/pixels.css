@@ -496,7 +496,6 @@
   font-size: 1rem;
 }
 
-[data-style='pixels'] .lightbox__arrow,
 [data-style='pixels'] .lightbox__close {
   background: var(--violet);
   color: #fff;

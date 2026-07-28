@@ -1164,6 +1164,7 @@ html:not([data-style]) .nav__logo-img {
 
 .browser__pov {
   margin-left: 0.8rem;
+  flex: 0 0 auto;
   font-family: var(--font-mono);
   font-size: 0.66rem;
   letter-spacing: 0.05em;
@@ -1407,7 +1408,7 @@ html:not([data-style]) .nav__logo-img {
 
 /* ───────────────────────── Gallery (project slideshow) ───────────────────────── */
 .browser__count {
-  margin-left: auto;
+  flex: 0 0 auto;
   font-family: var(--font-mono);
   font-size: 0.7rem;
   color: var(--muted);
@@ -1478,22 +1479,22 @@ html:not([data-style]) .nav__logo-img {
 }
 
 .gallery__caption {
-  position: absolute;
-  left: 0.9rem;
-  bottom: 0.9rem;
+  flex: 1 1 auto;
+  min-width: 0;
+  margin-inline: 0.35rem;
   font-family: var(--font-mono);
   font-size: 0.72rem;
+  line-height: 1.25;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   color: #fff;
   background: rgba(7, 7, 13, 0.72);
   border: 1px solid var(--border);
   border-radius: 999px;
   padding: 0.28rem 0.85rem;
   backdrop-filter: blur(8px);
-  opacity: 0;
-  transform: translateY(6px);
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s ease;
   pointer-events: none;
 }
 
@@ -1550,8 +1551,6 @@ html:not([data-style]) .nav__logo-img {
   transform: translate(7px, 7px) rotate(45deg);
 }
 
-.gallery:hover .gallery__caption,
-.gallery:focus-within .gallery__caption,
 .gallery:hover .gallery__zoom,
 .gallery:focus-within .gallery__zoom {
   opacity: 1;
@@ -1771,28 +1770,15 @@ html:not([data-style]) .nav__logo-img {
 .lightbox__arrow {
   position: fixed;
   top: calc(50% - 2.7rem);
+  bottom: auto;
+  margin: 0;
   transform: translateY(-50%);
   z-index: 1;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text);
-  font-size: 1.9rem;
-  line-height: 1;
-  cursor: pointer;
-  flex-shrink: 0;
-  display: grid;
-  place-items: center;
-  transition:
-    border-color 0.2s ease,
-    background 0.2s ease;
+  opacity: 1;
 }
 
 .lightbox__arrow:hover {
-  border-color: var(--violet);
-  background: rgba(139, 92, 246, 0.25);
+  transform: translateY(-50%) scale(1.04);
 }
 
 .lightbox__arrow--prev {
@@ -2423,18 +2409,34 @@ html:not([data-style]) .nav__logo-img {
 /* Touch devices: no hover — keep gallery controls visible */
 @media (hover: none) {
   .gallery__arrow,
-  .gallery__caption,
   .gallery__zoom {
     opacity: 1;
     transform: none;
   }
+
+  .lightbox__arrow {
+    transform: translateY(-50%);
+  }
 }
 
 @media (max-width: 720px) {
-  /* Caption pill collides with the dots on narrow cards — the lightbox
-     shows the full caption anyway. */
+  .browser__bar {
+    gap: 5px;
+    padding-inline: 0.7rem;
+  }
+
+  .browser__pov {
+    margin-left: 0.25rem;
+    max-width: 30%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
   .gallery__caption {
-    display: none;
+    margin-inline: 0.15rem;
+    padding-inline: 0.5rem;
+    font-size: 0.64rem;
   }
 
   .lightbox {
@@ -2444,10 +2446,8 @@ html:not([data-style]) .nav__logo-img {
   .lightbox__arrow {
     position: absolute;
     top: calc(50% - 2.7rem);
+    bottom: auto;
     transform: translateY(-50%);
-    width: 42px;
-    height: 42px;
-    background: rgba(7, 7, 13, 0.72);
   }
 
   .lightbox__arrow--prev {

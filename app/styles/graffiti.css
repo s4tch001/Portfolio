@@ -573,7 +573,6 @@
   font-family: var(--font-marker);
 }
 
-[data-style='graffiti'] .lightbox__arrow,
 [data-style='graffiti'] .lightbox__close {
   background: #ffd60a;
   color: #17131a;

@@ -417,7 +417,6 @@
   letter-spacing: 0.08em;
 }
 
-[data-style='luxe'] .lightbox__arrow,
 [data-style='luxe'] .lightbox__close {
   background: transparent;
   border: 1px solid var(--border);
