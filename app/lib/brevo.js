@@ -25,6 +25,19 @@ function row(label, value) {
   </tr>`;
 }
 
+function formatTimestamp(value) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return String(value);
+
+  const formatted = new Intl.DateTimeFormat('en-PH', {
+    dateStyle: 'long',
+    timeStyle: 'short',
+    timeZone: 'Asia/Manila',
+  }).format(date);
+
+  return `${formatted} (Asia/Manila)`;
+}
+
 export async function sendContactEmail({
   name,
   email,
@@ -40,6 +53,7 @@ export async function sendContactEmail({
     throw new Error('BREVO_API_KEY is not configured');
   }
 
+  const displayTimestamp = formatTimestamp(submittedAt);
   const safe = {
     name: escapeHtml(name),
     email: escapeHtml(email),
@@ -48,7 +62,7 @@ export async function sendContactEmail({
     message: escapeHtml(message).replace(/\n/g, '<br />'),
     ip: escapeHtml(ip),
     userAgent: escapeHtml(userAgent),
-    submittedAt: escapeHtml(submittedAt),
+    submittedAt: escapeHtml(displayTimestamp),
   };
 
   const htmlContent = `<div style="font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;max-width:640px;margin:0 auto;padding:24px;">
@@ -79,7 +93,7 @@ export async function sendContactEmail({
     'Message:',
     message,
     '',
-    `Timestamp: ${submittedAt}`,
+    `Timestamp: ${displayTimestamp}`,
     `Visitor IP: ${ip}`,
     `User agent: ${userAgent}`,
   ].join('\n');
