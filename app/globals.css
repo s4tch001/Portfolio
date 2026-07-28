@@ -942,6 +942,17 @@ html:not([data-style]) .nav__logo-img {
   content-visibility: auto;
 }
 
+/* Anchor links need final section heights, not content-visibility estimates.
+   This is enabled only after an in-page navigation is requested. */
+html.anchor-layout-ready #about,
+html.anchor-layout-ready #services,
+html.anchor-layout-ready #portfolio,
+html.anchor-layout-ready #skills,
+html.anchor-layout-ready #contact,
+html.anchor-layout-ready .footer {
+  content-visibility: visible;
+}
+
 #about {
   contain-intrinsic-block-size: auto 700px;
 }

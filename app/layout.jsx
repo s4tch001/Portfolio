@@ -10,6 +10,7 @@ import {
   Space_Grotesk,
   VT323,
 } from 'next/font/google';
+import AnchorScrollController from './components/AnchorScrollController.jsx';
 import RevealController from './components/RevealController.jsx';
 
 const inter = Inter({
@@ -376,6 +377,7 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         {children}
+        <AnchorScrollController />
         <RevealController />
       </body>
     </html>
