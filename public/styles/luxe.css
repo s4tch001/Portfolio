@@ -182,6 +182,7 @@
 }
 
 [data-style='luxe'] .about__card h3,
+[data-style='luxe'] .services__card h3,
 [data-style='luxe'] .skills__card h3 {
   font-family: var(--font-display);
   font-weight: 600;
@@ -416,6 +417,13 @@
 [data-style='luxe'] .lightbox__stage figcaption {
   font-family: var(--font-body);
   letter-spacing: 0.08em;
+  color: #fff;
+}
+
+[data-style='luxe'] .lightbox__stage figcaption strong,
+[data-style='luxe'] .lightbox__pov,
+[data-style='luxe'] .lightbox__counter {
+  color: #fff;
 }
 
 [data-style='luxe'] .lightbox__close {

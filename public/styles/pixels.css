@@ -228,6 +228,7 @@
 }
 
 [data-style='pixels'] .about__card h3,
+[data-style='pixels'] .services__card h3,
 [data-style='pixels'] .skills__card h3 {
   font-family: var(--font-display);
   color: var(--violet);
@@ -495,6 +496,13 @@
 [data-style='pixels'] .lightbox__stage figcaption {
   font-family: var(--font-mono);
   font-size: 1rem;
+  color: #fff;
+}
+
+[data-style='pixels'] .lightbox__stage figcaption strong,
+[data-style='pixels'] .lightbox__pov,
+[data-style='pixels'] .lightbox__counter {
+  color: #fff;
 }
 
 [data-style='pixels'] .lightbox__close {

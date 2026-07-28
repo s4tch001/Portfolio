@@ -219,12 +219,14 @@
 }
 
 [data-style='oldschool'] .about__card h3,
+[data-style='oldschool'] .services__card h3,
 [data-style='oldschool'] .skills__card h3 {
   font-family: var(--font-display);
   color: var(--os-accent-ink);
 }
 
-[data-style='oldschool'] .about__card p {
+[data-style='oldschool'] .about__card p,
+[data-style='oldschool'] .services__card p {
   color: var(--os-ink-soft);
 }
 
@@ -526,6 +528,13 @@
 [data-style='oldschool'] .lightbox__stage figcaption {
   font-family: var(--font-mono);
   font-size: 1rem;
+  color: #fff;
+}
+
+[data-style='oldschool'] .lightbox__stage figcaption strong,
+[data-style='oldschool'] .lightbox__pov,
+[data-style='oldschool'] .lightbox__counter {
+  color: #fff;
 }
 
 [data-style='oldschool'] .lightbox__close {
@@ -534,6 +543,27 @@
   border: 2px solid;
   border-color: var(--os-hi) var(--os-lo) var(--os-lo) var(--os-hi);
   border-radius: 0;
+}
+
+[data-style='oldschool'] .contact-form input,
+[data-style='oldschool'] .contact-form textarea {
+  color: var(--os-ink);
+  background: var(--os-face);
+  caret-color: var(--os-ink);
+  -webkit-text-fill-color: var(--os-ink);
+}
+
+[data-style='oldschool'][data-theme='light'] .contact-form input,
+[data-style='oldschool'][data-theme='light'] .contact-form textarea {
+  color: #000;
+  caret-color: #000;
+  -webkit-text-fill-color: #000;
+}
+
+[data-style='oldschool'] .contact-form input::placeholder,
+[data-style='oldschool'] .contact-form textarea::placeholder {
+  color: var(--os-ink-soft);
+  opacity: 0.68;
 }
 
 /* ───────────────────────── Footer ───────────────────────── */

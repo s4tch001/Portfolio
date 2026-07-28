@@ -283,12 +283,14 @@
 }
 
 [data-style='graffiti'] .about__card h3,
+[data-style='graffiti'] .services__card h3,
 [data-style='graffiti'] .skills__card h3 {
   font-family: var(--font-marker);
   color: var(--ink);
 }
 
-[data-style='graffiti'] .about__card p {
+[data-style='graffiti'] .about__card p,
+[data-style='graffiti'] .services__card p {
   color: #4c453f;
 }
 
@@ -572,6 +574,13 @@
 
 [data-style='graffiti'] .lightbox__stage figcaption {
   font-family: var(--font-marker);
+  color: #fff;
+}
+
+[data-style='graffiti'] .lightbox__stage figcaption strong,
+[data-style='graffiti'] .lightbox__pov,
+[data-style='graffiti'] .lightbox__counter {
+  color: #fff;
 }
 
 [data-style='graffiti'] .lightbox__close {

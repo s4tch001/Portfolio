@@ -258,18 +258,21 @@
 }
 
 [data-style='hacker'] .about__card h3,
+[data-style='hacker'] .services__card h3,
 [data-style='hacker'] .skills__card h3 {
   font-family: var(--font-mono);
   color: var(--text);
 }
 
 [data-style='hacker'] .about__card h3::before,
+[data-style='hacker'] .services__card h3::before,
 [data-style='hacker'] .skills__card h3::before {
   content: '~/';
   color: var(--muted);
 }
 
-[data-style='hacker'] .about__card p {
+[data-style='hacker'] .about__card p,
+[data-style='hacker'] .services__card p {
   color: var(--muted);
 }
 
@@ -557,6 +560,13 @@
 
 [data-style='hacker'] .lightbox__stage figcaption {
   font-family: var(--font-mono);
+  color: #fff;
+}
+
+[data-style='hacker'] .lightbox__stage figcaption strong,
+[data-style='hacker'] .lightbox__pov,
+[data-style='hacker'] .lightbox__counter {
+  color: #fff;
 }
 
 [data-style='hacker'] .lightbox__close {

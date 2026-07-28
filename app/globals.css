@@ -1039,7 +1039,13 @@ html:not([data-style]) .nav__logo-img {
   margin: 0.9rem 0 0.5rem;
 }
 
-.about__card p {
+.about__card h3,
+.services__card h3 {
+  color: var(--text);
+}
+
+.about__card p,
+.services__card p {
   color: var(--muted);
   font-size: 0.95rem;
 }
@@ -1783,17 +1789,18 @@ html:not([data-style]) .nav__logo-img {
   gap: 0.4rem 1rem;
   margin-top: 1rem;
   font-size: 0.9rem;
-  color: var(--muted);
+  color: #fff;
 }
 
 .lightbox__stage figcaption strong {
   font-family: var(--font-display);
-  color: var(--text);
+  color: #fff;
 }
 
 .lightbox__counter {
   font-family: var(--font-mono);
   font-size: 0.78rem;
+  color: #fff;
 }
 
 .lightbox__pov {
@@ -1801,7 +1808,7 @@ html:not([data-style]) .nav__logo-img {
   font-size: 0.68rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--cyan);
+  color: #fff;
   background: rgba(34, 211, 238, 0.12);
   border: 1px solid rgba(34, 211, 238, 0.35);
   border-radius: 999px;
@@ -2109,6 +2116,11 @@ html:not([data-style]) .nav__logo-img {
     border-color 0.25s ease,
     box-shadow 0.25s ease,
     background-color 0.25s ease;
+}
+
+.contact-form input,
+.contact-form textarea {
+  caret-color: var(--text);
 }
 
 .contact-form input::placeholder,
