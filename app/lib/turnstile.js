@@ -12,17 +12,28 @@ export async function verifyTurnstile(token, ip) {
   }
   if (typeof token !== 'string' || !token) return false;
 
+  const form = new URLSearchParams();
+  form.set('secret', secret);
+  form.set('response', token);
+
   const res = await fetch(VERIFY_URL, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      secret,
-      response: token,
-      ...(ip && ip !== 'unknown' ? { remoteip: ip } : {}),
-    }),
+    body: form,
   });
 
-  if (!res.ok) return false;
+  if (!res.ok) {
+    console.error('[turnstile] siteverify request failed:', res.status);
+    return false;
+  }
+
   const data = await res.json();
+  if (data.success !== true) {
+    console.error('[turnstile] verification failed:', {
+      action: data.action,
+      hostname: data.hostname,
+      errors: data['error-codes'],
+      ipKnown: Boolean(ip && ip !== 'unknown'),
+    });
+  }
   return data.success === true;
 }

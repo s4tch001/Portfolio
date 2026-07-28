@@ -22,7 +22,7 @@ export default function ContactForm() {
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState('idle'); // idle | sending | success | error
   const [feedback, setFeedback] = useState('');
-  const [shouldLoadTurnstile, setShouldLoadTurnstile] = useState(false);
+  const [shouldLoadTurnstile, setShouldLoadTurnstile] = useState(Boolean(SITE_KEY));
 
   const formRef = useRef(null);
   const widgetRef = useRef(null);
@@ -51,6 +51,10 @@ export default function ContactForm() {
         theme: document.documentElement.dataset.theme === 'light' ? 'light' : 'dark',
         callback: (token) => {
           tokenRef.current = token;
+          setFeedback((current) =>
+            current === 'Please complete the verification check first.' ? '' : current,
+          );
+          setStatus((current) => (current === 'error' ? 'idle' : current));
         },
         'expired-callback': () => {
           tokenRef.current = '';

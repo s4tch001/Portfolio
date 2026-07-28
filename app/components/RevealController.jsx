@@ -1,8 +1,11 @@
 'use client';
 
 import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function RevealController() {
+  const pathname = usePathname();
+
   useEffect(() => {
     const nodes = Array.from(document.querySelectorAll('.reveal:not(.in)'));
 
@@ -27,7 +30,7 @@ export default function RevealController() {
 
     nodes.forEach((node) => observer.observe(node));
     return () => observer.disconnect();
-  }, []);
+  }, [pathname]);
 
   return null;
 }
