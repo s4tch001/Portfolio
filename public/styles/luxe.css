@@ -409,6 +409,10 @@
   border-radius: 0;
 }
 
+[data-style='luxe'][data-theme='light'] .project__demo .btn--primary {
+  border-color: var(--luxe-gold);
+}
+
 /* ───────────────────────── Lightbox ───────────────────────── */
 [data-style='luxe'] .lightbox__stage img {
   border: 1px solid var(--border);

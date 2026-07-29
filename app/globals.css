@@ -1422,6 +1422,10 @@ html.anchor-layout-ready .footer {
   font-size: 0.85rem;
 }
 
+[data-theme='light']:not([data-style]) .project__demo .btn--primary {
+  border-color: var(--violet);
+}
+
 .project__demo-arrow {
   display: inline-grid;
   place-items: center;
