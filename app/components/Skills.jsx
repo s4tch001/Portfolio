@@ -93,14 +93,17 @@ const GROUPS = [
   },
 ];
 
-export default function Skills() {
+export default function Skills({ heading, headingLevel = 'h2', eyebrow = '04 · Skills' }) {
+  const Heading = headingLevel;
+  const title = heading ?? (
+    <>My <span className="grad-text">toolbox.</span></>
+  );
+
   return (
     <section id="skills" className="section">
       <div className="section__inner">
-        <p className="section__eyebrow reveal">04 · Skills</p>
-        <h2 className="section__title reveal">
-          My <span className="grad-text">toolbox.</span>
-        </h2>
+        <p className="section__eyebrow reveal">{eyebrow}</p>
+        <Heading className="section__title reveal">{title}</Heading>
         <p className="section__lead reveal">
           The technologies, platforms, and disciplines I use across the full
           development lifecycle.

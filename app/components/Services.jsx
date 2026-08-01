@@ -46,14 +46,17 @@ const SERVICES = [
   },
 ];
 
-export default function Services() {
+export default function Services({ heading, headingLevel = 'h2', eyebrow = '02 · Services' }) {
+  const Heading = headingLevel;
+  const title = heading ?? (
+    <>What I can <span className="grad-text">do for you.</span></>
+  );
+
   return (
     <section id="services" className="section">
       <div className="section__inner">
-        <p className="section__eyebrow reveal">02 · Services</p>
-        <h2 className="section__title reveal">
-          What I can <span className="grad-text">do for you.</span>
-        </h2>
+        <p className="section__eyebrow reveal">{eyebrow}</p>
+        <Heading className="section__title reveal">{title}</Heading>
         <p className="section__lead reveal">
           From blank page to shipped product — then the fixes, speedups, and
           “can we add this?” moments after launch.

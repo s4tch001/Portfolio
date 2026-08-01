@@ -5,14 +5,17 @@ function DeployBadge({ name }) {
   return <span className="project__deploy">▲ {name}</span>;
 }
 
-export default function Projects() {
+export default function Projects({ heading, headingLevel = 'h2', eyebrow = '03 · Portfolio' }) {
+  const Heading = headingLevel;
+  const title = heading ?? (
+    <>Things I&apos;ve <span className="grad-text">shipped.</span></>
+  );
+
   return (
     <section id="portfolio" className="section section--alt">
       <div className="section__inner">
-        <p className="section__eyebrow reveal">03 · Portfolio</p>
-        <h2 className="section__title reveal">
-          Things I&apos;ve <span className="grad-text">shipped.</span>
-        </h2>
+        <p className="section__eyebrow reveal">{eyebrow}</p>
+        <Heading className="section__title reveal">{title}</Heading>
         <p className="section__lead reveal">
           Production apps, cloud platforms, zero templates — designed,
           coded, and deployed end to end. Browse the galleries (screenshots use
@@ -23,6 +26,7 @@ export default function Projects() {
           {projects.map((project, i) => (
             <article
               key={project.id}
+              id={project.id}
               className={`project project--${project.accent} ${i % 2 ? 'project--flip' : ''}`}
             >
               <div className="project__media reveal">

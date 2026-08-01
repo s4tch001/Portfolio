@@ -5,16 +5,23 @@ import ContactForm from './ContactForm.jsx';
 export default function Contact({
   eyebrow = '05 · Contact',
   eagerTurnstile = false,
+  heading,
+  headingLevel = 'h2',
 }) {
+  const Heading = headingLevel;
+  const title = heading ?? (
+    <>
+      Let&apos;s build something
+      <br />
+      <span className='grad-text'>worth shipping.</span>
+    </>
+  );
+
   return (
     <section id='contact' className='section section--alt'>
       <div className='section__inner contact'>
         <p className='section__eyebrow reveal'>{eyebrow}</p>
-        <h2 className='section__title contact__title reveal'>
-          Let&apos;s build something
-          <br />
-          <span className='grad-text'>worth shipping.</span>
-        </h2>
+        <Heading className='section__title contact__title reveal'>{title}</Heading>
         <p className='section__lead contact__lead reveal'>
           Have a project or idea? Let's talk.
         </p>

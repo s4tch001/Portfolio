@@ -21,14 +21,17 @@ const FACETS = [
   },
 ];
 
-export default function About() {
+export default function About({ heading, headingLevel = 'h2', eyebrow = '01 · About' }) {
+  const Heading = headingLevel;
+  const title = heading ?? (
+    <>More than just <span className="grad-text">code.</span></>
+  );
+
   return (
     <section id="about" className="section">
       <div className="section__inner">
-        <p className="section__eyebrow reveal">01 · About</p>
-        <h2 className="section__title reveal">
-          More than just <span className="grad-text">code.</span>
-        </h2>
+        <p className="section__eyebrow reveal">{eyebrow}</p>
+        <Heading className="section__title reveal">{title}</Heading>
         <p className="section__lead reveal">
           I&apos;m Pau, the solo dev behind <strong>P-Devs</strong>. I design,
           build, deploy, and maintain the work you see here.

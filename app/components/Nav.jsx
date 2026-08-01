@@ -4,14 +4,14 @@ import { useEffect, useState } from 'react';
 import useTheme from '../hooks/useTheme.js';
 import ThemeToggle from './ThemeToggle.jsx';
 
-// Root-anchored hrefs so the links work from any page (e.g. /contact):
-// on the home page they smooth-scroll, elsewhere they navigate home first.
+// Dedicated, canonical routes give search engines a clear site hierarchy and
+// make these pages eligible for sitelinks under the main pauuu.dev result.
 const LINKS = [
-  { href: '/#about', label: 'About' },
-  { href: '/#services', label: 'Services' },
-  { href: '/#portfolio', label: 'Portfolio' },
-  { href: '/#skills', label: 'Skills' },
-  { href: '/#contact', label: 'Contact' },
+  { href: '/about', label: 'About' },
+  { href: '/services', label: 'Services' },
+  { href: '/portfolio', label: 'Portfolio' },
+  { href: '/skills', label: 'Skills' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 export default function Nav() {
