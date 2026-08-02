@@ -1,36 +1,46 @@
-# Pau - Portfolio
+# Pau / P-Devs Portfolio
 
-Personal portfolio for [pauuu.dev](https://pauuu.dev), built to showcase Pau's
-work as a full-stack web developer under P-Devs.
+Personal portfolio for [pauuu.dev](https://pauuu.dev), showcasing Pau's work as a Filipino full-stack web developer under the P-Devs brand.
 
-The site is a polished, style-switchable Next.js portfolio with production
-project case studies, demo links, skills, services, contact flow, SEO metadata,
-and public repository hygiene.
+The site is a style-switchable Next.js portfolio with project case studies, demo previews, services, skills, contact flow, SEO metadata, and machine-readable context for search and AI systems.
 
-## Live Site
+## Live site
 
-- Portfolio: [https://pauuu.dev](https://pauuu.dev)
-- GitHub repository: [https://github.com/s4tch001/Portfolio](https://github.com/s4tch001/Portfolio)
+- Website: [https://pauuu.dev](https://pauuu.dev)
+- Source repository: [github.com/s4tch001/Portfolio](https://github.com/s4tch001/Portfolio)
+
+The canonical host is `pauuu.dev`. `www.pauuu.dev` redirects to the canonical non-`www` host.
+
+## Public routes
+
+| Route | Purpose |
+| --- | --- |
+| `/` | Homepage with the hero, profile, services, featured work, skills, and contact sections |
+| `/about` | Crawlable About page for Pau and P-Devs |
+| `/services` | Web development, design, SEO, security, maintenance, performance, and integration services |
+| `/portfolio` | Project case studies, screenshots, stacks, and demo preview links |
+| `/skills` | Frontend, backend, cloud, design, SEO, performance, and security skills |
+| `/contact` | Professional project inquiry form |
 
 ## Stack
 
 - Next.js 16 App Router
-- React 19
-- TypeScript-ready project structure
+- React 19 and JSX
 - Netlify Next.js runtime
 - Brevo for contact email delivery
 - Cloudflare Turnstile for contact form protection
-- IndexNow support for search update pings
+- IndexNow support for search update notifications
 
 ## Features
 
-- Pre-rendered portfolio pages with SEO metadata, Open Graph, and JSON-LD
-- `llms.txt` for AI crawler guidance
+- Static metadata per route: title, description, canonical, Open Graph, and Twitter cards
+- `Person`, `ProfilePage`, `WebSite`, and portfolio `CollectionPage` JSON-LD
+- Image-aware `public/sitemap.xml`, `public/robots.txt`, `public/llms.txt`, and detailed `public/llms-full.txt`
 - Six visual styles with persistent style switching
 - Dark and light themes without a first-paint flash
 - Responsive project galleries and fullscreen image lightbox
-- Production project links plus isolated portfolio demo links
-- Contact API protected by Turnstile and backed by Brevo
+- Production project links and isolated portfolio demo previews
+- Turnstile-protected contact API backed by Brevo
 - Custom 404 page that follows the active portfolio style
 
 ## Requirements
@@ -39,7 +49,7 @@ and public repository hygiene.
 - Node.js 20 or newer
 - npm
 
-## Local Setup
+## Local setup
 
 ```powershell
 git clone https://github.com/s4tch001/Portfolio.git
@@ -47,20 +57,18 @@ cd Portfolio
 npm install
 ```
 
-Create an ignored `.env.local` file when working with the contact form or
-IndexNow endpoint.
+Create an ignored `.env.local` file when working with the contact form or the protected IndexNow API route:
 
 ```text
-BREVO_API_KEY
-NEXT_PUBLIC_TURNSTILE_SITE_KEY
-TURNSTILE_SECRET_KEY
-INDEXNOW_SUBMIT_TOKEN
+BREVO_API_KEY=
+NEXT_PUBLIC_TURNSTILE_SITE_KEY=
+TURNSTILE_SECRET_KEY=
+INDEXNOW_SUBMIT_TOKEN=
 ```
 
-Never commit `.env.local`, API keys, tokens, service keys, database passwords,
-or provider credentials.
+Never commit `.env.local`, API keys, tokens, service keys, database passwords, or provider credentials.
 
-## Run Locally
+## Run locally
 
 ```powershell
 npm run dev
@@ -68,35 +76,42 @@ npm run dev
 
 Open `http://localhost:3000`.
 
-## Build and Run Production Locally
+## Build and run production locally
 
 ```powershell
 npm run build
 npm start
 ```
 
+## Search and AI discovery
+
+- Route metadata and global identity JSON-LD: `app/layout.jsx`
+- Shared route metadata and JSON-LD serialization: `app/lib/seo.js`
+- Portfolio project structured data: `app/portfolio/page.jsx`
+- Crawl policy and sitemap: `public/robots.txt` and `public/sitemap.xml`
+- AI-readable site context: `public/llms.txt` and `public/llms-full.txt`
+- IndexNow submission script: `scripts/submit-indexnow.mjs`
+
+After a production deployment, submit the existing sitemap in Google Search Console and run `npm run indexnow` when search update notifications are needed. The IndexNow script reads the canonical URLs from `public/sitemap.xml`.
+
 ## Deploy to Netlify
 
-`netlify.toml` configures the build command, `.next` output, and Netlify's
-Next.js runtime. Connect the repository to Netlify and set the server-side
-environment variables in the site's environment settings.
+`netlify.toml` configures the `npm run build` command, `.next` publish output, security headers, asset caching, and the Netlify Next.js runtime. Connect the repository to Netlify and set the server-side environment variables in the site's environment settings.
 
-## Editing Guide
+## Editing guide
 
+- Homepage composition: `app/page.jsx`
+- Public route pages: `app/about/page.jsx`, `app/services/page.jsx`, `app/portfolio/page.jsx`, `app/skills/page.jsx`, and `app/contact/page.jsx`
 - Projects and gallery data: `app/data/projects.js`
 - Project screenshots: `public/assets/projects/`
-- About, skills, services, contact, and project sections: `app/components/`
+- Shared content sections: `app/components/`
 - Global styles: `app/globals.css`
-- Alternate visual styles: `app/styles/`
+- Alternate visual styles: `public/styles/`
 - Style switcher: `app/components/StyleSwitcher.jsx`
-- SEO metadata and JSON-LD: `app/layout.jsx`
-- AI crawler guidance: `public/llms.txt`
+- Contact and IndexNow server routes: `app/api/`
 
-## Public Repository Safety
+## Public repository safety
 
-This repository is intended to be safe for public viewing. Commit application
-code, public assets, documentation, `package.json`, and `package-lock.json`.
-Keep secrets in Netlify environment variables or ignored local files only.
+This repository is intended to be safe for public viewing. Commit application code, public assets, documentation, `package.json`, and `package-lock.json`. Keep secrets in Netlify environment variables or ignored local files only.
 
-Generated folders such as `node_modules/`, `.next/`, `out/`, and `.netlify/`
-are ignored and should not be committed.
+Generated folders such as `node_modules/`, `.next/`, `out/`, and `.netlify/` are ignored and should not be committed.
