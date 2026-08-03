@@ -340,7 +340,7 @@ export default function ContactForm({
           {sending ? (
             <>
               <span className="contact-form__spinner" aria-hidden="true" />
-              Sending\u2026
+              {'Sending\u2026'}
             </>
           ) : (
             'Send Message'

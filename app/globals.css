@@ -1158,6 +1158,10 @@ html.anchor-layout-ready .footer {
   grid-template-columns: 1.2fr 1fr;
 }
 
+.project:nth-child(6) {
+  grid-template-columns: 1fr 1.2fr;
+}
+
 .project--flip .project__media {
   order: 2;
 }
@@ -2442,6 +2446,10 @@ html.anchor-layout-ready .footer {
   }
 
   .project:nth-child(5) {
+    grid-template-columns: 1fr;
+  }
+
+  .project:nth-child(6) {
     grid-template-columns: 1fr;
   }
 
