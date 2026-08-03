@@ -1,6 +1,11 @@
 import { z } from 'zod';
 import { FIELD_LIMITS } from './contact-fields';
 
+// Zod's default runtime probes whether `Function()` is available so it can
+// JIT-compile object schemas. That probe is safely caught, but Chrome still
+// records it as a CSP eval violation. Jitless mode avoids eval entirely.
+z.config({ jitless: true });
+
 export const CONTACT_FIELDS = [
   'name',
   'email',

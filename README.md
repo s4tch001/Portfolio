@@ -40,6 +40,7 @@ The canonical host is `pauuu.dev`. `www.pauuu.dev` redirects to the canonical no
 - Production project links and isolated portfolio demo previews
 - Zod-validated contact forms powered by React Hook Form on both `/` and `/contact`
 - Server-side validation, rate limiting, honeypot filtering, and Cloudflare Turnstile protection
+- Per-request nonce-based Content Security Policy with CSP-safe Zod validation
 - Brevo contact email delivery
 - Custom 404 page that follows the active portfolio style
 

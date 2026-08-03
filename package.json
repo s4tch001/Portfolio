@@ -8,6 +8,7 @@
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "test:validation": "tsx --test app/lib/validation.test.ts",
+    "test:security": "tsx --test app/lib/csp.test.ts",
     "indexnow": "tsx scripts/submit-indexnow.ts"
   },
   "browserslist": [

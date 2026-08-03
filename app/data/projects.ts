@@ -1,7 +1,7 @@
 import type { Project } from '../types/project';
 
 // Screenshots live in /public/assets/projects and are referenced by URL so the
-// static export serves them straight from the CDN (no bundler import needed).
+// Netlify serves them straight from its asset CDN (no bundler import needed).
 const img = (file: string): string => `/assets/projects/${file}.webp`;
 
 const hoursTracker = img('hours-tracker');

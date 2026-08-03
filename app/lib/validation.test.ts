@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { z } from 'zod';
 import { FIELD_LIMITS } from './contact-fields';
 import { validateContact } from './validation';
 
@@ -10,6 +11,10 @@ const validContact = {
   subject: 'Portfolio inquiry',
   message: 'I would like to discuss a project.',
 };
+
+test('uses Zod without eval so the contact form complies with strict CSP', () => {
+  assert.equal(z.config().jitless, true);
+});
 
 test('accepts and normalizes a valid contact submission', () => {
   const result = validateContact({

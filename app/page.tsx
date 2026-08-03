@@ -1,3 +1,4 @@
+import { headers } from 'next/headers';
 import Nav from './components/Nav';
 import Hero from './components/Hero';
 import Marquee from './components/Marquee';
@@ -37,11 +38,14 @@ const portfolioJsonLd = {
   })),
 };
 
-export default function Page() {
+export default async function Page() {
+  const nonce = (await headers()).get('x-nonce') ?? undefined;
+
   return (
     <>
       <script
         type="application/ld+json"
+        nonce={nonce}
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(portfolioJsonLd) }}
       />
       <div className="bg-glow" aria-hidden="true" />
