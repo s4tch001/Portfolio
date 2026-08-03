@@ -2,7 +2,7 @@
 
 Personal portfolio for [pauuu.dev](https://pauuu.dev), showcasing Pau's work as a Filipino full-stack web developer under the P-Devs brand.
 
-The site is a style-switchable Next.js portfolio with project case studies, demo previews, services, skills, contact flow, SEO metadata, and machine-readable context for search and AI systems.
+The site is a type-safe, style-switchable Next.js portfolio with project case studies, demo previews, services, skills, a validated contact flow, SEO metadata, and machine-readable context for search and AI systems.
 
 ## Live site
 
@@ -21,7 +21,8 @@ The canonical host is `pauuu.dev`. `www.pauuu.dev` redirects to the canonical no
 ## Stack
 
 - Next.js 16 App Router
-- React 19 and JSX
+- React 19 and strict TypeScript
+- Zod and React Hook Form for shared client/server contact validation
 - Netlify Next.js runtime
 - Brevo for contact email delivery
 - Cloudflare Turnstile for contact form protection
@@ -37,7 +38,9 @@ The canonical host is `pauuu.dev`. `www.pauuu.dev` redirects to the canonical no
 - Responsive project galleries and fullscreen image lightbox
 - A self-referential P-Devs Portfolio case study showcasing every page style
 - Production project links and isolated portfolio demo previews
-- Turnstile-protected contact API backed by Brevo
+- Zod-validated contact forms powered by React Hook Form on both `/` and `/contact`
+- Server-side validation, rate limiting, honeypot filtering, and Cloudflare Turnstile protection
+- Brevo contact email delivery
 - Custom 404 page that follows the active portfolio style
 
 ## Requirements
@@ -80,14 +83,21 @@ npm run build
 npm start
 ```
 
+Run the type checker and contact validation tests before shipping changes:
+
+```powershell
+npm run typecheck
+npm run test:validation
+```
+
 ## Search and AI discovery
 
-- Route metadata and global identity JSON-LD: `app/layout.jsx`
-- Shared route metadata and JSON-LD serialization: `app/lib/seo.js`
-- Portfolio project structured data: `app/page.jsx`
+- Route metadata and global identity JSON-LD: `app/layout.tsx`
+- Shared route metadata and JSON-LD serialization: `app/lib/seo.ts`
+- Portfolio project structured data: `app/page.tsx`
 - Crawl policy and sitemap: `public/robots.txt` and `public/sitemap.xml`
 - AI-readable site context: `public/llms.txt` and `public/llms-full.txt`
-- IndexNow submission script: `scripts/submit-indexnow.mjs`
+- IndexNow submission script: `scripts/submit-indexnow.ts`
 
 After a production deployment, submit the existing sitemap in Google Search Console and run `npm run indexnow` when search update notifications are needed. The IndexNow script reads the canonical URLs from `public/sitemap.xml`.
 
@@ -97,14 +107,14 @@ After a production deployment, submit the existing sitemap in Google Search Cons
 
 ## Editing guide
 
-- Homepage composition: `app/page.jsx`
-- Public route pages: `app/page.jsx` and `app/contact/page.jsx`
-- Projects and gallery data: `app/data/projects.js`
+- Homepage composition: `app/page.tsx`
+- Public route pages: `app/page.tsx` and `app/contact/page.tsx`
+- Projects and gallery data: `app/data/projects.ts`
 - Project screenshots: `public/assets/projects/`
 - Shared content sections: `app/components/`
 - Global styles: `app/globals.css`
 - Alternate visual styles: `public/styles/`
-- Style switcher: `app/components/StyleSwitcher.jsx`
+- Style switcher: `app/components/StyleSwitcher.tsx`
 - Contact and IndexNow server routes: `app/api/`
 
 ## Public repository safety
