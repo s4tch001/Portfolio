@@ -16,7 +16,9 @@ export default function Hero() {
           </p>
           <h1 className='hero__name'>
             Pau
-            <span className='hero__name-detail'>Full-stack Web Developer</span>
+            <span className='hero__name-detail'>
+              Full-stack Web Developer in the Philippines
+            </span>
           </h1>
           <p className='hero__role' aria-label='Web Developer, Musician, Gamer'>
             <span className='hero__typed'>
@@ -25,11 +27,10 @@ export default function Hero() {
             <span className='hero__caret' aria-hidden='true' />
           </p>
           <p className='hero__sub'>
-            A web developer based in the Philippines. I design, build, and ship
-            full-stack web applications with a Next.js and TypeScript-first
-            workflow, plus React interfaces, database-backed features, cloud
-            deployments, UI/UX, SEO, and security baked in. Off the clock,
-            I&apos;m into music and gaming.
+            I design, build, and ship full-stack web applications with a Next.js
+            and TypeScript-first workflow, plus React interfaces,
+            database-backed features, cloud deployments, UI/UX, SEO, and
+            security baked in. Off the clock, I&apos;m into music and gaming.
           </p>
           <div className='hero__cta'>
             <a className='btn btn--gradient' href='#portfolio'>
