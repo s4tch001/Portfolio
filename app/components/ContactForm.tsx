@@ -34,13 +34,42 @@ interface FieldDefinition {
   type: 'email' | 'text';
   required: boolean;
   autoComplete: string;
+  placeholder: string;
 }
 
 const FIELDS = [
-  { id: 'name', label: 'Full Name', type: 'text', required: true, autoComplete: 'name' },
-  { id: 'email', label: 'Email Address', type: 'email', required: true, autoComplete: 'email' },
-  { id: 'company', label: 'Company', type: 'text', required: false, autoComplete: 'organization' },
-  { id: 'subject', label: 'Subject', type: 'text', required: false, autoComplete: 'off' },
+  {
+    id: 'name',
+    label: 'Full Name',
+    type: 'text',
+    required: true,
+    autoComplete: 'name',
+    placeholder: 'e.g. Juan Dela Cruz',
+  },
+  {
+    id: 'email',
+    label: 'Email Address',
+    type: 'email',
+    required: true,
+    autoComplete: 'email',
+    placeholder: 'you@example.com',
+  },
+  {
+    id: 'company',
+    label: 'Company',
+    type: 'text',
+    required: false,
+    autoComplete: 'organization',
+    placeholder: 'e.g. P-Devs',
+  },
+  {
+    id: 'subject',
+    label: 'Subject',
+    type: 'text',
+    required: false,
+    autoComplete: 'off',
+    placeholder: 'e.g. Website redesign inquiry',
+  },
 ] satisfies readonly FieldDefinition[];
 
 export default function ContactForm({
@@ -280,6 +309,7 @@ export default function ContactForm({
                 aria-required={field.required}
                 aria-invalid={Boolean(error)}
                 aria-describedby={error ? `contact-${field.id}-error` : undefined}
+                placeholder={field.placeholder}
                 {...register(field.id)}
               />
               {error && (
@@ -306,7 +336,7 @@ export default function ContactForm({
           aria-required="true"
           aria-invalid={Boolean(errors.message)}
           aria-describedby={errors.message ? 'contact-message-error' : undefined}
-          placeholder="Tell me about your project, role, or idea\u2026"
+          placeholder="Tell me about your project, goals, timeline, or budget..."
           {...register('message')}
         />
         {errors.message?.message && (
@@ -340,7 +370,7 @@ export default function ContactForm({
           {sending ? (
             <>
               <span className="contact-form__spinner" aria-hidden="true" />
-              {'Sending\u2026'}
+              {'Sending...'}
             </>
           ) : (
             'Send Message'
