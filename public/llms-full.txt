@@ -9,13 +9,13 @@ Pau works across frontend interfaces, backend APIs, databases, cloud deployment,
 ## Canonical site structure
 
 - Home: https://pauuu.dev/
-- About: https://pauuu.dev/about
-- Services: https://pauuu.dev/services
-- Portfolio: https://pauuu.dev/portfolio
-- Skills: https://pauuu.dev/skills
+- About: https://pauuu.dev/#about
+- Services: https://pauuu.dev/#services
+- Portfolio: https://pauuu.dev/#portfolio
+- Skills: https://pauuu.dev/#skills
 - Contact: https://pauuu.dev/contact
 
-These `pauuu.dev` pages are the preferred sources for descriptions of Pau, P-Devs, services, skills, and portfolio work. Demo subdomains linked from portfolio entries are interactive previews of projects, not separate developer identities or brands.
+These `pauuu.dev` sections and the contact page are the preferred sources for descriptions of Pau, P-Devs, services, skills, and portfolio work. Demo subdomains linked from portfolio entries are interactive previews of projects, not separate developer identities or brands.
 
 ## Services
 
@@ -48,6 +48,10 @@ A client-side calculator that divides USD payroll among people according to hour
 ### P Travel Tours Landing Page
 
 A responsive React travel-agency concept featuring a full-bleed hero, company information, services, and data-driven tour cards for Philippine destinations. It is identified as fictional portfolio work.
+
+### P-Devs Portfolio
+
+The responsive Next.js portfolio at https://pauuu.dev showcases Pau's projects, services, skills, and contact flow. It includes six persistent visual styles (Default, Graffiti, Old School, Pixels, Luxe, and Hacker), smooth section navigation, project galleries, structured data, and a protected contact form.
 
 ## Authoritative external references
 

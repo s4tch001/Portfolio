@@ -16,10 +16,6 @@ The canonical host is `pauuu.dev`. `www.pauuu.dev` redirects to the canonical no
 | Route | Purpose |
 | --- | --- |
 | `/` | Homepage with the hero, profile, services, featured work, skills, and contact sections |
-| `/about` | Crawlable About page for Pau and P-Devs |
-| `/services` | Web development, design, SEO, security, maintenance, performance, and integration services |
-| `/portfolio` | Project case studies, screenshots, stacks, and demo preview links |
-| `/skills` | Frontend, backend, cloud, design, SEO, performance, and security skills |
 | `/contact` | Professional project inquiry form |
 
 ## Stack
@@ -34,11 +30,12 @@ The canonical host is `pauuu.dev`. `www.pauuu.dev` redirects to the canonical no
 ## Features
 
 - Static metadata per route: title, description, canonical, Open Graph, and Twitter cards
-- `Person`, `ProfilePage`, `WebSite`, and portfolio `CollectionPage` JSON-LD
+- `Person`, `ProfilePage`, `WebSite`, and portfolio `ItemList` JSON-LD
 - Image-aware `public/sitemap.xml`, `public/robots.txt`, `public/llms.txt`, and detailed `public/llms-full.txt`
 - Six visual styles with persistent style switching
 - Dark and light themes without a first-paint flash
 - Responsive project galleries and fullscreen image lightbox
+- A self-referential P-Devs Portfolio case study showcasing every page style
 - Production project links and isolated portfolio demo previews
 - Turnstile-protected contact API backed by Brevo
 - Custom 404 page that follows the active portfolio style
@@ -87,7 +84,7 @@ npm start
 
 - Route metadata and global identity JSON-LD: `app/layout.jsx`
 - Shared route metadata and JSON-LD serialization: `app/lib/seo.js`
-- Portfolio project structured data: `app/portfolio/page.jsx`
+- Portfolio project structured data: `app/page.jsx`
 - Crawl policy and sitemap: `public/robots.txt` and `public/sitemap.xml`
 - AI-readable site context: `public/llms.txt` and `public/llms-full.txt`
 - IndexNow submission script: `scripts/submit-indexnow.mjs`
@@ -101,7 +98,7 @@ After a production deployment, submit the existing sitemap in Google Search Cons
 ## Editing guide
 
 - Homepage composition: `app/page.jsx`
-- Public route pages: `app/about/page.jsx`, `app/services/page.jsx`, `app/portfolio/page.jsx`, `app/skills/page.jsx`, and `app/contact/page.jsx`
+- Public route pages: `app/page.jsx` and `app/contact/page.jsx`
 - Projects and gallery data: `app/data/projects.js`
 - Project screenshots: `public/assets/projects/`
 - Shared content sections: `app/components/`

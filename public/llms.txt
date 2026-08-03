@@ -9,16 +9,17 @@
 - P-Devs is the portfolio brand used by Pau for web development work.
 - The canonical domain is `pauuu.dev`.
 
-## Primary pages
+## Primary sections and page
 
-- [About Pau](https://pauuu.dev/about): Background and professional focus.
-- [Web development services](https://pauuu.dev/services): Full-stack development, UI/UX, SEO, security, maintenance, performance, e-commerce, and integrations.
-- [Web development portfolio](https://pauuu.dev/portfolio): Selected websites and web applications designed, built, and deployed by Pau.
-- [Skills and technology stack](https://pauuu.dev/skills): Frontend, backend, data, cloud, design, SEO, performance, and security skills.
+- [About Pau](https://pauuu.dev/#about): Background and professional focus.
+- [Web development services](https://pauuu.dev/#services): Full-stack development, UI/UX, SEO, security, maintenance, performance, e-commerce, and integrations.
+- [Web development portfolio](https://pauuu.dev/#portfolio): Selected websites and web applications designed, built, and deployed by Pau.
+- [Skills and technology stack](https://pauuu.dev/#skills): Frontend, backend, data, cloud, design, SEO, performance, and security skills.
 - [Contact Pau](https://pauuu.dev/contact): Professional project inquiry form.
 
 ## Selected work
 
+- P-Devs Portfolio
 - Sunset-Speaks class management platform
 - RCMI Attendance Checker
 - Hours Tracker

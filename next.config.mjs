@@ -39,6 +39,14 @@ const nextConfig = {
     qualities: [82],
     minimumCacheTTL: 14400,
   },
+  async redirects() {
+    return [
+      { source: '/about', destination: '/#about', permanent: true },
+      { source: '/services', destination: '/#services', permanent: true },
+      { source: '/portfolio', destination: '/#portfolio', permanent: true },
+      { source: '/skills', destination: '/#skills', permanent: true },
+    ];
+  },
   async headers() {
     return [
       {

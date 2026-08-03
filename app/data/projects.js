@@ -28,13 +28,51 @@ const ptravelsHero = img('ptravels-hero');
 const ptravelsAbout = img('ptravels-about');
 const ptravelsServices = img('ptravels-services');
 const ptravelsTours = img('ptravels-tours');
+const portfolioDefault = img('portfolio-default');
+const portfolioGraffiti = img('portfolio-graffiti');
+const portfolioOldschool = img('portfolio-oldschool');
+const portfolioPixels = img('portfolio-pixels');
+const portfolioLuxe = img('portfolio-luxe');
+const portfolioHacker = img('portfolio-hacker');
 
-// Screenshots use fictional demo data. Each project also has a portfolio-only
-// demo preview URL; demo data is reset daily and is separate from production.
+const portfolioProject = {
+  id: 'p-devs-portfolio',
+  num: '01',
+  name: 'P-Devs Portfolio',
+  tagline: 'A style-switchable developer portfolio built to feel personal',
+  url: 'pauuu.dev',
+  description:
+    'The portfolio you are browsing: a responsive Next.js showcase for my projects, services, skills, and contact flow. It combines a clean default presentation with five distinct visual styles while keeping the same accessible content and interactions.',
+  features: [
+    'Six persistent page styles: Default, Graffiti, Old School, Pixels, Luxe, and Hacker',
+    'Smooth section navigation, responsive project galleries, and a fullscreen image lightbox',
+    'Search-ready metadata and structured data plus a Turnstile-protected contact flow',
+  ],
+  stack: ['Next.js 16', 'React 19', 'JavaScript', 'CSS3', 'Netlify', 'Brevo', 'Cloudflare Turnstile'],
+  deploy: ['Netlify'],
+  demo: {
+    url: 'https://pauuu.dev',
+    deploy: ['Netlify'],
+    note: 'Open the live portfolio and use the palette button to switch between all six page styles.',
+  },
+  images: [
+    { src: portfolioDefault, alt: 'P-Devs portfolio homepage in the clean default style', caption: 'Default â€” clean & modern' },
+    { src: portfolioGraffiti, alt: 'P-Devs portfolio homepage in the colorful graffiti style', caption: 'Graffiti â€” street art vibes' },
+    { src: portfolioOldschool, alt: 'P-Devs portfolio homepage in the old-school 1990s web style', caption: 'Old School â€” 90s web vibes' },
+    { src: portfolioPixels, alt: 'P-Devs portfolio homepage in the pixel-art retro style', caption: 'Pixels â€” 8-bit retro' },
+    { src: portfolioLuxe, alt: 'P-Devs portfolio homepage in the minimalist luxe style', caption: 'Luxe â€” minimalist luxury' },
+    { src: portfolioHacker, alt: 'P-Devs portfolio homepage in the terminal-inspired hacker style', caption: 'Hacker â€” code & terminal' },
+  ],
+  accent: 'violet',
+};
+
+// Project screenshots use demo or public site data. Disposable demo previews
+// are isolated from production and reset their visitor-created data daily.
 const projects = [
+  portfolioProject,
   {
     id: 'sunset-speaks',
-    num: '01',
+    num: '02',
     name: 'Sunset-Speaks Class Management',
     tagline: 'Full-stack ESL school platform on the Cloudflare edge',
     url: 'sunset-speaks.app',
@@ -72,7 +110,7 @@ const projects = [
   },
   {
     id: 'rcmi-attendance',
-    num: '02',
+    num: '03',
     name: 'RCMI Attendance Checker',
     tagline: 'Attendance management for a ministry organization',
     url: 'rcmi-attendance.app',
@@ -100,7 +138,7 @@ const projects = [
   },
   {
     id: 'hours-tracker',
-    num: '03',
+    num: '04',
     name: 'Hours Tracker',
     tagline: 'Calendar-based work hours logging with cloud sync',
     url: 'hours-tracker.app',
@@ -126,7 +164,7 @@ const projects = [
   },
   {
     id: 'payroll-splitter',
-    num: '04',
+    num: '05',
     name: 'Payroll Splitter',
     tagline: 'USD → PHP payroll math without the spreadsheet',
     url: 'payroll-splitter.app',
@@ -152,7 +190,7 @@ const projects = [
   },
   {
     id: 'p-travel-tours',
-    num: '05',
+    num: '06',
     name: 'P Travel Tours Landing Page',
     tagline: 'Responsive travel-agency landing page for Philippine tours',
     url: 'p-travel-tours.app',

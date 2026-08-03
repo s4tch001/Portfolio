@@ -1,7 +1,7 @@
 import ContactForm from './ContactForm.jsx';
 
 // Used as section 05 on the home page and as the body of the standalone
-// /contact page (which passes its own eyebrow).
+// /contact page (which passes its own heading and eyebrow).
 export default function Contact({
   eyebrow = '05 · Contact',
   eagerTurnstile = false,

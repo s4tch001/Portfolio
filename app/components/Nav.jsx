@@ -1,22 +1,22 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import useTheme from '../hooks/useTheme.js';
 import ThemeToggle from './ThemeToggle.jsx';
 
-// Dedicated, canonical routes give search engines a clear site hierarchy and
-// make these pages eligible for sitelinks under the main pauuu.dev result.
 const LINKS = [
-  { href: '/about', label: 'About' },
-  { href: '/services', label: 'Services' },
-  { href: '/portfolio', label: 'Portfolio' },
-  { href: '/skills', label: 'Skills' },
-  { href: '/contact', label: 'Contact' },
+  { id: 'about', label: 'About' },
+  { id: 'services', label: 'Services' },
+  { id: 'portfolio', label: 'Portfolio' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'contact', label: 'Contact' },
 ];
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
   const { theme, toggle } = useTheme();
 
   useEffect(() => {
@@ -51,7 +51,11 @@ export default function Nav() {
 
         <nav className={`nav__links ${open ? 'is-open' : ''}`}>
           {LINKS.map((link) => (
-            <a key={link.href} href={link.href} onClick={() => setOpen(false)}>
+            <a
+              key={link.id}
+              href={pathname === '/' ? `#${link.id}` : `/#${link.id}`}
+              onClick={() => setOpen(false)}
+            >
               {link.label}
             </a>
           ))}
