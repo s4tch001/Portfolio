@@ -43,7 +43,6 @@ const portfolioProject = {
   name: 'P-Devs Portfolio',
   tagline: 'A type-safe, style-switchable portfolio built with Next.js',
   url: 'pauuu.dev',
-  live: 'https://pauuu.dev',
   description:
     'The portfolio you are browsing: a responsive, TypeScript-first Next.js application for presenting my work, services, technical skills, and contact flow. One accessible content structure powers six distinct visual styles without sacrificing performance or usability.',
   features: [
