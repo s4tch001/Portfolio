@@ -147,22 +147,26 @@ export const metadata = {
     description:
       'Filipino full-stack web developer building fast, secure Next.js websites and web apps for businesses and teams.',
     locale: 'en_PH',
-    images: [{
-      url: '/og-image.png',
-      width: 1200,
-      height: 630,
-      alt: 'P-Devs — Pau, Filipino full-stack web developer in the Philippines',
-    }],
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'P-Devs — Pau, Filipino full-stack web developer in the Philippines',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Pau — Filipino Web Developer in the Philippines',
     description:
       'Filipino full-stack web developer building fast, secure Next.js websites and web apps for businesses and teams.',
-    images: [{
-      url: '/og-image.png',
-      alt: 'P-Devs — Pau, Filipino full-stack web developer in the Philippines',
-    }],
+    images: [
+      {
+        url: '/og-image.png',
+        alt: 'P-Devs — Pau, Filipino full-stack web developer in the Philippines',
+      },
+    ],
   },
 } satisfies Metadata;
 
@@ -264,7 +268,8 @@ const jsonLd = {
       name: 'Pau',
       alternateName: 'P-Devs',
       jobTitle: 'Full-Stack Web Developer',
-      description: 'Filipino full-stack and Next.js web developer based in the Philippines.',
+      description:
+        'Filipino full-stack and Next.js web developer based in the Philippines.',
       url: 'https://pauuu.dev/',
       mainEntityOfPage: { '@id': 'https://pauuu.dev/#profile' },
       nationality: { '@type': 'Country', name: 'Philippines' },
@@ -282,9 +287,9 @@ const jsonLd = {
       ],
       sameAs: [
         'https://github.com/s4tch001',
-        'https://www.facebook.com/jonbarentain',
-        'https://www.instagram.com/jonbarentain',
-        'https://www.tiktok.com/@jonbarentain',
+        // 'https://www.facebook.com/jonbarentain',
+        // 'https://www.instagram.com/jonbarentain',
+        // 'https://www.tiktok.com/@jonbarentain',
       ],
     },
     {
@@ -296,11 +301,31 @@ const jsonLd = {
       publisher: { '@id': 'https://pauuu.dev/#pau' },
       about: { '@id': 'https://pauuu.dev/#pau' },
       hasPart: [
-        { '@type': 'WebPageElement', name: 'About Pau', url: 'https://pauuu.dev/#about' },
-        { '@type': 'WebPageElement', name: 'Services', url: 'https://pauuu.dev/#services' },
-        { '@type': 'WebPageElement', name: 'Portfolio', url: 'https://pauuu.dev/#portfolio' },
-        { '@type': 'WebPageElement', name: 'Skills', url: 'https://pauuu.dev/#skills' },
-        { '@type': 'ContactPage', name: 'Contact Pau', url: 'https://pauuu.dev/contact' },
+        {
+          '@type': 'WebPageElement',
+          name: 'About Pau',
+          url: 'https://pauuu.dev/#about',
+        },
+        {
+          '@type': 'WebPageElement',
+          name: 'Services',
+          url: 'https://pauuu.dev/#services',
+        },
+        {
+          '@type': 'WebPageElement',
+          name: 'Portfolio',
+          url: 'https://pauuu.dev/#portfolio',
+        },
+        {
+          '@type': 'WebPageElement',
+          name: 'Skills',
+          url: 'https://pauuu.dev/#skills',
+        },
+        {
+          '@type': 'ContactPage',
+          name: 'Contact Pau',
+          url: 'https://pauuu.dev/contact',
+        },
       ],
     },
   ],
@@ -314,21 +339,17 @@ export default async function RootLayout({ children }: RootLayoutProps) {
   const nonce = (await headers()).get('x-nonce') ?? undefined;
 
   return (
-    <html
-      lang="en-PH"
-      className={fontVariables}
-      suppressHydrationWarning
-    >
+    <html lang='en-PH' className={fontVariables} suppressHydrationWarning>
       <head>
         <script
-          id="theme-init"
+          id='theme-init'
           nonce={nonce}
           dangerouslySetInnerHTML={{ __html: themeScript }}
         />
       </head>
       <body>
         <script
-          type="application/ld+json"
+          type='application/ld+json'
           nonce={nonce}
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />

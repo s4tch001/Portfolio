@@ -36,6 +36,10 @@ const portfolioOldschool = img('portfolio-oldschool');
 const portfolioPixels = img('portfolio-pixels');
 const portfolioLuxe = img('portfolio-luxe');
 const portfolioHacker = img('portfolio-hacker');
+const flipLandingTop = img('flip-landing-top');
+const flipLandingBottom = img('flip-landing-bottom');
+const flipUpload = img('flip-upload');
+const flipViewer = img('flip-viewer');
 
 const portfolioProject = {
   id: 'p-devs-portfolio',
@@ -51,15 +55,49 @@ const portfolioProject = {
     'Smooth single-page navigation, optimized WebP galleries, and an accessible fullscreen lightbox',
     'SEO metadata, structured data, hardened response headers, rate limiting, Zod validation, and Cloudflare Turnstile',
   ],
-  stack: ['Next.js 16', 'React 19', 'TypeScript', 'CSS3', 'Zod', 'React Hook Form', 'Netlify', 'Brevo', 'Cloudflare Turnstile'],
+  stack: [
+    'Next.js 16',
+    'React 19',
+    'TypeScript',
+    'CSS3',
+    'Zod',
+    'React Hook Form',
+    'Netlify',
+    'Brevo',
+    'Cloudflare Turnstile',
+  ],
   deploy: ['Netlify'],
   images: [
-    { src: portfolioDefault, alt: 'P-Devs portfolio homepage in the clean default style', caption: 'Default \u2014 clean & modern' },
-    { src: portfolioGraffiti, alt: 'P-Devs portfolio homepage in the colorful graffiti style', caption: 'Graffiti \u2014 street art vibes' },
-    { src: portfolioOldschool, alt: 'P-Devs portfolio homepage in the old-school 1990s web style', caption: 'Old School \u2014 90s web vibes' },
-    { src: portfolioPixels, alt: 'P-Devs portfolio homepage in the pixel-art retro style', caption: 'Pixels \u2014 8-bit retro' },
-    { src: portfolioLuxe, alt: 'P-Devs portfolio homepage in the minimalist luxe style', caption: 'Luxe \u2014 minimalist luxury' },
-    { src: portfolioHacker, alt: 'P-Devs portfolio homepage in the terminal-inspired hacker style', caption: 'Hacker \u2014 code & terminal' },
+    {
+      src: portfolioDefault,
+      alt: 'P-Devs portfolio homepage in the clean default style',
+      caption: 'Default \u2014 clean & modern',
+    },
+    {
+      src: portfolioGraffiti,
+      alt: 'P-Devs portfolio homepage in the colorful graffiti style',
+      caption: 'Graffiti \u2014 street art vibes',
+    },
+    {
+      src: portfolioOldschool,
+      alt: 'P-Devs portfolio homepage in the old-school 1990s web style',
+      caption: 'Old School \u2014 90s web vibes',
+    },
+    {
+      src: portfolioPixels,
+      alt: 'P-Devs portfolio homepage in the pixel-art retro style',
+      caption: 'Pixels \u2014 8-bit retro',
+    },
+    {
+      src: portfolioLuxe,
+      alt: 'P-Devs portfolio homepage in the minimalist luxe style',
+      caption: 'Luxe \u2014 minimalist luxury',
+    },
+    {
+      src: portfolioHacker,
+      alt: 'P-Devs portfolio homepage in the terminal-inspired hacker style',
+      caption: 'Hacker \u2014 code & terminal',
+    },
   ],
   accent: 'violet',
 } satisfies Project;
@@ -81,7 +119,16 @@ const projectEntries = [
       'Cron triggers for automated monthly backups and hourly pending-report alerts',
       'Role-based access (admin / teacher / student) plus an Android WebView companion app',
     ],
-    stack: ['React', 'Vite', 'JavaScript', 'Cloudflare Workers', 'D1 (SQLite)', 'R2', 'Durable Objects', 'Kotlin'],
+    stack: [
+      'React',
+      'Vite',
+      'JavaScript',
+      'Cloudflare Workers',
+      'D1 (SQLite)',
+      'R2',
+      'Durable Objects',
+      'Kotlin',
+    ],
     deploy: ['Cloudflare Workers', 'Cloudflare Pages'],
     demo: {
       url: 'https://cn-demo.pauuu.dev',
@@ -89,20 +136,90 @@ const projectEntries = [
       note: 'Portfolio-only demo preview: frontend on Netlify, backend/database on Supabase. Visitor-created demo data resets every day at 12:00 AM Asia/Manila.',
     },
     images: [
-      { src: sunsetSpeaks, alt: 'Sunset-Speaks public landing page with a sunset illustration', caption: 'Public landing page', pov: 'Public' },
-      { src: ssLogin, alt: 'Login screen over an animated sunset backdrop', caption: 'Login — animated sunset backdrop', pov: 'Public' },
-      { src: ssSchedule, alt: 'Per-teacher class schedule grid for July 2026', caption: 'Per-teacher schedule grid', pov: 'Admin POV' },
-      { src: ssAdminReports, alt: 'Class reports calendar with per-class status dots', caption: 'Class reports calendar', pov: 'Admin POV' },
-      { src: ssAdminReportView, alt: 'Detailed class report with material, status and lesson memo', caption: 'Class report detail', pov: 'Admin POV' },
-      { src: ssAdminTracker, alt: 'Lesson tracker table of every filed lesson per teacher', caption: 'Lesson tracker', pov: 'Admin POV' },
-      { src: ssAdminRemaining, alt: 'Remaining classes balances per student with status badges', caption: 'Remaining classes', pov: 'Admin POV' },
-      { src: ssAdminReceipt, alt: 'Receipt card modal showing a student’s receipts and balance', caption: 'Receipt card', pov: 'Admin POV' },
-      { src: ssAdminAnnual, alt: 'Annual report dashboard with stats, donut charts and trends', caption: 'Annual report dashboard', pov: 'Admin POV' },
-      { src: ssStudents, alt: 'Student management table with notes and statuses', caption: 'Student management', pov: 'Admin POV' },
-      { src: ssAccounts, alt: 'Teacher and admin accounts management page', caption: 'Teacher & admin accounts', pov: 'Admin POV' },
-      { src: ssTeacherSchedule, alt: 'Teacher calendar view of their own weekly classes', caption: 'My weekly schedule', pov: 'Teacher POV' },
-      { src: ssTeacherReport, alt: 'Teacher filing a class report in a modal form', caption: 'Filing a class report', pov: 'Teacher POV' },
-      { src: ssTeacherTracker, alt: 'Teacher lesson tracker log of their filed lessons', caption: 'My lesson tracker', pov: 'Teacher POV' },
+      {
+        src: sunsetSpeaks,
+        alt: 'Sunset-Speaks public landing page with a sunset illustration',
+        caption: 'Public landing page',
+        pov: 'Public',
+      },
+      {
+        src: ssLogin,
+        alt: 'Login screen over an animated sunset backdrop',
+        caption: 'Login — animated sunset backdrop',
+        pov: 'Public',
+      },
+      {
+        src: ssSchedule,
+        alt: 'Per-teacher class schedule grid for July 2026',
+        caption: 'Per-teacher schedule grid',
+        pov: 'Admin POV',
+      },
+      {
+        src: ssAdminReports,
+        alt: 'Class reports calendar with per-class status dots',
+        caption: 'Class reports calendar',
+        pov: 'Admin POV',
+      },
+      {
+        src: ssAdminReportView,
+        alt: 'Detailed class report with material, status and lesson memo',
+        caption: 'Class report detail',
+        pov: 'Admin POV',
+      },
+      {
+        src: ssAdminTracker,
+        alt: 'Lesson tracker table of every filed lesson per teacher',
+        caption: 'Lesson tracker',
+        pov: 'Admin POV',
+      },
+      {
+        src: ssAdminRemaining,
+        alt: 'Remaining classes balances per student with status badges',
+        caption: 'Remaining classes',
+        pov: 'Admin POV',
+      },
+      {
+        src: ssAdminReceipt,
+        alt: 'Receipt card modal showing a student’s receipts and balance',
+        caption: 'Receipt card',
+        pov: 'Admin POV',
+      },
+      {
+        src: ssAdminAnnual,
+        alt: 'Annual report dashboard with stats, donut charts and trends',
+        caption: 'Annual report dashboard',
+        pov: 'Admin POV',
+      },
+      {
+        src: ssStudents,
+        alt: 'Student management table with notes and statuses',
+        caption: 'Student management',
+        pov: 'Admin POV',
+      },
+      {
+        src: ssAccounts,
+        alt: 'Teacher and admin accounts management page',
+        caption: 'Teacher & admin accounts',
+        pov: 'Admin POV',
+      },
+      {
+        src: ssTeacherSchedule,
+        alt: 'Teacher calendar view of their own weekly classes',
+        caption: 'My weekly schedule',
+        pov: 'Teacher POV',
+      },
+      {
+        src: ssTeacherReport,
+        alt: 'Teacher filing a class report in a modal form',
+        caption: 'Filing a class report',
+        pov: 'Teacher POV',
+      },
+      {
+        src: ssTeacherTracker,
+        alt: 'Teacher lesson tracker log of their filed lessons',
+        caption: 'My lesson tracker',
+        pov: 'Teacher POV',
+      },
     ],
     accent: 'amber',
   },
@@ -119,7 +236,14 @@ const projectEntries = [
       'Grouped Excel exports (per-day and per-leader sheets) generated client-side with ExcelJS',
       'Member directory, leadership hierarchy view, and password-protected admin actions',
     ],
-    stack: ['React 19', 'Vite', 'JavaScript', 'Netlify Functions', 'Supabase', 'ExcelJS'],
+    stack: [
+      'React 19',
+      'Vite',
+      'JavaScript',
+      'Netlify Functions',
+      'Supabase',
+      'ExcelJS',
+    ],
     deploy: ['Netlify', 'Supabase'],
     demo: {
       url: 'https://rcmi-demo.pauuu.dev',
@@ -127,16 +251,86 @@ const projectEntries = [
       note: 'Portfolio-only demo preview: frontend on Netlify, backend/database on Supabase. Visitor-created demo data resets every day at 12:00 AM Asia/Manila.',
     },
     images: [
-      { src: rcmiAttendance, alt: 'RCMI attendance calendar view in light theme', caption: 'Attendance calendar' },
-      { src: rcmiViewer, alt: 'Day roster grouped by leader with role badges', caption: 'Day roster — grouped by leader' },
-      { src: rcmiLeadership, alt: 'Leadership overview grouped by district leader', caption: 'Leadership overview by district' },
-      { src: rcmiDirectory, alt: 'Member directory management view', caption: 'Member directory' },
+      {
+        src: rcmiAttendance,
+        alt: 'RCMI attendance calendar view in light theme',
+        caption: 'Attendance calendar',
+      },
+      {
+        src: rcmiViewer,
+        alt: 'Day roster grouped by leader with role badges',
+        caption: 'Day roster — grouped by leader',
+      },
+      {
+        src: rcmiLeadership,
+        alt: 'Leadership overview grouped by district leader',
+        caption: 'Leadership overview by district',
+      },
+      {
+        src: rcmiDirectory,
+        alt: 'Member directory management view',
+        caption: 'Member directory',
+      },
     ],
     accent: 'blue',
   },
   {
-    id: 'hours-tracker',
+    id: 'feuille-flip',
     num: '04',
+    name: 'Feuille Flip',
+    tagline:
+      'Interactive flipbook platform with PDF upload and realistic page turning',
+    url: 'feuille-flip.netlify.app',
+    description:
+      'A modern flipbook platform that lets users upload PDF documents and instantly convert them into interactive, realistic page-flipping books. Built with Next.js App Router and focused on performance, responsive design, and a smooth reading experience.',
+    features: [
+      'Upload PDF documents and instantly generate interactive flipbooks',
+      'Realistic page-turning animation with responsive desktop and mobile viewing',
+      'Protected uploads with Cloudflare Turnstile and server-side validation using Zod',
+    ],
+    stack: [
+      'Next.js 16',
+      'React 19',
+      'TypeScript',
+      'CSS3',
+      'Supabase',
+      'Cloudflare Turnstile',
+      'Zod',
+      'Netlify',
+    ],
+    deploy: ['Netlify', 'Supabase'],
+    demo: {
+      url: 'https://feuille-flip.netlify.app',
+      deploy: ['Netlify', 'Supabase'],
+      note: 'Portfolio-only demo preview: frontend on Netlify, backend/database on Supabase. Visitor-created demo data resets every day at 12:00 AM Asia/Manila.',
+    },
+    images: [
+      {
+        src: flipLandingTop,
+        alt: 'Feuille Flip landing page hero section',
+        caption: 'Landing page',
+      },
+      {
+        src: flipLandingBottom,
+        alt: 'Feuille Flip landing page features section',
+        caption: 'Features overview',
+      },
+      {
+        src: flipUpload,
+        alt: 'PDF upload interface',
+        caption: 'Upload PDF',
+      },
+      {
+        src: flipViewer,
+        alt: 'Interactive flipbook viewer',
+        caption: 'Flipbook viewer',
+      },
+    ],
+    accent: 'violet',
+  },
+  {
+    id: 'hours-tracker',
+    num: '05',
     name: 'Hours Tracker',
     tagline: 'Calendar-based work hours logging with cloud sync',
     url: 'hours-tracker.app',
@@ -155,14 +349,22 @@ const projectEntries = [
       note: 'Portfolio-only demo preview: frontend on Netlify, backend/database on Supabase. Visitor-created demo data resets every day at 12:00 AM Asia/Manila.',
     },
     images: [
-      { src: hoursTracker, alt: 'Hours Tracker calendar in dark theme', caption: 'Dark theme' },
-      { src: hoursLight, alt: 'Hours Tracker calendar in light theme', caption: 'Light theme' },
+      {
+        src: hoursTracker,
+        alt: 'Hours Tracker calendar in dark theme',
+        caption: 'Dark theme',
+      },
+      {
+        src: hoursLight,
+        alt: 'Hours Tracker calendar in light theme',
+        caption: 'Light theme',
+      },
     ],
     accent: 'violet',
   },
   {
     id: 'payroll-splitter',
-    num: '05',
+    num: '06',
     name: 'Payroll Splitter',
     tagline: 'USD → PHP payroll math without the spreadsheet',
     url: 'payroll-splitter.app',
@@ -181,14 +383,22 @@ const projectEntries = [
       note: 'Portfolio-only demo preview: frontend on Netlify, backend/database on Supabase. Visitor-created demo data resets every day at 12:00 AM Asia/Manila.',
     },
     images: [
-      { src: payrollSplitter, alt: 'Payroll Splitter USD setup and hours inputs', caption: 'USD setup & hours' },
-      { src: payrollFilled, alt: 'Computed pay split with per-person cards and formula trace', caption: 'Pay split + formula trace' },
+      {
+        src: payrollSplitter,
+        alt: 'Payroll Splitter USD setup and hours inputs',
+        caption: 'USD setup & hours',
+      },
+      {
+        src: payrollFilled,
+        alt: 'Computed pay split with per-person cards and formula trace',
+        caption: 'Pay split + formula trace',
+      },
     ],
     accent: 'green',
   },
   {
     id: 'p-travel-tours',
-    num: '06',
+    num: '07',
     name: 'P Travel Tours Landing Page',
     tagline: 'Responsive travel-agency landing page for Philippine tours',
     url: 'p-travel-tours.app',
@@ -199,7 +409,13 @@ const projectEntries = [
       'Data-driven tour cards (destination, date, duration, price) rendered from a single data source',
       'Smooth in-page navigation, Font Awesome iconography, and a fully responsive layout',
     ],
-    stack: ['React 19', 'Create React App', 'JavaScript', 'CSS3', 'Font Awesome'],
+    stack: [
+      'React 19',
+      'Create React App',
+      'JavaScript',
+      'CSS3',
+      'Font Awesome',
+    ],
     deploy: ['Netlify'],
     demo: {
       url: 'https://travels-demo.pauuu.dev',
@@ -207,14 +423,30 @@ const projectEntries = [
       note: 'Portfolio-only demo preview: frontend on Netlify, backend/database on Supabase. Visitor-created demo data resets every day at 12:00 AM Asia/Manila.',
     },
     images: [
-      { src: ptravelsHero, alt: 'P Travel Tours hero with an El Nido lagoon backdrop and Explore Tours call to action', caption: 'Full-bleed hero' },
-      { src: ptravelsAbout, alt: 'About Us section with a lagoon photo and Explore The Difference copy', caption: 'About the agency' },
-      { src: ptravelsServices, alt: 'Our Services section with affordable packages, island adventures, and comfortable stays', caption: 'Services offered' },
-      { src: ptravelsTours, alt: 'Featured Tours grid of eight Philippine destinations with dates and prices', caption: 'Featured tour packages' },
+      {
+        src: ptravelsHero,
+        alt: 'P Travel Tours hero with an El Nido lagoon backdrop and Explore Tours call to action',
+        caption: 'Full-bleed hero',
+      },
+      {
+        src: ptravelsAbout,
+        alt: 'About Us section with a lagoon photo and Explore The Difference copy',
+        caption: 'About the agency',
+      },
+      {
+        src: ptravelsServices,
+        alt: 'Our Services section with affordable packages, island adventures, and comfortable stays',
+        caption: 'Services offered',
+      },
+      {
+        src: ptravelsTours,
+        alt: 'Featured Tours grid of eight Philippine destinations with dates and prices',
+        caption: 'Featured tour packages',
+      },
     ],
     accent: 'blue',
   },
-  ] satisfies readonly Project[];
+] satisfies readonly Project[];
 
 const projects: readonly Project[] = projectEntries;
 
