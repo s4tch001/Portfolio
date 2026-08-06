@@ -302,7 +302,7 @@ const projectEntries = [
     demo: {
       url: 'https://feuille-flip.netlify.app',
       deploy: ['Netlify', 'Supabase'],
-      note: 'Portfolio-only demo preview: frontend on Netlify, backend/database on Supabase. Visitor-created demo data resets every day at 12:00 AM Asia/Manila.',
+      note: 'Portfolio-only demo preview: frontend on Netlify, backend/database on Supabase.',
     },
     images: [
       {
