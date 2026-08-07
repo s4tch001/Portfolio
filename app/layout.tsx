@@ -328,7 +328,7 @@ const jsonLd = {
         },
         {
           '@type': 'ContactPage',
-          name: 'Contact Pau',
+          name: 'Contact',
           url: 'https://pauuu.dev/contact',
         },
       ],
