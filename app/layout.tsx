@@ -1,6 +1,6 @@
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
-import { headers } from 'next/headers';
+// import { headers } from 'next/headers';
 import type { ReactNode } from 'react';
 import {
   Bangers,
@@ -335,22 +335,20 @@ interface RootLayoutProps {
   children: ReactNode;
 }
 
-export default async function RootLayout({ children }: RootLayoutProps) {
-  const nonce = (await headers()).get('x-nonce') ?? undefined;
+export default function RootLayout({ children }: RootLayoutProps) {
+  // const nonce = (await headers()).get('x-nonce') ?? undefined;
 
   return (
     <html lang='en-PH' className={fontVariables} suppressHydrationWarning>
       <head>
         <script
           id='theme-init'
-          nonce={nonce}
           dangerouslySetInnerHTML={{ __html: themeScript }}
         />
       </head>
       <body>
         <script
           type='application/ld+json'
-          nonce={nonce}
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         {children}
