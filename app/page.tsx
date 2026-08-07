@@ -1,4 +1,3 @@
-import { headers } from 'next/headers';
 import Nav from './components/Nav';
 import Hero from './components/Hero';
 import Marquee from './components/Marquee';
@@ -17,7 +16,7 @@ const portfolioJsonLd = {
   '@type': 'ItemList',
   '@id': `${SITE_URL}/#portfolio-list`,
   url: `${SITE_URL}/#portfolio`,
-  name: 'Web Development Portfolio \u2014 Pau',
+  name: 'Web Development Portfolio — Pau',
   description:
     'Web apps and websites designed, built, and deployed by Pau, including class management, attendance, hours, payroll, and travel projects.',
   numberOfItems: projects.length,
@@ -38,17 +37,16 @@ const portfolioJsonLd = {
   })),
 };
 
-export default async function Page() {
-  const nonce = (await headers()).get('x-nonce') ?? undefined;
-
+export default function Page() {
   return (
     <>
       <script
-        type="application/ld+json"
-        nonce={nonce}
-        dangerouslySetInnerHTML={{ __html: serializeJsonLd(portfolioJsonLd) }}
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{
+          __html: serializeJsonLd(portfolioJsonLd),
+        }}
       />
-      <div className="bg-glow" aria-hidden="true" />
+      <div className='bg-glow' aria-hidden='true' />
       <Nav />
       <main>
         <Hero />
