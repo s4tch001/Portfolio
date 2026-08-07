@@ -13,10 +13,10 @@ The canonical host is `pauuu.dev`. `www.pauuu.dev` redirects to the canonical no
 
 ## Public routes
 
-| Route | Purpose |
-| --- | --- |
-| `/` | Homepage with the hero, profile, services, featured work, skills, and contact sections |
-| `/contact` | Professional project inquiry form |
+| Route      | Purpose                                                                                |
+| ---------- | -------------------------------------------------------------------------------------- |
+| `/`        | Homepage with the hero, profile, services, featured work, skills, and contact sections |
+| `/contact` | Professional project inquiry form                                                      |
 
 ## Stack
 
@@ -40,7 +40,7 @@ The canonical host is `pauuu.dev`. `www.pauuu.dev` redirects to the canonical no
 - Production project links and isolated portfolio demo previews
 - Zod-validated contact forms powered by React Hook Form on both `/` and `/contact`
 - Server-side validation, rate limiting, honeypot filtering, and Cloudflare Turnstile protection
-- Per-request nonce-based Content Security Policy with CSP-safe Zod validation
+- Content Security Policy configured for the production environment
 - Brevo contact email delivery
 - Custom 404 page that follows the active portfolio style
 
