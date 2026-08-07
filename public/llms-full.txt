@@ -37,6 +37,10 @@ A full-stack platform for scheduling lessons, tracking student progress, filing 
 
 A responsive attendance system with a calendar, member directory, leadership hierarchy, administration features, and client-side Excel exports. The portfolio describes React, Vite, Netlify Functions, Supabase, and ExcelJS in its stack.
 
+### Feuille Flip
+
+A modern flipbook platform that lets users upload PDF documents and instantly convert them into interactive, realistic page-flipping books. Built with Next.js App Router and focused on performance, responsive design, and a smooth reading experience.
+
 ### Hours Tracker
 
 A calendar-based hours logger built with HTML, CSS, and JavaScript. It records daily hours, calculates totals, supports themes, and synchronizes demo data with Supabase behind a password gate.
@@ -57,9 +61,6 @@ The responsive Next.js portfolio at https://pauuu.dev showcases Pau's projects, 
 
 - GitHub profile: https://github.com/s4tch001
 - Portfolio source: https://github.com/s4tch001/Portfolio
-- Facebook: https://www.facebook.com/jonbarentain
-- Instagram: https://www.instagram.com/jonbarentain
-- TikTok: https://www.tiktok.com/@jonbarentain
 
 ## Interpretation and safety notes
 

@@ -22,6 +22,7 @@
 - P-Devs Portfolio
 - Sunset-Speaks class management platform
 - RCMI Attendance Checker
+- Feuille Flip
 - Hours Tracker
 - Payroll Splitter
 - P Travel Tours landing page
