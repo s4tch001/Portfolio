@@ -100,11 +100,11 @@ const fontVariables = [
 export const metadata = {
   metadataBase: new URL('https://pauuu.dev'),
   title: {
-    default: 'Filipino Web Developer in the Philippines | Pau',
+    default: 'P-Devs | Full-Stack Web Developer in the Philippines',
     template: '%s | P-Devs',
   },
   description:
-    'Hire Pau, a Filipino web developer in the Philippines building fast, secure Next.js websites and full-stack web apps for businesses and teams.',
+    'Hire Pau, a web developer in the Philippines building fast, secure Next.js websites and full-stack web apps for businesses and teams.',
   keywords: [
     'Filipino web developer',
     'full-stack developer Philippines',
@@ -114,6 +114,11 @@ export const metadata = {
     'custom web applications',
     'P-Devs',
     'Pau web developer',
+    'Pau Dev',
+    'Filipino Dev',
+    'Pinoy Dev',
+    'Pinoy Web Developer',
+    'Pau',
   ],
   authors: [{ name: 'Pau (P-Devs)' }],
   creator: 'Pau (P-Devs)',
