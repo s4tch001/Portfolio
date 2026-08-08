@@ -518,6 +518,29 @@
   border-radius: 0;
 }
 
+[data-style='oldschool'] .project__github {
+  height: 2.3rem;
+  padding: 0 0.85rem;
+  background: var(--os-face);
+  border: 2px solid;
+  border-color: var(--os-hi) var(--os-lo) var(--os-lo) var(--os-hi);
+  box-shadow:
+    inset 1px 1px 0 rgba(255, 255, 255, 0.72),
+    inset -1px -1px 0 rgba(0, 0, 0, 0.28),
+    0 0 0 1px #000;
+}
+
+[data-style='oldschool'] .project__github:hover,
+[data-style='oldschool'] .project__github:focus-visible {
+  background: var(--os-face-2);
+  border-color: var(--os-hi) var(--os-lo) var(--os-lo) var(--os-hi);
+  transform: none;
+  box-shadow:
+    inset 1px 1px 0 rgba(255, 255, 255, 0.72),
+    inset -1px -1px 0 rgba(0, 0, 0, 0.28),
+    0 0 0 1px #000;
+}
+
 /* ───────────────────────── Lightbox ───────────────────────── */
 [data-style='oldschool'] .lightbox__stage img {
   border: 3px solid;

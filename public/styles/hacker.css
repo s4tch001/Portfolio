@@ -552,6 +552,32 @@
   border-radius: 0;
 }
 
+[data-style='hacker'] .project__github {
+  height: 1.925rem;
+  padding: 0 0.85rem;
+  background: transparent;
+  border-color: var(--text);
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 231, 102, 0.08),
+    0 0 8px rgba(0, 231, 102, 0.16);
+}
+
+[data-style='hacker'] .project__github:hover,
+[data-style='hacker'] .project__github:focus-visible {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--bg);
+  transform: none;
+  box-shadow: var(--hx-glow);
+}
+
+[data-style='hacker'] .project__github:hover::before,
+[data-style='hacker'] .project__github:hover::after,
+[data-style='hacker'] .project__github:focus-visible::before,
+[data-style='hacker'] .project__github:focus-visible::after {
+  color: var(--bg);
+}
+
 /* ───────────────────────── Lightbox ───────────────────────── */
 [data-style='hacker'] .lightbox__stage img {
   border: 1px solid var(--border);

@@ -409,6 +409,23 @@
   border-radius: 0;
 }
 
+[data-style='luxe'] .project__github {
+  height: 1.72rem;
+  padding: 0 0.85rem;
+  background: transparent;
+  border-color: var(--luxe-gold);
+  box-shadow: inset 0 -2px 0 rgba(198, 161, 91, 0.28);
+}
+
+[data-style='luxe'] .project__github:hover,
+[data-style='luxe'] .project__github:focus-visible {
+  background: var(--surface);
+  border-color: var(--luxe-gold);
+  color: var(--text);
+  transform: none;
+  box-shadow: inset 0 -2px 0 rgba(198, 161, 91, 0.5);
+}
+
 [data-style='luxe'][data-theme='light'] .project__demo .btn--primary {
   border-color: var(--luxe-gold);
 }

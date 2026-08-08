@@ -566,6 +566,28 @@
   box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
 }
 
+[data-style='graffiti'] .project__github {
+  height: 1.8rem;
+  padding: 0 0.85rem;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1.5px solid #000;
+  box-shadow:
+    2px 2px 0 #b14aff,
+    4px 4px 0 #ffd60a;
+  transform: rotate(0.4deg);
+}
+
+[data-style='graffiti'] .project__github:hover,
+[data-style='graffiti'] .project__github:focus-visible {
+  background: var(--paper);
+  border-color: #000;
+  box-shadow:
+    3px 3px 0 #b14aff,
+    6px 6px 0 #ffd60a;
+  transform: rotate(0.4deg) translate(-1px, -1px);
+}
+
 /* ───────────────────────── Lightbox ───────────────────────── */
 [data-style='graffiti'] .lightbox__stage img {
   border: 10px solid var(--paper);

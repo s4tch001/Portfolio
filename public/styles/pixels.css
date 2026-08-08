@@ -487,6 +487,26 @@
   color: var(--text);
 }
 
+[data-style='pixels'] .project__github {
+  height: 2.3rem;
+  padding: 0 0.85rem;
+  background: var(--surface);
+  border: 2px solid var(--px-ink);
+  box-shadow:
+    2px 2px 0 var(--cyan),
+    4px 4px 0 var(--violet);
+}
+
+[data-style='pixels'] .project__github:hover,
+[data-style='pixels'] .project__github:focus-visible {
+  background: var(--surface-2);
+  border-color: var(--px-ink);
+  transform: translate(-1px, -1px);
+  box-shadow:
+    3px 3px 0 var(--cyan),
+    6px 6px 0 var(--violet);
+}
+
 /* ───────────────────────── Lightbox ───────────────────────── */
 [data-style='pixels'] .lightbox__stage img {
   border: 4px solid var(--px-ink);
