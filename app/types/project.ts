@@ -11,6 +11,12 @@ export interface ProjectDemo {
   url: string;
   deploy: readonly string[];
   note: string;
+  github?: string;
+}
+
+export interface ProjectSource {
+  url: string;
+  label: string;
 }
 
 export interface Project {
@@ -23,6 +29,7 @@ export interface Project {
   features: readonly string[];
   stack: readonly string[];
   deploy: readonly string[];
+  sources: readonly [ProjectSource, ...ProjectSource[]];
   images: readonly [ProjectImage, ...ProjectImage[]];
   accent: ProjectAccent;
   live?: string;

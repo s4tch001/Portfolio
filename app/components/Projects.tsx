@@ -10,6 +10,28 @@ function DeployBadge({ name }: DeployBadgeProps) {
   return <span className="project__deploy">▲ {name}</span>;
 }
 
+interface GithubLinkProps {
+  href: string;
+  label: string;
+}
+
+function GithubLink({ href, label }: GithubLinkProps) {
+  return (
+    <a
+      className="btn btn--small btn--ghost project__github"
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${label} on GitHub`}
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M12 .7a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.8 5.4-5.5 5.7.4.4.8 1.1.8 2.2v3.2c0 .4.2.7.8.6A11.5 11.5 0 0 0 12 .7Z" />
+      </svg>
+      <span>{label}</span>
+    </a>
+  );
+}
+
 export default function Projects({
   heading,
   headingLevel = 'h2',
@@ -70,6 +92,13 @@ export default function Projects({
                   {project.deploy.map((platform) => (
                     <DeployBadge key={platform} name={platform} />
                   ))}
+                  {project.sources.map((source) => (
+                    <GithubLink
+                      key={source.url}
+                      href={source.url}
+                      label={source.label}
+                    />
+                  ))}
                   {project.live && (
                     <a
                       className="btn btn--small btn--ghost"
@@ -92,20 +121,28 @@ export default function Projects({
                         ))}
                       </div>
                     </div>
-                    <a
-                      className="btn btn--small btn--primary"
-                      href={project.demo.url}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <span>Open demo preview</span>
-                      <span className="project__demo-arrow" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" focusable="false">
-                          <path d="M7 17 17 7" />
-                          <path d="M9 7h8v8" />
-                        </svg>
-                      </span>
-                    </a>
+                    <div className="project__demo-actions">
+                      {project.demo.github && (
+                        <GithubLink
+                          href={project.demo.github}
+                          label="Demo source"
+                        />
+                      )}
+                      <a
+                        className="btn btn--small btn--primary"
+                        href={project.demo.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <span>Open demo preview</span>
+                        <span className="project__demo-arrow" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" focusable="false">
+                            <path d="M7 17 17 7" />
+                            <path d="M9 7h8v8" />
+                          </svg>
+                        </span>
+                      </a>
+                    </div>
                   </div>
                 )}
               </div>

@@ -1351,6 +1351,17 @@ html.anchor-layout-ready .footer {
   padding: 0.3rem 0.85rem;
 }
 
+.project__github {
+  white-space: nowrap;
+}
+
+.project__github svg {
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+  fill: currentColor;
+}
+
 .project__demo {
   position: relative;
   isolation: isolate;
@@ -1421,6 +1432,19 @@ html.anchor-layout-ready .footer {
   animation: project-demo-cta 1.9s ease-in-out infinite;
   font-family: var(--font-space-grotesk), system-ui, sans-serif;
   font-size: 0.85rem;
+}
+
+.project__demo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.65rem;
+  margin-left: auto;
+}
+
+.project__demo-actions .btn {
+  margin-left: 0;
 }
 
 [data-theme='light']:not([data-style]) .project__demo .btn--primary {
@@ -1528,6 +1552,11 @@ html.anchor-layout-ready .footer {
   }
 
   .project__demo .btn--primary {
+    margin-left: 0;
+  }
+
+  .project__demo-actions {
+    justify-content: flex-start;
     margin-left: 0;
   }
 }

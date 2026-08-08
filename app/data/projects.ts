@@ -67,6 +67,12 @@ const portfolioProject = {
     'Cloudflare Turnstile',
   ],
   deploy: ['Netlify'],
+  sources: [
+    {
+      url: 'https://github.com/s4tch001/Portfolio/',
+      label: 'Source code',
+    },
+  ],
   images: [
     {
       src: portfolioDefault,
@@ -130,10 +136,21 @@ const projectEntries = [
       'Kotlin',
     ],
     deploy: ['Cloudflare Workers', 'Cloudflare Pages'],
+    sources: [
+      {
+        url: 'https://github.com/s4tch001/Sunset-Speaks',
+        label: 'Global source',
+      },
+      {
+        url: 'https://github.com/s4tch001/Sunset-Speaks-cn',
+        label: 'CN source',
+      },
+    ],
     demo: {
       url: 'https://cn-demo.pauuu.dev',
       deploy: ['Netlify', 'Supabase'],
       note: 'Portfolio-only demo preview: frontend on Netlify, backend/database on Supabase. Visitor-created demo data resets every day at 12:00 AM Asia/Manila.',
+      github: 'https://github.com/s4tch001/portfolio-live-demos/tree/main/apps/cn',
     },
     images: [
       {
@@ -245,10 +262,17 @@ const projectEntries = [
       'ExcelJS',
     ],
     deploy: ['Netlify', 'Supabase'],
+    sources: [
+      {
+        url: 'https://github.com/s4tch001/RCMI-Attendance-Checker',
+        label: 'Source code',
+      },
+    ],
     demo: {
       url: 'https://rcmi-demo.pauuu.dev',
       deploy: ['Netlify', 'Supabase'],
       note: 'Portfolio-only demo preview: frontend on Netlify, backend/database on Supabase. Visitor-created demo data resets every day at 12:00 AM Asia/Manila.',
+      github: 'https://github.com/s4tch001/portfolio-live-demos/tree/main/apps/rcmi',
     },
     images: [
       {
@@ -299,6 +323,12 @@ const projectEntries = [
       'Netlify',
     ],
     deploy: ['Netlify', 'Supabase'],
+    sources: [
+      {
+        url: 'https://github.com/s4tch001/Feuille-Flip',
+        label: 'Source code',
+      },
+    ],
     demo: {
       url: 'https://feuille-flip.netlify.app',
       deploy: ['Netlify', 'Supabase'],
@@ -343,10 +373,17 @@ const projectEntries = [
     ],
     stack: ['HTML5', 'CSS3', 'JavaScript', 'Supabase'],
     deploy: ['Netlify'],
+    sources: [
+      {
+        url: 'https://github.com/s4tch001/hours-tracker',
+        label: 'Source code',
+      },
+    ],
     demo: {
       url: 'https://hours-demo.pauuu.dev',
       deploy: ['Netlify', 'Supabase'],
       note: 'Portfolio-only demo preview: frontend on Netlify, backend/database on Supabase. Visitor-created demo data resets every day at 12:00 AM Asia/Manila.',
+      github: 'https://github.com/s4tch001/portfolio-live-demos/tree/main/apps/hours',
     },
     images: [
       {
@@ -377,10 +414,17 @@ const projectEntries = [
     ],
     stack: ['HTML5', 'CSS3', 'JavaScript'],
     deploy: ['Netlify'],
+    sources: [
+      {
+        url: 'https://github.com/s4tch001/payroll-splitter',
+        label: 'Source code',
+      },
+    ],
     demo: {
       url: 'https://payroll-demo.pauuu.dev',
       deploy: ['Netlify', 'Supabase'],
       note: 'Portfolio-only demo preview: frontend on Netlify, backend/database on Supabase. Visitor-created demo data resets every day at 12:00 AM Asia/Manila.',
+      github: 'https://github.com/s4tch001/portfolio-live-demos/tree/main/apps/payroll',
     },
     images: [
       {
@@ -417,10 +461,17 @@ const projectEntries = [
       'Font Awesome',
     ],
     deploy: ['Netlify'],
+    sources: [
+      {
+        url: 'https://github.com/s4tch001/P-Travel-Tours-Landing-Page',
+        label: 'Source code',
+      },
+    ],
     demo: {
       url: 'https://travels-demo.pauuu.dev',
       deploy: ['Netlify', 'Supabase'],
       note: 'Portfolio-only demo preview: frontend on Netlify, backend/database on Supabase. Visitor-created demo data resets every day at 12:00 AM Asia/Manila.',
+      github: 'https://github.com/s4tch001/portfolio-live-demos/tree/main/apps/travels',
     },
     images: [
       {
