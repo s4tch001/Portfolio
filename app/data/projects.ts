@@ -37,7 +37,7 @@ const portfolioPixels = img('portfolio-pixels');
 const portfolioLuxe = img('portfolio-luxe');
 const portfolioHacker = img('portfolio-hacker');
 const flipLandingTop = img('flip-landing-top');
-const flipLandingBottom = img('flip-landing-bottom');
+const flipEditor = img('flip-editor');
 const flipUpload = img('flip-upload');
 const flipViewer = img('flip-viewer');
 
@@ -302,21 +302,24 @@ const projectEntries = [
     id: 'feuille-flip',
     num: '04',
     name: 'Feuille Flip',
-    tagline:
-      'Interactive flipbook platform with PDF upload and realistic page turning',
+    tagline: 'Local-first page editor and HD flipbook publisher',
     url: 'feuille-flip.netlify.app',
+    live: 'https://feuille-flip.netlify.app',
     description:
-      'A modern flipbook platform that lets users upload PDF documents and instantly convert them into interactive, realistic page-flipping books. Built with Next.js App Router and focused on performance, responsive design, and a smooth reading experience.',
+      'Feuille Flip is a local-first page designer and PDF publisher. Users can create pages from scratch or import a PDF, preserve the chosen ratio, autosave projects on-device, and publish an HD flipbook with social sharing. Public links and files expire after three calendar months.',
     features: [
-      'Upload PDF documents and instantly generate interactive flipbooks',
-      'Realistic page-turning animation with responsive desktop and mobile viewing',
-      'Protected uploads with Cloudflare Turnstile and server-side validation using Zod',
+      'Design up to 100 pages with flexible sizes, quick layouts, text, photos, drawing, cropping, gradients, borders, shadows, and drag-to-reorder thumbnails',
+      'IndexedDB autosave plus portable .feuilleflip project export and import, with no account required',
+      'PDF import preserves the source page ratio; editor pages publish as sharp HD WebP assets with at least 2,560 pixels on the longest edge',
+      'Turnstile-protected publishing, social sharing, and automatic link and file deletion after three calendar months',
     ],
     stack: [
       'Next.js 16',
       'React 19',
       'TypeScript',
-      'CSS3',
+      'Fabric.js',
+      'IndexedDB',
+      'PDF.js',
       'Supabase',
       'Cloudflare Turnstile',
       'Zod',
@@ -329,31 +332,26 @@ const projectEntries = [
         label: 'Source code',
       },
     ],
-    demo: {
-      url: 'https://feuille-flip.netlify.app',
-      deploy: ['Netlify', 'Supabase'],
-      note: 'Portfolio-only demo preview: frontend on Netlify, backend/database on Supabase.',
-    },
     images: [
       {
         src: flipLandingTop,
-        alt: 'Feuille Flip landing page hero section',
-        caption: 'Landing page',
+        alt: 'Feuille Flip landing page offering Create and Flip or PDF upload workflows',
+        caption: 'Create from scratch or bring a PDF',
       },
       {
-        src: flipLandingBottom,
-        alt: 'Feuille Flip landing page features section',
-        caption: 'Features overview',
+        src: flipEditor,
+        alt: 'Feuille Flip visual page editor with quick layouts, page thumbnails, and HD controls',
+        caption: 'Local-first visual page editor',
       },
       {
         src: flipUpload,
-        alt: 'PDF upload interface',
-        caption: 'Upload PDF',
+        alt: 'Feuille Flip protected PDF upload dialog with original-ratio and three-month retention notices',
+        caption: 'Protected PDF publishing',
       },
       {
         src: flipViewer,
-        alt: 'Interactive flipbook viewer',
-        caption: 'Flipbook viewer',
+        alt: 'Feuille Flip HD viewer showing a polished open two-page spread',
+        caption: 'Responsive HD page-turning viewer',
       },
     ],
     accent: 'violet',
