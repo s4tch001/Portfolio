@@ -10,34 +10,33 @@ const GROUPS = [
       'JavaScript',
       'TypeScript',
       'React',
-      'Next',
+      'Next.js',
       'Vite',
       'Tailwind CSS',
       'Responsive Design',
       'UI Animation',
       'Axios',
-      'TanStack',
-      'shadcn',
+      'TanStack Query',
+      'Shadcn',
     ],
   },
   {
     title: 'Backend & Data',
     icon: '⚙️',
     skills: [
-      'Node',
+      'Node.js',
       'Python',
-      'Django',
-      'Flask',
       'Lua',
       'Cloudflare Workers',
+      'Cloudflare D1',
+      'Cloudflare R2',
       'Netlify Functions',
       'Supabase',
       'PostgreSQL',
-      'Cloudflare D1',
       'SQLite',
-      'R2 Object Storage',
       'Durable Objects',
       'REST APIs',
+      'JWT',
       'Prisma ORM',
       'Zod',
     ],
@@ -66,12 +65,7 @@ const GROUPS = [
   {
     title: 'Design & Creative',
     icon: '✨',
-    skills: [
-      'UI/UX Design',
-      'Video Editing',
-      'Photo Editing',
-      'Audio Editing',
-    ],
+    skills: ['UI/UX Design', 'Video Editing', 'Photo Editing', 'Audio Editing'],
   },
   {
     title: 'SEO & Optimization',
@@ -102,32 +96,36 @@ export default function Skills({
 }: SectionHeadingProps) {
   const Heading = headingLevel;
   const title = heading ?? (
-    <>My <span className="grad-text">toolbox.</span></>
+    <>
+      My <span className='grad-text'>toolbox.</span>
+    </>
   );
 
   return (
-    <section id="skills" className="section">
-      <div className="section__inner">
-        <p className="section__eyebrow reveal">{eyebrow}</p>
-        <Heading className="section__title reveal">{title}</Heading>
-        <p className="section__lead reveal">
+    <section id='skills' className='section'>
+      <div className='section__inner'>
+        <p className='section__eyebrow reveal'>{eyebrow}</p>
+        <Heading className='section__title reveal'>{title}</Heading>
+        <p className='section__lead reveal'>
           The technologies, platforms, and disciplines I use across the full
           development lifecycle.
         </p>
 
-        <div className="skills__grid">
+        <div className='skills__grid'>
           {GROUPS.map((group, i) => (
             <article
               key={group.title}
-              className="card skills__card reveal"
+              className='card skills__card reveal'
               style={{ '--d': `${i * 0.1}s` } as DelayStyle}
             >
               <h3>
-                <span aria-hidden="true">{group.icon}</span> {group.title}
+                <span aria-hidden='true'>{group.icon}</span> {group.title}
               </h3>
-              <div className="skills__chips">
+              <div className='skills__chips'>
                 {group.skills.map((skill) => (
-                  <span key={skill} className="chip">{skill}</span>
+                  <span key={skill} className='chip'>
+                    {skill}
+                  </span>
                 ))}
               </div>
             </article>
