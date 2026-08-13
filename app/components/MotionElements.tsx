@@ -28,7 +28,7 @@ const HOVER_TARGETS = {
   link: { x: 2 },
   logo: { scale: 1.025 },
   option: { x: 3 },
-  social: { y: -4, scale: 1.04 },
+  social: { scale: 1.1 },
 } satisfies Record<string, TargetAndTransition>;
 
 type HoverPreset = keyof typeof HOVER_TARGETS;
@@ -143,40 +143,151 @@ export function MotionChip({ children, ...props }: MotionChipProps) {
   );
 }
 
+interface MotionBadgeProps extends HTMLMotionProps<'span'> {
+  children: ReactNode;
+  kind: 'deploy' | 'solo';
+}
+
+export function MotionBadge({ children, kind, ...props }: MotionBadgeProps) {
+  const shouldReduceMotion = useReducedMotion();
+  const hoverTarget =
+    kind === 'deploy'
+      ? { y: -3, scale: 1.045 }
+      : { x: 4, scale: 1.012 };
+
+  return (
+    <m.span
+      {...props}
+      whileHover={shouldReduceMotion ? {} : hoverTarget}
+      transition={HOVER_TRANSITION}
+    >
+      {children}
+    </m.span>
+  );
+}
+
 interface HeroVisualMotionProps {
   children: ReactNode;
 }
 
 export function HeroVisualMotion({ children }: HeroVisualMotionProps) {
   const shouldReduceMotion = useReducedMotion();
-  const ambientMotion = shouldReduceMotion
-    ? {}
-    : {
-        whileInView: {
-          y: [0, -5, 0],
-          rotate: [0, 0.35, 0],
-        },
-        viewport: { amount: 0.12 },
-        transition: {
-          duration: 10.5,
-          ease: 'easeInOut' as const,
-          repeat: Infinity,
-        },
-      };
 
   return (
     <m.div
       className='hero__visual'
       aria-hidden='true'
-      {...ambientMotion}
-      whileHover={
+      initial={shouldReduceMotion ? false : { opacity: 0, y: 24, scale: 0.94 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, amount: 0.18 }}
+      transition={{ type: 'spring', stiffness: 120, damping: 18, mass: 0.8 }}
+    >
+      <m.span
+        className='hero__visual-aura'
+        animate={
+          shouldReduceMotion
+            ? { opacity: 0.45 }
+            : {
+                x: [0, 18, -10, 0],
+                y: [0, -12, 8, 0],
+                scale: [1, 1.1, 0.96, 1],
+                opacity: [0.4, 0.62, 0.46, 0.4],
+              }
+        }
+        transition={{ duration: 10, ease: 'easeInOut', repeat: Infinity }}
+      />
+      <m.div
+        className='hero__visual-stage'
+        animate={
+          shouldReduceMotion
+            ? { x: 0, y: 0, rotate: 0 }
+            : {
+                x: [0, 5, -3, 0],
+                y: [0, -10, 2, 0],
+                rotate: [0, -0.7, 0.4, 0],
+              }
+        }
+        whileHover={
+          shouldReduceMotion
+            ? {}
+            : { y: -6, scale: 1.022, rotate: 0, transition: HOVER_TRANSITION }
+        }
+        transition={{ duration: 9, ease: 'easeInOut', repeat: Infinity }}
+      >
+        {children}
+      </m.div>
+    </m.div>
+  );
+}
+
+interface HeroVisualCardProps {
+  children: ReactNode;
+}
+
+export function HeroVisualCard({ children }: HeroVisualCardProps) {
+  const shouldReduceMotion = useReducedMotion();
+
+  return (
+    <m.div
+      className='hero__card'
+      animate={
         shouldReduceMotion
-          ? {}
-          : { scale: 1.012, rotate: 0, transition: HOVER_TRANSITION }
+          ? { rotateX: 0, rotateY: 0 }
+          : {
+              rotateX: [0, -1.4, 0.8, 0],
+              rotateY: [0, 1.8, -1.1, 0],
+            }
       }
+      transition={{ duration: 11, ease: 'easeInOut', repeat: Infinity }}
+      style={{ transformPerspective: 900 }}
     >
       {children}
     </m.div>
+  );
+}
+
+interface HeroVisualChipProps extends HTMLMotionProps<'span'> {
+  children: ReactNode;
+  index: 0 | 1 | 2;
+}
+
+interface HeroChipMotion {
+  x: number[];
+  y: number[];
+  rotate: number[];
+  duration: number;
+}
+
+const HERO_CHIP_MOTION: readonly [
+  HeroChipMotion,
+  HeroChipMotion,
+  HeroChipMotion,
+] = [
+  { x: [0, 5, -2, 0], y: [0, -8, 3, 0], rotate: [0, -2, 1, 0], duration: 6.2 },
+  { x: [0, -5, 2, 0], y: [0, 6, -3, 0], rotate: [0, 1.5, -0.8, 0], duration: 7 },
+  { x: [0, -3, 4, 0], y: [0, -6, 4, 0], rotate: [0, 1, -1.2, 0], duration: 7.6 },
+];
+
+export function HeroVisualChip({
+  children,
+  index,
+  ...props
+}: HeroVisualChipProps) {
+  const shouldReduceMotion = useReducedMotion();
+  const motion = HERO_CHIP_MOTION[index];
+
+  return (
+    <m.span
+      {...props}
+      animate={
+        shouldReduceMotion
+          ? { x: 0, y: 0, rotate: 0 }
+          : { x: motion.x, y: motion.y, rotate: motion.rotate }
+      }
+      transition={{ duration: motion.duration, ease: 'easeInOut', repeat: Infinity }}
+    >
+      {children}
+    </m.span>
   );
 }
 

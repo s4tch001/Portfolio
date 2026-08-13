@@ -319,7 +319,6 @@
   border-radius: 4px;
   font-family: var(--font-tag);
   box-shadow: 3px 3px 0 #b14aff;
-  transform: rotate(-6deg);
 }
 
 [data-style='graffiti'] .nav__logo-text {
@@ -624,14 +623,6 @@
 
 [data-style='graffiti'] .footer__social svg {
   fill: #17131a;
-}
-
-[data-style='graffiti'] .footer__socials li:nth-child(odd) .footer__social {
-  rotate: -2.5deg;
-}
-
-[data-style='graffiti'] .footer__socials li:nth-child(even) .footer__social {
-  rotate: 2deg;
 }
 
 [data-style='graffiti'] .footer__social:hover {

@@ -1,5 +1,7 @@
 import TypewriterText from './TypewriterText';
 import {
+  HeroVisualCard,
+  HeroVisualChip,
   HeroVisualMotion,
   HeroMotionBackground,
   MotionLink,
@@ -51,7 +53,7 @@ export default function Hero() {
         </div>
 
         <HeroVisualMotion>
-          <div className='hero__card'>
+          <HeroVisualCard>
             <div className='hero__card-bar'>
               <span className='dot dot--r' />
               <span className='dot dot--y' />
@@ -81,16 +83,16 @@ export default function Hero() {
                 {'}'};
               </code>
             </pre>
-          </div>
-          <span className='hero__chip hero__chip--1'>
+          </HeroVisualCard>
+          <HeroVisualChip className='hero__chip hero__chip--1' index={0}>
             💻 clean code
-          </span>
-          <span className='hero__chip hero__chip--2'>
+          </HeroVisualChip>
+          <HeroVisualChip className='hero__chip hero__chip--2' index={1}>
             ⚡ fast & responsive
-          </span>
-          <span className='hero__chip hero__chip--3'>
+          </HeroVisualChip>
+          <HeroVisualChip className='hero__chip hero__chip--3' index={2}>
             🚀 ship to production
-          </span>
+          </HeroVisualChip>
         </HeroVisualMotion>
       </div>
 

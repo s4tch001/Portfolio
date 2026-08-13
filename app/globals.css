@@ -727,12 +727,40 @@ html.motion-ready .hero__caret {
 /* Hero visual: code card + floating chips */
 .hero__visual {
   position: relative;
+  min-width: 0;
+  perspective: 1000px;
+}
+
+.hero__visual-stage {
+  position: relative;
+  z-index: 1;
   display: flex;
   justify-content: center;
+  width: 100%;
   min-width: 0;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.hero__visual-aura {
+  position: absolute;
+  inset: 8% 5%;
+  z-index: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 38% 38%,
+    color-mix(in srgb, var(--violet), transparent 60%),
+    color-mix(in srgb, var(--cyan), transparent 76%) 48%,
+    transparent 72%
+  );
+  filter: blur(28px);
+  pointer-events: none;
+  will-change: transform, opacity;
 }
 
 .hero__card {
+  position: relative;
+  z-index: 1;
   width: min(100%, 480px);
   /* Flex item: allow shrink below the code block's content width so the
      <pre> scrolls horizontally instead of widening the card off-screen. */
@@ -744,6 +772,8 @@ html.motion-ready .hero__caret {
   box-shadow:
     0 30px 80px -30px rgba(0, 0, 0, 0.8),
     0 0 60px -20px rgba(139, 92, 246, 0.35);
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .hero__card-bar {
@@ -801,6 +831,7 @@ html.motion-ready .hero__caret {
 
 .hero__chip {
   position: absolute;
+  z-index: 2;
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 0.85rem;
@@ -890,6 +921,7 @@ html.motion-ready .hero__caret {
   font-size: 1rem;
   color: var(--muted);
   white-space: nowrap;
+  will-change: transform;
 }
 
 /* ───────────────────────── Sections ───────────────────────── */

@@ -1,7 +1,7 @@
 import projects from '../data/projects';
 import type { SectionHeadingProps } from '../types/ui';
 import DeferredProjectGallery from './DeferredProjectGallery';
-import { MotionChip, MotionLink, MotionReveal } from './MotionElements';
+import { MotionBadge, MotionChip, MotionLink, MotionReveal } from './MotionElements';
 import ProjectGalleryStatic from './ProjectGalleryStatic';
 
 interface DeployBadgeProps {
@@ -9,7 +9,7 @@ interface DeployBadgeProps {
 }
 
 function DeployBadge({ name }: DeployBadgeProps) {
-  return <span className="project__deploy">▲ {name}</span>;
+  return <MotionBadge className="project__deploy" kind="deploy">▲ {name}</MotionBadge>;
 }
 
 interface GithubLinkProps {
@@ -80,7 +80,9 @@ export default function Projects({
                 <h3 className="project__name">{project.name}</h3>
                 <p className="project__tagline">{project.tagline}</p>
                 <p className="project__desc">{project.description}</p>
-                <p className="project__solo">Solo developer: designed, built, and shipped by me.</p>
+                <MotionBadge className="project__solo" kind="solo">
+                  Solo developer: designed, built, and shipped by me.
+                </MotionBadge>
                 <ul className="project__features">
                   {project.features.map((feature) => (
                     <li key={feature}>{feature}</li>

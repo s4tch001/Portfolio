@@ -42,13 +42,23 @@ export default function Nav() {
           className='nav__logo'
           href='https://pauuu.dev'
           onClick={() => setOpen(false)}
-          whileHover={shouldReduceMotion ? {} : { scale: 1.025 }}
+          initial='rest'
+          animate='rest'
+          whileHover='hover'
+          whileFocus='hover'
           whileTap={shouldReduceMotion ? {} : { scale: 0.985 }}
+          variants={{
+            rest: { scale: 1 },
+            hover: shouldReduceMotion ? {} : { scale: 1.025 },
+          }}
           transition={hoverTransition}
         >
           <m.span
             className='nav__logo-mark'
-            whileHover={shouldReduceMotion ? {} : { rotate: -8, scale: 1.08 }}
+            variants={{
+              rest: { rotate: 0, scale: 1 },
+              hover: shouldReduceMotion ? {} : { rotate: -8, scale: 1.08 },
+            }}
             transition={hoverTransition}
           >
             P
