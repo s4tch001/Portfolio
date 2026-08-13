@@ -196,7 +196,7 @@
 
 [data-style='graffiti'] .btn--gradient {
   background: #b14aff;
-  color: #fff;
+  color: #17131a;
   box-shadow: 4px 4px 0 #ffd60a;
   transform: rotate(-1deg);
 }
@@ -415,17 +415,13 @@
   transform: rotate(-1.2deg) scale(1.02);
 }
 
-[data-style='graffiti'] .marquee__item {
+[data-style='graffiti'] .marquee__row {
   font-family: var(--font-display);
   font-weight: 400;
   font-size: 1.1rem;
   letter-spacing: 0.09em;
   text-transform: uppercase;
   color: #17131a;
-}
-
-[data-style='graffiti'] .marquee__item::after {
-  color: #b14aff;
 }
 
 /* ───────────────────────── Projects & gallery → paste-up posters ───────────────────────── */

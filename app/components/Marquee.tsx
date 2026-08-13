@@ -26,7 +26,9 @@ const ITEMS = [
   'Git',
 ];
 
-const MARQUEE_TEXT = `${ITEMS.join('  ✦  ')}  ✦`;
+// Non-breaking spaces remain visible around every separator in rendered HTML.
+const MARQUEE_SEPARATOR = '\u00a0\u00a0\u00a0✦\u00a0\u00a0\u00a0';
+const MARQUEE_TEXT = `${ITEMS.join(MARQUEE_SEPARATOR)}${MARQUEE_SEPARATOR}`;
 
 // Two identical rows inside a track animated -50% => seamless infinite loop.
 export default function Marquee() {

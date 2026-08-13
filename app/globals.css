@@ -672,11 +672,17 @@ html.motion-ready .hero__hand {
   align-items: center;
 }
 
-.hero__typed {
-  display: inline-block;
-  inline-size: 13ch;
+.hero__typewriter {
+  display: inline-flex;
+  align-items: center;
+  inline-size: calc(13ch + 7px);
   contain: layout inline-size;
   white-space: nowrap;
+}
+
+.hero__typed {
+  display: inline-block;
+  flex: none;
   background: var(--grad);
   -webkit-background-clip: text;
   background-clip: text;
@@ -684,6 +690,7 @@ html.motion-ready .hero__hand {
 }
 
 .hero__caret {
+  flex: 0 0 3px;
   width: 3px;
   height: 1.1em;
   margin-left: 4px;

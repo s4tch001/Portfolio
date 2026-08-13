@@ -20,10 +20,12 @@ export default function Hero() {
             </span>
           </h1>
           <p className='hero__role' aria-label='Web Developer, Musician, Gamer'>
-            <span className='hero__typed'>
-              <TypewriterText words={ROLES} />
+            <span className='hero__typewriter'>
+              <span className='hero__typed'>
+                <TypewriterText words={ROLES} />
+              </span>
+              <span className='hero__caret' aria-hidden='true' />
             </span>
-            <span className='hero__caret' aria-hidden='true' />
           </p>
           <p className='hero__sub'>
             I design, build, and ship full-stack web applications with a Next.js
