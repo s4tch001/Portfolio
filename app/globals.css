@@ -604,8 +604,11 @@ html:not([data-style]) .nav__logo-img {
 
 .hero__hand {
   display: inline-block;
-  animation: wave 2.4s ease-in-out infinite;
   transform-origin: 70% 70%;
+}
+
+html.motion-ready .hero__hand {
+  animation: wave 2.4s ease-in-out infinite;
 }
 
 @keyframes wave {
@@ -645,6 +648,9 @@ html:not([data-style]) .nav__logo-img {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+html.motion-ready .hero__name {
   animation: gradient-pan 7s ease-in-out infinite alternate;
 }
 
@@ -688,6 +694,9 @@ html:not([data-style]) .nav__logo-img {
   margin-left: 4px;
   background: var(--cyan);
   border-radius: 2px;
+}
+
+html.motion-ready .hero__caret {
   animation: blink 1s steps(2) infinite;
 }
 
@@ -731,6 +740,9 @@ html:not([data-style]) .nav__logo-img {
   box-shadow:
     0 30px 80px -30px rgba(0, 0, 0, 0.8),
     0 0 60px -20px rgba(139, 92, 246, 0.35);
+}
+
+html.motion-ready .hero__card {
   animation: float 7s ease-in-out infinite;
 }
 
@@ -806,18 +818,27 @@ html:not([data-style]) .nav__logo-img {
 .hero__chip--1 {
   top: -8%;
   left: 4%;
-  animation: float 5.5s ease-in-out infinite;
 }
 
 .hero__chip--2 {
   bottom: -6%;
   left: 12%;
-  animation: float 6.5s ease-in-out 0.8s infinite;
 }
 
 .hero__chip--3 {
   top: 18%;
   right: -2%;
+}
+
+html.motion-ready .hero__chip--1 {
+  animation: float 5.5s ease-in-out infinite;
+}
+
+html.motion-ready .hero__chip--2 {
+  animation: float 6.5s ease-in-out 0.8s infinite;
+}
+
+html.motion-ready .hero__chip--3 {
   animation: float 6s ease-in-out 0.4s infinite;
 }
 
@@ -850,6 +871,9 @@ html:not([data-style]) .nav__logo-img {
   height: 9px;
   border-radius: 4px;
   background: var(--cyan);
+}
+
+html.motion-ready .hero__scroll-wheel {
   animation: scroll-hint 1.8s ease-in-out infinite;
 }
 
@@ -895,6 +919,9 @@ html:not([data-style]) .nav__logo-img {
   display: flex;
   width: max-content;
   gap: 2.6rem;
+}
+
+html.motion-ready .marquee__track {
   animation: marquee 36s linear infinite;
 }
 
@@ -1349,6 +1376,10 @@ html.anchor-layout-ready .footer {
   background: var(--surface);
   border-radius: 999px;
   padding: 0.3rem 0.85rem;
+}
+
+.deferred-gallery {
+  width: 100%;
 }
 
 .project__github {
@@ -2188,6 +2219,17 @@ html.anchor-layout-ready .footer {
   gap: 1.15rem;
 }
 
+/* The home-page form's validation bundle is loaded shortly before this
+   section reaches the viewport. Reserve its space so the swap stays at CLS 0;
+   the standalone /contact route still renders the form immediately. */
+.contact-form-loader {
+  min-height: 35rem;
+}
+
+.contact-form-loader--ready {
+  min-height: 0;
+}
+
 .contact-form__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2195,6 +2237,14 @@ html.anchor-layout-ready .footer {
 }
 
 @media (max-width: 640px) {
+  .contact-form-loader {
+    min-height: 48rem;
+  }
+
+  .contact-form-loader--ready {
+    min-height: 0;
+  }
+
   .contact-form__grid {
     grid-template-columns: 1fr;
   }
@@ -2724,6 +2774,9 @@ html.anchor-layout-ready .footer {
     border-color 0.25s ease,
     box-shadow 0.25s ease;
   /* Gentle bob + blinking glow ring so the button is easy to spot. */
+}
+
+html.motion-ready .style-switch__fab {
   animation: fab-bob 2.2s ease-in-out infinite;
 }
 
@@ -2737,6 +2790,9 @@ html.anchor-layout-ready .footer {
   opacity: 0.6;
   pointer-events: none;
   will-change: transform, opacity;
+}
+
+html.motion-ready .style-switch__fab::after {
   animation: fab-blink 2.2s ease-in-out infinite;
 }
 

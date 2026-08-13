@@ -1,11 +1,9 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  // Per-request CSP nonces are generated in proxy.ts. This intentionally uses
-  // dynamic rendering because Next.js cannot attach request nonces to static HTML.
-  // No `output: 'export'` — the contact API route needs a server, so the site
-  // deploys through Netlify's Next.js runtime; /api/contact becomes a
-  // Netlify Function and page requests receive fresh CSP nonces.
+  // No `output: 'export'`: the contact API route still needs Netlify's Next.js
+  // runtime. Pages remain eligible for static prerendering, while /api/contact
+  // deploys as a Netlify Function.
   // Netlify's current Next.js adapter serves next/image through its Image CDN.
   images: {
     qualities: [82],

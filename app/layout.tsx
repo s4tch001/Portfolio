@@ -1,6 +1,5 @@
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
-// import { headers } from 'next/headers';
 import type { ReactNode } from 'react';
 import {
   Bangers,
@@ -19,21 +18,27 @@ import RevealController from './components/RevealController';
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
-  display: 'swap',
+  // Keep text paintable during a cold, throttled mobile load. On a fast or
+  // cached visit the local font still wins; otherwise the metric-compatible
+  // fallback avoids a late text repaint becoming LCP.
+  display: 'optional',
 });
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   weight: ['500', '600', '700'],
   variable: '--font-space-grotesk',
-  display: 'swap',
+  display: 'optional',
 });
 
 const jetBrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   weight: ['400', '600'],
   variable: '--font-jetbrains-mono',
-  display: 'swap',
+  display: 'optional',
+  // Monospace is decorative and only used by small labels/code. Do not let
+  // its comparatively large file compete with the hero's body/display fonts.
+  preload: false,
 });
 
 const bangers = Bangers({
@@ -241,6 +246,15 @@ const themeScript = `(function () {
       document.head.appendChild(link);
       timeout = window.setTimeout(function () { finish(false); }, 3000);
     }
+
+    // Decorative motion is intentionally enabled after the critical hero
+    // paint. This keeps non-composited gradient animation and several ambient
+    // animations out of the mobile LCP path without removing them.
+    window.addEventListener('load', function () {
+      window.setTimeout(function () {
+        root.classList.add('motion-ready');
+      }, 1800);
+    }, { once: true });
   } catch (e) {
     document.documentElement.dataset.theme = 'dark';
     delete document.documentElement.dataset.styleLoading;
@@ -341,8 +355,6 @@ interface RootLayoutProps {
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
-  // const nonce = (await headers()).get('x-nonce') ?? undefined;
-
   return (
     <html lang='en-PH' className={fontVariables} suppressHydrationWarning>
       <head>

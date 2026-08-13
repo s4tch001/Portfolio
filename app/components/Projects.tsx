@@ -1,6 +1,7 @@
 import projects from '../data/projects';
 import type { SectionHeadingProps } from '../types/ui';
-import ProjectGallery from './ProjectGallery';
+import DeferredProjectGallery from './DeferredProjectGallery';
+import ProjectGalleryStatic from './ProjectGalleryStatic';
 
 interface DeployBadgeProps {
   name: string;
@@ -61,12 +62,14 @@ export default function Projects({
               className={`project project--${project.accent} ${i % 2 ? 'project--flip' : ''}`}
             >
               <div className="project__media reveal">
-                <ProjectGallery
-                  project={{
-                    name: project.name,
-                    images: project.images,
-                  }}
-                />
+                <DeferredProjectGallery projectId={project.id}>
+                  <ProjectGalleryStatic
+                    project={{
+                      name: project.name,
+                      images: project.images,
+                    }}
+                  />
+                </DeferredProjectGallery>
               </div>
 
               <div className="project__info">

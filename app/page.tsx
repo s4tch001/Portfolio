@@ -6,6 +6,7 @@ import Services from './components/Services';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Contact from './components/Contact';
+import DeferredContactForm from './components/DeferredContactForm';
 import Footer from './components/Footer';
 import StyleSwitcher from './components/StyleSwitcher';
 import projects from './data/projects';
@@ -55,7 +56,7 @@ export default function Page() {
         <Services />
         <Projects />
         <Skills />
-        <Contact />
+        <Contact form={<DeferredContactForm />} />
       </main>
       <Footer />
       <StyleSwitcher />

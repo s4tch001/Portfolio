@@ -1,4 +1,5 @@
 import Contact from '../components/Contact';
+import ContactForm from '../components/ContactForm';
 import StandalonePage from '../components/StandalonePage';
 import { createPageMetadata } from '../lib/seo';
 
@@ -14,7 +15,7 @@ export default function ContactPage() {
     <StandalonePage>
       <Contact
         eyebrow='Contact'
-        eagerTurnstile
+        form={<ContactForm eagerTurnstile />}
         headingLevel='h1'
         heading={
           <>

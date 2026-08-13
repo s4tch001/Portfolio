@@ -1,15 +1,15 @@
-import ContactForm from './ContactForm';
+import type { ReactNode } from 'react';
 import type { SectionHeadingProps } from '../types/ui';
 
 interface ContactProps extends SectionHeadingProps {
-  eagerTurnstile?: boolean;
+  form: ReactNode;
 }
 
 // Used as section 05 on the home page and as the body of the standalone
 // /contact page (which passes its own heading and eyebrow).
 export default function Contact({
   eyebrow = '05 · Contact',
-  eagerTurnstile = false,
+  form,
   heading,
   headingLevel = 'h2',
 }: ContactProps) {
@@ -30,7 +30,7 @@ export default function Contact({
         <p className='section__lead contact__lead reveal'>
           Have a project or idea? Let's talk.
         </p>
-        <ContactForm eagerTurnstile={eagerTurnstile} />
+        {form}
       </div>
     </section>
   );
