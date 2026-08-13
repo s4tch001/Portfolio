@@ -150,7 +150,8 @@ const projectEntries = [
       url: 'https://cn-demo.pauuu.dev',
       deploy: ['Netlify', 'Supabase'],
       note: 'Portfolio-only demo preview: frontend on Netlify, backend/database on Supabase. Visitor-created demo data resets every day at 12:00 AM Asia/Manila.',
-      github: 'https://github.com/s4tch001/portfolio-live-demos/tree/main/apps/cn',
+      github:
+        'https://github.com/s4tch001/portfolio-live-demos/tree/main/apps/cn',
     },
     images: [
       {
@@ -272,7 +273,8 @@ const projectEntries = [
       url: 'https://rcmi-demo.pauuu.dev',
       deploy: ['Netlify', 'Supabase'],
       note: 'Portfolio-only demo preview: frontend on Netlify, backend/database on Supabase. Visitor-created demo data resets every day at 12:00 AM Asia/Manila.',
-      github: 'https://github.com/s4tch001/portfolio-live-demos/tree/main/apps/rcmi',
+      github:
+        'https://github.com/s4tch001/portfolio-live-demos/tree/main/apps/rcmi',
     },
     images: [
       {
@@ -304,7 +306,7 @@ const projectEntries = [
     name: 'Feuille Flip',
     tagline: 'Local-first page editor and HD flipbook publisher',
     url: 'feuille-flip.netlify.app',
-    live: 'https://feuille-flip.netlify.app',
+    live: 'https://feuille-flip.pauuu.dev',
     description:
       'Feuille Flip is a local-first page designer and PDF publisher. Users can create pages from scratch or import a PDF, preserve the chosen ratio, autosave projects on-device, and publish an HD flipbook with social sharing. Public links and files expire after three calendar months.',
     features: [
@@ -381,7 +383,8 @@ const projectEntries = [
       url: 'https://hours-demo.pauuu.dev',
       deploy: ['Netlify', 'Supabase'],
       note: 'Portfolio-only demo preview: frontend on Netlify, backend/database on Supabase. Visitor-created demo data resets every day at 12:00 AM Asia/Manila.',
-      github: 'https://github.com/s4tch001/portfolio-live-demos/tree/main/apps/hours',
+      github:
+        'https://github.com/s4tch001/portfolio-live-demos/tree/main/apps/hours',
     },
     images: [
       {
@@ -422,7 +425,8 @@ const projectEntries = [
       url: 'https://payroll-demo.pauuu.dev',
       deploy: ['Netlify', 'Supabase'],
       note: 'Portfolio-only demo preview: frontend on Netlify, backend/database on Supabase. Visitor-created demo data resets every day at 12:00 AM Asia/Manila.',
-      github: 'https://github.com/s4tch001/portfolio-live-demos/tree/main/apps/payroll',
+      github:
+        'https://github.com/s4tch001/portfolio-live-demos/tree/main/apps/payroll',
     },
     images: [
       {
@@ -469,7 +473,8 @@ const projectEntries = [
       url: 'https://travels-demo.pauuu.dev',
       deploy: ['Netlify', 'Supabase'],
       note: 'Portfolio-only demo preview: frontend on Netlify, backend/database on Supabase. Visitor-created demo data resets every day at 12:00 AM Asia/Manila.',
-      github: 'https://github.com/s4tch001/portfolio-live-demos/tree/main/apps/travels',
+      github:
+        'https://github.com/s4tch001/portfolio-live-demos/tree/main/apps/travels',
     },
     images: [
       {
