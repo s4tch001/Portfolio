@@ -97,8 +97,11 @@ a {
   --text: #14152b;
   --muted: #55596e;
   --violet: #7c3aed;
-  --cyan: #0e97b5;
+  /* Normal-sized accent/status text needs at least 4.5:1 against both the
+     light page and alternate-section backgrounds. */
+  --cyan: #076b80;
   --pink: #db2777;
+  --green: #167447;
   --grad: linear-gradient(120deg, #7c3aed, #0891b2);
 }
 
