@@ -142,6 +142,10 @@ After a production deployment, submit the existing sitemap in Google Search Cons
 
 The repository is connected to the `pau-portfolio` Vercel project. Vercel detects the Next.js App Router and uses `npm run build`; security and cache headers are defined in `next.config.ts`. Set Brevo and Turnstile credentials in Vercel project environment variables before deploying.
 
+### Vercel Analytics and Speed Insights
+
+`<Analytics />` and `<SpeedInsights />` are mounted once in `app/layout.tsx`. After a production deployment, enable **Web Analytics** and **Speed Insights** in the Vercel project dashboard. They do not collect data during local development and require no application environment variables.
+
 ## Editing guide
 
 - Homepage composition: `app/page.tsx`
