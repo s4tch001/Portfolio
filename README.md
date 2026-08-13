@@ -116,10 +116,10 @@ Lighthouse CLI, simulated mobile; mobile values are the median of five runs):
 
 | Metric | Mobile | Desktop |
 | --- | ---: | ---: |
-| Performance | 94 | 100 |
-| First Contentful Paint | 1.04 s | 0.28 s |
-| Largest Contentful Paint | 2.89 s | 0.64 s |
-| Total Blocking Time | 125 ms | 0 ms |
+| Performance | 98 | 100 |
+| First Contentful Paint | 0.92 s | 0.28 s |
+| Largest Contentful Paint | 2.41 s | 0.50 s |
+| Total Blocking Time | 10 ms | 0 ms |
 | Cumulative Layout Shift | 0 | 0 |
 | Speed Index | 1.04 s | 0.32 s |
 
