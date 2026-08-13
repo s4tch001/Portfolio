@@ -1,6 +1,12 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  experimental: {
+    // TypeScript 7 is the native Go compiler and no longer exposes the legacy
+    // JavaScript Compiler API. Next.js 16.3 can invoke its project-local CLI
+    // directly so both `next build` and `npm run typecheck` use TypeScript 7.
+    useTypeScriptCli: true,
+  },
   // No `output: 'export'`: the contact API route still needs Netlify's Next.js
   // runtime. Pages remain eligible for static prerendering, while /api/contact
   // deploys as a Netlify Function.
