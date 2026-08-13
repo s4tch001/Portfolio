@@ -1,11 +1,10 @@
-import HeroShell from './HeroShell';
 import TypewriterText from './TypewriterText';
 
 const ROLES = ['Web Developer', 'Musician', 'Gamer'];
 
 export default function Hero() {
   return (
-    <HeroShell>
+    <section id='home' className='hero'>
       <div className='hero__inner'>
         <div className='hero__copy'>
           <p className='hero__eyebrow'>
@@ -89,6 +88,6 @@ export default function Hero() {
       >
         <span className='hero__scroll-wheel' />
       </a>
-    </HeroShell>
+    </section>
   );
 }

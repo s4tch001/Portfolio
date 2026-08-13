@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { usePathname } from 'next/navigation';
 import useTheme from '../hooks/useTheme';
 import ThemeToggle from './ThemeToggle';
 
@@ -16,7 +15,6 @@ const LINKS = [
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const pathname = usePathname();
   const { theme, toggle } = useTheme();
 
   useEffect(() => {
@@ -53,7 +51,7 @@ export default function Nav() {
           {LINKS.map((link) => (
             <a
               key={link.id}
-              href={pathname === '/' ? `#${link.id}` : `/#${link.id}`}
+              href={`/#${link.id}`}
               onClick={() => setOpen(false)}
             >
               {link.label}

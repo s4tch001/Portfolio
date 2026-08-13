@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect } from 'react';
-import { usePathname } from 'next/navigation';
 
 const LAYOUT_READY_CLASS = 'anchor-layout-ready';
 
@@ -22,8 +21,6 @@ function waitForStableLayout(callback: FrameRequestCallback): void {
 }
 
 export default function AnchorScrollController() {
-  const pathname = usePathname();
-
   useEffect(() => {
     const scrollToHash = (
       hash: string,
@@ -99,7 +96,7 @@ export default function AnchorScrollController() {
       document.removeEventListener('click', onClick);
       window.removeEventListener('popstate', onHistoryNavigation);
     };
-  }, [pathname]);
+  }, []);
 
   return null;
 }

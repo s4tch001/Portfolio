@@ -13,7 +13,6 @@ import {
   VT323,
 } from 'next/font/google';
 import AnchorScrollController from './components/AnchorScrollController';
-import RevealController from './components/RevealController';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -247,9 +246,7 @@ const themeScript = `(function () {
       timeout = window.setTimeout(function () { finish(false); }, 3000);
     }
 
-    // Decorative motion is intentionally enabled after the critical hero
-    // paint. This keeps non-composited gradient animation and several ambient
-    // animations out of the mobile LCP path without removing them.
+    // Decorative compositor-only motion starts after the critical hero paint.
     window.addEventListener('load', function () {
       window.setTimeout(function () {
         root.classList.add('motion-ready');
@@ -370,7 +367,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
         />
         {children}
         <AnchorScrollController />
-        <RevealController />
       </body>
     </html>
   );
