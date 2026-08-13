@@ -41,6 +41,7 @@ const portfolioJsonLd = {
 export default function Page() {
   return (
     <>
+      <p>This is a preview.</p>
       <script
         type='application/ld+json'
         dangerouslySetInnerHTML={{
