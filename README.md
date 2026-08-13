@@ -22,6 +22,7 @@ The canonical host is `pauuu.dev`. `www.pauuu.dev` redirects to the canonical no
 
 - Next.js 16.3 App Router with Turbopack
 - React 19 and strict TypeScript 7 using the native CLI integration
+- Motion for React 13 for hero animation, reveal effects, and interaction feedback
 - Zod and React Hook Form for shared client/server contact validation
 - Netlify Next.js runtime
 - Brevo for contact email delivery
@@ -35,6 +36,8 @@ The canonical host is `pauuu.dev`. `www.pauuu.dev` redirects to the canonical no
 - Image-aware `public/sitemap.xml`, `public/robots.txt`, `public/llms.txt`, and detailed `public/llms-full.txt`
 - Six visual styles with persistent style switching
 - Dark and light themes without a first-paint flash
+- Motion-powered hero visuals, section reveals, marquee movement, and hover/tap feedback
+- User-preference-aware reduced-motion behavior through a shared `MotionConfig`
 - Responsive project galleries and fullscreen image lightbox
 - A self-referential P-Devs Portfolio case study showcasing every page style
 - Production project links and isolated portfolio demo previews
@@ -100,6 +103,8 @@ typecheck and the production build use the project-local TypeScript 7 CLI.
 
 The homepage keeps its initial mobile work focused on the hero:
 
+- Motion uses the tree-shakable `LazyMotion` and `m` APIs with the `domAnimation` feature bundle
+- Continuous visual motion is limited to small transform-based movements, with static fallbacks for reduced-motion users
 - Decorative mobile motion starts after the startup window or first interaction
 - The typewriter retains its effect inside a fixed, layout-contained text slot
 - The marquee uses two text tracks instead of 50 individual item elements
