@@ -1,4 +1,5 @@
-import type { DelayStyle, SectionHeadingProps } from '../types/ui';
+import type { SectionHeadingProps } from '../types/ui';
+import { MotionCard, MotionReveal } from './MotionElements';
 
 const FACETS = [
   {
@@ -36,24 +37,26 @@ export default function About({
   return (
     <section id="about" className="section">
       <div className="section__inner">
-        <p className="section__eyebrow reveal">{eyebrow}</p>
-        <Heading className="section__title reveal">{title}</Heading>
-        <p className="section__lead reveal">
-          I&apos;m Pau, the solo dev behind <strong>P-Devs</strong>. I design,
-          build, deploy, and maintain the work you see here.
-        </p>
+        <MotionReveal>
+          <p className="section__eyebrow">{eyebrow}</p>
+          <Heading className="section__title">{title}</Heading>
+          <p className="section__lead">
+            I&apos;m Pau, the solo dev behind <strong>P-Devs</strong>. I design,
+            build, deploy, and maintain the work you see here.
+          </p>
+        </MotionReveal>
 
         <div className="about__grid">
           {FACETS.map((facet, i) => (
-            <article
+            <MotionCard
               key={facet.title}
-              className="card about__card reveal"
-              style={{ '--d': `${i * 0.1}s` } as DelayStyle}
+              className="card about__card"
+              delay={(i % 4) * 0.06}
             >
               <span className="about__icon" aria-hidden="true">{facet.icon}</span>
               <h3>{facet.title}</h3>
               <p>{facet.body}</p>
-            </article>
+            </MotionCard>
           ))}
         </div>
       </div>

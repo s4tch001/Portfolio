@@ -1,10 +1,16 @@
 import TypewriterText from './TypewriterText';
+import {
+  HeroMotionBackground,
+  MotionFloat,
+  MotionScrollWheel,
+} from './MotionElements';
 
 const ROLES = ['Web Developer', 'Musician', 'Gamer'];
 
 export default function Hero() {
   return (
     <section id='home' className='hero'>
+      <HeroMotionBackground />
       <div className='hero__inner'>
         <div className='hero__copy'>
           <p className='hero__eyebrow'>
@@ -44,7 +50,7 @@ export default function Hero() {
         </div>
 
         <div className='hero__visual' aria-hidden='true'>
-          <div className='hero__card'>
+          <MotionFloat className='hero__card' distance={6} duration={9}>
             <div className='hero__card-bar'>
               <span className='dot dot--r' />
               <span className='dot dot--y' />
@@ -74,12 +80,33 @@ export default function Hero() {
                 {'}'};
               </code>
             </pre>
-          </div>
-          <span className='hero__chip hero__chip--1'>💻 clean code</span>
-          <span className='hero__chip hero__chip--2'>⚡ fast & responsive</span>
-          <span className='hero__chip hero__chip--3'>
+          </MotionFloat>
+          <MotionFloat
+            as='span'
+            className='hero__chip hero__chip--1'
+            distance={5}
+            duration={7.5}
+          >
+            💻 clean code
+          </MotionFloat>
+          <MotionFloat
+            as='span'
+            className='hero__chip hero__chip--2'
+            delay={0.7}
+            distance={5}
+            duration={8.5}
+          >
+            ⚡ fast & responsive
+          </MotionFloat>
+          <MotionFloat
+            as='span'
+            className='hero__chip hero__chip--3'
+            delay={0.35}
+            distance={5}
+            duration={8}
+          >
             🚀 ship to production
-          </span>
+          </MotionFloat>
         </div>
       </div>
 
@@ -88,7 +115,7 @@ export default function Hero() {
         href='#about'
         aria-label='Scroll to about section'
       >
-        <span className='hero__scroll-wheel' />
+        <MotionScrollWheel />
       </a>
     </section>
   );

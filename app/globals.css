@@ -560,6 +560,36 @@ html:not([data-style]) .nav__logo-img {
   overflow: hidden;
 }
 
+.hero__motion-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  contain: strict;
+}
+
+.hero__motion-orb {
+  position: absolute;
+  width: clamp(15rem, 30vw, 24rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  opacity: 0.18;
+  will-change: transform;
+}
+
+.hero__motion-orb--violet {
+  top: 9%;
+  left: -8%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.72), transparent 68%);
+}
+
+.hero__motion-orb--cyan {
+  right: -7%;
+  bottom: 3%;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.58), transparent 68%);
+}
+
 @media (pointer: fine) {
   .hero::before {
     content: '';
@@ -575,6 +605,8 @@ html:not([data-style]) .nav__logo-img {
 }
 
 .hero__inner {
+  position: relative;
+  z-index: 1;
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
@@ -744,10 +776,6 @@ html.motion-ready .hero__caret {
     0 0 60px -20px rgba(139, 92, 246, 0.35);
 }
 
-html.motion-ready .hero__card {
-  animation: float 7s ease-in-out infinite;
-}
-
 .hero__card-bar {
   display: flex;
   align-items: center;
@@ -832,28 +860,6 @@ html.motion-ready .hero__card {
   right: -2%;
 }
 
-html.motion-ready .hero__chip--1 {
-  animation: float 5.5s ease-in-out infinite;
-}
-
-html.motion-ready .hero__chip--2 {
-  animation: float 6.5s ease-in-out 0.8s infinite;
-}
-
-html.motion-ready .hero__chip--3 {
-  animation: float 6s ease-in-out 0.4s infinite;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(-9px);
-  }
-  50% {
-    transform: translateY(9px);
-  }
-}
-
 .hero__scroll {
   position: absolute;
   left: 50%;
@@ -873,25 +879,6 @@ html.motion-ready .hero__chip--3 {
   height: 9px;
   border-radius: 4px;
   background: var(--cyan);
-}
-
-html.motion-ready .hero__scroll-wheel {
-  animation: scroll-hint 1.8s ease-in-out infinite;
-}
-
-@keyframes scroll-hint {
-  0% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  70% {
-    transform: translateY(12px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 0;
-  }
 }
 
 /* ───────────────────────── Marquee ───────────────────────── */
@@ -2620,6 +2607,15 @@ html.anchor-layout-ready .footer {
 
   .hero {
     padding-top: calc(var(--nav-h) + 2rem);
+  }
+
+  .hero__motion-orb {
+    width: 15rem;
+    opacity: 0.12;
+  }
+
+  .hero__motion-orb--cyan {
+    display: none;
   }
 
   .hero__chip--1 {

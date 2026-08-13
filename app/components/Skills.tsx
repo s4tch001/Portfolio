@@ -1,4 +1,5 @@
-import type { DelayStyle, SectionHeadingProps } from '../types/ui';
+import type { SectionHeadingProps } from '../types/ui';
+import { MotionCard, MotionReveal } from './MotionElements';
 
 const GROUPS = [
   {
@@ -103,19 +104,21 @@ export default function Skills({
   return (
     <section id='skills' className='section'>
       <div className='section__inner'>
-        <p className='section__eyebrow reveal'>{eyebrow}</p>
-        <Heading className='section__title reveal'>{title}</Heading>
-        <p className='section__lead reveal'>
-          The technologies, platforms, and disciplines I use across the full
-          development lifecycle.
-        </p>
+        <MotionReveal>
+          <p className='section__eyebrow'>{eyebrow}</p>
+          <Heading className='section__title'>{title}</Heading>
+          <p className='section__lead'>
+            The technologies, platforms, and disciplines I use across the full
+            development lifecycle.
+          </p>
+        </MotionReveal>
 
         <div className='skills__grid'>
           {GROUPS.map((group, i) => (
-            <article
+            <MotionCard
               key={group.title}
-              className='card skills__card reveal'
-              style={{ '--d': `${i * 0.1}s` } as DelayStyle}
+              className='card skills__card'
+              delay={(i % 3) * 0.06}
             >
               <h3>
                 <span aria-hidden='true'>{group.icon}</span> {group.title}
@@ -127,7 +130,7 @@ export default function Skills({
                   </span>
                 ))}
               </div>
-            </article>
+            </MotionCard>
           ))}
         </div>
       </div>

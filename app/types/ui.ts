@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 export type HeadingLevel = 'h1' | 'h2';
 
@@ -7,8 +7,6 @@ export interface SectionHeadingProps {
   headingLevel?: HeadingLevel;
   eyebrow?: string;
 }
-
-export type DelayStyle = CSSProperties & { '--d': string };
 
 export type Theme = 'dark' | 'light';
 

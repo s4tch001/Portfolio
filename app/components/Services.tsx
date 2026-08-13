@@ -1,4 +1,5 @@
-import type { DelayStyle, SectionHeadingProps } from '../types/ui';
+import type { SectionHeadingProps } from '../types/ui';
+import { MotionCard, MotionReveal } from './MotionElements';
 
 const SERVICES = [
   {
@@ -61,24 +62,26 @@ export default function Services({
   return (
     <section id="services" className="section">
       <div className="section__inner">
-        <p className="section__eyebrow reveal">{eyebrow}</p>
-        <Heading className="section__title reveal">{title}</Heading>
-        <p className="section__lead reveal">
-          From blank page to shipped product — then the fixes, speedups, and
-          “can we add this?” moments after launch.
-        </p>
+        <MotionReveal>
+          <p className="section__eyebrow">{eyebrow}</p>
+          <Heading className="section__title">{title}</Heading>
+          <p className="section__lead">
+            From blank page to shipped product — then the fixes, speedups, and
+            “can we add this?” moments after launch.
+          </p>
+        </MotionReveal>
 
         <div className="services__grid">
           {SERVICES.map((service, i) => (
-            <article
+            <MotionCard
               key={service.title}
-              className="card services__card reveal"
-              style={{ '--d': `${(i % 3) * 0.1}s` } as DelayStyle}
+              className="card services__card"
+              delay={(i % 3) * 0.06}
             >
               <span className="services__icon" aria-hidden="true">{service.icon}</span>
               <h3>{service.title}</h3>
               <p>{service.body}</p>
-            </article>
+            </MotionCard>
           ))}
         </div>
       </div>

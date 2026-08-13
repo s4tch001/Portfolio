@@ -1,6 +1,7 @@
 import projects from '../data/projects';
 import type { SectionHeadingProps } from '../types/ui';
 import DeferredProjectGallery from './DeferredProjectGallery';
+import { MotionReveal } from './MotionElements';
 import ProjectGalleryStatic from './ProjectGalleryStatic';
 
 interface DeployBadgeProps {
@@ -46,13 +47,15 @@ export default function Projects({
   return (
     <section id="portfolio" className="section section--alt">
       <div className="section__inner">
-        <p className="section__eyebrow reveal">{eyebrow}</p>
-        <Heading className="section__title reveal">{title}</Heading>
-        <p className="section__lead reveal">
-          Production apps, cloud platforms, zero templates — designed,
-          coded, and deployed end to end. Browse the galleries (screenshots use
-          public or demo data).
-        </p>
+        <MotionReveal>
+          <p className="section__eyebrow">{eyebrow}</p>
+          <Heading className="section__title">{title}</Heading>
+          <p className="section__lead">
+            Production apps, cloud platforms, zero templates — designed,
+            coded, and deployed end to end. Browse the galleries (screenshots use
+            public or demo data).
+          </p>
+        </MotionReveal>
 
         <div className="projects">
           {projects.map((project, i) => (
@@ -61,7 +64,7 @@ export default function Projects({
               id={project.id}
               className={`project project--${project.accent} ${i % 2 ? 'project--flip' : ''}`}
             >
-              <div className="project__media reveal">
+              <MotionReveal className="project__media" distance={12}>
                 <DeferredProjectGallery projectId={project.id}>
                   <ProjectGalleryStatic
                     project={{
@@ -70,25 +73,25 @@ export default function Projects({
                     }}
                   />
                 </DeferredProjectGallery>
-              </div>
+              </MotionReveal>
 
-              <div className="project__info">
-                <p className="project__num reveal">{project.num}</p>
-                <h3 className="project__name reveal">{project.name}</h3>
-                <p className="project__tagline reveal">{project.tagline}</p>
-                <p className="project__desc reveal">{project.description}</p>
-                <p className="project__solo reveal">Solo developer: designed, built, and shipped by me.</p>
-                <ul className="project__features reveal">
+              <MotionReveal className="project__info" delay={0.08} distance={12}>
+                <p className="project__num">{project.num}</p>
+                <h3 className="project__name">{project.name}</h3>
+                <p className="project__tagline">{project.tagline}</p>
+                <p className="project__desc">{project.description}</p>
+                <p className="project__solo">Solo developer: designed, built, and shipped by me.</p>
+                <ul className="project__features">
                   {project.features.map((feature) => (
                     <li key={feature}>{feature}</li>
                   ))}
                 </ul>
-                <div className="project__stack reveal">
+                <div className="project__stack">
                   {project.stack.map((tech) => (
                     <span key={tech} className="chip">{tech}</span>
                   ))}
                 </div>
-                <div className="project__meta reveal">
+                <div className="project__meta">
                   <span className="project__live">
                     <span className="project__pulse" aria-hidden="true" /> Live in production
                   </span>
@@ -114,7 +117,7 @@ export default function Projects({
                   )}
                 </div>
                 {project.demo && (
-                  <div className="project__demo reveal">
+                  <div className="project__demo">
                     <div>
                       <span className="project__demo-kicker">Portfolio demo preview</span>
                       <p>{project.demo.note}</p>
@@ -148,7 +151,7 @@ export default function Projects({
                     </div>
                   </div>
                 )}
-              </div>
+              </MotionReveal>
             </article>
           ))}
         </div>

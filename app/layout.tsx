@@ -13,6 +13,7 @@ import {
   VT323,
 } from 'next/font/google';
 import AnchorScrollController from './components/AnchorScrollController';
+import MotionProvider from './components/MotionProvider';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -382,8 +383,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
           type='application/ld+json'
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {children}
-        <AnchorScrollController />
+        <MotionProvider>
+          {children}
+          <AnchorScrollController />
+        </MotionProvider>
       </body>
     </html>
   );
