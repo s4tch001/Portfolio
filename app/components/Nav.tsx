@@ -55,6 +55,7 @@ export default function Nav() {
         >
           <m.span
             className='nav__logo-mark'
+            style={{ transformOrigin: '50% 50%' }}
             variants={{
               rest: { rotate: 0, scale: 1 },
               hover: shouldReduceMotion ? {} : { rotate: -8, scale: 1.08 },

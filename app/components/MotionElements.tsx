@@ -279,6 +279,7 @@ export function HeroVisualChip({
   return (
     <m.span
       {...props}
+      style={{ z: 48 }}
       animate={
         shouldReduceMotion
           ? { x: 0, y: 0, rotate: 0 }

@@ -372,6 +372,7 @@ html:not([data-style]) .nav__logo-img {
   height: 100%;
   object-fit: cover;
   border-radius: inherit;
+  transform-origin: 50% 50%;
 }
 
 .nav__links {
@@ -957,19 +958,19 @@ html.anchor-layout-ready .footer {
 }
 
 #services {
-  contain-intrinsic-block-size: auto 800px;
+  contain-intrinsic-block-size: auto 1280px;
 }
 
 #portfolio {
-  contain-intrinsic-block-size: auto 4000px;
+  contain-intrinsic-block-size: auto 4230px;
 }
 
 #skills {
-  contain-intrinsic-block-size: auto 1000px;
+  contain-intrinsic-block-size: auto 1230px;
 }
 
 #contact {
-  contain-intrinsic-block-size: auto 800px;
+  contain-intrinsic-block-size: auto 1030px;
 }
 
 .footer {
@@ -1122,6 +1123,8 @@ html.anchor-layout-ready .footer {
 }
 
 .project {
+  content-visibility: auto;
+  contain-intrinsic-block-size: auto 800px;
   display: grid;
   gap: 3rem;
   align-items: center;
@@ -2428,27 +2431,31 @@ html.anchor-layout-ready .footer {
 /* ───────────────────────── Responsive ───────────────────────── */
 @media (max-width: 1024px) {
   #about {
-    contain-intrinsic-block-size: auto 1234px;
+    contain-intrinsic-block-size: auto 900px;
   }
 
   #services {
-    contain-intrinsic-block-size: auto 2415px;
+    contain-intrinsic-block-size: auto 1310px;
   }
 
   #portfolio {
-    contain-intrinsic-block-size: auto 6900px;
+    contain-intrinsic-block-size: auto 7130px;
   }
 
   #skills {
-    contain-intrinsic-block-size: auto 2011px;
+    contain-intrinsic-block-size: auto 2240px;
   }
 
   #contact {
-    contain-intrinsic-block-size: auto 915px;
+    contain-intrinsic-block-size: auto 1140px;
   }
 
   .footer {
     contain-intrinsic-block-size: auto 340px;
+  }
+
+  .project {
+    contain-intrinsic-block-size: auto 1200px;
   }
 
   .hero__inner {
@@ -2743,6 +2750,30 @@ html.anchor-layout-ready .footer {
    The typewriter and marquee still run, while purely decorative floating
    effects remain static to keep layout/render work predictable. */
 @media (max-width: 720px) {
+  #about {
+    contain-intrinsic-block-size: auto 1300px;
+  }
+
+  #services {
+    contain-intrinsic-block-size: auto 2520px;
+  }
+
+  #portfolio {
+    contain-intrinsic-block-size: auto 7100px;
+  }
+
+  #skills {
+    contain-intrinsic-block-size: auto 2180px;
+  }
+
+  #contact {
+    contain-intrinsic-block-size: auto 1080px;
+  }
+
+  .project {
+    contain-intrinsic-block-size: auto 1160px;
+  }
+
   html.motion-ready .hero__hand,
   html.motion-ready .hero__card,
   html.motion-ready .hero__chip,
