@@ -673,6 +673,10 @@ html.motion-ready .hero__hand {
 }
 
 .hero__typed {
+  display: inline-block;
+  inline-size: 13ch;
+  contain: layout inline-size;
+  white-space: nowrap;
   background: var(--grad);
   -webkit-background-clip: text;
   background-clip: text;
@@ -917,24 +921,12 @@ html.motion-ready .marquee__track {
 }
 
 .marquee__row {
-  display: flex;
-  gap: 2.6rem;
-}
-
-.marquee__item {
+  flex: none;
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 1rem;
   color: var(--muted);
-  display: inline-flex;
-  align-items: center;
-  gap: 2.6rem;
   white-space: nowrap;
-}
-
-.marquee__item::after {
-  content: '✦';
-  color: var(--violet);
 }
 
 @keyframes marquee {
@@ -2861,6 +2853,20 @@ html.motion-ready .style-switch__fab::after {
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* Mobile gets a quiet startup and a smaller continuous animation budget.
+   The typewriter and marquee still run, while purely decorative floating
+   effects remain static to keep layout/render work predictable. */
+@media (max-width: 720px) {
+  html.motion-ready .hero__hand,
+  html.motion-ready .hero__card,
+  html.motion-ready .hero__chip,
+  html.motion-ready .hero__scroll-wheel,
+  html.motion-ready .style-switch__fab,
+  html.motion-ready .style-switch__fab::after {
+    animation: none;
   }
 }
 

@@ -20,8 +20,8 @@ The canonical host is `pauuu.dev`. `www.pauuu.dev` redirects to the canonical no
 
 ## Stack
 
-- Next.js 16 App Router
-- React 19 and strict TypeScript
+- Next.js 16.3 App Router with Turbopack
+- React 19 and strict TypeScript 7 using the native CLI integration
 - Zod and React Hook Form for shared client/server contact validation
 - Netlify Next.js runtime
 - Brevo for contact email delivery
@@ -43,11 +43,12 @@ The canonical host is `pauuu.dev`. `www.pauuu.dev` redirects to the canonical no
 - Content Security Policy configured for the production environment
 - Brevo contact email delivery
 - Custom 404 page that follows the active portfolio style
+- Mobile-aware motion startup, contained typewriter layout, and deferred gallery hydration
 
 ## Requirements
 
 - Git
-- Node.js 20 or newer
+- Node.js 20.9 or newer
 - npm
 
 ## Local setup
@@ -90,6 +91,36 @@ Run the type checker and contact validation tests before shipping changes:
 npm run typecheck
 npm run test:validation
 ```
+
+TypeScript 7 is the native Go-based compiler. The project enables Next.js
+16.3's `experimental.useTypeScriptCli` integration so both the standalone
+typecheck and the production build use the project-local TypeScript 7 CLI.
+
+## Performance verification
+
+The homepage keeps its initial mobile work focused on the hero:
+
+- Decorative mobile motion starts after the startup window or first interaction
+- The typewriter retains its effect inside a fixed, layout-contained text slot
+- The marquee uses two text tracks instead of 50 individual item elements
+- Project galleries share one intersection observer and hydrate only near the viewport
+- Contact form code and Cloudflare Turnstile remain deferred until needed on the homepage
+
+Local production Lighthouse results on August 13, 2026 (`next start`, latest
+Lighthouse CLI, simulated mobile; mobile values are the median of five runs):
+
+| Metric | Mobile | Desktop |
+| --- | ---: | ---: |
+| Performance | 94 | 100 |
+| First Contentful Paint | 1.04 s | 0.28 s |
+| Largest Contentful Paint | 2.89 s | 0.64 s |
+| Total Blocking Time | 125 ms | 0 ms |
+| Cumulative Layout Shift | 0 | 0 |
+| Speed Index | 1.04 s | 0.32 s |
+
+These are reproducible lab measurements, not field Core Web Vitals. Production
+results can vary with the device, connection, Netlify edge location, browser
+state, and selected visual style.
 
 ## Search and AI discovery
 

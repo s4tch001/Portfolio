@@ -26,29 +26,15 @@ const ITEMS = [
   'Git',
 ];
 
-interface RowProps {
-  prefix: string;
-}
-
-function Row({ prefix }: RowProps) {
-  return (
-    <div className="marquee__row">
-      {ITEMS.map((item) => (
-        <span key={`${prefix}-${item}`} className="marquee__item">
-          {item}
-        </span>
-      ))}
-    </div>
-  );
-}
+const MARQUEE_TEXT = `${ITEMS.join('  ✦  ')}  ✦`;
 
 // Two identical rows inside a track animated -50% => seamless infinite loop.
 export default function Marquee() {
   return (
     <div className="marquee" aria-hidden="true">
       <div className="marquee__track">
-        <Row prefix="a" />
-        <Row prefix="b" />
+        <div className="marquee__row">{MARQUEE_TEXT}</div>
+        <div className="marquee__row">{MARQUEE_TEXT}</div>
       </div>
     </div>
   );

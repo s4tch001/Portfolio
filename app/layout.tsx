@@ -246,11 +246,28 @@ const themeScript = `(function () {
       timeout = window.setTimeout(function () { finish(false); }, 3000);
     }
 
-    // Decorative compositor-only motion starts after the critical hero paint.
+    // Keep mobile's startup window quiet. Decorative motion starts after the
+    // first interaction or six seconds; desktop retains the shorter delay.
     window.addEventListener('load', function () {
-      window.setTimeout(function () {
+      var startMotion = function () {
         root.classList.add('motion-ready');
-      }, 1800);
+      };
+
+      if (!window.matchMedia('(max-width: 720px)').matches) {
+        window.setTimeout(startMotion, 1800);
+        return;
+      }
+
+      var motionTimer = window.setTimeout(startMotion, 6000);
+      var startMotionEarly = function () {
+        window.clearTimeout(motionTimer);
+        startMotion();
+      };
+      window.addEventListener('pointerdown', startMotionEarly, {
+        once: true,
+        passive: true
+      });
+      window.addEventListener('keydown', startMotionEarly, { once: true });
     }, { once: true });
   } catch (e) {
     document.documentElement.dataset.theme = 'dark';
