@@ -28,7 +28,7 @@ const HOVER_TARGETS = {
   link: { x: 2 },
   logo: { scale: 1.025 },
   option: { x: 3 },
-  social: { scale: 1.1 },
+  social: { y: -3 },
 } satisfies Record<string, TargetAndTransition>;
 
 type HoverPreset = keyof typeof HOVER_TARGETS;
@@ -198,21 +198,11 @@ export function HeroVisualMotion({ children }: HeroVisualMotionProps) {
       />
       <m.div
         className='hero__visual-stage'
-        animate={
-          shouldReduceMotion
-            ? { x: 0, y: 0, rotate: 0 }
-            : {
-                x: [0, 5, -3, 0],
-                y: [0, -10, 2, 0],
-                rotate: [0, -0.7, 0.4, 0],
-              }
-        }
         whileHover={
           shouldReduceMotion
             ? {}
-            : { y: -6, scale: 1.022, rotate: 0, transition: HOVER_TRANSITION }
+            : { y: -4, scale: 1.012, transition: HOVER_TRANSITION }
         }
-        transition={{ duration: 9, ease: 'easeInOut', repeat: Infinity }}
       >
         {children}
       </m.div>
@@ -232,14 +222,18 @@ export function HeroVisualCard({ children }: HeroVisualCardProps) {
       className='hero__card'
       animate={
         shouldReduceMotion
-          ? { rotateX: 0, rotateY: 0 }
+          ? { x: 0, y: 0 }
           : {
-              rotateX: [0, -1.4, 0.8, 0],
-              rotateY: [0, 1.8, -1.1, 0],
+              x: [0, 3, -2, 4, -3, 1, 0],
+              y: [0, -3, 2, -1, 4, -2, 0],
             }
       }
-      transition={{ duration: 11, ease: 'easeInOut', repeat: Infinity }}
-      style={{ transformPerspective: 900 }}
+      transition={{
+        duration: 18,
+        ease: 'easeInOut',
+        times: [0, 0.16, 0.33, 0.49, 0.67, 0.84, 1],
+        repeat: Infinity,
+      }}
     >
       {children}
     </m.div>

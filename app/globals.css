@@ -2391,16 +2391,23 @@ html.anchor-layout-ready .footer {
 }
 
 .footer__social {
-  display: grid;
-  place-items: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 42px;
   height: 42px;
+  padding: 0;
+  box-sizing: border-box;
+  line-height: 0;
   border-radius: 12px;
   border: 1px solid var(--border);
   background: var(--surface);
+  transform-origin: 50% 50%;
 }
 
 .footer__social svg {
+  display: block;
+  flex: 0 0 auto;
   width: 19px;
   height: 19px;
   fill: var(--muted);
