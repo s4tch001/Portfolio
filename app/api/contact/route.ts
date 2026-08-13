@@ -1,5 +1,4 @@
 import { validateContact } from '../../lib/validation';
-import { isRateLimited, recordSubmission } from '../../lib/rate-limit';
 import { verifyTurnstile } from '../../lib/turnstile';
 import { sendContactEmail } from '../../lib/brevo';
 
@@ -11,10 +10,9 @@ const json = <T,>(body: T, status = 200): Response =>
   Response.json(body, { status });
 
 function clientIp(request: Request): string {
-  // Netlify sets the real client IP on this header; x-forwarded-for is the
-  // fallback for local dev and other hosts.
+  // Vercel supplies a trusted forwarding header at the function boundary.
   return (
-    request.headers.get('x-nf-client-connection-ip') ||
+    request.headers.get('x-vercel-forwarded-for')?.split(',').at(0)?.trim() ||
     request.headers.get('x-forwarded-for')?.split(',').at(0)?.trim() ||
     'unknown'
   );
@@ -57,16 +55,6 @@ export async function POST(request: Request): Promise<Response> {
       );
     }
 
-    if (await isRateLimited(ip)) {
-      return json(
-        {
-          message:
-            'You’ve reached the hourly limit for messages. Please try again a bit later.',
-        },
-        429,
-      );
-    }
-
     const turnstileToken =
       typeof body.turnstileToken === 'string' ? body.turnstileToken : '';
     const human = await verifyTurnstile(turnstileToken, ip);
@@ -87,7 +75,6 @@ export async function POST(request: Request): Promise<Response> {
       submittedAt: new Date().toISOString(),
     });
 
-    await recordSubmission(ip);
     return json({ ok: true, message: 'Message sent.' });
   } catch (err) {
     // Full detail stays in the function logs; the client gets a generic note.

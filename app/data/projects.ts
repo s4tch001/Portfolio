@@ -1,7 +1,7 @@
 import type { Project } from '../types/project';
 
 // Screenshots live in /public/assets/projects and are referenced by URL so the
-// Netlify serves them straight from its asset CDN (no bundler import needed).
+// The deployment platform serves them directly as public static assets.
 const img = (file: string): string => `/assets/projects/${file}.webp`;
 
 const hoursTracker = img('hours-tracker');
@@ -48,7 +48,7 @@ const portfolioProject = {
   tagline: 'A type-safe, style-switchable portfolio built with Next.js',
   url: 'pauuu.dev',
   description:
-    'The portfolio you are browsing: a responsive, TypeScript-first Next.js application for presenting my work, services, technical skills, and contact flow. One accessible content structure powers six distinct visual styles without sacrificing performance or usability.',
+    'The portfolio you are browsing: a responsive, TypeScript-first Next.js application for presenting my work, technical focus areas, skills, and contact flow. One accessible content structure powers six distinct visual styles without sacrificing performance or usability.',
   features: [
     'Strict TypeScript across the App Router, React components, shared data, hooks, and server routes',
     'Six persistent visual styles: Default, Graffiti, Old School, Pixels, Luxe, and Hacker',
@@ -62,11 +62,11 @@ const portfolioProject = {
     'CSS3',
     'Zod',
     'React Hook Form',
-    'Netlify',
+    'Vercel',
     'Brevo',
     'Cloudflare Turnstile',
   ],
-  deploy: ['Netlify'],
+  deploy: ['Vercel'],
   sources: [
     {
       url: 'https://github.com/s4tch001/Portfolio/',
@@ -452,7 +452,7 @@ const projectEntries = [
       'A polished marketing landing page for a fictional Philippine travel agency. Visitors land on a full-bleed hero, learn about the company, browse the services on offer, and scroll a grid of featured tour packages across the islands — from Boracay and Palawan to Batanes and Vigan.',
     features: [
       'Component-driven React build with distinct hero, about, services, and featured-tours sections',
-      'Data-driven tour cards (destination, date, duration, price) rendered from a single data source',
+      'Data-driven tour cards (destination, date, duration, and trip details) rendered from a single data source',
       'Smooth in-page navigation, Font Awesome iconography, and a fully responsive layout',
     ],
     stack: [
@@ -494,7 +494,7 @@ const projectEntries = [
       },
       {
         src: ptravelsTours,
-        alt: 'Featured Tours grid of eight Philippine destinations with dates and prices',
+        alt: 'Featured Tours grid of eight Philippine destinations with dates and trip details',
         caption: 'Featured tour packages',
       },
     ],

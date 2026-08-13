@@ -57,11 +57,11 @@ const FIELDS = [
   },
   {
     id: 'company',
-    label: 'Company',
+    label: 'Organization',
     type: 'text',
     required: false,
     autoComplete: 'organization',
-    placeholder: 'e.g. P-Devs',
+    placeholder: 'Optional school, group, or organization',
   },
   {
     id: 'subject',
@@ -69,7 +69,7 @@ const FIELDS = [
     type: 'text',
     required: false,
     autoComplete: 'off',
-    placeholder: 'e.g. Website redesign inquiry',
+    placeholder: 'e.g. Question about your portfolio',
   },
 ] satisfies readonly FieldDefinition[];
 
@@ -338,7 +338,7 @@ export default function ContactForm({
           aria-required="true"
           aria-invalid={Boolean(errors.message)}
           aria-describedby={errors.message ? 'contact-message-error' : undefined}
-          placeholder="Tell me about your project, goals, timeline, or budget..."
+          placeholder="Write a message, question, or note about something we have in common..."
           {...register('message')}
         />
         {errors.message?.message && (

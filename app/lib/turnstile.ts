@@ -24,6 +24,7 @@ export async function verifyTurnstile(token: string, ip: string): Promise<boolea
   const form = new URLSearchParams();
   form.set('secret', secret);
   form.set('response', token);
+  if (ip && ip !== 'unknown') form.set('remoteip', ip);
 
   const res = await fetch(VERIFY_URL, {
     method: 'POST',
@@ -43,7 +44,14 @@ export async function verifyTurnstile(token: string, ip: string): Promise<boolea
   }
 
   const data = parsed.data;
-  if (data.success !== true) {
+  const expectedAction = data.action === 'contact';
+  const expectedHostname =
+    process.env.VERCEL_ENV !== 'production' ||
+    data.hostname === 'pauuu.dev' ||
+    data.hostname === 'www.pauuu.dev';
+  const valid = data.success === true && expectedAction && expectedHostname;
+
+  if (!valid) {
     console.error('[turnstile] verification failed:', {
       action: data.action,
       hostname: data.hostname,
@@ -51,5 +59,5 @@ export async function verifyTurnstile(token: string, ip: string): Promise<boolea
       ipKnown: Boolean(ip && ip !== 'unknown'),
     });
   }
-  return data.success === true;
+  return valid;
 }

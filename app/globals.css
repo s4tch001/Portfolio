@@ -934,7 +934,7 @@ html.motion-ready .hero__caret {
    normal DOM, accessibility, anchor, and final layout behavior, but the
    browser can skip their expensive off-screen layout/paint work initially. */
 #about,
-#services,
+#focus,
 #portfolio,
 #skills,
 #contact,
@@ -945,7 +945,7 @@ html.motion-ready .hero__caret {
 /* Anchor links need final section heights, not content-visibility estimates.
    This is enabled only after an in-page navigation is requested. */
 html.anchor-layout-ready #about,
-html.anchor-layout-ready #services,
+html.anchor-layout-ready #focus,
 html.anchor-layout-ready #portfolio,
 html.anchor-layout-ready #skills,
 html.anchor-layout-ready #contact,
@@ -957,7 +957,7 @@ html.anchor-layout-ready .footer {
   contain-intrinsic-block-size: auto 700px;
 }
 
-#services {
+#focus {
   contain-intrinsic-block-size: auto 1280px;
 }
 
@@ -1056,7 +1056,7 @@ html.anchor-layout-ready .footer {
   font-size: 0.95rem;
 }
 
-/* ───────────────────────── Services ───────────────────────── */
+/* ─────────────────────── Focus areas ─────────────────────── */
 .services__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -2441,7 +2441,7 @@ html.anchor-layout-ready .footer {
     contain-intrinsic-block-size: auto 900px;
   }
 
-  #services {
+  #focus {
     contain-intrinsic-block-size: auto 1310px;
   }
 
@@ -2761,7 +2761,7 @@ html.anchor-layout-ready .footer {
     contain-intrinsic-block-size: auto 1300px;
   }
 
-  #services {
+  #focus {
     contain-intrinsic-block-size: auto 2520px;
   }
 

@@ -1,86 +1,86 @@
 import type { SectionHeadingProps } from '../types/ui';
 import { MotionCard, MotionReveal } from './MotionElements';
 
-const SERVICES = [
+const FOCUS_AREAS = [
   {
     icon: '💻',
-    title: 'Full-Stack Website Development',
-    body: 'Websites and apps built end to end: UI, backend, database, and deploy.',
+    title: 'Full-Stack Architecture',
+    body: 'How interfaces, APIs, data, and deployments fit together in complete applications.',
   },
   {
     icon: '🎨',
-    title: 'Web Design (UI/UX)',
-    body: 'Clean, responsive interfaces that feel good on every screen.',
+    title: 'Interface Design',
+    body: 'Responsive, accessible interfaces with clear structure and thoughtful interaction.',
   },
   {
     icon: '📈',
-    title: 'SEO',
-    body: 'Metadata, structure, speed, and content signals that help pages get found.',
+    title: 'Search & Semantics',
+    body: 'Metadata, structured content, performance, and crawl-friendly page architecture.',
   },
   {
     icon: '🔧',
-    title: 'Maintenance & Support',
-    body: 'Updates, fixes, backups, content changes, and quiet monitoring.',
+    title: 'Reliability',
+    body: 'Updates, diagnostics, backups, observability, and maintainable code paths.',
   },
   {
     icon: '🛡️',
-    title: 'Security Scanning & Patching',
-    body: 'Find the weak spots, explain them clearly, then patch them.',
+    title: 'Application Security',
+    body: 'Threat-aware design, boundary validation, secure defaults, and focused testing.',
   },
   {
     icon: '📱',
-    title: 'Windows & Android Web Apps',
-    body: 'Package your web app for Windows or Android when a browser tab is not enough.',
+    title: 'Cross-Platform Packaging',
+    body: 'Exploring how web applications can run across browsers, Windows, and Android.',
   },
   {
     icon: '⚡',
-    title: 'Performance Optimization',
-    body: 'Faster pages, cleaner queries, better caching, and Core Web Vitals cleanup.',
+    title: 'Performance Engineering',
+    body: 'Rendering, queries, caching, and Core Web Vitals across different devices.',
   },
   {
     icon: '🛒',
-    title: 'E-Commerce & Shopify',
-    body: 'Shopify setup, storefront design, products, payments, and polish.',
+    title: 'Commerce Platforms',
+    body: 'Storefront architecture, catalog interfaces, content modeling, and platform tooling.',
   },
   {
     icon: '🔌',
     title: 'APIs & Integrations',
-    body: 'REST APIs, payments, email, analytics, and the tools you already use.',
+    body: 'REST APIs, email delivery, analytics, automation, and third-party platforms.',
   },
 ];
 
 export default function Services({
   heading,
   headingLevel = 'h2',
-  eyebrow = '02 · Services',
+  eyebrow = '02 · Focus',
 }: SectionHeadingProps) {
   const Heading = headingLevel;
   const title = heading ?? (
-    <>What I can <span className="grad-text">do for you.</span></>
+    <>Areas I explore <span className="grad-text">through code.</span></>
   );
 
   return (
-    <section id="services" className="section">
+    <section id="focus" className="section">
       <div className="section__inner">
         <MotionReveal>
           <p className="section__eyebrow">{eyebrow}</p>
           <Heading className="section__title">{title}</Heading>
           <p className="section__lead">
-            From blank page to shipped product — then the fixes, speedups, and
-            “can we add this?” moments after launch.
+            A snapshot of the technical areas represented across my projects,
+            experiments, and ongoing learning.
           </p>
         </MotionReveal>
 
         <div className="services__grid">
-          {SERVICES.map((service, i) => (
+          {FOCUS_AREAS.map((area, i) => (
             <MotionCard
-              key={service.title}
+              key={area.title}
               className="card services__card"
               delay={(i % 3) * 0.06}
             >
-              <span className="services__icon" aria-hidden="true">{service.icon}</span>
-              <h3>{service.title}</h3>
-              <p>{service.body}</p>
+              <span className="services__icon" aria-hidden="true">{area.icon}</span>
+              <h3>{area.title}</h3>
+              <p>{area.body}</p>
             </MotionCard>
           ))}
         </div>

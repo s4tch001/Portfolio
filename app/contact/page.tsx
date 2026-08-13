@@ -4,9 +4,9 @@ import StandalonePage from '../components/StandalonePage';
 import { createPageMetadata } from '../lib/seo';
 
 export const metadata = createPageMetadata({
-  title: 'Contact — Hire a Filipino Web Developer',
+  title: 'Contact Pau',
   description:
-    'Get in touch with Pau (P-Devs) — full-stack web development, web design, SEO, security, and app builds. Send a message and get a reply within a day.',
+    'Send Pau a general message about the portfolio, featured projects, technology, music, gaming, or another shared interest.',
   path: '/contact',
 });
 
@@ -19,9 +19,9 @@ export default function ContactPage() {
         headingLevel='h1'
         heading={
           <>
-            Let&apos;s build something
+            Say hello or share
             <br />
-            <span className='grad-text'>worth shipping.</span>
+            <span className='grad-text'>what&apos;s on your mind.</span>
           </>
         }
       />

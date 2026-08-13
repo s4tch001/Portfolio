@@ -79,7 +79,7 @@ export default function Hero() {
                 {'\n'} afterHours: [<span className='tk-str'>'🎸 music'</span>,{' '}
                 <span className='tk-str'>'🎮 games'</span>],
                 {'\n'} status:{' '}
-                <span className='tk-str'>'open to opportunities'</span>,{'\n'}
+                <span className='tk-str'>'always learning'</span>,{'\n'}
                 {'}'};
               </code>
             </pre>

@@ -17,9 +17,9 @@ export default function Contact({
   const Heading = headingLevel;
   const title = heading ?? (
     <>
-      Let&apos;s build something
+      Say hello or share
       <br />
-      <span className='grad-text'>worth shipping.</span>
+      <span className='grad-text'>what&apos;s on your mind.</span>
     </>
   );
 
@@ -30,7 +30,7 @@ export default function Contact({
           <p className='section__eyebrow'>{eyebrow}</p>
           <Heading className='section__title contact__title'>{title}</Heading>
           <p className='section__lead contact__lead'>
-            Have a project or idea? Let's talk.
+            Questions, feedback, shared interests, and friendly messages are welcome.
           </p>
         </MotionReveal>
         <MotionReveal delay={0.08}>{form}</MotionReveal>

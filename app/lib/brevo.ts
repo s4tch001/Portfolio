@@ -1,10 +1,10 @@
-// Sends the contact-form inquiry through the Brevo transactional email REST
+// Sends a general contact-form message through the Brevo transactional email REST
 // API (https://developers.brevo.com/reference/sendtransacemail). No SMTP —
-// plain HTTPS, so it works fine inside Netlify Functions.
+// plain HTTPS, so it works inside Vercel Functions.
 
 const BREVO_URL = 'https://api.brevo.com/v3/smtp/email';
 
-const SENDER = { name: 'P-Devs Website', email: 'client-inquiry@pauuu.dev' };
+const SENDER = { name: 'P-Devs Website', email: 'admin@pauuu.dev' };
 const RECIPIENT = { name: 'Pau', email: 'admin@pauuu.dev' };
 
 interface ContactEmailInput {
@@ -77,12 +77,12 @@ export async function sendContactEmail({
   };
 
   const htmlContent = `<div style="font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;max-width:640px;margin:0 auto;padding:24px;">
-    <h2 style="margin:0 0 4px;font-size:18px;color:#111827;">New client inquiry</h2>
+    <h2 style="margin:0 0 4px;font-size:18px;color:#111827;">New contact message</h2>
     <p style="margin:0 0 20px;color:#6b7280;font-size:13px;">Sent from the pauuu.dev contact form</p>
     <table style="border-collapse:collapse;width:100%;">
       ${row('Name', safe.name)}
       ${row('Email', `<a href="mailto:${safe.email}">${safe.email}</a>`)}
-      ${row('Company', safe.company)}
+      ${row('Organization', safe.company)}
       ${row('Subject', safe.subject)}
     </table>
     <div style="margin:18px 0;padding:16px;border:1px solid #e5e7eb;border-radius:10px;color:#111827;font-size:14px;line-height:1.6;">${safe.message}</div>
@@ -94,11 +94,11 @@ export async function sendContactEmail({
   </div>`;
 
   const textContent = [
-    'New client inquiry — pauuu.dev contact form',
+    'New contact message — pauuu.dev',
     '',
     `Name: ${name}`,
     `Email: ${email}`,
-    `Company: ${company || '—'}`,
+    `Organization: ${company || '—'}`,
     `Subject: ${subject || '—'}`,
     '',
     'Message:',
@@ -120,7 +120,7 @@ export async function sendContactEmail({
       sender: SENDER,
       to: [RECIPIENT],
       replyTo: { email, name },
-      subject: `New Client Inquiry - ${subject || 'Website Contact Form'}`,
+      subject: `New Contact Message - ${subject || 'pauuu.dev'}`,
       htmlContent,
       textContent,
     }),

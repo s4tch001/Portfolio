@@ -2,7 +2,7 @@
 
 Personal portfolio for [pauuu.dev](https://pauuu.dev), showcasing Pau's work as a Filipino full-stack web developer under the P-Devs brand.
 
-The site is a type-safe, style-switchable Next.js portfolio with project case studies, demo previews, services, skills, a validated contact flow, SEO metadata, and machine-readable context for search and AI systems.
+The site is a type-safe, style-switchable Next.js portfolio with project case studies, demo previews, technical focus areas, skills, a validated contact flow, SEO metadata, and machine-readable context for search and AI systems.
 
 ## Live site
 
@@ -15,8 +15,8 @@ The canonical host is `pauuu.dev`. `www.pauuu.dev` redirects to the canonical no
 
 | Route      | Purpose                                                                                |
 | ---------- | -------------------------------------------------------------------------------------- |
-| `/`        | Homepage with the hero, profile, services, featured work, skills, and contact sections |
-| `/contact` | Professional project inquiry form                                                      |
+| `/`        | Homepage with the hero, profile, focus areas, featured work, skills, and contact sections |
+| `/contact` | General contact form                                                                     |
 
 ## Stack
 
@@ -24,7 +24,7 @@ The canonical host is `pauuu.dev`. `www.pauuu.dev` redirects to the canonical no
 - React 19 and strict TypeScript 7 using the native CLI integration
 - Motion for React 13 for hero animation, reveal effects, and interaction feedback
 - Zod and React Hook Form for shared client/server contact validation
-- Netlify Next.js runtime
+- Vercel Next.js runtime
 - Brevo for contact email delivery
 - Cloudflare Turnstile for contact form protection
 - IndexNow support for search update notifications
@@ -124,7 +124,7 @@ Lighthouse CLI, simulated mobile; mobile values are the median of five runs):
 | Speed Index | 1.04 s | 0.32 s |
 
 These are reproducible lab measurements, not field Core Web Vitals. Production
-results can vary with the device, connection, Netlify edge location, browser
+results can vary with the device, connection, Vercel region, browser
 state, and selected visual style.
 
 ## Search and AI discovery
@@ -138,9 +138,9 @@ state, and selected visual style.
 
 After a production deployment, submit the existing sitemap in Google Search Console and run `npm run indexnow` when search update notifications are needed. The IndexNow script reads the canonical URLs from `public/sitemap.xml`.
 
-## Deploy to Netlify
+## Deploy to Vercel
 
-`netlify.toml` configures the `npm run build` command, `.next` publish output, security headers, asset caching, and the Netlify Next.js runtime. Connect the repository to Netlify and set the server-side environment variables in the site's environment settings.
+The repository is connected to the `pau-portfolio` Vercel project. Vercel detects the Next.js App Router and uses `npm run build`; security and cache headers are defined in `next.config.ts`. Set Brevo and Turnstile credentials in Vercel project environment variables before deploying.
 
 ## Editing guide
 
@@ -156,6 +156,6 @@ After a production deployment, submit the existing sitemap in Google Search Cons
 
 ## Public repository safety
 
-This repository is intended to be safe for public viewing. Commit application code, public assets, documentation, `package.json`, and `package-lock.json`. Keep secrets in Netlify environment variables or ignored local files only.
+This repository is intended to be safe for public viewing. Commit application code, public assets, documentation, `package.json`, and `package-lock.json`. Keep secrets in Vercel environment variables or ignored local files only.
 
-Generated folders such as `node_modules/`, `.next/`, `out/`, and `.netlify/` are ignored and should not be committed.
+Generated folders such as `node_modules/`, `.next/`, `out/`, `.netlify/`, and `.vercel/` are ignored and should not be committed.

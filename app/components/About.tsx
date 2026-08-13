@@ -41,8 +41,8 @@ export default function About({
           <p className="section__eyebrow">{eyebrow}</p>
           <Heading className="section__title">{title}</Heading>
           <p className="section__lead">
-            I&apos;m Pau, the solo dev behind <strong>P-Devs</strong>. I design,
-            build, deploy, and maintain the work you see here.
+            I&apos;m Pau, and <strong>P-Devs</strong> is the label I use for this
+            personal collection of projects, experiments, and technical notes.
           </p>
         </MotionReveal>
 

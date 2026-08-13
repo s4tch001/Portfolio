@@ -12,10 +12,10 @@
 ## Primary sections and page
 
 - [About Pau](https://pauuu.dev/#about): Background and professional focus.
-- [Web development services](https://pauuu.dev/#services): Full-stack development, UI/UX, SEO, security, maintenance, performance, e-commerce, and integrations.
+- [Technical focus areas](https://pauuu.dev/#focus): Full-stack architecture, interface design, search, reliability, security, performance, platforms, and integrations.
 - [Web development portfolio](https://pauuu.dev/#portfolio): Selected websites and web applications designed, built, and deployed by Pau.
 - [Skills and technology stack](https://pauuu.dev/#skills): Frontend, backend, data, cloud, design, SEO, performance, and security skills.
-- [Contact Pau](https://pauuu.dev/contact): Professional project inquiry form.
+- [Contact Pau](https://pauuu.dev/contact): General contact form for questions, feedback, and shared interests.
 
 ## Selected work
 

@@ -7,7 +7,7 @@ import ThemeToggle from './ThemeToggle';
 
 const LINKS = [
   { id: 'about', label: 'About' },
-  { id: 'services', label: 'Services' },
+  { id: 'focus', label: 'Focus' },
   { id: 'portfolio', label: 'Portfolio' },
   { id: 'skills', label: 'Skills' },
   { id: 'contact', label: 'Contact' },
@@ -111,7 +111,7 @@ export default function Nav() {
             whileTap={shouldReduceMotion ? {} : { scale: 0.985 }}
             transition={hoverTransition}
           >
-            Hire me
+            Send a message
           </m.a>
         </nav>
 

@@ -109,14 +109,14 @@ export const metadata = {
     template: '%s | P-Devs',
   },
   description:
-    'Hire Pau, a web developer in the Philippines building fast, secure Next.js websites and full-stack web apps for businesses and teams.',
+    'Personal portfolio of Pau, a Filipino full-stack web developer exploring Next.js, TypeScript, cloud platforms, UI/UX, performance, and web security.',
   keywords: [
     'Filipino web developer',
     'full-stack developer Philippines',
     'Next.js developer',
     'React developer',
-    'web development services Philippines',
-    'custom web applications',
+    'web development portfolio Philippines',
+    'full-stack web projects',
     'P-Devs',
     'Pau web developer',
     'Pau Dev',
@@ -155,7 +155,7 @@ export const metadata = {
     url: 'https://pauuu.dev/',
     title: 'Pau — Filipino Web Developer in the Philippines',
     description:
-      'Filipino full-stack web developer building fast, secure Next.js websites and web apps for businesses and teams.',
+      'Personal portfolio featuring full-stack web projects, technical skills, and experiments by a Filipino developer.',
     locale: 'en_PH',
     images: [
       {
@@ -170,7 +170,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Pau — Filipino Web Developer in the Philippines',
     description:
-      'Filipino full-stack web developer building fast, secure Next.js websites and web apps for businesses and teams.',
+      'Personal portfolio featuring full-stack web projects, technical skills, and experiments by a Filipino developer.',
     images: [
       {
         url: '/og-image.png',
@@ -342,8 +342,8 @@ const jsonLd = {
         },
         {
           '@type': 'WebPageElement',
-          name: 'Services',
-          url: 'https://pauuu.dev/#services',
+          name: 'Focus Areas',
+          url: 'https://pauuu.dev/#focus',
         },
         {
           '@type': 'WebPageElement',
