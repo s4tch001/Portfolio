@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { m, useReducedMotion } from 'motion/react';
 import useTheme from '../hooks/useTheme';
 import ThemeToggle from './ThemeToggle';
 
@@ -16,6 +17,8 @@ export default function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { theme, toggle } = useTheme();
+  const shouldReduceMotion = useReducedMotion();
+  const hoverTransition = { type: 'spring', stiffness: 420, damping: 28 } as const;
 
   useEffect(() => {
     let lastScrolled = window.scrollY > 24;
@@ -35,12 +38,19 @@ export default function Nav() {
   return (
     <header className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
       <div className='nav__inner'>
-        <a
+        <m.a
           className='nav__logo'
           href='https://pauuu.dev'
           onClick={() => setOpen(false)}
+          whileHover={shouldReduceMotion ? {} : { scale: 1.025 }}
+          whileTap={shouldReduceMotion ? {} : { scale: 0.985 }}
+          transition={hoverTransition}
         >
-          <span className='nav__logo-mark'>
+          <m.span
+            className='nav__logo-mark'
+            whileHover={shouldReduceMotion ? {} : { rotate: -8, scale: 1.08 }}
+            transition={hoverTransition}
+          >
             P
             <img
               className='nav__logo-img'
@@ -49,29 +59,49 @@ export default function Nav() {
               width='64'
               height='64'
             />
-          </span>
+          </m.span>
           <span className='nav__logo-text'>
             pauuu<span className='accent'>.dev</span>
           </span>
-        </a>
+        </m.a>
 
         <nav className={`nav__links ${open ? 'is-open' : ''}`}>
           {LINKS.map((link) => (
-            <a
+            <m.a
               key={link.id}
               href={`/#${link.id}`}
               onClick={() => setOpen(false)}
+              initial='idle'
+              animate='idle'
+              whileHover='hover'
+              whileFocus='hover'
+              variants={{
+                idle: { y: 0 },
+                hover: shouldReduceMotion ? {} : { y: -2 },
+              }}
+              transition={hoverTransition}
             >
               {link.label}
-            </a>
+              <m.span
+                className='nav__link-line'
+                aria-hidden='true'
+                variants={{
+                  idle: { scaleX: 0 },
+                  hover: { scaleX: 1 },
+                }}
+              />
+            </m.a>
           ))}
-          <a
+          <m.a
             className='btn btn--small btn--gradient'
             href='/contact'
             onClick={() => setOpen(false)}
+            whileHover={shouldReduceMotion ? {} : { y: -2, scale: 1.015 }}
+            whileTap={shouldReduceMotion ? {} : { scale: 0.985 }}
+            transition={hoverTransition}
           >
             Hire me
-          </a>
+          </m.a>
         </nav>
 
         <div className='nav__actions'>

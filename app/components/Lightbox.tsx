@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { createPortal } from 'react-dom';
 import { useEffect, useRef } from 'react';
 import type { TouchEvent } from 'react';
+import { m, useReducedMotion } from 'motion/react';
 import useSlideshow from '../hooks/useSlideshow';
 import type { ProjectGalleryData } from '../types/project';
 
@@ -19,6 +20,7 @@ function LightboxDialog({ project, startIndex, onClose }: LightboxProps) {
     startIndex,
   });
   const touchX = useRef<number | null>(null);
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent): void => {
@@ -56,20 +58,32 @@ function LightboxDialog({ project, startIndex, onClose }: LightboxProps) {
         touchX.current = null;
       }}
     >
-      <button type="button" className="lightbox__close" aria-label="Close viewer" onClick={onClose}>
+      <m.button
+        type="button"
+        className="lightbox__close"
+        aria-label="Close viewer"
+        onClick={onClose}
+        whileHover={shouldReduceMotion ? {} : { rotate: 90, scale: 1.04 }}
+        whileTap={shouldReduceMotion ? {} : { scale: 0.92 }}
+        transition={{ type: 'spring', stiffness: 440, damping: 28 }}
+      >
         ✕
-      </button>
+      </m.button>
 
-      <button
+      <m.button
         type="button"
         className="gallery__arrow gallery__arrow--prev lightbox__arrow lightbox__arrow--prev"
         aria-label="Previous screenshot"
         onClick={(e) => { e.stopPropagation(); pause(); prev(); }}
+        style={{ y: '-50%' }}
+        whileHover={shouldReduceMotion ? {} : { scale: 1.06 }}
+        whileTap={shouldReduceMotion ? {} : { scale: 0.94 }}
+        transition={{ type: 'spring', stiffness: 460, damping: 30 }}
       >
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
           <path d="m14.5 5-7 7 7 7" />
         </svg>
-      </button>
+      </m.button>
 
       <figure className="lightbox__stage" onClick={(e) => e.stopPropagation()}>
         <Image
@@ -88,27 +102,33 @@ function LightboxDialog({ project, startIndex, onClose }: LightboxProps) {
         </figcaption>
         <div className="lightbox__dots">
           {images.map((img, i) => (
-            <button
+            <m.button
               key={img.src}
               type="button"
               className={i === index ? 'active' : ''}
               aria-label={`Go to screenshot ${i + 1}`}
               onClick={() => { pause(); setIndex(i); }}
+              whileHover={shouldReduceMotion ? {} : { scale: 1.3 }}
+              whileTap={shouldReduceMotion ? {} : { scale: 0.9 }}
             />
           ))}
         </div>
       </figure>
 
-      <button
+      <m.button
         type="button"
         className="gallery__arrow gallery__arrow--next lightbox__arrow lightbox__arrow--next"
         aria-label="Next screenshot"
         onClick={(e) => { e.stopPropagation(); pause(); next(); }}
+        style={{ y: '-50%' }}
+        whileHover={shouldReduceMotion ? {} : { scale: 1.06 }}
+        whileTap={shouldReduceMotion ? {} : { scale: 0.94 }}
+        transition={{ type: 'spring', stiffness: 460, damping: 30 }}
       >
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
           <path d="m9.5 5 7 7-7 7" />
         </svg>
-      </button>
+      </m.button>
     </div>
   );
 }

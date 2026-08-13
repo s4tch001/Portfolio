@@ -1,5 +1,5 @@
 import type { SectionHeadingProps } from '../types/ui';
-import { MotionCard, MotionReveal } from './MotionElements';
+import { MotionCard, MotionChip, MotionReveal } from './MotionElements';
 
 const GROUPS = [
   {
@@ -11,6 +11,7 @@ const GROUPS = [
       'JavaScript',
       'TypeScript',
       'React',
+      'Motion',
       'Next.js',
       'Vite',
       'Tailwind CSS',
@@ -125,9 +126,9 @@ export default function Skills({
               </h3>
               <div className='skills__chips'>
                 {group.skills.map((skill) => (
-                  <span key={skill} className='chip'>
+                  <MotionChip key={skill} className='chip'>
                     {skill}
-                  </span>
+                  </MotionChip>
                 ))}
               </div>
             </MotionCard>

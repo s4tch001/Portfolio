@@ -1,7 +1,8 @@
 import TypewriterText from './TypewriterText';
 import {
+  HeroVisualMotion,
   HeroMotionBackground,
-  MotionFloat,
+  MotionLink,
   MotionScrollWheel,
 } from './MotionElements';
 
@@ -40,17 +41,17 @@ export default function Hero() {
             security baked in. Off the clock, I&apos;m into music and gaming.
           </p>
           <div className='hero__cta'>
-            <a className='btn btn--gradient' href='#portfolio'>
+            <MotionLink className='btn btn--gradient' href='#portfolio'>
               View my work <span aria-hidden='true'>→</span>
-            </a>
-            <a className='btn btn--ghost' href='#contact'>
+            </MotionLink>
+            <MotionLink className='btn btn--ghost' href='#contact'>
               Get in touch
-            </a>
+            </MotionLink>
           </div>
         </div>
 
-        <div className='hero__visual' aria-hidden='true'>
-          <MotionFloat className='hero__card' distance={6} duration={9}>
+        <HeroVisualMotion>
+          <div className='hero__card'>
             <div className='hero__card-bar'>
               <span className='dot dot--r' />
               <span className='dot dot--y' />
@@ -80,34 +81,17 @@ export default function Hero() {
                 {'}'};
               </code>
             </pre>
-          </MotionFloat>
-          <MotionFloat
-            as='span'
-            className='hero__chip hero__chip--1'
-            distance={5}
-            duration={7.5}
-          >
+          </div>
+          <span className='hero__chip hero__chip--1'>
             💻 clean code
-          </MotionFloat>
-          <MotionFloat
-            as='span'
-            className='hero__chip hero__chip--2'
-            delay={0.7}
-            distance={5}
-            duration={8.5}
-          >
+          </span>
+          <span className='hero__chip hero__chip--2'>
             ⚡ fast & responsive
-          </MotionFloat>
-          <MotionFloat
-            as='span'
-            className='hero__chip hero__chip--3'
-            delay={0.35}
-            distance={5}
-            duration={8}
-          >
+          </span>
+          <span className='hero__chip hero__chip--3'>
             🚀 ship to production
-          </MotionFloat>
-        </div>
+          </span>
+        </HeroVisualMotion>
       </div>
 
       <a

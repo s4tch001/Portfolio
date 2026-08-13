@@ -171,7 +171,6 @@
 [data-style='oldschool'] .btn--gradient:hover,
 [data-style='oldschool'] .btn--ghost:hover {
   background: var(--os-face-2);
-  transform: none;
   box-shadow: 0 0 0 1px #000;
 }
 
@@ -198,7 +197,6 @@
   color: var(--os-ink);
   background: var(--os-face-2);
   border-color: var(--os-hi) var(--os-lo) var(--os-lo) var(--os-hi);
-  transform: none;
 }
 
 /* ───────────────────────── Cards → silver panels ───────────────────────── */
@@ -213,7 +211,6 @@
 }
 
 [data-style='oldschool'] .card:hover {
-  transform: none;
   border-color: var(--os-hi) var(--os-lo) var(--os-lo) var(--os-hi);
   box-shadow: none;
 }
@@ -269,7 +266,7 @@
   color: var(--os-link-hover);
 }
 
-[data-style='oldschool'] .nav__links a:not(.btn)::after {
+[data-style='oldschool'] .nav__link-line {
   display: none;
 }
 
@@ -401,7 +398,6 @@
 }
 
 [data-style='oldschool'] .project__media:hover .browser {
-  transform: none;
   box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.35);
 }
 
@@ -534,7 +530,6 @@
 [data-style='oldschool'] .project__github:focus-visible {
   background: var(--os-face-2);
   border-color: var(--os-hi) var(--os-lo) var(--os-lo) var(--os-hi);
-  transform: none;
   box-shadow:
     inset 1px 1px 0 rgba(255, 255, 255, 0.72),
     inset -1px -1px 0 rgba(0, 0, 0, 0.28),
@@ -629,7 +624,6 @@
 [data-style='oldschool'] .footer__social:hover {
   background: var(--os-face-2);
   border-color: var(--os-hi) var(--os-lo) var(--os-lo) var(--os-hi);
-  transform: none;
 }
 
 [data-style='oldschool'] .footer__social:hover svg {
@@ -649,7 +643,6 @@
 [data-style='oldschool'] .style-switch__fab:hover {
   background: var(--os-face-2);
   border-color: var(--os-hi) var(--os-lo) var(--os-lo) var(--os-hi);
-  transform: none;
   box-shadow: 0 0 0 1px #000;
 }
 

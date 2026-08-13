@@ -1,3 +1,6 @@
+'use client';
+
+import { m, useReducedMotion } from 'motion/react';
 import type { Theme } from '../types/ui';
 
 interface ThemeToggleProps {
@@ -9,8 +12,9 @@ interface ThemeToggleProps {
 // and rotates them based on the current theme.
 export default function ThemeToggle({ theme, onToggle }: ThemeToggleProps) {
   const isLight = theme === 'light';
+  const shouldReduceMotion = useReducedMotion();
   return (
-    <button
+    <m.button
       type="button"
       className="theme-toggle"
       onClick={onToggle}
@@ -18,6 +22,9 @@ export default function ThemeToggle({ theme, onToggle }: ThemeToggleProps) {
       aria-checked={isLight}
       aria-label={isLight ? 'Switch to dark mode' : 'Switch to light mode'}
       title={isLight ? 'Dark mode' : 'Light mode'}
+      whileHover={shouldReduceMotion ? {} : { scale: 1.045 }}
+      whileTap={shouldReduceMotion ? {} : { scale: 0.96 }}
+      transition={{ type: 'spring', stiffness: 460, damping: 30 }}
     >
       <span className="theme-toggle__track">
         <span className="theme-toggle__thumb">
@@ -39,6 +46,6 @@ export default function ThemeToggle({ theme, onToggle }: ThemeToggleProps) {
           </svg>
         </span>
       </span>
-    </button>
+    </m.button>
   );
 }

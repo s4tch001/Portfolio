@@ -1,3 +1,5 @@
+import { MotionLink } from './MotionElements';
+
 const SOCIALS = [
   {
     label: 'GitHub',
@@ -42,31 +44,33 @@ export default function Footer() {
             </span>
           </p>
           <p className='footer__meta'>Web Developer</p>
-          <a
+          <MotionLink
             className='footer__repo'
+            hoverPreset='link'
             href='https://github.com/s4tch001/Portfolio'
             target='_blank'
             rel='noreferrer'
           >
             Portfolio source code
-          </a>
+          </MotionLink>
         </div>
 
         <ul className='footer__socials' aria-label='Social links'>
           {SOCIALS.map((s) => (
             <li key={s.label}>
-              <a
+              <MotionLink
                 href={s.href}
                 target='_blank'
                 rel='noreferrer'
                 className='footer__social'
                 aria-label={s.label}
                 title={s.label}
+                hoverPreset='social'
               >
                 <svg viewBox='0 0 24 24' aria-hidden='true'>
                   <path d={s.path} />
                 </svg>
-              </a>
+              </MotionLink>
             </li>
           ))}
         </ul>

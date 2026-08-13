@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { AnimatePresence, m, useReducedMotion } from 'motion/react';
 import useStyle from '../hooks/useStyle';
 import type { PageStyle } from '../types/ui';
 
@@ -21,6 +22,10 @@ export default function StyleSwitcher() {
   const { style, setStyle } = useStyle();
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
+  const shouldReduceMotion = useReducedMotion();
+  const fabAmbientMotion = shouldReduceMotion
+    ? {}
+    : { animate: { y: [0, -4, 0] } };
 
   // Close on outside click / Escape.
   useEffect(() => {
@@ -43,38 +48,53 @@ export default function StyleSwitcher() {
 
   return (
     <div className="style-switch" ref={rootRef}>
-      {open && (
-        <div className="style-switch__menu" role="menu" aria-label="Page style">
-          <p className="style-switch__label">Page style</p>
-          {STYLES.map((s) => (
-            <button
-              key={s.id}
-              type="button"
-              role="menuitemradio"
-              aria-checked={style === s.id}
-              className={`style-switch__option ${style === s.id ? 'is-active' : ''}`}
-              onClick={() => {
-                setStyle(s.id);
-                setOpen(false);
-              }}
-            >
-              <span
-                className={`style-switch__swatch style-switch__swatch--${s.id}`}
-                aria-hidden="true"
-              />
-              <span className="style-switch__text">
-                <strong>{s.label}</strong>
-                <small>{s.desc}</small>
-              </span>
-              {style === s.id && (
-                <span className="style-switch__check" aria-hidden="true">✓</span>
-              )}
-            </button>
-          ))}
-        </div>
-      )}
+      <AnimatePresence initial={false}>
+        {open && (
+          <m.div
+            className="style-switch__menu"
+            role="menu"
+            aria-label="Page style"
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 8, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 6, scale: 0.98 }}
+            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <p className="style-switch__label">Page style</p>
+            {STYLES.map((s) => (
+              <m.button
+                key={s.id}
+                type="button"
+                role="menuitemradio"
+                aria-checked={style === s.id}
+                className={`style-switch__option ${style === s.id ? 'is-active' : ''}`}
+                onClick={() => {
+                  setStyle(s.id);
+                  setOpen(false);
+                }}
+                whileHover={shouldReduceMotion ? {} : { x: 3 }}
+                whileTap={shouldReduceMotion ? {} : { scale: 0.985 }}
+                transition={{ type: 'spring', stiffness: 440, damping: 30 }}
+              >
+                <span
+                  className={`style-switch__swatch style-switch__swatch--${s.id}`}
+                  aria-hidden="true"
+                />
+                <span className="style-switch__text">
+                  <strong>{s.label}</strong>
+                  <small>{s.desc}</small>
+                </span>
+                {style === s.id && (
+                  <span className="style-switch__check" aria-hidden="true">
+                    ✓
+                  </span>
+                )}
+              </m.button>
+            ))}
+          </m.div>
+        )}
+      </AnimatePresence>
 
-      <button
+      <m.button
         type="button"
         className="style-switch__fab"
         aria-haspopup="menu"
@@ -82,9 +102,23 @@ export default function StyleSwitcher() {
         aria-label="Change page style"
         title="Page style"
         onClick={() => setOpen((o) => !o)}
+        {...fabAmbientMotion}
+        whileHover={
+          shouldReduceMotion ? {} : { y: -3, rotate: -10, scale: 1.04 }
+        }
+        whileTap={shouldReduceMotion ? {} : { scale: 0.94 }}
+        transition={
+          shouldReduceMotion
+            ? { duration: 0 }
+            : {
+                y: { duration: 2.8, ease: 'easeInOut', repeat: Infinity },
+                rotate: { type: 'spring', stiffness: 430, damping: 27 },
+                scale: { type: 'spring', stiffness: 430, damping: 27 },
+              }
+        }
       >
         <span aria-hidden="true">🎨</span>
-      </button>
+      </m.button>
     </div>
   );
 }

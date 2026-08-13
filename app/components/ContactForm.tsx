@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import type { SubmitErrorHandler, SubmitHandler } from 'react-hook-form';
+import { m, useReducedMotion } from 'motion/react';
 import { FIELD_LIMITS } from '../lib/contact-fields';
 import {
   contactApiResponseSchema,
@@ -81,6 +82,7 @@ export default function ContactForm({
   const [shouldLoadTurnstile, setShouldLoadTurnstile] = useState(
     Boolean(SITE_KEY && eagerTurnstile),
   );
+  const shouldReduceMotion = useReducedMotion();
 
   const formRef = useRef<HTMLFormElement>(null);
   const widgetRef = useRef<HTMLDivElement>(null);
@@ -362,10 +364,15 @@ export default function ContactForm({
       {SITE_KEY && <div className="contact-form__turnstile" ref={widgetRef} />}
 
       <div className="contact-form__footer">
-        <button
+        <m.button
           type="submit"
           className="btn btn--gradient contact-form__submit"
           disabled={sending}
+          whileHover={
+            sending || shouldReduceMotion ? {} : { y: -2, scale: 1.015 }
+          }
+          whileTap={sending || shouldReduceMotion ? {} : { scale: 0.985 }}
+          transition={{ type: 'spring', stiffness: 420, damping: 28 }}
         >
           {sending ? (
             <>
@@ -375,7 +382,7 @@ export default function ContactForm({
           ) : (
             'Send Message'
           )}
-        </button>
+        </m.button>
         <p
           className={`contact-form__status ${
             status === 'success'

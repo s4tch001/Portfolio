@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import Footer from './components/Footer';
+import { MotionLink } from './components/MotionElements';
 import Nav from './components/Nav';
 import StyleSwitcher from './components/StyleSwitcher';
 
@@ -21,13 +21,13 @@ export default function NotFound() {
               still alive and shipping.
             </p>
             <div className="not-found__actions">
-              <Link className="btn btn--gradient" href="/">
+              <MotionLink className="btn btn--gradient" href="/">
                 Back to home
                 <span aria-hidden="true">→</span>
-              </Link>
-              <Link className="btn btn--ghost" href="/contact">
+              </MotionLink>
+              <MotionLink className="btn btn--ghost" href="/contact">
                 Contact Pau
-              </Link>
+              </MotionLink>
             </div>
           </div>
 

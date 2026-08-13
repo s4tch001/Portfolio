@@ -174,7 +174,6 @@
 
 [data-style='pixels'] .btn--gradient:hover,
 [data-style='pixels'] .btn--ghost:hover {
-  transform: translate(-2px, -2px);
   box-shadow: 6px 6px 0 var(--px-shadow);
 }
 
@@ -205,7 +204,6 @@
   color: var(--text);
   border-color: var(--px-ink);
   background: var(--surface-2);
-  transform: translate(-1px, -1px);
 }
 
 /* ───────────────────────── Cards → dialogue boxes ───────────────────────── */
@@ -222,7 +220,6 @@
 }
 
 [data-style='pixels'] .card:hover {
-  transform: translate(-2px, -2px);
   border-color: var(--px-ink);
   box-shadow: 8px 8px 0 var(--px-shadow);
 }
@@ -258,7 +255,7 @@
   font-size: 0.95rem;
 }
 
-[data-style='pixels'] .nav__links a:not(.btn)::after {
+[data-style='pixels'] .nav__link-line {
   height: 3px;
   border-radius: 0;
   background: repeating-linear-gradient(
@@ -391,7 +388,6 @@
 }
 
 [data-style='pixels'] .project__media:hover .browser {
-  transform: translate(-3px, -3px);
   box-shadow: 11px 11px 0 var(--px-shadow);
 }
 
@@ -501,7 +497,6 @@
 [data-style='pixels'] .project__github:focus-visible {
   background: var(--surface-2);
   border-color: var(--px-ink);
-  transform: translate(-1px, -1px);
   box-shadow:
     3px 3px 0 var(--cyan),
     6px 6px 0 var(--violet);
@@ -566,7 +561,6 @@
 [data-style='pixels'] .footer__social:hover {
   border-color: var(--px-ink);
   background: var(--surface-2);
-  transform: translate(-2px, -2px);
 }
 
 /* ───────────────────────── Style switcher, sprite-ified ───────────────────────── */
@@ -583,7 +577,6 @@
 }
 
 [data-style='pixels'] .style-switch__fab:hover {
-  transform: translate(-2px, -2px);
   border-color: var(--px-ink);
   box-shadow: 5px 5px 0 var(--px-shadow);
 }

@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import type { CSSProperties } from 'react';
+import { m, useReducedMotion } from 'motion/react';
 import useSlideshow from '../hooks/useSlideshow';
 import type { ProjectGalleryData, ProjectImage } from '../types/project';
 
@@ -47,6 +48,7 @@ function Gallery({ project, onOpen }: GalleryProps) {
   const images = project.images;
   const rootRef = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     const el = rootRef.current;
@@ -133,7 +135,12 @@ function Gallery({ project, onOpen }: GalleryProps) {
         <span className="browser__count">{shown.i + 1}/{images.length}</span>
       </div>
 
-      <div className="gallery">
+      <m.div
+        className="gallery"
+        initial="idle"
+        animate="idle"
+        whileHover="hover"
+      >
         <button
           type="button"
           className="gallery__view"
@@ -170,47 +177,63 @@ function Gallery({ project, onOpen }: GalleryProps) {
               style={{ '--slide-from': `${shown.dir * 30}px` } as SlideStyle}
             />
           )}
-          <span className="gallery__zoom" aria-hidden="true">
+          <m.span
+            className="gallery__zoom"
+            aria-hidden="true"
+            variants={{
+              idle: { scale: shouldReduceMotion ? 1 : 0.92 },
+              hover: { scale: 1 },
+            }}
+            transition={{ type: 'spring', stiffness: 420, damping: 28 }}
+          >
             ↗
-          </span>
+          </m.span>
         </button>
 
         {images.length > 1 && (
           <>
-            <button
+            <m.button
               type="button"
               className="gallery__arrow gallery__arrow--prev"
               aria-label="Previous screenshot"
               onClick={withPause(prev)}
+              whileHover={shouldReduceMotion ? {} : { scale: 1.06 }}
+              whileTap={shouldReduceMotion ? {} : { scale: 0.94 }}
+              transition={{ type: 'spring', stiffness: 460, damping: 30 }}
             >
               <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <path d="m14.5 5-7 7 7 7" />
               </svg>
-            </button>
-            <button
+            </m.button>
+            <m.button
               type="button"
               className="gallery__arrow gallery__arrow--next"
               aria-label="Next screenshot"
               onClick={withPause(next)}
+              whileHover={shouldReduceMotion ? {} : { scale: 1.06 }}
+              whileTap={shouldReduceMotion ? {} : { scale: 0.94 }}
+              transition={{ type: 'spring', stiffness: 460, damping: 30 }}
             >
               <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <path d="m9.5 5 7 7-7 7" />
               </svg>
-            </button>
+            </m.button>
             <div className="gallery__dots">
               {images.map((image, imageIndex) => (
-                <button
+                <m.button
                   key={image.src}
                   type="button"
                   className={imageIndex === index ? 'active' : ''}
                   aria-label={`Go to screenshot ${imageIndex + 1}`}
                   onClick={withPause(() => setIndex(imageIndex))}
+                  whileHover={shouldReduceMotion ? {} : { scale: 1.3 }}
+                  whileTap={shouldReduceMotion ? {} : { scale: 0.9 }}
                 />
               ))}
             </div>
           </>
         )}
-      </div>
+      </m.div>
     </div>
   );
 }

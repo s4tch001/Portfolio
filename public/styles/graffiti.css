@@ -198,11 +198,10 @@
   background: #b14aff;
   color: #17131a;
   box-shadow: 4px 4px 0 #ffd60a;
-  transform: rotate(-1deg);
+  rotate: -1deg;
 }
 
 [data-style='graffiti'] .btn--gradient:hover {
-  transform: rotate(-1deg) translate(-2px, -2px);
   box-shadow: 6px 6px 0 #ffd60a;
 }
 
@@ -211,13 +210,12 @@
   border: 2px dashed var(--text);
   color: var(--text);
   box-shadow: 4px 4px 0 rgba(0, 229, 255, 0.55);
-  transform: rotate(0.8deg);
+  rotate: 0.8deg;
 }
 
 [data-style='graffiti'] .btn--ghost:hover {
   border-color: var(--text);
   background: var(--surface-2);
-  transform: rotate(0.8deg) translate(-2px, -2px);
   box-shadow: 6px 6px 0 rgba(0, 229, 255, 0.75);
 }
 
@@ -230,12 +228,12 @@
   background: #ffd60a;
   color: #17131a;
   box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.65);
-  transform: rotate(-1.6deg);
+  rotate: -1.6deg;
 }
 
 [data-style='graffiti'] .chip:nth-child(even) {
   background: #7ee8ff;
-  transform: rotate(1.4deg);
+  rotate: 1.4deg;
 }
 
 [data-style='graffiti'] .chip:nth-child(3n) {
@@ -249,7 +247,6 @@
 [data-style='graffiti'] .chip:hover {
   color: #17131a;
   border-color: #000;
-  transform: rotate(0deg) translateY(-3px);
 }
 
 /* ───────────────────────── Cards → wheatpaste posters ───────────────────────── */
@@ -297,19 +294,12 @@
 /* Alternate tilts down the grid — straighten on hover */
 [data-style='graffiti'] .about__card:nth-child(odd),
 [data-style='graffiti'] .skills__card:nth-child(odd) {
-  transform: rotate(-1.2deg);
+  rotate: -1.2deg;
 }
 
 [data-style='graffiti'] .about__card:nth-child(even),
 [data-style='graffiti'] .skills__card:nth-child(even) {
-  transform: rotate(1.2deg);
-}
-
-[data-style='graffiti'] .about__card:nth-child(odd):hover,
-[data-style='graffiti'] .about__card:nth-child(even):hover,
-[data-style='graffiti'] .skills__card:nth-child(odd):hover,
-[data-style='graffiti'] .skills__card:nth-child(even):hover {
-  transform: rotate(0deg) translateY(-6px);
+  rotate: 1.2deg;
 }
 
 /* ───────────────────────── Nav ───────────────────────── */
@@ -349,7 +339,7 @@
 }
 
 /* Marker-scribble underline */
-[data-style='graffiti'] .nav__links a:not(.btn)::after {
+[data-style='graffiti'] .nav__link-line {
   height: 3px;
   border-radius: 0;
   background: repeating-linear-gradient(
@@ -460,7 +450,6 @@
 }
 
 [data-style='graffiti'] .project__media:hover .browser {
-  transform: rotate(-0.3deg) translateY(-6px) scale(1.01);
   box-shadow:
     0 0 0 3px #000,
     16px 20px 0 rgba(0, 0, 0, 0.55),
@@ -469,7 +458,6 @@
 
 [data-style='graffiti'] .project--flip:hover .browser,
 [data-style='graffiti'] .project--flip .project__media:hover .browser {
-  transform: rotate(0.3deg) translateY(-6px) scale(1.01);
 }
 
 [data-style='graffiti'] .browser__bar {
@@ -581,7 +569,6 @@
   box-shadow:
     3px 3px 0 #b14aff,
     6px 6px 0 #ffd60a;
-  transform: rotate(0.4deg) translate(-1px, -1px);
 }
 
 /* ───────────────────────── Lightbox ───────────────────────── */
@@ -640,17 +627,16 @@
 }
 
 [data-style='graffiti'] .footer__socials li:nth-child(odd) .footer__social {
-  transform: rotate(-2.5deg);
+  rotate: -2.5deg;
 }
 
 [data-style='graffiti'] .footer__socials li:nth-child(even) .footer__social {
-  transform: rotate(2deg);
+  rotate: 2deg;
 }
 
 [data-style='graffiti'] .footer__social:hover {
   background: #ffd60a;
   border-color: #000;
-  transform: rotate(0deg) translateY(-4px);
 }
 
 [data-style='graffiti'] .footer__social:hover svg {
@@ -663,7 +649,7 @@
   border: 2px solid #000;
   border-radius: 5px;
   /* box-shadow: 3px 3px 0 #ffd60a; */
-  transform: rotate(-4deg);
+  rotate: -4deg;
 }
 
 [data-style='graffiti'][data-theme='light'] .style-switch__fab {
@@ -671,7 +657,6 @@
 }
 
 [data-style='graffiti'] .style-switch__fab:hover {
-  transform: rotate(0deg) translateY(-3px);
   border-color: #000;
   /* box-shadow: 4px 4px 0 #ffd60a; */
 }

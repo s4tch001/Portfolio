@@ -1,7 +1,7 @@
 import projects from '../data/projects';
 import type { SectionHeadingProps } from '../types/ui';
 import DeferredProjectGallery from './DeferredProjectGallery';
-import { MotionReveal } from './MotionElements';
+import { MotionChip, MotionLink, MotionReveal } from './MotionElements';
 import ProjectGalleryStatic from './ProjectGalleryStatic';
 
 interface DeployBadgeProps {
@@ -19,7 +19,7 @@ interface GithubLinkProps {
 
 function GithubLink({ href, label }: GithubLinkProps) {
   return (
-    <a
+    <MotionLink
       className="btn btn--small btn--ghost project__github"
       href={href}
       target="_blank"
@@ -30,7 +30,7 @@ function GithubLink({ href, label }: GithubLinkProps) {
         <path d="M12 .7a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.8 5.4-5.5 5.7.4.4.8 1.1.8 2.2v3.2c0 .4.2.7.8.6A11.5 11.5 0 0 0 12 .7Z" />
       </svg>
       <span>{label}</span>
-    </a>
+    </MotionLink>
   );
 }
 
@@ -64,7 +64,7 @@ export default function Projects({
               id={project.id}
               className={`project project--${project.accent} ${i % 2 ? 'project--flip' : ''}`}
             >
-              <MotionReveal className="project__media" distance={12}>
+              <MotionReveal className="project__media" distance={12} hover="media">
                 <DeferredProjectGallery projectId={project.id}>
                   <ProjectGalleryStatic
                     project={{
@@ -88,7 +88,7 @@ export default function Projects({
                 </ul>
                 <div className="project__stack">
                   {project.stack.map((tech) => (
-                    <span key={tech} className="chip">{tech}</span>
+                    <MotionChip key={tech} className="chip">{tech}</MotionChip>
                   ))}
                 </div>
                 <div className="project__meta">
@@ -106,14 +106,14 @@ export default function Projects({
                     />
                   ))}
                   {project.live && (
-                    <a
+                    <MotionLink
                       className="btn btn--small btn--ghost"
                       href={project.live}
                       target="_blank"
                       rel="noreferrer"
                     >
                       Visit site ↗
-                    </a>
+                    </MotionLink>
                   )}
                 </div>
                 {project.demo && (
@@ -134,7 +134,7 @@ export default function Projects({
                           label="Demo source"
                         />
                       )}
-                      <a
+                      <MotionLink
                         className="btn btn--small btn--primary"
                         href={project.demo.url}
                         target="_blank"
@@ -147,7 +147,7 @@ export default function Projects({
                             <path d="M9 7h8v8" />
                           </svg>
                         </span>
-                      </a>
+                      </MotionLink>
                     </div>
                   </div>
                 )}

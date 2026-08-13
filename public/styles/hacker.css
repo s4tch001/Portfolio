@@ -204,7 +204,6 @@
   background: var(--text);
   color: var(--bg);
   border-color: var(--text);
-  transform: none;
   box-shadow: var(--hx-glow);
 }
 
@@ -233,7 +232,6 @@
 [data-style='hacker'] .chip:hover {
   color: var(--text);
   border-color: var(--text);
-  transform: none;
 }
 
 /* ───────────────────────── Cards → tmux panes ───────────────────────── */
@@ -246,7 +244,6 @@
 }
 
 [data-style='hacker'] .card:hover {
-  transform: none;
   border-color: var(--text);
   box-shadow:
     inset 0 0 24px rgba(0, 231, 102, 0.06),
@@ -305,7 +302,7 @@
   color: var(--muted);
 }
 
-[data-style='hacker'] .nav__links a:not(.btn)::after {
+[data-style='hacker'] .nav__link-line {
   height: 1px;
   border-radius: 0;
   background: var(--text);
@@ -432,7 +429,6 @@
 }
 
 [data-style='hacker'] .project__media:hover .browser {
-  transform: translateY(-4px);
   border-color: var(--text);
   box-shadow:
     var(--hx-glow),
@@ -567,7 +563,6 @@
   background: var(--text);
   border-color: var(--text);
   color: var(--bg);
-  transform: none;
   box-shadow: var(--hx-glow);
 }
 
@@ -640,7 +635,6 @@
 [data-style='hacker'] .footer__social:hover {
   background: var(--surface-2);
   border-color: var(--text);
-  transform: none;
   box-shadow: var(--hx-glow);
 }
 
@@ -662,7 +656,6 @@
 
 [data-style='hacker'] .style-switch__fab:hover {
   border-color: var(--text);
-  transform: none;
   box-shadow: var(--hx-glow);
 }
 
