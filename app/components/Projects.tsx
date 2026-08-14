@@ -64,7 +64,7 @@ export default function Projects({
               id={project.id}
               className={`project project--${project.accent} ${i % 2 ? 'project--flip' : ''}`}
             >
-              <MotionReveal className="project__media" distance={12} hover="media">
+              <MotionReveal className="project__media" distance={12}>
                 <DeferredProjectGallery projectId={project.id}>
                   <ProjectGalleryStatic
                     project={{

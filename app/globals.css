@@ -949,7 +949,10 @@ html.anchor-layout-ready #focus,
 html.anchor-layout-ready #portfolio,
 html.anchor-layout-ready #skills,
 html.anchor-layout-ready #contact,
-html.anchor-layout-ready .footer {
+html.anchor-layout-ready .footer,
+/* Project cards also use content-visibility. Resolve those nested estimates
+   before an anchor animation starts so the target cannot move mid-scroll. */
+html.anchor-layout-ready .project {
   content-visibility: visible;
 }
 
@@ -1149,29 +1152,21 @@ html.anchor-layout-ready .footer {
   position: relative;
 }
 
-.project__media::before {
-  content: '';
-  position: absolute;
-  inset: -10%;
-  background: radial-gradient(
-    closest-side,
-    var(--project-glow, rgba(139, 92, 246, 0.22)),
-    transparent
-  );
-  z-index: -1;
-}
-
 .project--violet {
   --project-glow: rgba(139, 92, 246, 0.22);
+  --project-border: var(--violet);
 }
 .project--green {
   --project-glow: rgba(52, 211, 153, 0.16);
+  --project-border: var(--green);
 }
 .project--blue {
   --project-glow: rgba(96, 165, 250, 0.18);
+  --project-border: var(--blue);
 }
 .project--amber {
   --project-glow: rgba(251, 191, 36, 0.16);
+  --project-border: var(--amber);
 }
 
 .browser {
@@ -1179,13 +1174,10 @@ html.anchor-layout-ready .footer {
   border-radius: 14px;
   overflow: hidden;
   background: #10101c;
-  box-shadow: 0 34px 80px -34px rgba(0, 0, 0, 0.85);
 }
 
 .project__media:hover .browser {
-  box-shadow:
-    0 44px 90px -34px rgba(0, 0, 0, 0.9),
-    0 0 60px -18px var(--project-glow, rgba(139, 92, 246, 0.4));
+  border-color: var(--project-border, var(--violet));
 }
 
 .browser__bar {
@@ -2157,10 +2149,6 @@ html.anchor-layout-ready .footer {
   min-height: 35rem;
 }
 
-.contact-form-loader--ready {
-  min-height: 0;
-}
-
 .contact-form__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2170,10 +2158,6 @@ html.anchor-layout-ready .footer {
 @media (max-width: 640px) {
   .contact-form-loader {
     min-height: 48rem;
-  }
-
-  .contact-form-loader--ready {
-    min-height: 0;
   }
 
   .contact-form__grid {
