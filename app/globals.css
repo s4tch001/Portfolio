@@ -949,10 +949,7 @@ html.anchor-layout-ready #focus,
 html.anchor-layout-ready #portfolio,
 html.anchor-layout-ready #skills,
 html.anchor-layout-ready #contact,
-html.anchor-layout-ready .footer,
-/* Project cards also use content-visibility. Resolve those nested estimates
-   before an anchor animation starts so the target cannot move mid-scroll. */
-html.anchor-layout-ready .project {
+html.anchor-layout-ready .footer {
   content-visibility: visible;
 }
 
@@ -989,6 +986,7 @@ html.anchor-layout-ready .project {
 .section__inner {
   max-width: 1200px;
   margin: 0 auto;
+  overflow: visible;
 }
 
 .section__eyebrow {
@@ -1123,14 +1121,15 @@ html.anchor-layout-ready .project {
   flex-direction: column;
   gap: 6rem;
   margin-top: 4rem;
+  overflow: visible;
 }
 
 .project {
-  content-visibility: auto;
-  contain-intrinsic-block-size: auto 800px;
+  position: relative;
   display: grid;
   gap: 3rem;
   align-items: center;
+  overflow: visible;
 }
 
 .project:nth-child(odd) {
@@ -1150,6 +1149,11 @@ html.anchor-layout-ready .project {
 
 .project__media {
   position: relative;
+  z-index: 0;
+}
+
+.project__media:hover {
+  z-index: 2;
 }
 
 .project--violet {
@@ -1178,6 +1182,7 @@ html.anchor-layout-ready .project {
 
 .project__media:hover .browser {
   border-color: var(--project-border, var(--violet));
+  box-shadow: 0 24px 50px -24px rgba(139, 92, 246, 0.45);
 }
 
 .browser__bar {
@@ -2443,10 +2448,6 @@ html.anchor-layout-ready .project {
 
   .footer {
     contain-intrinsic-block-size: auto 340px;
-  }
-
-  .project {
-    contain-intrinsic-block-size: auto 1200px;
   }
 
   .hero__inner {

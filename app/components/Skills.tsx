@@ -58,6 +58,7 @@ const GROUPS = [
       'GitHub',
       'Google Cloud Console',
       'Wrangler CLI',
+      'n8n',
       'Electron',
       'Kotlin',
       'Capacitor',

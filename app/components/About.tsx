@@ -5,7 +5,7 @@ const FACETS = [
   {
     icon: '💻',
     title: 'Full-Stack Development',
-    body: 'UI, backend, database, and deploys. Fewer handoffs, fewer mysteries.',
+    body: 'UI, backend, database, deploys, and automation. Fewer handoffs, fewer mysteries.',
   },
   {
     icon: '🎨',
