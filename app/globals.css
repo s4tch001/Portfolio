@@ -2418,6 +2418,15 @@ html.anchor-layout-ready .footer {
   font-size: 0.76rem;
 }
 
+.footer__copyright-icon {
+  display: inline-block;
+  width: 0.85em;
+  height: 0.85em;
+  margin-right: 0.25em;
+  vertical-align: -0.08em;
+  fill: currentColor;
+}
+
 /* Left brand + right copy grow equally (basis 0), so the socials in between
    land dead-centre regardless of the two sides' differing widths. */
 .footer__left {
