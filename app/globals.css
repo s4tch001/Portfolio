@@ -1942,6 +1942,14 @@ html.anchor-layout-ready .footer {
   margin-top: 3.2rem;
 }
 
+@media (min-width: 1025px) {
+  .skills__grid > .skills__card:last-child:nth-child(7) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc((100% - 2 * 1.4rem) / 3);
+  }
+}
+
 .skills__card {
   padding: 1.9rem 1.7rem;
 }
