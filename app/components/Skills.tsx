@@ -44,6 +44,16 @@ const GROUPS = [
     ],
   },
   {
+    title: 'AI & Automation',
+    icon: '🤖',
+    skills: [
+      'AI Integration',
+      'Large Language Models (LLMs)',
+      'Generative AI',
+      'Workflow Automation',
+    ],
+  },
+  {
     title: 'Platforms & Development Tools',
     icon: '🚀',
     skills: [

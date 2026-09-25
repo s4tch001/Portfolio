@@ -116,11 +116,12 @@ const projectEntries = [
     id: 'sunset-speaks',
     num: '02',
     name: 'Sunset-Speaks Class Management',
-    tagline: 'Full-stack ESL school platform on the Cloudflare edge',
+    tagline: 'AI-powered ESL class management on the Cloudflare edge',
     url: 'sunset-speaks.app',
     description:
-      'The class-management platform behind Sunset-Speaks, an online ESL tutoring service. Teachers and admins run their entire operation here — scheduling live lessons, tracking student progress, filing class reports, and issuing class-balance receipts.',
+      'The AI-powered class-management platform behind Sunset-Speaks, an online ESL tutoring service. Teachers and admins run their entire operation here — scheduling live lessons, tracking student progress, filing class reports, and issuing class-balance receipts. The AI Composer helps teachers draft feedback on class sessions and student progress.',
     features: [
+      'AI Composer for drafting feedback on class sessions and individual student progress',
       'Cloudflare Worker API backed by D1 (SQLite), R2 file storage, and a Durable Object notification hub',
       'Cron triggers for automated monthly backups and hourly pending-report alerts',
       'Role-based access (admin / teacher / student) plus an Android WebView companion app',
